@@ -1248,13 +1248,23 @@ namespace {
         }
         
         /**
+         * 
+         *
+         * @static 
+         */
+        public static function verify($credentials = array(), $remember = false, $login = true){
+            return \Toddish\Verify\Auth\VerifyGuard::verify($credentials, $remember, $login);
+        }
+        
+        /**
          * Determine if the current user is authenticated.
          *
          * @return bool 
          * @static 
          */
         public static function check(){
-            return \Illuminate\Auth\Guard::check();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::check();
         }
         
         /**
@@ -1264,7 +1274,8 @@ namespace {
          * @static 
          */
         public static function guest(){
-            return \Illuminate\Auth\Guard::guest();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::guest();
         }
         
         /**
@@ -1274,7 +1285,8 @@ namespace {
          * @static 
          */
         public static function user(){
-            return \Illuminate\Auth\Guard::user();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::user();
         }
         
         /**
@@ -1284,7 +1296,8 @@ namespace {
          * @static 
          */
         public static function id(){
-            return \Illuminate\Auth\Guard::id();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::id();
         }
         
         /**
@@ -1295,7 +1308,8 @@ namespace {
          * @static 
          */
         public static function once($credentials = array()){
-            return \Illuminate\Auth\Guard::once($credentials);
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::once($credentials);
         }
         
         /**
@@ -1306,7 +1320,8 @@ namespace {
          * @static 
          */
         public static function validate($credentials = array()){
-            return \Illuminate\Auth\Guard::validate($credentials);
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::validate($credentials);
         }
         
         /**
@@ -1317,7 +1332,8 @@ namespace {
          * @static 
          */
         public static function basic($field = 'email'){
-            return \Illuminate\Auth\Guard::basic($field);
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::basic($field);
         }
         
         /**
@@ -1328,7 +1344,8 @@ namespace {
          * @static 
          */
         public static function onceBasic($field = 'email'){
-            return \Illuminate\Auth\Guard::onceBasic($field);
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::onceBasic($field);
         }
         
         /**
@@ -1341,7 +1358,8 @@ namespace {
          * @static 
          */
         public static function attempt($credentials = array(), $remember = false, $login = true){
-            return \Illuminate\Auth\Guard::attempt($credentials, $remember, $login);
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::attempt($credentials, $remember, $login);
         }
         
         /**
@@ -1352,7 +1370,8 @@ namespace {
          * @static 
          */
         public static function attempting($callback){
-            \Illuminate\Auth\Guard::attempting($callback);
+            //Method inherited from \Illuminate\Auth\Guard            
+            \Toddish\Verify\Auth\VerifyGuard::attempting($callback);
         }
         
         /**
@@ -1364,7 +1383,8 @@ namespace {
          * @static 
          */
         public static function login($user, $remember = false){
-            \Illuminate\Auth\Guard::login($user, $remember);
+            //Method inherited from \Illuminate\Auth\Guard            
+            \Toddish\Verify\Auth\VerifyGuard::login($user, $remember);
         }
         
         /**
@@ -1376,7 +1396,8 @@ namespace {
          * @static 
          */
         public static function loginUsingId($id, $remember = false){
-            return \Illuminate\Auth\Guard::loginUsingId($id, $remember);
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::loginUsingId($id, $remember);
         }
         
         /**
@@ -1387,7 +1408,8 @@ namespace {
          * @static 
          */
         public static function onceUsingId($id){
-            return \Illuminate\Auth\Guard::onceUsingId($id);
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::onceUsingId($id);
         }
         
         /**
@@ -1397,7 +1419,8 @@ namespace {
          * @static 
          */
         public static function logout(){
-            \Illuminate\Auth\Guard::logout();
+            //Method inherited from \Illuminate\Auth\Guard            
+            \Toddish\Verify\Auth\VerifyGuard::logout();
         }
         
         /**
@@ -1408,7 +1431,8 @@ namespace {
          * @static 
          */
         public static function getCookieJar(){
-            return \Illuminate\Auth\Guard::getCookieJar();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::getCookieJar();
         }
         
         /**
@@ -1419,7 +1443,8 @@ namespace {
          * @static 
          */
         public static function setCookieJar($cookie){
-            \Illuminate\Auth\Guard::setCookieJar($cookie);
+            //Method inherited from \Illuminate\Auth\Guard            
+            \Toddish\Verify\Auth\VerifyGuard::setCookieJar($cookie);
         }
         
         /**
@@ -1429,7 +1454,8 @@ namespace {
          * @static 
          */
         public static function getDispatcher(){
-            return \Illuminate\Auth\Guard::getDispatcher();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::getDispatcher();
         }
         
         /**
@@ -1440,7 +1466,8 @@ namespace {
          * @static 
          */
         public static function setDispatcher($events){
-            \Illuminate\Auth\Guard::setDispatcher($events);
+            //Method inherited from \Illuminate\Auth\Guard            
+            \Toddish\Verify\Auth\VerifyGuard::setDispatcher($events);
         }
         
         /**
@@ -1450,7 +1477,8 @@ namespace {
          * @static 
          */
         public static function getSession(){
-            return \Illuminate\Auth\Guard::getSession();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::getSession();
         }
         
         /**
@@ -1460,7 +1488,8 @@ namespace {
          * @static 
          */
         public static function getProvider(){
-            return \Illuminate\Auth\Guard::getProvider();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::getProvider();
         }
         
         /**
@@ -1471,7 +1500,8 @@ namespace {
          * @static 
          */
         public static function setProvider($provider){
-            \Illuminate\Auth\Guard::setProvider($provider);
+            //Method inherited from \Illuminate\Auth\Guard            
+            \Toddish\Verify\Auth\VerifyGuard::setProvider($provider);
         }
         
         /**
@@ -1481,7 +1511,8 @@ namespace {
          * @static 
          */
         public static function getUser(){
-            return \Illuminate\Auth\Guard::getUser();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::getUser();
         }
         
         /**
@@ -1492,7 +1523,8 @@ namespace {
          * @static 
          */
         public static function setUser($user){
-            \Illuminate\Auth\Guard::setUser($user);
+            //Method inherited from \Illuminate\Auth\Guard            
+            \Toddish\Verify\Auth\VerifyGuard::setUser($user);
         }
         
         /**
@@ -1502,7 +1534,8 @@ namespace {
          * @static 
          */
         public static function getRequest(){
-            return \Illuminate\Auth\Guard::getRequest();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::getRequest();
         }
         
         /**
@@ -1513,7 +1546,8 @@ namespace {
          * @static 
          */
         public static function setRequest($request){
-            return \Illuminate\Auth\Guard::setRequest($request);
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::setRequest($request);
         }
         
         /**
@@ -1523,7 +1557,8 @@ namespace {
          * @static 
          */
         public static function getLastAttempted(){
-            return \Illuminate\Auth\Guard::getLastAttempted();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::getLastAttempted();
         }
         
         /**
@@ -1533,7 +1568,8 @@ namespace {
          * @static 
          */
         public static function getName(){
-            return \Illuminate\Auth\Guard::getName();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::getName();
         }
         
         /**
@@ -1543,7 +1579,8 @@ namespace {
          * @static 
          */
         public static function getRecallerName(){
-            return \Illuminate\Auth\Guard::getRecallerName();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::getRecallerName();
         }
         
         /**
@@ -1553,7 +1590,8 @@ namespace {
          * @static 
          */
         public static function viaRemember(){
-            return \Illuminate\Auth\Guard::viaRemember();
+            //Method inherited from \Illuminate\Auth\Guard            
+            return \Toddish\Verify\Auth\VerifyGuard::viaRemember();
         }
         
     }

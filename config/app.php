@@ -146,6 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Toddish\Verify\Providers\VerifyServiceProvider::class
 
     ],
 

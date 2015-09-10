@@ -2,6 +2,7 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/barryvdh/laravel-ide-helper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/classpreloader/classpreloader" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
@@ -62,6 +63,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/toddish/verify" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -129,6 +131,7 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/translation" />
           <root url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
           <root url="file://$MODULE_DIR$/vendor/symfony/yaml" />
+          <root url="file://$MODULE_DIR$/vendor/toddish/verify" />
           <root url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
         </CLASSES>
         <SOURCES>
@@ -192,6 +195,7 @@
           <root url="file://$MODULE_DIR$/vendor/symfony/translation" />
           <root url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
           <root url="file://$MODULE_DIR$/vendor/symfony/yaml" />
+          <root url="file://$MODULE_DIR$/vendor/toddish/verify" />
           <root url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
         </SOURCES>
       </library>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "47779b60b334bd0ce2b4b2040181909b",
+    "hash": "59d7b4816d018c773686c99980e96eb6",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -2206,6 +2206,53 @@
                 "dump"
             ],
             "time": "2015-08-31 12:28:11"
+        },
+        {
+            "name": "toddish/verify",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Toddish/Verify-L4.git",
+                "reference": "e8320942fa378ac673a79f321eb0c262de868893"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Toddish/Verify-L4/zipball/e8320942fa378ac673a79f321eb0c262de868893",
+                "reference": "e8320942fa378ac673a79f321eb0c262de868893",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.1.*",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Toddish\\Verify\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Todd Francis",
+                    "email": "todd@toddish.co.uk",
+                    "homepage": "http://toddish.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple authentication bundle for Laravel 4/5. It features roles, permissions, password salting and is fully extendable.",
+            "homepage": "http://docs.toddish.co.uk/verify-l4/",
+            "keywords": [
+                "auth",
+                "laravel",
+                "permissions",
+                "roles",
+                "verify"
+            ],
+            "time": "2015-07-07 19:23:59"
         },
         {
             "name": "vlucas/phpdotenv",
