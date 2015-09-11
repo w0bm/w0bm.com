@@ -45,7 +45,7 @@ class VideoController extends Controller
         $file = $request->file('file');
 
         if(!$file->isValid()
-        || $file->getExtension() != '.webm'
+        || $file->getClientOriginalExtension() != 'webm'
         || $file->getMimeType() != 'video/webm') return redirect()->back()->with('error', 'Invalid file');
 
         if(($v = Video::where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null)
@@ -60,8 +60,8 @@ class VideoController extends Controller
         $video->interpret = $request->get('interpret', null);
         $video->songtitle = $request->get('songtitle', null);
         $video->imgsource = $request->get('imgsource', null);
-        $video->user = auth()->user();
-        $video->category = Category::findOrFail($request->get('category'));
+        $video->user()->associate(auth()->user());
+        $video->category()->associate(Category::findOrFail($request->get('category')));
         $video->hash = $hash;
         $video->save();
 
@@ -76,7 +76,10 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        //
+        $video = Video::find($id);
+        if(is_null($video)) return redirect()->back(404)->with('error', 'No video with that ID found');
+
+        return view('video', ['video' => $video]);
     }
 
     /**

@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('video');
+    $id = \App\Models\Video::count() - 1;
+    $id = rand(1, $id);
+    $video = \App\Models\Video::limit($id, 1)->first();
+    return redirect($video->id);
 });
 
 
@@ -26,4 +29,4 @@ Route::post('register', 'UserController@store');
 Route::get('upload', 'VideoController@create');
 Route::post('upload', 'VideoController@store');
 
-Route::get('{id}', 'VideoController@show');
+Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');

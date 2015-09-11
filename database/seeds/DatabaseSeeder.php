@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        $this->call(VerifyUserSeeder::class);
+        $this->call(VideoTableSeeder::class);
 
         Model::reguard();
     }

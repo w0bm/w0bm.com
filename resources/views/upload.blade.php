@@ -1,4 +1,4 @@
-@extends('layout');
+@extends('layout')
 @section('content')
 <div class="row">
     <form class="form-horizontal" method="post" action="upload" enctype="multipart/form-data">
