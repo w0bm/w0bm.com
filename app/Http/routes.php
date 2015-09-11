@@ -14,7 +14,7 @@
 Route::get('/', function () {
     $id = \App\Models\Video::count() - 1;
     $id = rand(1, $id);
-    $video = \App\Models\Video::limit($id, 1)->first();
+    $video = \App\Models\Video::skip($id)->first();
     return redirect($video->id);
 });
 
