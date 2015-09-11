@@ -20,4 +20,12 @@ class Video extends Model
     public function comments() {
         return $this->hasMany(Comment::class);
     }
+
+    public function getNext() {
+        return Video::where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
+    }
+
+    public function getPrev() {
+        return Video::where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
+    }
 }
