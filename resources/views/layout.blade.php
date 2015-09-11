@@ -25,10 +25,18 @@
         .navbar{
             min-height:20px;
         }
+        #bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
-
+<canvas id="bg"></canvas>
 <div class="container">
     @yield('content')
 </div>
@@ -78,9 +86,35 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script>
-    var video = $('video');
-    video.prop('volume', 0.3);
-    video.get(0).play();
+    var video = document.getElementById('video');
+    if(video !== null) {
+        video.volume = 0.3;
+        video.play();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var canvas = document.getElementById('bg'),
+                    context = canvas.getContent('2D'),
+                    cw = canvas.clientWidth | 0,
+                    ch = canvas.clientHeight | 0;
+
+            canvas.width = cw;
+            canvas.height = ch;
+
+            video.addEventListener('play', function() {
+                draw(this,context,cw,ch);
+            }, false);
+
+        }, false);
+
+        function draw(v,c,w,h) {
+            if(v.paused || v.ended) return false;
+            c.drawImage(v,0,0,w,h);
+
+            setTimeout(draw,20,v,c,w,h);
+        }
+
+    }
+
 </script>
 </body>
 </html>

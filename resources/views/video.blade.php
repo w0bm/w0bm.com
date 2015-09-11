@@ -2,7 +2,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <div class="embed-responsive embed-responsive-16by9">
+        <div id="video" class="embed-responsive embed-responsive-16by9">
             <video controls loop src="b/{{$video->file}}"></video>
         </div>
     </div>
