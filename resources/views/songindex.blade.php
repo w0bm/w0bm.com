@@ -1,6 +1,11 @@
 @extends('layout')
 @section('content')
     <div class="row">
+        <div class="page-header">
+            <h1>Songindex</h1>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <table class="table table-hover table-condensed table-striped">
                 <thead>
