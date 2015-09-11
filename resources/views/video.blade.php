@@ -9,13 +9,13 @@
 </div>
 <div class="row">
     <div class="col-md-12 text-center">
-        @if($prev = $video->getPrev() === null)
+        @if(($prev = $video->getPrev()) === null)
             <a href="#" style="visibility: hidden;">Prev</a> |
         @else
             <a href="{{$prev->id}}">Next</a> |
         @endif
         <a href="/">random</a>
-        @if($next = $video->getNext() === null)
+        @if(($next = $video->getNext()) === null)
             <a href="#" style="visibility: hidden;">Next</a> |
         @else
             <a href="{{$next->id}}">Next</a> |
