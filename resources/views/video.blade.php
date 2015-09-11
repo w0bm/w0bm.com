@@ -16,9 +16,9 @@
         @endif
         <a href="/">random</a>
         @if(($next = $video->getNext()) === null)
-            <a href="#" style="visibility: hidden;">Next</a> |
+            <a href="#" style="visibility: hidden;">Next</a>
         @else
-            <a href="{{$next->id}}">Next</a> |
+            &nbsp;| <a href="{{$next->id}}">Next</a>
         @endif
     </div>
 </div>
