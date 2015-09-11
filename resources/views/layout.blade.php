@@ -92,7 +92,7 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             var canvas = document.getElementById('bg'),
-                    context = canvas.getContent('2D'),
+                    context = canvas.getContext('2D'),
                     cw = canvas.clientWidth | 0,
                     ch = canvas.clientHeight | 0;
 
