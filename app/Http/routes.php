@@ -24,6 +24,7 @@ Route::get('logout', 'UserController@logout');
 Route::post('login', 'UserController@login');
 Route::get('register', 'UserController@create');
 Route::post('register', 'UserController@store');
+Route::get('songinde', 'VideoController@index');
 
 
 Route::get('upload', 'VideoController@create');
