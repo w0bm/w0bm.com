@@ -94,13 +94,14 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script>
+    "use strict";
     var video = document.getElementById('video');
     if(video !== null) {
         video.volume = 0.3;
         video.play();
 
 
-        var canvas = document.getElementById('bg'),
+        let canvas = document.getElementById('bg'),
                 context = canvas.getContext('2d'),
                 cw = canvas.clientWidth | 0,
                 ch = canvas.clientHeight | 0;
@@ -120,6 +121,9 @@
             setTimeout(draw,20,v,c,w,h);
         }
 
+    } else {
+        let canvas = document.getElementById('bg');
+        canvas.parentNode.removeChild(canvas);
     }
 
 </script>
