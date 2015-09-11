@@ -90,20 +90,19 @@
         video.volume = 0.3;
         video.play();
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var canvas = document.getElementById('bg'),
-                    context = canvas.getContext('2d'),
-                    cw = canvas.clientWidth | 0,
-                    ch = canvas.clientHeight | 0;
 
-            canvas.width = cw;
-            canvas.height = ch;
+        var canvas = document.getElementById('bg'),
+                context = canvas.getContext('2d'),
+                cw = (canvas.clientWidth / 100) | 0,
+                ch = (canvas.clientHeight / 100) | 0;
 
-            video.addEventListener('play', function() {
-                draw(this,context,cw,ch);
-            }, false);
+        canvas.width = cw;
+        canvas.height = ch;
 
+        video.addEventListener('play', function() {
+            draw(this,context,cw,ch);
         }, false);
+
 
         function draw(v,c,w,h) {
             if(v.paused || v.ended) return false;
