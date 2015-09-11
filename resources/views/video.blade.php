@@ -2,8 +2,8 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <div id="video" class="embed-responsive embed-responsive-16by9">
-            <video controls loop src="b/{{$video->file}}"></video>
+        <div class="embed-responsive embed-responsive-16by9">
+            <video id="video" controls loop src="b/{{$video->file}}"></video>
         </div>
     </div>
 </div>
