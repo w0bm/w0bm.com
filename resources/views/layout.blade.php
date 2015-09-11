@@ -66,12 +66,10 @@
                         <input type="text" name="identifier" placeholder="Username/Email" class="form-control">
                         <input type="password" name="password" placeholder="Password" class="form-control">
                         <input type="checkbox" name="remember">
-                        <button type="submit" class="btn btn-default">Login</button>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <a href="register" class="btn btn-success">Register</a>
                     </div>
                 </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="register">Register</a></li>
-                </ul>
             @endif
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
