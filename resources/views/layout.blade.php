@@ -33,6 +33,10 @@
             right: 0;
             width: 100%;
             height: 100%;
+            -webkit-filter: blur(100px);
+            filter:blur(100px);
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3D(0, 0, 0);
         }
     </style>
 </head>
@@ -95,8 +99,8 @@
 
         var canvas = document.getElementById('bg'),
                 context = canvas.getContext('2d'),
-                cw = (canvas.clientWidth / 100) | 0,
-                ch = (canvas.clientHeight / 100) | 0;
+                cw = canvas.clientWidth | 0,
+                ch = canvas.clientHeight | 0;
 
         canvas.width = cw;
         canvas.height = ch;
