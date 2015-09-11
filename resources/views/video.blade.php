@@ -12,13 +12,13 @@
         @if(($prev = $video->getPrev()) === null)
             <a href="#" style="visibility: hidden;">Prev</a> |
         @else
-            <a href="{{$prev->id}}">Next</a> |
+            <a href="{{$prev->id}}">Prev</a> |
         @endif
         <a href="/">random</a>
         @if(($next = $video->getNext()) === null)
-            <a href="#" style="visibility: hidden;">Next</a> |
+            | <a href="#" style="visibility: hidden;">Next</a>
         @else
-            <a href="{{$next->id}}">Next</a> |
+            | <a href="{{$next->id}}">Next</a>
         @endif
     </div>
 </div>

@@ -6,7 +6,7 @@
           content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <title>w0b me</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/slate/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cyborg/bootstrap.min.css">
     <style>
         body {
             padding-bottom: 70px;
@@ -33,7 +33,7 @@
     @yield('content')
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
