@@ -35,8 +35,11 @@
             height: 100%;
             -webkit-filter: blur(100px);
             filter:blur(100px);
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3D(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+        .navbar-inverse {
+            background-color: rgba(32, 32, 32, 0.6);
+            border-color: transparent;
         }
     </style>
 </head>
@@ -46,7 +49,7 @@
     @yield('content')
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
