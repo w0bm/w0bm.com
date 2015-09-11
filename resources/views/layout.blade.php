@@ -69,6 +69,9 @@
                         <button type="submit" class="btn btn-default">Login</button>
                     </div>
                 </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="register">Register</a></li>
+                </ul>
             @endif
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
