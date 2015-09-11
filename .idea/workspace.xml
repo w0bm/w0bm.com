@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97d19fa0-7cb0-41e2-9418-2735dd4df61c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Video.php" afterPath="$PROJECT_DIR$/app/Models/Video.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/video.blade.php" afterPath="$PROJECT_DIR$/resources/views/video.blade.php" />
     </list>
     <ignored path="w0bm.iws" />
@@ -54,11 +52,11 @@
       <file leaf-file-name="video.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/video.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.351418">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.38840938">
+              <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
               <folding>
-                <element signature="e#377#404#0#HTML" expanded="true" />
-                <element signature="e#595#622#0#HTML" expanded="true" />
+                <element signature="e#379#406#0#HTML" expanded="true" />
+                <element signature="e#599#626#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -912,11 +910,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/video.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.351418">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.38840938">
+          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
           <folding>
-            <element signature="e#377#404#0#HTML" expanded="true" />
-            <element signature="e#595#622#0#HTML" expanded="true" />
+            <element signature="e#379#406#0#HTML" expanded="true" />
+            <element signature="e#599#626#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
