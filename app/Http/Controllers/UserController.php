@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use Toddish\Verify\Helpers\Verify;
@@ -18,7 +19,7 @@ class UserController extends Controller
             ], \Request::has('remember')))
            {
                case Verify::SUCCESS:
-                   return redirect('/')->with('success', 'Login successful');
+                   return redirect()->intended()->with('success', 'Login successful');
                case Verify::INVALID_CREDENTIALS:
                    return redirect()->back()->with('error', 'Invalid credentials');
                case Verify::DISABLED:
@@ -27,7 +28,17 @@ class UserController extends Controller
                    return redirect()->back()->with('error', 'Please verify your account');
            }
         }
+        return redirect()->back()-with('error', 'Missing credentials');
     }
+
+    public function logout()
+    {
+        if(!auth()->check()) return redirect()->back()->with('warning', 'You are not logged in');
+
+        auth()->logout();
+        return redirect('/')->with('success', 'Logout successfull');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -67,7 +78,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = \App\Models\User::findOrFail($id);
+        $user = User::findOrFail($id);
 
         return View('user.profile', ['user' => $user]);
     }

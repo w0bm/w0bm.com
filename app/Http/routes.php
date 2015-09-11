@@ -22,6 +22,8 @@ Route::post('login', 'UserController@login');
 Route::get('register', 'UserController@create');
 Route::post('register', 'UserController@store');
 
-Route::get('{id}', 'VideoController@show');
+
 Route::get('upload', 'VideoController@create');
 Route::post('upload', 'VideoController@store');
+
+Route::get('{id}', 'VideoController@show');

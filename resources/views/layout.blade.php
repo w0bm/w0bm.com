@@ -6,7 +6,7 @@
           content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <title>w0b me</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/slate/bootstrap.min.css">
     <style>
         body {
             padding-bottom: 70px;
@@ -21,6 +21,9 @@
         }
         .flashcontainer:empty {
             display:none;
+        }
+        .navbar{
+            min-height:20px;
         }
     </style>
 </head>
@@ -47,9 +50,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="categories">Categories</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="songindex">Songindex</a></li>
             </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="upload">Upload</a></li>
                     <li><a href="user/{{Auth::user()->username}}">{{Auth::user()->username}}</a></li>
                     <li><a href="logout">Logout</a></li>
                 </ul>
