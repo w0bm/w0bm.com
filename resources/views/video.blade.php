@@ -10,15 +10,15 @@
 <div class="row">
     <div class="col-md-12 text-center">
         @if(($prev = $video->getPrev()) === null)
-            <a href="#" style="visibility: hidden;">Prev</a> |
+            <a id="prev" href="#" style="visibility: hidden;">Prev</a> |
         @else
-            <a href="{{$prev->id}}">Prev</a> |
+            <a id="prev" href="{{$prev->id}}">Prev</a> |
         @endif
         <a href="/">random</a>
         @if(($next = $video->getNext()) === null)
-            | <a href="#" style="visibility: hidden;">Next</a>
+            | <a id="next" href="#" style="visibility: hidden;">Next</a>
         @else
-            | <a href="{{$next->id}}">Next</a>
+            | <a id="next" href="{{$next->id}}">Next</a>
         @endif
     </div>
 </div>
