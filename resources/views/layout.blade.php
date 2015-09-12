@@ -125,6 +125,30 @@
         canvas.parentNode.removeChild(canvas);
     }
 
+    (function(){
+        document.onkeydown = checkKey;
+        var prev = document.getElementById('prev');
+        var next = document.getElementById('next');
+        function checkKey(event) {
+            if (event.defaultPrevented) {
+                return;
+            }
+            if(prev == undefined || next == undefined) return;
+            if(event.keyIdentifier == 'Left') {
+                if(prev.style.visibility == 'hidden') {
+                    return;
+                }
+                prev.click();
+            } else if(event.keyIdentifier == 'Right') {
+                if(next.style.visibility == 'hidden') {
+                    return;
+                }
+                next.click();
+            }
+        }
+    })();
+
+
 </script>
 </body>
 </html>
