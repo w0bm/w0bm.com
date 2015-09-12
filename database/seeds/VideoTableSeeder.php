@@ -12,6 +12,15 @@ class VideoTableSeeder extends Seeder
     public function run()
     {
         $videos = glob(public_path() . '/b/*');
+        usort($videos, function($a, $b) {
+            $a = (int) basename($a, '.webm');
+            $b = (int) basename($b, '.webm');
+            if ($a == $b) {
+                return 0;
+            }
+            return ($a < $b) ? -1 : 1;
+        });
+
         $category = \App\Models\Category::where('name', '=', 'Misc')->first();
         $user = \App\Models\User::first();
 
