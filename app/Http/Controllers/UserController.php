@@ -96,7 +96,7 @@ class UserController extends Controller
             // Send Mail
 
             \Mail::queue('emails.activation', $data, function($message) use ($user) {
-                $message->to($user->email, 'Welcome to w0bm. Activate your account');
+                $message->to($user->email, $user->username)->subject('Welcome to w0bm. Activate your account');
             });
 
             return redirect('/')->with('info', 'Please activate your account to finish registration');
