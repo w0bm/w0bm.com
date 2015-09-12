@@ -18,6 +18,7 @@
             right:0;
             bottom:100px;
             opacity: 0.8;
+            z-index: 5;
         }
         .flashcontainer:empty {
             display:none;
@@ -36,10 +37,25 @@
             -webkit-filter: blur(100px);
             filter:blur(100px);
             transform: translate3d(0, 0, 0);
+            z-index: -1;
         }
         .navbar-inverse {
             background-color: rgba(32, 32, 32, 0.6);
             border-color: transparent;
+            z-index: 3;
+        }
+        .vertical-align {
+            min-height: calc(100% - 70px);
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+
+        }
+        .wrapper {
+            width: 100%;
+        }
+        .row {
+            width: 100%;
         }
     </style>
 </head>
