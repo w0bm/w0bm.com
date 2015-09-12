@@ -56,7 +56,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return View('user.register');
+        return view('register');
     }
 
     /**
@@ -67,7 +67,55 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = \Validator::make($request->all(), [
+            'username' => 'required|unique:users|min:3|max:25|alpha_num',
+            'email' => 'required|email|unique:users|confirmed',
+            'password' => 'required|min:6|confirmed'
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)
+                ->withInput($request->except(['password', 'password_confirmation']));
+        }
+
+        $activation_token = str_random(8) . md5($request->get('email')) . str_random(10);
+
+        $user = new User();
+        $user->username = $request->get('username');
+        $user->email = $request->get('email');
+        $user->password = $request->get('password');
+        $user->activation_token = $activation_token;
+        $user->disabled = 0;
+        $user->verified = 0;
+        if($user->save()) {
+            $data = [
+                'username' => $user->username,
+                'activation_token' => $activation_token
+            ];
+
+            // Send Mail
+
+            \Mail::queue('emails.activation', $data, function($message) use ($user) {
+                $message->to($user->email, 'Welcome to w0bm. Activate your account');
+            });
+
+            return redirect('/')->with('info', 'Please activate your account to finish registration');
+        } else {
+            return redirect()->back()->with('error', 'Account could not be created')->withInput($request->except(['password', 'password_confirmation']));
+        }
+    }
+
+    public function activate($token)
+    {
+        $user = User::where('activation_token', '=', $token)->first();
+        if(!$user) {
+            return redirect('/')->with('error', 'Account already activate or no account found');
+        }
+        $user->verified = 1;
+        $user->activation_token = null;
+        $user->save();
+        auth()->login($user);
+        return redirect('/')->with('success', 'Successfully activate and logged in.');
     }
 
     /**
@@ -76,11 +124,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($username)
     {
-        $user = User::findOrFail($id);
+        $user = User::where('username', '=', $username)->first();
 
-        return View('user.profile', ['user' => $user]);
+        if(!$user) {
+            return redirect()->back()->with('error', 'Unknown username');
+        }
+
+        return view('profile', ['user' => $user]);
     }
 
     /**
@@ -116,4 +168,5 @@ class UserController extends Controller
     {
         //
     }
+
 }
