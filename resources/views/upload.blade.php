@@ -6,19 +6,19 @@
         <div class="form-group">
             <label for="interpret" class="col-sm-2 control-label">Interpret</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="interpret" placeholder="Interpret">
+                <input type="text" class="form-control" name="interpret" id="interpret" placeholder="Interpret">
             </div>
         </div>
         <div class="form-group">
             <label for="songtitle" class="col-sm-2 control-label">Song title</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="songtitle" placeholder="Song title">
+                <input type="text" class="form-control" name="songtitle" id="songtitle" placeholder="Song title">
             </div>
         </div>
         <div class="form-group">
             <label for="imgsrc" class="col-sm-2 control-label">Image source</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="imgsrc" placeholder="Image source">
+                <input type="text" class="form-control" name="imgsrc" id="imgsrc" placeholder="Image source">
             </div>
         </div>
         <div class="form-group">
