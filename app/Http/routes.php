@@ -24,6 +24,7 @@ Route::get('logout', 'UserController@logout');
 Route::post('login', 'UserController@login');
 Route::get('register', 'UserController@create');
 Route::post('register', 'UserController@store');
+Route::get('activate/{token}', 'UserController@activate');
 Route::get('songindex', 'VideoController@index');
 
 
