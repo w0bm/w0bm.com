@@ -74,6 +74,7 @@ class UserController extends Controller
         ]);
 
         if($validator->fails()) {
+            //dd($validator);
             return redirect()->back()->withErrors($validator->errors())
                 ->withInput($request->except(['password', 'password_confirmation']));
         }

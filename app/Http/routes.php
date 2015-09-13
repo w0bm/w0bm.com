@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     $id = \App\Models\Video::count() - 1;
-    $id = rand(1, $id);
+    $id = rand(0, $id);
     $video = \App\Models\Video::skip($id)->first();
     return redirect($video->id);
 });
@@ -26,9 +26,11 @@ Route::get('register', 'UserController@create');
 Route::post('register', 'UserController@store');
 Route::get('activate/{token}', 'UserController@activate');
 Route::get('songindex', 'VideoController@index');
-
-
 Route::get('upload', 'VideoController@create');
 Route::post('upload', 'VideoController@store');
+Route::get('categories', 'CategoryController@index');
 
 Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');
+
+Route::get('{shortname}', 'CategoryController@show')->where('shortname', '[a-z][a-z0-9]+');
+Route::get('{shortname}/{id}', 'CategoryController@showVideo')->where(['shortname' => '[a-z][a-z0-9]+', 'id' => '[0-9]+']);

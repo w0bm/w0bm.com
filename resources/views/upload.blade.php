@@ -1,40 +1,45 @@
 @extends('layout')
 @section('content')
+    <div class="page-header">
+        <h1>Upload</h1>
+    </div>
 <div class="row">
     <form class="form-horizontal" method="post" action="upload" enctype="multipart/form-data">
         {!! csrf_field() !!}
         <div class="form-group">
             <label for="interpret" class="col-sm-2 control-label">Interpret</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="interpret" id="interpret" placeholder="Interpret">
+                {!! Form::text('interpret', null, ['class' => 'form-control', 'placeholder' => 'Interpret']) !!}
             </div>
         </div>
         <div class="form-group">
             <label for="songtitle" class="col-sm-2 control-label">Song title</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="songtitle" id="songtitle" placeholder="Song title">
+                {!! Form::text('songtitle', null, ['class' => 'form-control', 'placeholder' => 'Song Title']) !!}
             </div>
         </div>
         <div class="form-group">
             <label for="imgsrc" class="col-sm-2 control-label">Image source</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="imgsrc" id="imgsrc" placeholder="Image source">
+                {!! Form::text('imgsrc', null, ['class' => 'form-control', 'placeholder' => 'Image Source']) !!}
             </div>
         </div>
         <div class="form-group">
             <label for="category" class="col-sm-2 control-label">Category</label>
             <div class="col-sm-10">
-                <select name="category" id="category" class="form-control">
-                    @foreach(App\Models\Category::all() as $category)
-                        <option value="{{ $category->id }}">{{$category->name}}</option>
-                    @endforeach
-                </select>
+                <?php
+                    $categories = [];
+                    foreach(App\Models\Category::all() as $cat) {
+                        $categories[$cat->id] = $cat->name;
+                    }
+                ?>
+                {!! Form::select('category', $categories, null, ['class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
             <label for="file" class="col-sm-2 control-label">File</label>
             <div class="col-sm-10">
-                <input type="file" name="file" class="form-control" id="file" placeholder="Select file">
+                {!! Form::file('file', ['class' => 'form-control', 'placeholder' => 'Select file']) !!}
             </div>
         </div>
         <div class="form-group">

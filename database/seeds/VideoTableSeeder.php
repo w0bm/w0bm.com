@@ -21,7 +21,7 @@ class VideoTableSeeder extends Seeder
             return ($a < $b) ? -1 : 1;
         });
 
-        $category = \App\Models\Category::where('name', '=', 'Misc')->first();
+        $category = \App\Models\Category::where('shortname', '=', 'misc')->first();
         $user = \App\Models\User::first();
 
         foreach($videos as $video) {
