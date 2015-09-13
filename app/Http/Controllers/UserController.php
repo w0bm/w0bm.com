@@ -28,7 +28,7 @@ class UserController extends Controller
                    return redirect()->back()->with('error', 'Please verify your account');
            }
         }
-        return redirect()->back()-with('error', 'Missing credentials');
+        return redirect()->back()->with('error', 'Missing credentials');
     }
 
     public function logout()
