@@ -18,9 +18,9 @@
             <tr>
                 <td><a href="{{$video->id}}">{{$video->id}}</a></td>
                 <td>{{$video->interpret or ''}}</td>
-                <td>{{$video->songittle or ''}}</td>
+                <td>{{$video->songtitle or ''}}</td>
                 <td>{{$video->imgsource or ''}}</td>
-                <td><a href="category/{{$video->category->id}}">{{$video->category->name}}</a></td>
+                <td><a href="category/{{$video->category->shortname}}">{{$video->category->name}}</a></td>
             </tr>
         @endforeach
         </tbody>

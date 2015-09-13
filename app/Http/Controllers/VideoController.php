@@ -40,7 +40,7 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         if(!$request->hasFile('file'))
-            return redirect()->back()->with('error', 'No file');
+            return redirect()->back()->with('error', 'No file')->withInput();
 
         $file = $request->file('file');
 
