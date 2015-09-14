@@ -55,7 +55,8 @@ class CategoryController extends Controller
         if(is_null($id)) {
             $id = Video::whereCategoryId($category->id)->count();
             $id = rand(0, $id);
-            return redirect($shortname . '/' . $id);
+            $video = Video::whereCategoryId($category->id)->skip($id)->first();
+            return redirect($shortname . '/' . $video->id);
         } else {
             $video = Video::whereCategoryId($category->id)->find($id);
         }
