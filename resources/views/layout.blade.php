@@ -59,7 +59,6 @@
             min-height: calc(100vh - 50px);
             display: flex;
             align-items: center;
-            margin-top: 50px;
         }
         .wrapper {
             width: 100%;
@@ -95,7 +94,7 @@
 @include('partials.navigation')
 
 @yield('aside')
-<div style="position:absolute; left:350px;top:0;right:0;">
+<div style="position:absolute; left:350px;top:50px;right:0;">
     <div class="container">
         @yield('content')
     </div>
