@@ -20,7 +20,7 @@
                 <td>{{$video->interpret or ''}}</td>
                 <td>{{$video->songtitle or ''}}</td>
                 <td>{{$video->imgsource or ''}}</td>
-                <td><a href="category/{{$video->category->shortname}}">{{$video->category->name}}</a></td>
+                <td><a href="{{url($video->category->shortname)}}">{{$video->category->name}}</a></td>
             </tr>
         @endforeach
         </tbody>
