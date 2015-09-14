@@ -144,16 +144,11 @@
 
     (function($){
         document.onkeydown = checkKey;
-        $('input').each(function(elem) {
-           elem.onkeydown = function(e) {};
-        });
-        $('textarea').each(function(elem) {
-            elem.onkeydown = function(e) {};
-        });
+
         var prev = document.getElementById('prev');
         var next = document.getElementById('next');
         function checkKey(event) {
-            if (event.defaultPrevented) {
+            if (event.defaultPrevented || event.element().nodeName.match(/\b(input|textarea)\b/i) ) {
                 return;
             }
             if(prev == undefined || next == undefined) return;
