@@ -30,6 +30,10 @@
             left:0;
             right:0;
         }
+        .navbar-form input {
+            background: rgba(32, 32, 32, 0.3);
+            color: #eee;
+        }
         #bg {
             position: fixed;
             top: 0;
