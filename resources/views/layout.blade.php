@@ -174,20 +174,9 @@
     })(jQuery);
 
     (function ($) {
-        var alerts = $('.alert');
-
-        function slide() {
-            setTimeout(function() {
-                    alerts.animate({ bottom: '-150px'},300, 'swing' , function() {
-                        console.log(alerts);
-                        $(this).remove();
-                        alerts = alerts.next('.alert');
-                        console.log(alerts);
-                        slide();
-                    });
-                }, 3000);
-        }
-        slide();
+        $('.alert').each(function() {
+            $(this).delay(3000).slideDown(300);
+        });
     })(jQuery);
 
 
