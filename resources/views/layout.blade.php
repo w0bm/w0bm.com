@@ -85,7 +85,7 @@
             height: 2.7em;
             resize: vertical;
         }
-        .comments textarea:active, .comments textarea:focus {
+        .comments textarea:active, .comments textarea:focus, .comments textarea:not(:empty) {
             height: 8em;
         }
     </style>
