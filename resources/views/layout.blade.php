@@ -174,8 +174,8 @@
     })(jQuery);
 
     (function ($) {
-        $('.alert').each(function() {
-            $(this).delay(3000).slideUp(300);
+        $('.alert').each(function(index) {
+            $(this).delay(index * 3000).slideUp(300);
         });
     })(jQuery);
 
