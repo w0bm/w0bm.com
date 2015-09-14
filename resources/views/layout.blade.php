@@ -178,7 +178,7 @@
 
         function slide() {
             setTimeout(function() {
-                    alerts.slideDown(300, function() {
+                    alerts.animate({ bottom: '-150px'},300, 'swing' , function() {
                         console.log(alerts);
                         $(this).remove();
                         alerts = alerts.next('.alert');
