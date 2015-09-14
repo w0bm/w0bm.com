@@ -178,7 +178,13 @@
 
         function slide() {
             setTimeout(function() {
-                    alerts.slideDown(300, function() { alerts = alerts.next('.alert'); slide();});
+                    alerts.slideDown(300, function() {
+                        console.log(alerts);
+                        $(this).remove();
+                        alerts = alerts.next('.alert');
+                        console.log(alerts);
+                        slide();
+                    });
                 }, 3000);
         }
         slide();
