@@ -21,5 +21,8 @@
             </div>
         </div>
     </div>
+@endsection
 
+@section('aside')
+    @include('partials.comments')
 @endsection
