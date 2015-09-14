@@ -147,6 +147,9 @@
         $('input').each(function(elem) {
            elem.onkeydown = undefined;
         });
+        $('textarea').each(function(elem) {
+            elem.onkeydown = undefined;
+        });
         var prev = document.getElementById('prev');
         var next = document.getElementById('next');
         function checkKey(event) {
