@@ -145,10 +145,10 @@
     (function($){
         document.onkeydown = checkKey;
         $('input').each(function(elem) {
-           elem.onkeydown = undefined;
+           elem.onkeydown = function(e) {};
         });
         $('textarea').each(function(elem) {
-            elem.onkeydown = undefined;
+            elem.onkeydown = function(e) {};
         });
         var prev = document.getElementById('prev');
         var next = document.getElementById('next');
