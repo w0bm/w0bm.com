@@ -6,7 +6,8 @@
           content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <title>w0b me</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cyborg/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cyborg/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
     <style>
         body {
             padding-top: 50px;
@@ -105,6 +106,7 @@
 @include('partials.flash')
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>
 <script>
     var video = document.getElementById('video');
     if(video !== null) {
@@ -159,6 +161,13 @@
             }
         }
     })();
+
+    (function($){
+        $(".comments").mCustomScrollbar({
+            axis: 'y',
+            theme: 'minimal'
+        });
+    })(jQuery);
 
 
 </script>
