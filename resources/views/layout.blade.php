@@ -175,7 +175,7 @@
 
     (function ($) {
         $('.alert').each(function(index) {
-            $(this).delay(index * 3000).slideUp(300);
+            $(this).delay((index + 1) * 3000).slideUp(300);
         });
     })(jQuery);
 
