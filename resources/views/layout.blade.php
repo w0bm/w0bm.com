@@ -76,6 +76,7 @@
             width: 350px;
             background: rgba(32, 32, 32, 0.6);
             padding: 5px;
+            overflow-y: scroll;
         }
         .comments textarea {
             color: #c8c8c8;
