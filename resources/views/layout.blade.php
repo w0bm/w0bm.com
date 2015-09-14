@@ -83,6 +83,7 @@
             color: #c8c8c8;
             background: rgba(32, 32, 32, 0.3);
             min-height: 2.7em;
+            max-height: 2.7em;
             resize: vertical;
             -webkit-transition: min-height 0.8s;
             -moz-transition: min-height 0.8s;
@@ -90,6 +91,7 @@
         }
         .comments textarea:active, .comments textarea:focus, .comments textarea:valid {
             min-height: 8em;
+            max-height: auto;
         }
     </style>
 </head>
