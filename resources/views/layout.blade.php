@@ -173,6 +173,17 @@
         });
     })(jQuery);
 
+    (function ($) {
+        var alerts = $('.alert');
+
+        function slide() {
+            setTimeout(function() {
+                    alerts.slideDown(300, function() { alerts = alerts.next('.alert'); slide();});
+                }, 3000);
+        }
+        slide();
+    })(jQuery);
+
 
 </script>
 </body>
