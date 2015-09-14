@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Video;
 use Illuminate\Http\Request;
 
@@ -114,5 +115,27 @@ class VideoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function storeComment(Request $request, $id) {
+
+        $user = auth()->check() ? auth()->user() : null;
+
+        if(is_null($user)) return redirect()->back()->with('error', 'Not logged in');
+        if(!$request->has('comment')) return redirect()->back()->with('error', 'You need to enter a comment');
+        if(mb_strlen(trim($request->get('comment'))) > 1000 ) return redirect()->back()->with('error', 'Comment to long');
+
+        $video = Video::findOrFail($id);
+
+        $com = new Comment();
+        $com->content = trim($request->get('comment'));
+        $com->user()->associate($user);
+        $com->video()->associate($video);
+        $com->save();
+
+        return redirect()->back()->with('success', 'Comment successfully saved');
+
+
+
     }
 }

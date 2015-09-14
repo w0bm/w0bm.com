@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cyborg/bootstrap.min.css">
     <style>
         body {
-            padding-top: 70px;
+            padding-top: 50px;
         }
         .flashcontainer {
             position:fixed;
@@ -29,10 +29,11 @@
             top:0;
             left:0;
             right:0;
+            padding-bottom: 0;
         }
         .navbar-form > .form-group > input.form-control {
             background: rgba(32, 32, 32, 0.3);
-            color: #eee;
+            color: #c8c8c8;
         }
         #bg {
             position: fixed;
@@ -53,17 +54,37 @@
             z-index: 3;
         }
         .vertical-align {
-            min-height: calc(100% - 70px);
-            min-height: calc(100vh - 70px);
+            min-height: calc(100% - 50px);
+            min-height: calc(100vh - 50px);
             display: flex;
             align-items: center;
-
+            margin-top: 50px;
         }
         .wrapper {
             width: 100%;
         }
         .row {
             width: 100%;
+        }
+        .comments {
+            position:absolute;
+            left:0;
+            top:50px;
+            bottom:0;
+            min-height: calc(100% - 50px);
+            min-height: calc(100vh - 50px);
+            width: 350px;
+            background: rgba(32, 32, 32, 0.6);
+            padding: 5px;
+        }
+        .comments textarea {
+            color: #c8c8c8;
+            background: rgba(32, 32, 32, 0.3);
+            height: 2.7em;
+            resize: vertical;
+        }
+        .comments textarea:active, .comments textarea:focus {
+            height: 8em;
         }
     </style>
 </head>
@@ -72,10 +93,13 @@
 
 @include('partials.navigation')
 
-<div class="container">
-    @yield('content')
+@yield('aside')
+<div style="position:absolute; left:350px;top:0;right:0;">
+    <div class="container">
+        @yield('content')
+    </div>
 </div>
-
+<div class="clearfix"></div>
 
 @include('partials.flash')
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
