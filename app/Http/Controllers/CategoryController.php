@@ -54,13 +54,14 @@ class CategoryController extends Controller
         if(is_null($category)) return redirect()->back()->with('error', 'Category not found');
         if(is_null($id)) {
             $id = Video::whereCategoryId($category->id)->count() - 1;
+            if($id === 0) return redirect()->back()->with('error', 'Category is empty.');
             $id = rand(0, $id);
             $video = Video::whereCategoryId($category->id)->skip($id)->first();
             return redirect($shortname . '/' . $video->id);
         } else {
             $video = Video::whereCategoryId($category->id)->find($id);
         }
-        if(is_null($video)) return redirect()->back()->with('error', 'No videos found.');
+        if(is_null($video)) return redirect()->back()->with('error', 'Category is empty.');
 
         return view('video', ['video' => $video, 'category' => true]);
     }
