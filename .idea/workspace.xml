@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97d19fa0-7cb0-41e2-9418-2735dd4df61c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/video.blade.php" afterPath="$PROJECT_DIR$/resources/views/video.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/songindex.blade.php" afterPath="$PROJECT_DIR$/resources/views/songindex.blade.php" />
     </list>
     <ignored path="w0bm.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,16 +41,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="video.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="video.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/video.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46239212">
+            <state vertical-scroll-proportion="-15.625">
               <caret line="25" column="84" selection-start-line="25" selection-start-column="84" selection-end-line="25" selection-end-column="84" />
               <folding>
                 <element signature="e#933#960#0#HTML" expanded="true" />
                 <element signature="e#1319#1346#0#HTML" expanded="true" />
                 <element signature="e#1649#1676#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="songindex.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/songindex.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.49938348">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -143,7 +153,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2015_09_11_073012_create_categories_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/CategorySeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/VideoTableSeeder.php" />
-        <option value="$PROJECT_DIR$/resources/views/songindex.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/flash.blade.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/resources/views/register.blade.php" />
@@ -163,6 +172,7 @@
         <option value="$PROJECT_DIR$/app/Models/Video.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" />
         <option value="$PROJECT_DIR$/resources/views/video.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/songindex.blade.php" />
       </list>
     </option>
   </component>
@@ -765,14 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/songindex.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.25">
-          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/VideoTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.625">
@@ -941,13 +943,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/video.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46239212">
+        <state vertical-scroll-proportion="-15.625">
           <caret line="25" column="84" selection-start-line="25" selection-start-column="84" selection-end-line="25" selection-end-column="84" />
           <folding>
             <element signature="e#933#960#0#HTML" expanded="true" />
             <element signature="e#1319#1346#0#HTML" expanded="true" />
             <element signature="e#1649#1676#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/songindex.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49938348">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
