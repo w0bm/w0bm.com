@@ -30,6 +30,7 @@
             left:0;
             right:0;
             padding-bottom: 0;
+            border: 0;
         }
         .navbar-form > .form-group > input.form-control {
             background: rgba(32, 32, 32, 0.3);
