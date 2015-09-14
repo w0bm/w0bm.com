@@ -9,7 +9,7 @@
                     <div class="panel-body">
                         {{$comment->content}}
                     </div>
-                    <div class="panel-footer">by <a href="/user/{{$comment->user->username}}">{{$comment->user->username}}</a></div>
+                    <div class="panel-footer">by <a href="/user/{{$comment->user->username}}">{{$comment->user->username}}</a> <small>{{$comment->created_at->diffForHumans()}}</small></div>
                 </div>
             @endforeach
         @else
