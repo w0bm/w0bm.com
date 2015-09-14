@@ -50,11 +50,25 @@ class Video extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function getNext() {
-        return Video::where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
+    /**
+     * @param bool $category
+     * @return Video
+     */
+    public function getNext($category = false) {
+        if(!$category)
+            return Video::where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
+        else
+            return Video::whereCategoryId($this->category->id)->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
     }
 
-    public function getPrev() {
-        return Video::where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
+    /**
+     * @param bool $category
+     * @return Video
+     */
+    public function getPrev($category = false) {
+        if(!$category)
+            return Video::where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
+        else
+            return Video::whereCategoryId($this->category->id)->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
     }
 }

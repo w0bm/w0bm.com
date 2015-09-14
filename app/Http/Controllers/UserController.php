@@ -9,21 +9,24 @@ use Toddish\Verify\Helpers\Verify;
 
 class UserController extends Controller
 {
-
-    public function login()
+    /**
+     * @param Request $request
+     * @return \Response
+     */
+    public function login(Request $request)
     {
-        if(\Request::has('identifier') && \Request::has('password')) {
+        if($request->has('identifier') && $request->has('password')) {
            switch(\Auth::verify([
-                'identifier' => \Request::input('identifier'),
-                'password' => \Request::input('password')
-            ], \Request::has('remember')))
+                'identifier' => $request->get('identifier'),
+                'password' => $request->get('password')
+            ], $request->has('remember')))
            {
                case Verify::SUCCESS:
-                   return redirect()->intended()->with('success', 'Login successful');
+                   return redirect()->back()->with('success', 'Login successful');
                case Verify::INVALID_CREDENTIALS:
                    return redirect()->back()->with('error', 'Invalid credentials');
                case Verify::DISABLED:
-                   return redirect()->back()->with('error', 'Account is disabled');
+                   return redirect()->back()->with('error', 'You are banned.');
                case Verify::UNVERIFIED:
                    return redirect()->back()->with('error', 'Please verify your account');
            }
@@ -42,7 +45,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Response
      */
     public function index()
     {
@@ -52,7 +55,7 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Response
      */
     public function create()
     {
@@ -63,7 +66,7 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
-     * @return Response
+     * @return \Response
      */
     public function store(Request $request)
     {
@@ -74,7 +77,6 @@ class UserController extends Controller
         ]);
 
         if($validator->fails()) {
-            //dd($validator);
             return redirect()->back()->withErrors($validator->errors())
                 ->withInput($request->except(['password', 'password_confirmation']));
         }
@@ -122,8 +124,8 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param  string  $username
+     * @return \Response
      */
     public function show($username)
     {
@@ -139,10 +141,10 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return Response
+     * @param  string  $username
+     * @return \Response
      */
-    public function edit($id)
+    public function edit($username)
     {
         //
     }
@@ -152,7 +154,7 @@ class UserController extends Controller
      *
      * @param  Request  $request
      * @param  int  $id
-     * @return Response
+     * @return \Response
      */
     public function update(Request $request, $id)
     {
@@ -163,7 +165,7 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Response
      */
     public function destroy($id)
     {
