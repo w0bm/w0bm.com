@@ -142,8 +142,11 @@
         canvas.parentNode.removeChild(canvas);
     }
 
-    (function(){
+    (function($){
         document.onkeydown = checkKey;
+        $('input').each(function(elem) {
+           elem.onkeydown = undefined;
+        });
         var prev = document.getElementById('prev');
         var next = document.getElementById('next');
         function checkKey(event) {
@@ -163,7 +166,7 @@
                 next.click();
             }
         }
-    })();
+    })(jQuery);
 
     (function($){
         $(".comments").mCustomScrollbar({
