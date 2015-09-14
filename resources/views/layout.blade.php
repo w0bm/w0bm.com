@@ -23,14 +23,14 @@
         .flashcontainer:empty {
             display:none;
         }
-        .navbar{
+        .navbar {
             min-height:20px;
             position: absolute;
             top:0;
             left:0;
             right:0;
         }
-        .navbar-form input {
+        .navbar-form > .form-group > input.form-control {
             background: rgba(32, 32, 32, 0.3);
             color: #eee;
         }
