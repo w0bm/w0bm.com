@@ -85,13 +85,13 @@
             min-height: 2.7em;
             max-height: 2.7em;
             resize: vertical;
-            -webkit-transition: min-height 0.8s;
-            -moz-transition: min-height 0.8s;
-            transition: min-height 0.8s;
+            -webkit-transition: max-height 0.8s, min-height 0.8s;
+            -moz-transition: max-height 0.8s, min-height 0.8s;
+            transition: max-height 0.8s, min-height 0.8s;
         }
         .comments textarea:active, .comments textarea:focus, .comments textarea:valid {
             min-height: 8em;
-            max-height: auto;
+            max-height: 300em;
         }
     </style>
 </head>
