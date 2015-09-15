@@ -59,7 +59,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        if(auth()->check()) return redirect()->back()->with('info', 'Cannot register when logged in');
+        if(auth()->check()) return redirect('/')->with('info', 'Cannot register when logged in');
         return view('register');
     }
 
