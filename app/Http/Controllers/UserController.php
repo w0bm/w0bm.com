@@ -59,6 +59,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        if(auth()->check()) return redirect()->back()->with('info', 'Cannot register when logged in');
         return view('register');
     }
 
@@ -70,6 +71,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->check()) return redirect()->back()->with('info', 'Cannot register when logged in');
         $validator = \Validator::make($request->all(), [
             'username' => 'required|unique:users|min:3|max:25|alpha_num',
             'email' => 'required|email|unique:users|confirmed',
