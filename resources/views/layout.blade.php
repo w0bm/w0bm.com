@@ -10,12 +10,11 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
     <style>
         .flashcontainer {
-            position:fixed;
-            margin:0 auto;
-            bottom:100px;
+            position:absolute;
+            top:100px;
             opacity: 0.8;
             z-index: 5;
-            width: 100%;
+            width: 100%
         }
         .flashcontainer:empty {
             display:none;
