@@ -12,8 +12,6 @@
         .flashcontainer {
             position:fixed;
             margin:0 auto;
-            left:0;
-            right:0;
             bottom:100px;
             opacity: 0.8;
             z-index: 5;
