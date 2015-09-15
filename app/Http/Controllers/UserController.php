@@ -59,7 +59,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        if(auth()->check()) return redirect('/')->with('info', 'Cannot register when logged in');
+        if(auth()->check()) {
+            \Session::reflash();
+            return redirect('/')->with('info', 'Cannot register when logged in');
+        }
         return view('register');
     }
 
