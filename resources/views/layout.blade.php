@@ -43,7 +43,7 @@
         }
         .navbar-inverse {
             background-color: rgba(32, 32, 32, 0.6);
-            border-color: transparent;
+            border: 0;
             z-index: 3;
         }
         .vertical-align {
