@@ -1,4 +1,4 @@
-<div class="flashcontainer container">
+<div class="flashcontainer">
     @if($errors->count() > 0)
         @foreach($errors->all() as $error)
             <div class="alert alert-danger alert-dismissable" role="alert">
