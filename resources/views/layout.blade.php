@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cyborg/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
     <style>
-        body {
-            padding-top: 50px;
-        }
         .flashcontainer {
             position:fixed;
             margin:0 auto;
@@ -25,13 +22,7 @@
             display:none;
         }
         .navbar {
-            min-height:20px;
-            position: absolute;
-            top:0;
-            left:0;
-            right:0;
-            padding-bottom: 0;
-            border: 0;
+            margin-bottom: 0;
         }
         .navbar-form > .form-group > input.form-control {
             background: rgba(32, 32, 32, 0.3);
@@ -68,10 +59,7 @@
             width: 100%;
         }
         .comments {
-            position:absolute;
-            left:0;
-            top:50px;
-            bottom:0;
+            float: left;
             min-height: calc(100% - 50px);
             min-height: calc(100vh - 50px);
             width: 350px;
@@ -98,13 +86,14 @@
 
 @include('partials.navigation')
 
-@yield('aside')
-<div style="position:absolute; left:350px;top:50px;right:0;">
-    <div class="container">
-        @yield('content')
+<div class="wrapper">
+    @yield('aside')
+    <div style="float: left; width: auto; overflow: hidden;">
+        <div class="container">
+            @yield('content')
+        </div>
     </div>
 </div>
-<div class="clearfix"></div>
 
 @include('partials.flash')
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
