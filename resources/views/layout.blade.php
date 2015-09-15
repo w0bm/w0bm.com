@@ -11,7 +11,7 @@
     <style>
         .flashcontainer {
             position:absolute;
-            top:100px;
+            top:20px;
             opacity: 0.8;
             z-index: 5;
             width: 100%
