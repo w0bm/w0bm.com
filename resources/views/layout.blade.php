@@ -90,8 +90,8 @@
     <div style="width: auto; overflow: hidden;">
         <div class="container">
             @yield('content')
+            @include('partials.flash')
         </div>
-        @include('partials.flash')
     </div>
 
 </div>
