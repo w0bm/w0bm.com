@@ -15,7 +15,6 @@
             bottom:100px;
             opacity: 0.8;
             z-index: 5;
-            width: 100%;
         }
         .flashcontainer:empty {
             display:none;
@@ -90,8 +89,8 @@
     <div style="width: auto; overflow: hidden;">
         <div class="container">
             @yield('content')
-            @include('partials.flash')
         </div>
+        @include('partials.flash')
     </div>
 
 </div>
