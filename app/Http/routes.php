@@ -11,12 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['as' => 'home', function () {
     $id = \App\Models\Video::count() - 1;
     $id = rand(0, $id);
     $video = \App\Models\Video::skip($id)->first();
     return redirect($video->id);
-});
+}]);
 
 
 Route::get('user/{username}', 'UserController@show');
