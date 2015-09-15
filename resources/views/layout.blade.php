@@ -15,6 +15,7 @@
             bottom:100px;
             opacity: 0.8;
             z-index: 5;
+            width: 100%;
         }
         .flashcontainer:empty {
             display:none;
