@@ -86,7 +86,7 @@
 
 <div class="wrapper">
     @yield('aside')
-    <div style="width: auto; overflow: hidden;">
+    <div style="width: auto; overflow: hidden; position: relative;">
         <div class="container">
             @yield('content')
         </div>
