@@ -60,8 +60,8 @@
         }
         .comments {
             float: left;
-            min-height: calc(100% - 50px);
-            min-height: calc(100vh - 50px);
+            height: calc(100% - 50px);
+            height: calc(100vh - 50px);
             width: 350px;
             background: rgba(32, 32, 32, 0.6);
             padding: 5px;
