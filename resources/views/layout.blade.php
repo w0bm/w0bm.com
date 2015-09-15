@@ -67,7 +67,7 @@
         }
         .comments textarea {
             color: #c8c8c8;
-            background: rgba(32, 32, 32, 0.3);
+            background: rgba(90, 88, 88, 0.4) none repeat scroll 0% 0%;
             height: 2.7em;
             resize: vertical;
             -webkit-transition: height 0.8s;
