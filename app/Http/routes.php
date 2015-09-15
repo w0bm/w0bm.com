@@ -11,12 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    $id = \App\Models\Video::count() - 1;
+Route::get('/', ['as' => 'home', function () {
+    Session::reflash();
+    $id = App\Models\Video::count() - 1;
     $id = rand(0, $id);
-    $video = \App\Models\Video::skip($id)->first();
+    $video = App\Models\Video::skip($id)->first();
     return redirect($video->id);
-});
+}]);
 
 
 Route::get('user/{username}', 'UserController@show');
