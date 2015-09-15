@@ -158,7 +158,8 @@
     (function($){
         $(".comments").mCustomScrollbar({
             axis: 'y',
-            theme: 'minimal'
+            theme: 'minimal',
+            scrollInertia: 0
         });
     })(jQuery);
 
