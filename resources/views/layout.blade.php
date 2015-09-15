@@ -90,8 +90,9 @@
         <div class="container">
             @yield('content')
         </div>
+        @include('partials.flash')
     </div>
-    @include('partials.flash')
+
 </div>
 
 
