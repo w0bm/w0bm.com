@@ -1323,6 +1323,11 @@ mark,
 .text-center {
   text-align: center;
 }
+.text-center a{
+  color: #FFF;
+  font-size: 22px;
+  font-family: "Oswald",sans-serif;
+}
 .text-justify {
   text-align: justify;
 }
