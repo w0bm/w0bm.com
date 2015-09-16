@@ -1322,11 +1322,14 @@ mark,
 }
 .text-center {
   text-align: center;
+  position: relative;
+  top: 15px;
+  color: rgb(31, 178, 176);
+  font-family: "Oswald",sans-serif;
+  font-size: 22px;
 }
 .text-center a{
   color: #FFF;
-  font-size: 22px;
-  font-family: "Oswald",sans-serif;
 }
 .text-justify {
   text-align: justify;
@@ -4329,7 +4332,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
   height: 50px;
@@ -4340,11 +4342,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand > img {
   display: block;
+  height: 40px;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
-    margin-left: -15px;
+    margin-left: -10px;
+    padding-top: 8px;
   }
 }
 .navbar-toggle {
@@ -4660,7 +4664,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #888888;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #888888;
+  color: #ADADAD;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {

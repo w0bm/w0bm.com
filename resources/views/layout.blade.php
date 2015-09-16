@@ -65,6 +65,7 @@
             background: rgba(32, 32, 32, 0.6);
             padding: 5px;
             overflow-y: scroll;
+            border-right: 1px solid #3F3F3F;
         }
         .comments textarea {
             color: #c8c8c8;
