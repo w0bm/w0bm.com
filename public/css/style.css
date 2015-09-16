@@ -1331,6 +1331,23 @@ mark,
 .text-center a{
   color: #FFF;
 }
+.text-center span.videoinfo {
+  font-size: 17px;
+  position: relative;
+  top: 5px;
+}
+.text-center span.videovote {
+  left: -240px;
+  position: relative;
+}
+.text-center .last {
+  float: right;
+  font-size: 18px;
+}
+.text-center .first {
+  font-size: 18px;
+  float: left;
+}
 .text-justify {
   text-align: justify;
 }
