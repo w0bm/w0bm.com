@@ -4342,13 +4342,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand > img {
   display: block;
-  height: 45px;
+  height: 40px;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
     margin-left: -10px;
-    padding-top: 5px;
+    padding-top: 8px;
   }
 }
 .navbar-toggle {
