@@ -23,16 +23,21 @@
             @else
                 <div class="text-center">
                     @if(($prev = $video->getPrev()) === null)
+                        <a id="first" href="#" style="visibility: hidden;">← first</a>
                         <a id="prev" href="#" style="visibility: hidden;">← prev</a> |
                     @else
+                        <a id="first" href="{{url($video->first())}}">← first</a>
                         <a id="prev" href="{{url($prev->id)}}">← prev</a> |
                     @endif
                     <a href="{{url('/')}}">random</a>
                     @if(($next = $video->getNext()) === null)
                         | <a id="next" href="#" style="visibility: hidden;">next →</a>
+                        <a id="last" href="#" style="visibility: hidden;">last →</a>
                     @else
                         | <a id="next" href="{{url($next->id)}}">next →</a>
+                        <a id="last" href="{{url($video->max('id'))}}">last →</a>
                     @endif
+                    <span id="videoinfo">uploaded by <i style="color: rgb(233, 233, 233);">{{ $video->user->username }} </i> {{ $video->created_at->diffForHumans() }}/span>
                 </div>
             @endif
         </div>
