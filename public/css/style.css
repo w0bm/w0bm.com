@@ -1101,7 +1101,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #2a9fd6;
+  color: #1FB2B0;
   text-decoration: none;
 }
 a:hover,
@@ -3497,9 +3497,9 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-sm,
 .btn-group-sm > .btn {
-  padding: 5px 10px;
+  padding: 5px 15px;
   font-size: 12px;
-  line-height: 1.5;
+  line-height: 0.8;
   border-radius: 3px;
 }
 .btn-xs,
@@ -5532,8 +5532,6 @@ button.list-group-item-danger.active:focus {
   color: inherit;
 }
 .panel-footer {
-  background-color: #3c3c3c;
-  border-top: 1px solid #282828;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   padding: 0px 0px 8px 30px;
@@ -5734,7 +5732,7 @@ button.list-group-item-danger.active:focus {
   border-bottom: 1px solid #282828;
 }
 .panel-default {
-  border-color: #282828;
+  border-color: 1px solid rgba(10, 10, 11, 0.46);
 }
 .panel-default > .panel-heading {
   color: #888888;
