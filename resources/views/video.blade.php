@@ -23,15 +23,15 @@
             @else
                 <div class="text-center">
                     @if(($prev = $video->getPrev()) === null)
-                        <a id="prev" href="#" style="visibility: hidden;">Prev</a> |
+                        <a id="prev" href="#" style="visibility: hidden;">← prev</a> |
                     @else
-                        <a id="prev" href="{{url($prev->id)}}">Prev</a> |
+                        <a id="prev" href="{{url($prev->id)}}">← prev</a> |
                     @endif
-                    <a href="{{url('/')}}">Random</a>
+                    <a href="{{url('/')}}">random</a>
                     @if(($next = $video->getNext()) === null)
-                        | <a id="next" href="#" style="visibility: hidden;">Next</a>
+                        | <a id="next" href="#" style="visibility: hidden;">next →</a>
                     @else
-                        | <a id="next" href="{{url($next->id)}}">Next</a>
+                        | <a id="next" href="{{url($next->id)}}">next →</a>
                     @endif
                 </div>
             @endif
