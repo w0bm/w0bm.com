@@ -62,7 +62,7 @@ class UserController extends Controller
         if(auth()->check()) {
             \Session::reflash();
             \Session::flash('info', 'Cannot register when logged in');
-            return redirect('/')->with('info', 'Cannot register when logged in');
+            return redirect('/');
         }
         return view('register');
     }
