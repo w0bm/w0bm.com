@@ -37,7 +37,7 @@
                         | <a id="next" href="{{url($next->id)}}">next →</a>
                         <a class="last" href="{{url($video->max('id'))}}">last →</a>
                     @endif
-                    <br><span class="videoinfo">uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ route('user/' . $video->user->id) }}">{{ $video->user->username }}</a> </i>  {{ $video->created_at->diffForHumans() }}</span>
+                    <br><span class="videoinfo">uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->id) }}">{{ $video->user->username }}</a> </i>  {{ $video->created_at->diffForHumans() }}</span>
                 </div>
             @endif
         </div>
