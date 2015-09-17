@@ -31,6 +31,23 @@ Route::get('upload', 'VideoController@create');
 Route::post('upload', 'VideoController@store');
 Route::get('categories', 'CategoryController@index');
 
+Route::post('togglebackground', function(Request $request) {
+    $user = auth()->check() ? auth()->user() : null;
+
+    if(is_null($user)) {
+        Session::put('background', !Session::get('background', true));
+    } else {
+        $user->background = !$user->background;
+        Session::put('background', $user->background);
+        $user->save();
+    }
+
+    if($request->ajax())
+        return true;
+
+    return redirect()->back()->with('success, Background toggled');
+});
+
 Route::get('comment/{id}/delete', 'VideoController@destroyComment')->where('id', '[0-9]+');
 
 Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');
