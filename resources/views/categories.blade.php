@@ -10,7 +10,7 @@
                 <div class="thumbnail">
                     <img src="{{ asset('/images/cat/' . $category->shortname . '.png') }}" alt="{{$category->name}}">
                     <div class="caption">
-                        <h3>{{$category->name}}</h3>
+                        <h3>{{$category->name}} <small>{{$category->videos()->count()}}</small></h3>
                         <p>{{$category->description}}</p>
                         <p><a href="{{$category->shortname}}" class="btn btn-primary" role="button">View</a></p>
                     </div>
