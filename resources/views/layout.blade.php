@@ -240,7 +240,8 @@
     $('#categories').imagesLoaded(function() {
         $('#categories').isotope({
             itemSelector: '.category',
-            layoutMode: 'fitRows'
+            percentPosition: true,
+            layoutMode: 'masonry'
         });
     });
 
