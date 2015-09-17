@@ -18,7 +18,7 @@ class BladeServiceProvider extends ServiceProvider
         /** @var \Illuminate\View\Compilers\BladeCompiler $compiler  */
         Blade::directive('simplemd', function($text) {
 
-            return "<?php echo App\\Models\\Comment::simplemd(e({$text})): ?>";
+            return "<?php echo App\\Models\\Comment::simplemd(e({$text})); ?>";
         });
     }
 
