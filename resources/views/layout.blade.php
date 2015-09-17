@@ -170,13 +170,11 @@
 
         $('#togglebg').on('click touchdown', function(e) {
             e.preventDefault();
-            console.log(e);
             $.ajax({
                 dataType: 'json',
                 url: $(this).attr('href'),
                 data: {}
-            }).done(function(data) {
-                console.log(data);
+            }).done(function() {
                 $('#bg').toggle();
             });
         });

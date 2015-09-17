@@ -22,6 +22,7 @@ class UserController extends Controller
             ], $request->has('remember')))
            {
                case Verify::SUCCESS:
+                   \Session::put('background', auth()->user()->background);
                    return redirect()->back()->with('success', 'Login successful');
                case Verify::INVALID_CREDENTIALS:
                    return redirect()->back()->with('error', 'Invalid credentials');
