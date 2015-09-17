@@ -12,7 +12,7 @@ class CreateModeratorLogTable extends Migration
      */
     public function up()
     {
-        Schema::create('moderator_log', function(Blueprint $table) {
+        Schema::create('moderator_logs', function(Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('type');
@@ -29,6 +29,6 @@ class CreateModeratorLogTable extends Migration
      */
     public function down()
     {
-        Schema::drop('moderator_log');
+        Schema::drop('moderator_logs');
     }
 }
