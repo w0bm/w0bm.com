@@ -47,7 +47,7 @@ class Comment extends Model
         $delMatcher = '/-([\s\S]+)-/';
         $newlineMatcher = '/(^.*$)/m';
 
-        $text = preg_replace($externUrlMatcher, '<a href="$1" rel="extern">$1</a>', $text);
+        $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
         $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
         if(preg_match_all($nameMatcher, $text, $users) > 0) {
             foreach ($users as $user) {
