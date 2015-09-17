@@ -80,7 +80,8 @@ class UserController extends Controller
         $validator = \Validator::make($request->all(), [
             'username' => 'required|unique:users|min:3|max:25|alpha_num',
             'email' => 'required|email|unique:users|confirmed',
-            'password' => 'required|min:6|confirmed'
+            'password' => 'required|min:6|confirmed',
+            'g-recaptcha-response' => 'required|recaptcha'
         ]);
 
         if($validator->fails()) {
