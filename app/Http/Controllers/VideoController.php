@@ -134,8 +134,16 @@ class VideoController extends Controller
         $com->save();
 
         return redirect()->back()->with('success', 'Comment successfully saved');
+    }
 
+    public function destroyComment($id) {
+        $user = auth()->check() ? auth()->user() : null;
+        if(is_null($user)) return redirect()->back()->with('error', 'Not logged in');
 
-
+        if($user->can('delete_comment')) {
+            Comment::destroy($id);
+            return redirect()->back()->with('success', 'Comment deleted');
+        }
+        return redirect()->back()->with('error', 'Insufficient permissions');
     }
 }

@@ -19,5 +19,7 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'edit_video']);
         Permission::create(['name' => 'edit_category']);
         Permission::create(['name' => 'add_category']);
+        Permission::create(['name' => 'edit_comment']);
+        Permission::create(['name' => 'delete_comment']);
     }
 }
