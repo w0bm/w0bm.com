@@ -45,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/app/Models/Comment.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.7965475">
-              <caret line="57" column="72" selection-start-line="57" selection-start-column="72" selection-end-line="57" selection-end-column="72" />
+              <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -1020,7 +1020,7 @@
     <entry file="file://$PROJECT_DIR$/app/Models/Comment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7965475">
-          <caret line="57" column="72" selection-start-line="57" selection-start-column="72" selection-end-line="57" selection-end-column="72" />
+          <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
           <folding />
         </state>
       </provider>

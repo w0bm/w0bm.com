@@ -49,10 +49,11 @@ class Comment extends Model
 
         $text = preg_replace($externUrlMatcher, '<a href="$1" rel="extern">$1</a>', $text);
         $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
-        preg_match_all($nameMatcher, $text, $users);
-        foreach($users as $user) {
-            if(User::whereUsername($user[0])->count() > 0) {
-                $text = preg_replace('/@' . $user[0] . '/i', '@<a href="/user/' . strtolower($user[0]) . '">' . $user[0] . '</a>', $text);
+        if(preg_match_all($nameMatcher, $text, $users) > 0) {
+            foreach($users as $user) {
+                if(User::whereUsername($user[0])->count() > 0) {
+                    $text = preg_replace('/@' . $user[0] . '/i', '@<a href="/user/' . strtolower($user[0]) . '">' . $user[0] . '</a>', $text);
+                }
             }
         }
         $text = preg_replace($boldMather, '<strong>$1</strong>', $text);
