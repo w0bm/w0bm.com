@@ -237,7 +237,7 @@
     })(jQuery);
     
     (function($) {
-        $('#categories').imagesLoaded(function() {
+        $('window').load(function() {
             $('#categories').isotope({
                 itemSelector: '.category',
                 layoutMode: 'fitRows'
