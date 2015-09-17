@@ -82,7 +82,9 @@
     </style>
 </head>
 <body>
-<canvas id="bg"></canvas>
+@if(Session::get('background', true))
+    <canvas id="bg"></canvas>
+@endif
 
 @include('partials.navigation')
 
