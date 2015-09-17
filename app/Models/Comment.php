@@ -51,8 +51,8 @@ class Comment extends Model
         $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
         preg_match_all($nameMatcher, $text, $users);
         foreach($users as $user) {
-            if(User::whereUsername($user)->count() > 0) {
-                $text = preg_replace('/@' . $user . '/i', '@<a href="/user/' . strtolower($user) . '">' . $user . '</a>', $text);
+            if(User::whereUsername($user[0])->count() > 0) {
+                $text = preg_replace('/@' . $user[0] . '/i', '@<a href="/user/' . strtolower($user[0]) . '">' . $user[0] . '</a>', $text);
             }
         }
         $text = preg_replace($boldMather, '<strong>$1</strong>', $text);
