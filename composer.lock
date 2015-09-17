@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e479d13714075d524b9ade62234a36f9",
+    "hash": "ffd294ef6f31db8d59f22bd194bff707",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -680,6 +680,58 @@
                 "parser"
             ],
             "time": "2014-09-09 13:34:57"
+        },
+        {
+            "name": "greggilbert/recaptcha",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:greggilbert/recaptcha.git",
+                "reference": "30909552d594717d35a2f419622dddf95782f933"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/greggilbert/recaptcha/zipball/30909552d594717d35a2f419622dddf95782f933",
+                "reference": "30909552d594717d35a2f419622dddf95782f933",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-4": {
+                    "Greggilbert\\Recaptcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Gilbert",
+                    "email": "greg@greg-gilbert.com"
+                }
+            ],
+            "description": "reCAPTCHA Validator for Laravel 5",
+            "homepage": "http://github.com/greggilbert/recaptcha",
+            "keywords": [
+                "captcha",
+                "laravel",
+                "laravel5",
+                "recaptcha"
+            ],
+            "time": "2015-05-11 14:16:01"
         },
         {
             "name": "guzzlehttp/guzzle",

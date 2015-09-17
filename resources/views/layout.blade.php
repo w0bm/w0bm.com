@@ -124,6 +124,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>
 <script>
+
     var video = document.getElementById('video');
     if(video !== null) {
         video.volume = 0.3;
@@ -180,14 +181,26 @@
         }
     })(jQuery);
 
-    (function($){
+    (function($) {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         });
+        var commentform = $('#commentForm');
+        /*commentform.on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: commentform.attr('action'),
+                data: commentform.find();
+            })
+        })*/
 
-        $('#togglebg').on('click touchdown', function(e) {
+    })(jQuery);
+
+    (function($){
+         $('#togglebg').on('click touchdown', function(e) {
             e.preventDefault();
             $.ajax({
                 dataType: 'json',
