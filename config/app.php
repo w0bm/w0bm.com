@@ -147,7 +147,8 @@ return [
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Toddish\Verify\Providers\VerifyServiceProvider::class,
-        Illuminate\Html\HtmlServiceProvider::class
+        Illuminate\Html\HtmlServiceProvider::class,
+        App\Providers\BladeServiceProvider::class
 
     ],
 
