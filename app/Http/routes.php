@@ -44,7 +44,7 @@ Route::get('togglebackground', function() {
     }
 
     if($request->ajax())
-        return true;
+        return json_encode(true);
 
     return redirect()->back()->with('success, Background toggled');
 });
