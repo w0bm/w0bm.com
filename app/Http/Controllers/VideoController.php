@@ -41,6 +41,9 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
+        if(!$user->can('break_upload_limit') && $user->videos()->newlyups()->count() >= 20)
+            return redirect()->back()->with('error', 'Uploadlimit reached')->withInput();
+        
         if(!$request->hasFile('file'))
             return redirect()->back()->with('error', 'No file')->withInput();
 
