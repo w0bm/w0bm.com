@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
+    <meta name="_token" content="{{csrf_token()}}">
     <title>w0b me</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
@@ -85,9 +86,7 @@
     </style>
 </head>
 <body>
-@if(Session::get('background', true))
-    <canvas id="bg"></canvas>
-@endif
+<canvas id="bg" @if(!Session::get('background', true)) style="display: none; visibility: hidden; opacity: 0;"@endif></canvas>
 
 @include('partials.navigation')
 
@@ -160,6 +159,29 @@
                 next.click();
             }
         }
+    })(jQuery);
+
+    (function($){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+
+        $('#togglebg').on('click touchdown', function(e) {
+            e.preventDefault();
+            $.ajax({
+                dataType: 'json',
+                url: $(this).href()
+                data: {}
+            }).done(function(data) {
+                if(data) {
+                    $('#bg').show();
+                } else {
+                    $('#bg').hide();
+                }
+            });
+        });
     })(jQuery);
 
     (function($) {
