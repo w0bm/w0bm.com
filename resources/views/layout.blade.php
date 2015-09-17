@@ -237,9 +237,11 @@
     })(jQuery);
     
     (function($) {
-        $('#categories').isotope({
-            itemSelector: '.category',
-            layoutMode: 'fitRows'
+        $('#categories').imagesLoaded(function() {
+            $('#categories').isotope({
+                itemSelector: '.category',
+                layoutMode: 'fitRows'
+            });
         });
     })(jQuery);
 
