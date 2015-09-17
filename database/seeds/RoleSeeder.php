@@ -14,6 +14,6 @@ class RoleSeeder extends Seeder
     {
         $mod = Role::create(['name' => 'Moderator', 'level' => 7]);
         $perms = \Toddish\Verify\Models\Permission::all(['id']);
-        $mod->permissions()->sync([$perms]);
+        $mod->permissions()->sync($perms);
     }
 }
