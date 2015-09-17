@@ -15,10 +15,10 @@ class BladeServiceProvider extends ServiceProvider
     public function boot()
     {
         /* @simplemd($var) */
-        Blade::extend(function($view, $compiler) {
-            $pattern = $compiler->createOpenMatcher('simplemd');
+        /** @var \Illuminate\View\Compilers\BladeCompiler $compiler  */
+        Blade::directive('simplemd', function($text) {
 
-            return preg_replace($pattern, '$1<?php echo App\Models\Comment::simplemd(e($2)): ?>', $view);
+            return "<?php echo App\\Models\\Comment::simplemd(e({$text})): ?>";
         });
     }
 
