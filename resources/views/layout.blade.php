@@ -86,7 +86,7 @@
     </style>
 </head>
 <body>
-<canvas id="bg" @if(!Session::get('background', true)) style="display: none; visibility: hidden; opacity: 0;"@endif></canvas>
+<canvas id="bg" @if(!Session::get('background', true)) style="display: none;"@endif></canvas>
 
 @include('partials.navigation')
 
