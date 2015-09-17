@@ -114,11 +114,9 @@
 
         var canvas = document.getElementById('bg'),
                 context = canvas.getContext('2d'),
-                cw = canvas.clientWidth | 0,
-                ch = canvas.clientHeight | 0;
-
-        canvas.width = cw;
-        canvas.height = ch;
+                cw = canvas.clientWidth ,
+                ch = canvas.clientHeight;
+        
 
         video.addEventListener('play', function() {
             draw(this,context,cw,ch);
