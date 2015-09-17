@@ -121,6 +121,9 @@
                 cw = canvas.clientWidth ,
                 ch = canvas.clientHeight;
 
+        canvas.width = cw;
+        canvas.height = ch;
+
 
         video.addEventListener('play', function() {
             draw(this,context,cw,ch);
