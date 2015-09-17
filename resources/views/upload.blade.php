@@ -45,6 +45,13 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-default">Upload</button>
+		<br><p><h2>Rules:</h2>
+		<ul>
+			<li>WebMs must have sound!</li>
+			<li>Do not upload child pornography!</li>
+			<li>Uploads must be listed in the correct category.</li>
+			<br><p>Please follow these rules to have a great time here at w0bm!
+		</ul>
             </div>
         </div>
     </form>

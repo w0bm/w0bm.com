@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+    <link rel="favicon" 
+      type="image/png" 
+      href="favicon.png" />
     <style>
         .flashcontainer {
             position:absolute;
