@@ -7,7 +7,7 @@
                 <video id="video" controls loop src="{{asset('b/' . $video->file)}}"></video>
             </div>
             @if($category)
-                <div class="text-center">
+                <div class="text-center" style="position: unset; mix-blend-mode: difference">
                     @if(($prev = $video->getPrev(true)) === null)
                         <a id="prev" href="#" style="visibility: hidden;">Prev</a> |
                     @else
@@ -21,7 +21,7 @@
                     @endif
                 </div>
             @else
-                <div class="text-center">
+                <div class="text-center" style="position: unset; mix-blend-mode: difference">
                     @if(($prev = $video->getPrev()) === null)
                         <a class="first" href="#" style="visibility: hidden;">← first</a>
                         <a id="prev" href="#" style="visibility: hidden;">← prev</a> |
