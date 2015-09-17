@@ -111,11 +111,31 @@ class VideoController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Response
      */
     public function destroy($id)
     {
-        //
+        $user = auth()->check() ? auth()->user() : null;
+
+        if(is_null($user)) return redirect()->back()->with('error', 'Not logged in');
+
+        if($user->can('delete_video')) {
+            $vid = Video::find($id);
+            foreach($vid->comments as $comment) {
+                $comment->delete(); // delete associated comments
+            }
+            $vid->delete();
+
+            $log = new ModeratorLog();
+            $log->user()->associate($user);
+            $log->type = 'delete';
+            $log->target_type = 'video';
+            $log->target_id = $id;
+            $log->save();
+
+            return redirect('/')->with('success', 'Video deleted');
+        }
+        return redirect()->back()->with('error', 'Insufficient permissions');
     }
 
     public function storeComment(Request $request, $id) {

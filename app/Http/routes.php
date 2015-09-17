@@ -31,9 +31,10 @@ Route::get('upload', 'VideoController@create');
 Route::post('upload', 'VideoController@store');
 Route::get('categories', 'CategoryController@index');
 
-Route::get('comment/{id}/delete', 'VideoController@destroyComment');
+Route::get('comment/{id}/delete', 'VideoController@destroyComment')->where('id', '[0-9]+');
 
 Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');
+Route::get('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');
 Route::post('{id}', 'VideoController@storeComment')->where('id', '[0-9]+');
 
 Route::get('{shortname}', 'CategoryController@showVideo')->where('shortname', '[a-z][a-z0-9]+');
