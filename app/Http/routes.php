@@ -31,7 +31,8 @@ Route::get('upload', 'VideoController@create');
 Route::post('upload', 'VideoController@store');
 Route::get('categories', 'CategoryController@index');
 
-Route::post('togglebackground', function(Request $request) {
+Route::get('togglebackground', function() {
+    $request = request();
     $user = auth()->check() ? auth()->user() : null;
 
     if(is_null($user)) {
