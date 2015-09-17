@@ -116,7 +116,7 @@
                 context = canvas.getContext('2d'),
                 cw = canvas.clientWidth ,
                 ch = canvas.clientHeight;
-        
+
 
         video.addEventListener('play', function() {
             draw(this,context,cw,ch);
