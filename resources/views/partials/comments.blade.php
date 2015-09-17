@@ -9,7 +9,13 @@
                     <div class="panel-body">
                         {{$comment->content}}
                     </div>
-                    <div class="panel-footer">by <a href="/user/{{$comment->user->username}}">{{$comment->user->username}}</a> <small>{{$comment->created_at->diffForHumans()}}</small></div>
+                    <div class="panel-footer">by <a href="/user/{{$comment->user->username}}">{{$comment->user->username}}</a> <small>{{$comment->created_at->diffForHumans()}}</small>
+                    @if(auth()->check())
+                        @if(auth()->user()->can('delete_comment'))
+                            <span class="label label-danger"><small><a href="{{url('comment/' . $comment->id . '/delete')}}">Delete</a></small></span>
+                        @endif
+                    @endif
+                    </div>
                 </div>
             @endforeach
         @else
