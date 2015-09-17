@@ -41,6 +41,9 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->check() ? auth()->user() : null;
+        if(is_null($user)) return redirect('/')->with('error', 'You need to be logged in');
+        
         if(!$user->can('break_upload_limit') && $user->videos()->newlyups()->count() >= 20)
             return redirect()->back()->with('error', 'Uploadlimit reached')->withInput();
         
@@ -65,7 +68,7 @@ class VideoController extends Controller
         $video->interpret = $request->get('interpret', null);
         $video->songtitle = $request->get('songtitle', null);
         $video->imgsource = $request->get('imgsource', null);
-        $video->user()->associate(auth()->user());
+        $video->user()->associate($user);
         $video->category()->associate(Category::findOrFail($request->get('category')));
         $video->hash = $hash;
         $video->save();
