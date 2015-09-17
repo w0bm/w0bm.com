@@ -48,4 +48,8 @@ class User extends VerifyUser
     public function comments() {
         return $this->hasMany(Comment::class);
     }
+
+    public function moderator_log() {
+        return $this->hasMany(ModeratorLog::class);
+    }
 }
