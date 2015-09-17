@@ -13,6 +13,7 @@
     <link rel="favicon" 
       type="image/png" 
       href="favicon.png" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <style>
         .flashcontainer {
             position:absolute;
@@ -82,6 +83,9 @@
         }
         .comments textarea:active, .comments textarea:focus, .comments textarea:valid {
             height: 8em;
+        }
+        a[rel=extern]:after {
+            content: "\f08e";
         }
     </style>
 </head>
