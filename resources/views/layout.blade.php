@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <style>
         .flashcontainer {
             position:absolute;
@@ -79,6 +80,9 @@
         }
         .comments textarea:active, .comments textarea:focus, .comments textarea:valid {
             height: 8em;
+        }
+        a[rel=extern]:after {
+            content: "\f08e";
         }
     </style>
 </head>
