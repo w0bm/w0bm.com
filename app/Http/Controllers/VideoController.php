@@ -50,7 +50,7 @@ class VideoController extends Controller
         || $file->getClientOriginalExtension() != 'webm'
         || $file->getMimeType() != 'video/webm') return redirect()->back()->with('error', 'Invalid file');
 
-        if(($v = Video::where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null)
+        if(($v = Video::withTrashed()->where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null)
             return redirect($v->id)->with('error', 'Video already exists');
 
         $file = $file->move(public_path() . '/b/', time() . '.webm');
