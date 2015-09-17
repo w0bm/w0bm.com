@@ -9,16 +9,21 @@
             @if($category)
                 <div class="text-center" style="position: unset;">
                     @if(($prev = $video->getPrev(true)) === null)
+                        <a class="first" href="#" style="visibility: hidden;">← first</a>
                         <a id="prev" href="#" style="visibility: hidden;">Prev</a> |
                     @else
+                        <a class="first" href="{{url($video->category->shortname, $video::whereCategoryId($video->category->id)->first()->id)}}">← first</a>
                         <a id="prev" href="{{url($video->category->shortname, [$prev->id])}}">Prev</a> |
                     @endif
                     <a href="{{url($video->category->shortname)}}">{{$video->category->name}}</a>
                     @if(($next = $video->getNext(true)) === null)
                         | <a id="next" href="#" style="visibility: hidden;">Next</a>
+                        <a class="last" href="#" style="visibility: hidden;">last →</a>
                     @else
                         | <a id="next" href="{{url($video->category->shortname, [$next->id])}}">Next</a>
+                        <a class="last" href="{{url($video->category->shortname, $video::whereCategoryId($video->category->id)->max('id'))}}">last →</a>
                     @endif
+                    <br><span class="videoinfo">uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}</a> </i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
                 </div>
             @else
                 <div class="text-center"  style="position: unset;">
