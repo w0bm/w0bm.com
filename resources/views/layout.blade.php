@@ -124,6 +124,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
+<script src="//imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
 <script>
 
     var video = document.getElementById('video');
@@ -233,6 +234,12 @@
         });
     })(jQuery);
 
+    $('#categories').imagesLoaded(function() {
+        $('#categories').isotope({
+            itemSelector: '.category',
+            layoutMode: 'fitRows'
+        });
+    });
 
 
 </script>
