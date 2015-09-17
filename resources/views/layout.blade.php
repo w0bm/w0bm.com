@@ -177,11 +177,7 @@
                 data: {}
             }).done(function(data) {
                 console.log(data);
-                if(data) {
-                    $('#bg').show();
-                } else {
-                    $('#bg').hide();
-                }
+                $('#bg').toggle();
             });
         });
     })(jQuery);
