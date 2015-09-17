@@ -169,7 +169,7 @@
             e.preventDefault();
             $.ajax({
                 dataType: 'json',
-                url: $(this).href()
+                url: $(this).href(),
                 data: {}
             }).done(function(data) {
                 if(data) {
