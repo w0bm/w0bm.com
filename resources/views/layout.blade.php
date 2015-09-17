@@ -85,6 +85,7 @@
             height: 8em;
         }
         a[rel=extern]:after {
+            font-family: 'FontAwesome';
             content: "\f08e";
         }
     </style>
