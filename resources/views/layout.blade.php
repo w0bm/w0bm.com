@@ -87,6 +87,8 @@
         a[rel=extern]:after {
             font-family: 'FontAwesome';
             content: "\f08e";
+            font-size: 0.8em;
+            padding-left: 2px;
         }
     </style>
 </head>
