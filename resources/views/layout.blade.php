@@ -193,9 +193,9 @@
             $.ajax({
                 type: 'POST',
                 url: commentform.attr('action'),
-                data: commentform.find();
-            })
-        })*/
+                data: commentform.serialize();
+            }).done(function() {});
+        });*/
 
     })(jQuery);
 
