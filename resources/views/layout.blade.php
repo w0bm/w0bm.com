@@ -160,6 +160,12 @@
         }
     })(jQuery);
 
+    (function($) {
+        $(':not(form)[data-confirm]').on('click touchdown', function(){
+            return confirm($(this).data('confirm'));
+        });
+    })(jQuery);
+
     (function($){
         $(".comments").mCustomScrollbar({
             axis: 'y',

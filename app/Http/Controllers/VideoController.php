@@ -124,6 +124,9 @@ class VideoController extends Controller
             foreach($vid->comments as $comment) {
                 $comment->delete(); // delete associated comments
             }
+            if(!\File::move(public_path() . '/b/' . $vid->filename, storage_path() . '/deleted/' . $vid->filename))
+                \Session::flash('warning', 'Could not move file');
+
             $vid->delete();
 
             $log = new ModeratorLog();
