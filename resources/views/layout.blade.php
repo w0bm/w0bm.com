@@ -168,6 +168,7 @@
         $('#togglebg').on('click touchdown', function(e) {
             e.preventDefault();
             $.ajax({
+
                 dataType: 'json',
                 url: $(this).attr('href'),
                 data: {}
