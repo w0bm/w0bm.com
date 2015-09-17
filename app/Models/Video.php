@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -70,5 +71,9 @@ class Video extends Model
             return Video::where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
         else
             return Video::whereCategoryId($this->category->id)->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
+    }
+
+    public function scopeNewlyups($query) {
+        $query->where('created_at', '>=', Carbon::now()->subDay());
     }
 }
