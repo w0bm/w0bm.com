@@ -147,10 +147,10 @@ class VideoController extends Controller
             $log = new ModeratorLog();
             $log->user()->associate($user);
             $log->type = 'delete';
-            $log->target_type = 'comment',
+            $log->target_type = 'comment';
             $log->target_id = $id;
             $log->save();
-            
+
             return redirect()->back()->with('success', 'Comment deleted');
         }
         return redirect()->back()->with('error', 'Insufficient permissions');
