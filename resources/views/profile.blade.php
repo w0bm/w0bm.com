@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="page-header">
-        <h1>{{$user->username}} <small>Uploads: {{ $user->videos()->count() }}</small></h1>
+        <h1>{{$user->username}} <small>{{ $user->videos()->count() }} uploads</small></h1>
     </div>
 
 
