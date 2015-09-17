@@ -59,8 +59,8 @@
                     <li class="list-group-item">WebMs must have sound</li>
                     <li class="list-group-item list-group-item-danger">Do not upload child pornography!</li>
                     <li class="list-group-item">Uploads must be listed in the correct category</li>
-                    <li class="list-group-item">Pleace follow these rules to have a great time here at w0bm!</li>
                 </ul>
+                <div class="panel-body">Please follow these rules to have a great time here at w0bm!</div>
             </div>
         </div>
     </div>
