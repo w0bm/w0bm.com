@@ -4,7 +4,7 @@
     <div class="page-header">
         <h1>Categories</h1>
     </div>
-    <div class="row js-isotope" data-isotope-options='{ "itemSelector": ".category", "layoutMode": "fitRows" }'>
+    <div class="row" id="categories">
         @foreach($categories as $category)
             <div class="col-sm-6 col-md-4 category">
                 <div class="thumbnail">
