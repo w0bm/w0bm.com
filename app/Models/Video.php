@@ -74,6 +74,6 @@ class Video extends Model
     }
 
     public function scopeNewlyups($query) {
-        $query->where('created_at', '>=', Carbon::now()->subDay());
+        return $query->where('created_at', '>=', Carbon::now()->subDay());
     }
 }
