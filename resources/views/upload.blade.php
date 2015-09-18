@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="imgsrc" class="col-sm-2 control-label">Image source</label>
+                        <label for="imgsource" class="col-sm-2 control-label">Image source</label>
                         <div class="col-sm-10">
                             {!! Form::text('imgsrc', null, ['class' => 'form-control', 'placeholder' => 'Image Source']) !!}
                         </div>
