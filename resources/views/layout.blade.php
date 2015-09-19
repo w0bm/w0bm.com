@@ -127,6 +127,11 @@
 <script src="//imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
 <script>
 
+    function flash(type, message) {
+
+    }
+
+
     var video = document.getElementById('video');
     if(video !== null) {
         video.volume = 0.3;
@@ -183,44 +188,50 @@
         }
     })(jQuery);
 
-    (function($) {
+    (function ($) {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         });
         var commentform = $('#commentForm');
-        /*commentform.on('submit', function(e) {
+        commentform.on('submit', function (e) {
             e.preventDefault();
             $.ajax({
                 type: 'POST',
                 url: commentform.attr('action'),
-                data: commentform.serialize();
-            }).done(function() {});
-        });*/
-
+                data: commentform.serialize()
+            }).done(function (data) {
+                flash('success', 'Comment saved successfully');
+                $('.nocomments').remove();
+                $('.commentwrapper').append(data);
+            }).fail(function(data){
+                flash('error', 'Error saving comment');
+                flash('error', data);
+            });
+        });
     })(jQuery);
 
-    (function($){
-         $('#togglebg').on('click touchdown', function(e) {
+    (function ($) {
+        $('#togglebg').on('click touchdown', function (e) {
             e.preventDefault();
             $.ajax({
                 dataType: 'json',
                 url: $(this).attr('href'),
                 data: {}
-            }).done(function() {
+            }).done(function () {
                 $('#bg').toggle();
             });
         });
     })(jQuery);
 
-    (function($) {
-        $(':not(form)[data-confirm]').on('click touchdown', function(){
+    (function ($) {
+        $(':not(form)[data-confirm]').on('click touchdown', function () {
             return confirm($(this).data('confirm'));
         });
     })(jQuery);
 
-    (function($){
+    (function ($) {
         $(".comments").mCustomScrollbar({
             axis: 'y',
             theme: 'minimal',
@@ -229,18 +240,20 @@
     })(jQuery);
 
     (function ($) {
-        $('.alert').each(function(index) {
+        $('.alert').each(function (index) {
             $(this).delay(3000 + index * 1000).slideUp(300);
         });
     })(jQuery);
 
-    $('#categories').imagesLoaded(function() {
+    $('#categories').imagesLoaded(function () {
         $('#categories').isotope({
             itemSelector: '.category',
             percentPosition: true,
             layoutMode: 'masonry'
         });
     });
+        
+    
 
 
 </script>

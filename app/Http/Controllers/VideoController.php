@@ -150,10 +150,11 @@ class VideoController extends Controller
     public function storeComment(Request $request, $id) {
 
         $user = auth()->check() ? auth()->user() : null;
+        $xhr = $request->ajax();
 
-        if(is_null($user)) return redirect()->back()->with('error', 'Not logged in');
-        if(!$request->has('comment')) return redirect()->back()->with('error', 'You need to enter a comment');
-        if(mb_strlen(trim($request->get('comment'))) > 1000 ) return redirect()->back()->with('error', 'Comment to long');
+        if(is_null($user)) return $xhr ? "Not logged in" : redirect()->back()->with('error', 'Not logged in');
+        if(!$request->has('comment')) return $xhr ? "You need to enter a comment" : redirect()->back()->with('error', 'You need to enter a comment');
+        if(mb_strlen(trim($request->get('comment'))) > 1000 ) return $xhr ? "Comment to long" : redirect()->back()->with('error', 'Comment to long');
 
         $video = Video::findOrFail($id);
 
@@ -163,7 +164,7 @@ class VideoController extends Controller
         $com->video()->associate($video);
         $com->save();
 
-        return redirect()->back()->with('success', 'Comment successfully saved');
+        return $xhr ? view('partials.comment', ['comment' => $com]) : redirect()->back()->with('success', 'Comment successfully saved');
     }
 
     public function destroyComment($id) {

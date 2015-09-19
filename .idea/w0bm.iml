@@ -221,5 +221,7 @@
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="jquery.mCustomScrollbar.concat" level="application" />
+    <orderEntry type="library" name="imagesloaded.pkgd" level="application" />
+    <orderEntry type="library" name="isotope.pkgd" level="application" />
   </component>
 </module>
