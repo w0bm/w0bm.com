@@ -1,4 +1,4 @@
-<div class="panel @if($del = !is_null($comment->delted_at)) panel-danger @else panel-default @endif">
+<div class="panel @if($del = !is_null($comment->deleted_at)) panel-danger @else panel-default @endif">
     <div class="panel-body">
         @simplemd($comment->content)
     </div>
