@@ -50,6 +50,7 @@ Route::get('togglebackground', function() {
 });
 
 Route::get('comment/{id}/delete', 'VideoController@destroyComment')->where('id', '[0-9]+');
+Route::get('comment/{id}/restore', 'VideoController@restoreComment')->where('id', '[0-9]+');
 
 Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');
 Route::get('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');

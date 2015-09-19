@@ -185,4 +185,23 @@ class VideoController extends Controller
         }
         return redirect()->back()->with('error', 'Insufficient permissions');
     }
+
+    public function restoreComment($id) {
+        $user = auth()->check() ? auth()->user() : null;
+        if(is_null($user)) return redirect()->back()->with('error', 'Not logged in');
+
+        if($user->can('delete_comment')) {
+            Comment::withTrashed()->find($id)->first()->restore();
+
+            $log = new ModeratorLog();
+            $log->user()->associate($user);
+            $log->type = 'restore';
+            $log->target_type = 'comment';
+            $log->target_id = $id;
+            $log->save();
+
+            return redirect()->back()->with('success', 'Comment restored');
+        }
+        return redirect()->back()->with('error', 'Insufficient permissions');
+    }
 }
