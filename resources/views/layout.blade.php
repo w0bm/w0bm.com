@@ -9,10 +9,10 @@
     <title>w0b me</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link rel="favicon" 
       type="image/png" 
       href="favicon.png" />
+    <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <style>
         .flashcontainer {
@@ -261,6 +261,10 @@
             percentPosition: true,
             layoutMode: 'masonry'
         });
+    });
+
+    $(function() {
+        $('[data-toggle="popover"]').popover();
     });
         
     
