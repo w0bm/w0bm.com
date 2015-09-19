@@ -205,6 +205,8 @@
                 flash('success', 'Comment saved successfully');
                 $('.nocomments').remove();
                 $('.commentwrapper').append(data);
+                commentform.val('');
+                commentform.find('textarea').blur();
             }).fail(function(data){
                 flash('error', 'Error saving comment');
                 flash('error', data);
