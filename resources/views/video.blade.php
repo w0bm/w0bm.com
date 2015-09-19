@@ -30,10 +30,10 @@
                                                    data-trigger="hover"
                                                    title="Information"
                                                    data-content="
-                                                           @if($video->interpret) Interpret: {{$video->interpret}}<br>@endif
-                                                           @if($video->songtitle) Songtitle: {{$video->songtitle}}<br>@endif
-                                                           @if($video->imgsource) Image Source: {{$video->imgsource}}<br>@endif
-                                                           Category: {{$video->category->name}}"></i> uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}</a> </i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
+                                                           @if($video->interpret) <em>Interpret:</em> {{$video->interpret}}<br>@endif
+                                                           @if($video->songtitle) <em>Songtitle:</em> {{$video->songtitle}}<br>@endif
+                                                           @if($video->imgsource) <em>Image Source:</em> {{$video->imgsource}}<br>@endif
+                                                           <em>Category:</em> {{$video->category->name}}"></i> uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}</a> </i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
                 </div>
             @else
                 <div class="text-center"  style="position: unset;">
@@ -59,10 +59,10 @@
                                                    data-trigger="hover"
                                                    title="Information"
                                                    data-content="
-                                                           @if($video->interpret) Interpret: {{$video->interpret}}<br>@endif
-                                                           @if($video->songtitle) Songtitle: {{$video->songtitle}}<br>@endif
-                                                           @if($video->imgsource) Image Source: {{$video->imgsource}}<br>@endif
-                                                           Category: {{$video->category->name}}"></i> uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}</a> </i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
+                                                           @if($video->interpret) <em>Interpret:</em> {{$video->interpret}}<br>@endif
+                                                           @if($video->songtitle) <em>Songtitle:</em> {{$video->songtitle}}<br>@endif
+                                                           @if($video->imgsource) <em>Image Source:</em> {{$video->imgsource}}<br>@endif
+                                                           <em>Category:</em> {{$video->category->name}}"></i> uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}</a> </i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
 
                 </div>
             @endif
