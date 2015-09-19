@@ -23,7 +23,7 @@
                         | <a id="next" href="{{url($video->category->shortname, [$next->id])}}">Next</a>
                         <a class="last" href="{{url($video->category->shortname, $video::whereCategoryId($video->category->id)->max('id'))}}">last →</a>
                     @endif
-                    <br><span class="videoinfo"><i class="fa fa-info-circle fa-lg"
+                    <br><span class="videoinfo"><i class="fa fa-info-circle"
                                                    style="cursor: pointer"
                                                    data-toggle="popover"
                                                    data-placement="top"
@@ -52,7 +52,7 @@
                         | <a id="next" href="{{url($next->id)}}">next →</a>
                         <a class="last" href="{{url($video->max('id'))}}">last →</a>
                     @endif
-                    <br><span class="videoinfo"><i class="fa fa-info-circle fa-lg"
+                    <br><span class="videoinfo"><i class="fa fa-info-circle"
                                                    style="cursor: pointer"
                                                    data-toggle="popover"
                                                    data-placement="top"
