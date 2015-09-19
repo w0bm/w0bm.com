@@ -131,7 +131,11 @@
 <script>
 
     function flash(type, message) {
-
+        var html = '<div class="alert alert-:TYPE: alert-dismissable" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>:REPLACE:</div>';
+        var alerts = $('.flashcontainer > .container');
+        if(type === 'error') type = 'danger';
+        alerts.append(html.replace(/:TYPE:/, type).replace(/:REPLACE:/, message));
+        alertrm(jQuery);
     }
 
 
@@ -244,11 +248,12 @@
         });
     })(jQuery);
 
-    (function ($) {
+    var alertrm = function ($) {
         $('.alert').each(function (index) {
             $(this).delay(3000 + index * 1000).slideUp(300);
         });
-    })(jQuery);
+    };
+    alertrm(jQuery);
 
     $('#categories').imagesLoaded(function () {
         $('#categories').isotope({
