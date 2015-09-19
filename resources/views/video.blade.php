@@ -23,7 +23,17 @@
                         | <a id="next" href="{{url($video->category->shortname, [$next->id])}}">Next</a>
                         <a class="last" href="{{url($video->category->shortname, $video::whereCategoryId($video->category->id)->max('id'))}}">last →</a>
                     @endif
-                    <br><span class="videoinfo">uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}</a> </i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
+                    <br><span class="videoinfo"><i class="fa fa-info-circle fa-lg"
+                                                   style="cursor: pointer"
+                                                   data-toggle="popover"
+                                                   data-placement="top"
+                                                   data-trigger="hover"
+                                                   title="Information"
+                                                   data-content="
+                                                           @if($video->interpret) Interpret: {{$video->interpret}}<br>@endif
+                                                   @if($video->songtitle) Songtitle: {{$video->songtitle}}<br>@endif
+                                                   @if($video->imgsource) Image Source: {{$video->imgsource}}<br>@endif
+                                                           Category: {{$video->category}}"></i> uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}</a> </i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
                 </div>
             @else
                 <div class="text-center"  style="position: unset;">
@@ -42,7 +52,17 @@
                         | <a id="next" href="{{url($next->id)}}">next →</a>
                         <a class="last" href="{{url($video->max('id'))}}">last →</a>
                     @endif
-                    <br><span class="videoinfo">uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}</a> </i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
+                    <br><span class="videoinfo"><i class="fa fa-info-circle fa-lg"
+                                                   style="cursor: pointer"
+                                                   data-toggle="popover"
+                                                   data-placement="top"
+                                                   data-trigger="hover"
+                                                   title="Information"
+                                                   data-content="
+                                                           @if($video->interpret) Interpret: {{$video->interpret}}<br>@endif
+                                                           @if($video->songtitle) Songtitle: {{$video->songtitle}}<br>@endif
+                                                           @if($video->imgsource) Image Source: {{$video->imgsource}}<br>@endif
+                                                           Category: {{$video->category}}"></i> uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}</a> </i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
 
                 </div>
             @endif
