@@ -191,7 +191,7 @@ class VideoController extends Controller
         if(is_null($user)) return redirect()->back()->with('error', 'Not logged in');
 
         if($user->can('delete_comment')) {
-            Comment::withTrashed()->find($id)->first()->restore();
+            Comment::withTrashed()->whereId($id)->restore();
 
             $log = new ModeratorLog();
             $log->user()->associate($user);
