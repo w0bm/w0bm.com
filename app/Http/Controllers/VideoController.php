@@ -164,7 +164,7 @@ class VideoController extends Controller
         $com->video()->associate($video);
         $com->save();
 
-        return $xhr ? view('partials.comment', ['comment' => $com]) : redirect()->back()->with('success', 'Comment successfully saved');
+        return $xhr ? view('partials.comment', ['comment' => $com, 'mod' => $user->can('delete_comment')]) : redirect()->back()->with('success', 'Comment successfully saved');
     }
 
     public function destroyComment($id) {
