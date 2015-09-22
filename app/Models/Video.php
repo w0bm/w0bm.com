@@ -51,6 +51,10 @@ class Video extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function faved() {
+        return $this->belongsToMany(User::class, 'favorites');
+    }
+
     /**
      * @param bool $category
      * @return Video
