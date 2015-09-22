@@ -52,4 +52,14 @@ class User extends VerifyUser
     public function moderator_log() {
         return $this->hasMany(ModeratorLog::class);
     }
+
+    public function favs() {
+        return $this->belongsToMany(Video::class, 'favorites');
+    }
+
+    public function hasFaved($id) {
+        return ! $this->favs->filter(function($vid) use ($id) {
+            return $vid->id == $id;
+        })->isEmpty();
+    }
 }

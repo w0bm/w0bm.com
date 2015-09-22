@@ -218,6 +218,33 @@
         });
     })(jQuery);
 
+
+    (function ($) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        var favBtn = $('#fav');
+        favBtn.on('click touchdown', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'GET',
+                url: favBtn.attr('href')
+            }).done(function (data) {
+                flash('success', data);
+                var icon = favBtn.find('i');
+                if(icon.hasClass('fa-heart-o')) {
+                    icon.removeClass('fa-heart-o');
+                    icon.addClass('fa-heart');
+                } else {
+                    icon.removeClass('fa-heart');
+                    icon.addClass('fa-heart-o');
+                }
+            });
+        })
+    })(jQuery);
+
     (function ($) {
         $('#togglebg').on('click touchdown', function (e) {
             e.preventDefault();

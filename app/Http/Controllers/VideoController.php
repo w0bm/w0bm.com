@@ -130,6 +130,7 @@ class VideoController extends Controller
             foreach($vid->comments as $comment) {
                 $comment->delete(); // delete associated comments
             }
+            $vid->faved()->detach();
             if(!\File::move(public_path() . '/b/' . $vid->file, storage_path() . '/deleted/' . $vid->file))
                 \Session::flash('warning', 'Could not move file');
 
@@ -203,5 +204,23 @@ class VideoController extends Controller
             return redirect()->back()->with('success', 'Comment restored');
         }
         return redirect()->back()->with('error', 'Insufficient permissions');
+    }
+
+    public function favorite($id) {
+        $user = auth()->check() ? auth()->user() : null;
+        $xhr = \Request::ajax();
+
+        if(is_null($user)) return $xhr ? "Not logged in" : redirect()->back()->with('error', 'Not logged in');
+
+
+        if($user->hasFaved($id)) {
+            $user->favs()->detach($id);
+            return $xhr ? "Video removed from favorites" : redirect()->back()->with('success', 'Video removed from favorites');
+        } else {
+            $user->favs()->attach($id);
+            return $xhr ? "Video favorised" : redirect()->back()->with('success', 'Video favorised');
+        }
+
+
     }
 }
