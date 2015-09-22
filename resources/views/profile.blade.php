@@ -18,7 +18,7 @@
         <tbody>
         @foreach($user->favs as $video)
             <tr>
-                <td><a href="{{$video->id}}">{{$video->id}}</a></td>
+                <td><a href="{{url($video->id)}}">{{$video->id}}</a></td>
                 <td>{{$video->interpret or ''}}</td>
                 <td>{{$video->songtitle or ''}}</td>
                 <td>{{$video->imgsource or ''}}</td>
