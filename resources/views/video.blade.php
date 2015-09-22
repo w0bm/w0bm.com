@@ -23,7 +23,17 @@
                         | <a id="next" href="{{url($video->category->shortname, [$next->id])}}">Next</a>
                         <a class="last" href="{{url($video->category->shortname, $video::whereCategoryId($video->category->id)->max('id'))}}">last →</a>
                     @endif
-                    <br><span class="videoinfo"><i class="fa fa-info-circle"
+                    <br><span class="videoinfo">
+                            @if(auth()->check())
+                                @if(auth()->user()->hasFaved($video->id))
+                                    <a id="fav" href="{{url($video->id . '/fav')}}"><i class="fa fa-heart"></i></a>
+                                @else
+                                    <a id="fav" href="{{url($video->id . '/fav')}}"><i class="fa fa-heart-o"></i></a>
+                                @endif
+                            @else
+                                <a href="{{url($video->id . '/fav')}}"><i class="fa fa-heart-o"></i></a>
+                            @endif
+                            <i class="fa fa-info-circle"
                                                    style="cursor: pointer"
                                                    data-toggle="popover"
                                                    data-placement="top"
