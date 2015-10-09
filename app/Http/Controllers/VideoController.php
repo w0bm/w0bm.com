@@ -85,7 +85,7 @@ class VideoController extends Controller
     public function show($id)
     {
         $video = Video::find($id);
-        if(is_null($video)) return redirect()->back(404)->with('error', 'No video with that ID found');
+        if(is_null($video)) return redirect()->back()->with('error', 'No video with that ID found');
 
         return view('video', ['video' => $video]);
     }
