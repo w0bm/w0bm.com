@@ -16,7 +16,7 @@
         <tbody>
         @foreach($videos as $video)
             <tr>
-                <td><a href="{{$video->id}}">{{$video->id}}</a></td>
+                <td><a href="{{$video->id}}">{{url($video->id)}}</a></td>
                 <td>{{$video->interpret or ''}}</td>
                 <td>{{$video->songtitle or ''}}</td>
                 <td>{{$video->imgsource or ''}}</td>
