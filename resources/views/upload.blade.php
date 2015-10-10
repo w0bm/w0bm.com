@@ -58,7 +58,10 @@
                 <ul class="list-group">
                     <li class="list-group-item">WebMs must have sound</li>
                     <li class="list-group-item list-group-item-danger">Do not upload child pornography!</li>
-                    <li class="list-group-item">Uploads must be listed in the correct category</li>
+                    <li class="list-group-item list-group-item-danger"">Do not upload Loli videos!</li>
+	            <li class="list-group-item">Uploads must be listed in the correct category.</li>
+		   <li class="list-group-item">No refugee Videos of any kind!</li>
+		    <li class="list-group-item">No videos of beastiality, gore or very disturbing porn.</li>
                 </ul>
                 <div class="panel-body">Please follow these rules to have a great time here at w0bm!</div>
             </div>
