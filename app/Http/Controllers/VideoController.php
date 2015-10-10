@@ -46,6 +46,7 @@ class VideoController extends Controller
         
         if(!$user->can('break_upload_limit') && $user->videos()->newlyups()->count() >= 20)
             return redirect()->back()->with('error', 'Uploadlimit reached')->withInput();
+            
         
         if(!$request->hasFile('file'))
             return redirect()->back()->with('error', 'No file')->withInput();
@@ -55,6 +56,9 @@ class VideoController extends Controller
         if(!$file->isValid()
         || $file->getClientOriginalExtension() != 'webm'
         || $file->getMimeType() != 'video/webm') return redirect()->back()->with('error', 'Invalid file');
+        
+        if(!$user->can('break_max_filesize') && $file->getSize() > 3e+7)
+            return redirect()->back()->with('error', 'File to big. Max 30MB')->withInput();
 
         if(($v = Video::withTrashed()->where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null)
             return redirect($v->id)->with('error', 'Video already exists');

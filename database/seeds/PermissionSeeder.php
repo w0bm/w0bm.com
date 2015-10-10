@@ -22,5 +22,6 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'edit_comment']);
         Permission::create(['name' => 'delete_comment']);
         Permission::create(['name' => 'break_upload_limit']);
+        Permission::create(['name' => 'break_max_filesize']);
     }
 }
