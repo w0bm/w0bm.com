@@ -46,9 +46,7 @@ class Comment extends Model
         $italicMathcer = '/_(.+)_/';
         $delMatcher = '/-(.+)-/';
         $newlineMatcher = '/(^.*$)/m';
-
-        $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
-        $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
+        
         if(preg_match_all($nameMatcher, $text, $users) > 0) {
             foreach ($users as $user) {
                 if(User::whereUsername($user[0])->count() > 0) {
@@ -60,6 +58,9 @@ class Comment extends Model
         $text = preg_replace($italicMathcer, '<em>$1</em>', $text);
         $text = preg_replace($delMatcher, '<s>$1</s>', $text);
         $text = preg_replace($newlineMatcher, '$1<br>', $text);
+        $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
+        $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
+        
 
         return $text;
     }
