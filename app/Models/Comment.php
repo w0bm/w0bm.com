@@ -42,9 +42,9 @@ class Comment extends Model
         $nameMatcher = '/@(\w+)/i';
         $internUrlMatcher = '/https?:\/\/(?:www\.)?w0bm\.com(\S+)/i';
         $externUrlMatcher = '/(https?:\/\/(?!(?:www\.)?w0bm\.com)\S+\.\S+)/i';
-        $boldMather = '/\*([\s\S]+)\*/';
-        $italicMathcer = '/_([\s\S]+)_/';
-        $delMatcher = '/-([\s\S]+)-/';
+        $boldMather = '/\*(.+)\*/';
+        $italicMathcer = '/_(.+)_/';
+        $delMatcher = '/-(.+)-/';
         $newlineMatcher = '/(^.*$)/m';
 
         $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
