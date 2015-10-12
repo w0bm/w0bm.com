@@ -53,6 +53,14 @@ class User extends VerifyUser
         return $this->hasMany(ModeratorLog::class);
     }
 
+    public function messagesSent() {
+        return $this->hasMany(Message::class, 'from');
+    }
+
+    public function messagesRecv() {
+        return $this->hasMany(Message::class, 'to');
+    }
+
     public function favs() {
         return $this->belongsToMany(Video::class, 'favorites');
     }
