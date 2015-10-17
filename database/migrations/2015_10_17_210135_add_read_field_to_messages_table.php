@@ -14,6 +14,7 @@ class AddsReadFieldToMessagesTable extends Migration
     {
         Schema::table('messages', function(Blueprint $table) {
             $table->timestamp('read')->nullable();
+            $table->string('subject')->default('');
         });
     }
 
@@ -26,6 +27,7 @@ class AddsReadFieldToMessagesTable extends Migration
     {
         Schema::table('messages', function(Blueprint $table) {
             $table->dropColumn('read');
+            $table->dropColumn('subject');
         });
     }
 }

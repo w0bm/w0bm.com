@@ -15,4 +15,8 @@ class Message extends Model {
     public function to() {
         return $this->belongsTo(User::class, 'to');
     }
+
+    public static function send($from, $to, $content) {
+
+    }
 }
