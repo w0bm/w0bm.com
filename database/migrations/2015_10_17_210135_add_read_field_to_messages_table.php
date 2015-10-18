@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddsReadFieldToMessagesTable extends Migration
+class AddReadFieldToMessagesTable extends Migration
 {
     /**
      * Run the migrations.
