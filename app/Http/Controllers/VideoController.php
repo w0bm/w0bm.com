@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Message;
 use App\Models\ModeratorLog;
 use App\Models\Video;
 use Illuminate\Http\Request;
@@ -168,6 +169,12 @@ class VideoController extends Controller
         $com->user()->associate($user);
         $com->video()->associate($video);
         $com->save();
+
+        foreach($com->getMentioned() as $mentioned) {
+            Message::send($user->id, $mentioned->id, $user->username . ' mentioned you in a comment', view('messages.commentmention', [$video, $user]));
+        }
+
+        Message::send($user->id, $video->user->id, $user->username . ' commented on your video', view('messages.videocomment', [$video, $user]));
 
         return $xhr ? view('partials.comment', ['comment' => $com, 'mod' => $user->can('delete_comment')]) : redirect()->back()->with('success', 'Comment successfully saved');
     }

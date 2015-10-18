@@ -40,4 +40,8 @@ class Message extends Model {
 
         return $message;
     }
+
+    public function scopeUnread($query) {
+        return $query->whereNull('read');
+    }
 }

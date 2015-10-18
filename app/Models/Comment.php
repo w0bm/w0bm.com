@@ -64,4 +64,19 @@ class Comment extends Model
 
         return $text;
     }
+
+    public function getMentioned() {
+        $text = $this->content;
+        $nameMatcher = '/@(\w+)/i';
+        $ret = [];
+        if(preg_match_all($nameMatcher, $text, $users) > 0) {
+            foreach ($users as $user) {
+                if(User::whereUsername($user[0])->count() > 0) {
+                    $ret[] = User::whereUsername($user[0])->first();
+                }
+            }
+        }
+
+        return array_unique($ret);
+    }
 }
