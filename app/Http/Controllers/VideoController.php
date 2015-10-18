@@ -171,10 +171,10 @@ class VideoController extends Controller
         $com->save();
 
         foreach($com->getMentioned() as $mentioned) {
-            Message::send($user->id, $mentioned->id, $user->username . ' mentioned you in a comment', view('messages.commentmention', [$video, $user]));
+            if(!Message::send($user->id, $mentioned->id, $user->username . ' mentioned you in a comment', view('messages.commentmention', [$video, $user])));
         }
 
-        Message::send($user->id, $video->user->id, $user->username . ' commented on your video', view('messages.videocomment', [$video, $user]));
+        if(!Message::send($user->id, $video->user->id, $user->username . ' commented on your video', view('messages.videocomment', [$video, $user])));
 
         return $xhr ? view('partials.comment', ['comment' => $com, 'mod' => $user->can('delete_comment')]) : redirect()->back()->with('success', 'Comment successfully saved');
     }
