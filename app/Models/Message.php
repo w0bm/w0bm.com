@@ -32,10 +32,10 @@ class Message extends Model {
         }
 
         $message = new static();
-        $message->fromUser = $from;
-        $message->toUser   = $to;
-        $message->subject  = $subject;
-        $message->content  = $content;
+        $message->from    = $from->id;
+        $message->to      = $to->id;
+        $message->subject = $subject;
+        $message->content = $content;
         $message->save();
 
         return $message;
