@@ -44,7 +44,7 @@ class VideoController extends Controller
         $user = auth()->check() ? auth()->user() : null;
         if(is_null($user)) return redirect('/')->with('error', 'You need to be logged in');
         
-        if(!$user->can('break_upload_limit') && $user->videos()->newlyups()->count() >= 20)
+        if(!$user->can('break_upload_limit') && $user->videos()->newlyups()->count() >= 100)
             return redirect()->back()->with('error', 'Uploadlimit reached')->withInput();
             
         

@@ -6,12 +6,12 @@
           content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <meta name="_token" content="{{csrf_token()}}">
-    <title>w0b me</title>
+    <title>w0b em n0xy</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
     <link rel="favicon" 
-      type="image/png" 
-      href="favicon.png" />
+      type="image/ico" 
+      href="favicon.ico" />
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <style>
@@ -107,22 +107,6 @@
     </div>
 
 </div>
-
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//analytics.w0bm.com/";
-    _paq.push(['setTrackerUrl', u+'js/']);
-    _paq.push(['setSiteId', 2]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js/'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="//analytics.w0bm.com/js/?idsite=2" style="border:0;width:0;height:0" alt=""></p></noscript>
-<!-- End Piwik Code -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>

@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Upload</button>
+                            <button type="submit" class="btn btn-default">Upload</button> Maximum filesize is 30MB | Allowed filetypes: .webm | 20 Uploads every 24h 
                         </div>
                     </div>
                 </form>
