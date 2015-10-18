@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Message extends Model {
     use SoftDeletes;
 
-    public function from() {
+    public function fromUser() {
         return $this->belongsTo(User::class, 'from');
     }
 
-    public function to() {
+    public function toUser() {
         return $this->belongsTo(User::class, 'to');
     }
 
@@ -32,10 +32,10 @@ class Message extends Model {
         }
 
         $message = new static();
-        $message->from    = $from;
-        $message->to      = $to;
-        $message->subject = $subject;
-        $message->content = $content;
+        $message->fromUser = $from;
+        $message->toUser   = $to;
+        $message->subject  = $subject;
+        $message->content  = $content;
         $message->save();
 
         return $message;
