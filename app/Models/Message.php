@@ -18,17 +18,17 @@ class Message extends Model {
     }
 
     public static function send($from, $to, $subject, $content) {
-        if(is_object($from)) $from = $from->id;
-        if(is_object($to)) $to = $to->id;
-
         if(empty($subject)) return 'Subject must not be empty';
         if(empty($content)) return 'Content must not be empty';
 
         try {
-            User::findOrFail($from);
-            User::findOrFail($to);
+            if(!is_object($from))
+                $from = User::findOrFail($from);
+
+            if(!is_object($to))
+                $to = User::findOrFail($to);
         } catch (ModelNotFoundException $e) {
-            return $e->getMessage();
+            return false;
         }
 
         $message = new static();
