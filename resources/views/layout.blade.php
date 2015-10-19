@@ -12,6 +12,7 @@
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <style>
+        .body { background: #161616; }
         .flashcontainer {
             position:absolute;
             top:20px;
