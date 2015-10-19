@@ -21,9 +21,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="imgsource" class="col-sm-2 control-label">Image source</label>
+                        <label for="imgsource" class="col-sm-2 control-label">Video source</label>
                         <div class="col-sm-10">
-                            {!! Form::text('imgsource', null, ['class' => 'form-control', 'placeholder' => 'Image Source']) !!}
+                            {!! Form::text('imgsource', null, ['class' => 'form-control', 'placeholder' => 'Video Source']) !!}
                         </div>
                     </div>
                     <div class="form-group">
