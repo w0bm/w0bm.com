@@ -9,7 +9,7 @@
             <th>ID</th>
             <th>Interpret</th>
             <th>Songtitle</th>
-            <th>Image Source</th>
+            <th>Video Source</th>
             <th>Category</th>
         </tr>
         </thead>
