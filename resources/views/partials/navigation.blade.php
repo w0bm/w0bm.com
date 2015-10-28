@@ -17,7 +17,7 @@
                 <li><a href="{{url('categories')}}">Categories</a></li>
                 {{--<li><a href="about">About</a></li>--}}
                 <li><a href="{{url('songindex')}}">Songindex</a></li>
-                <li><a href="{{url('togglebackground')}}" id="togglebg">Toggle Background</a></li>
+                <li><a href="{{url('togglebackground')}}" id="togglebg"><i class="fa fa-toggle-off"></i> Background</a></li>
             </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">
