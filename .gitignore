@@ -6,6 +6,8 @@ Homestead.json
 public/b/*
 /.gitignore
 
+storage/deleted/*
+
 
 ## Directory-based project format:
 .idea/

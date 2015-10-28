@@ -18,7 +18,7 @@
                 {{--<li><a href="about">About</a></li>--}}
                 <li><a href="{{url('songindex')}}">Songindex</a></li>
 		<li><a href="https://kiwiirc.com/client/irc.rizon.net/w0bm" target="_blank">IRC</a></li>
-		<li><a href="{{url('togglebackground')}}" id="togglebg">&#9940; Background</a></li>
+                <li><a href="{{url('togglebackground')}}" id="togglebg"><i class="fa fa-power-off"></i> Background</a></li>
             </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">
