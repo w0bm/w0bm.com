@@ -6,6 +6,7 @@
           content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <meta name="_token" content="{{csrf_token()}}">
+    <link rel="icon" href="/favicon.png">
     <title>w0b me n0xy</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
