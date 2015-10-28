@@ -89,6 +89,20 @@
             font-size: 0.8em;
             padding-left: 2px;
         }
+        .navbar-nav > li {
+            border-right: 1px solid #efefef;
+            border-radius: 10px;
+            font-family: Oswald;
+        }
+        .navbar-right > li {
+            border-right: 0;
+            border-left: 1px solid #efefef;
+            border-radius: 10px;
+            font-family: Oswald;
+        }
+        .navbar-inverse .navbar-nav > li > a:hover {
+            color: #2a9fd6;
+        }
     </style>
 </head>
 <body>
