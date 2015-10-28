@@ -14,16 +14,17 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="{{url('categories')}}">Categories</a></li>
-                {{--<li><a href="about">About</a></li>--}}
-                <li><a href="{{url('songindex')}}">Songindex</a></li>
+                <li><a href="{{url('categories')}}"><i class="fa fa-bars"></i> Categories</a></li>
+                <li><a href="{{url('songindex')}}"><i class="fa fa-music"></i> Songindex</a></li>
+		<li><a href="https://kiwiirc.com/client/irc.rizon.net/w0bm" target="_blank"><i class="fa fa-comment"></i> IRC</a>
                 <li><a href="{{url('togglebackground')}}" id="togglebg"><i class="fa fa-power-off"></i> Background</a></li>
+		<li><a href="{{url('about')}}"><i class="fa fa-exclamation"></i> About</a></li>
             </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{url('upload')}}">Upload</a></li>
+                    <li><a href="{{url('upload')}}"><i class="fa fa-cloud-upload"></i> Upload</a></li>
                     <li><a href="{{url('user', Auth::user()->username)}}">{{Auth::user()->username}}</a></li>
-                    <li><a href="{{url('logout')}}">Logout</a></li>
+                    <li><a href="{{url('logout')}}"><i class="fa fa-times"></i> Logout</a></li>
                 </ul>
             @else
                 <form action="{{action('UserController@login')}}" method="post" class="navbar-form navbar-right">
