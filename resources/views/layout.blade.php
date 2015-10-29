@@ -90,12 +90,6 @@
             padding-left: 2px;
         }
         .navbar-nav > li {
-            border-right: 1px solid #efefef;
-            font-family: Oswald;
-        }
-        .navbar-right > li {
-            border-right: 0;
-            border-left: 1px solid #efefef;
             font-family: Oswald;
         }
         .navbar-inverse .navbar-nav > li > a:hover {
