@@ -35,7 +35,7 @@
                                     $categories[$cat->id] = $cat->name;
                                 }
                             ?>
-                            {!! Form::select('category', $categories, 'misc', ['class' => 'form-control']) !!}
+                            {!! Form::select('category', $categories, 8, ['class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="form-group">
