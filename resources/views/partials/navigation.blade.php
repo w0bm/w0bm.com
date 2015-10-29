@@ -23,7 +23,7 @@
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{url('upload')}}"><i class="fa fa-cloud-upload"></i> Upload</a></li>
-                    <li><a href="{{url('user', Auth::user()->username)}}">{{Auth::user()->username}}</a></li>
+                    <li><a href="{{url('user', Auth::user()->username)}}"><i class="fa fa-user"></i> {{Auth::user()->username}}</a></li>
                     <li><a href="{{url('logout')}}"><i class="fa fa-times"></i> Logout</a></li>
                 </ul>
             @else
