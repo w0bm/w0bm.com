@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="page-header">
-        <h1>{{$user->username}} <small>{{ $user->videos()->count() }} <i class="fa fa-cloud-upload"></i> Uploads {{ $user->comments()->count() }} <i class="fa fa-commenting"></i> Comments</small>@if($user->is('Moderator')) <span class="pull-right" style="
+        <h1>{{$user->username}} <small><i class="fa fa-cloud-upload"></i> {{ $user->videos()->count() }} Uploads <i class="fa fa-commenting"></i> {{ $user->comments()->count() }} Comments</small>@if($user->is('Moderator')) <span class="pull-right" style="
     color: #1FB2B0;
 ">ADMIN <i class="fa fa-bolt"></i></span> @endif</h1>
     </div>
