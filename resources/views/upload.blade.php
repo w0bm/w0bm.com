@@ -56,9 +56,10 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Rules</div>
                 <ul class="list-group">
-                    <li class="list-group-item">WebMs must have sound</li>
+                    <li class="list-group-item">WebMs must have sound!</li>
                     <li class="list-group-item list-group-item-danger">Do not upload child pornography!</li>
                     <li class="list-group-item">Uploads must be listed in the correct category</li>
+                    <li class="list-group-item">Do not upload any Nazi stuff that isn't funny or musicvideo related, otherwise we will delete it. For example: http://w0bm.com/823 or http://w0bm.com/554</li>
                 </ul>
                 <div class="panel-body">Please follow these rules to have a great time here at w0bm!</div>
             </div>
