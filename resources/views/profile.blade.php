@@ -4,7 +4,7 @@
     <div class="page-header">
         <h1>{{$user->username}} <small>{{ $user->videos()->count() }} uploads</small>@if($user->is('Moderator')) <span class="pull-right" style="
     color: #1FB2B0;
-">ADMIN</span> @endif</h1>
+">ADMIN <i class="fa fa-bolt"></i></span> @endif</h1>
     </div>
     <div class="row">
         <div class="col-md-6">
