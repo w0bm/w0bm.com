@@ -56,9 +56,10 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">Rules</div>
                 <ul class="list-group">
-                    <li class="list-group-item">WebMs must have sound</li>
-                    <li class="list-group-item list-group-item-danger">Do not upload child pornography! (Loli videos are included)</li>
-                    <li class="list-group-item">Uploads must be listed in the correct category.</li>
+                    <li class="list-group-item">WebMs must have sound!</li>
+                    <li class="list-group-item list-group-item-danger">Do not upload child pornography!</li>
+                    <li class="list-group-item">Uploads must be listed in the correct category</li>
+                    <li class="list-group-item">Do not upload any Nazi stuff that isn't funny or musicvideo related, otherwise we will delete it. For example: <a href="http://w0bm.com/823" target="_blank">/823</a> or <a href="http://w0bm.com/554" target="_blank">/554</a></li>
                     <li class="list-group-item">No boring shit (TV reports about refugees for example).</li>
 		    <li class="list-group-item">No videos of beastiality, gore or very disturbing porn.</li>
                 </ul>
