@@ -61,6 +61,7 @@ Uncreative gore, nazi stuff, animal abuse etc. will be deleted without comment a
                     <li class="list-group-item">1. WebMs must have sound!</li>
                     <li class="list-group-item list-group-item-danger">2. Do not upload child pornography!</li>
                     <li class="list-group-item">3. Uploads must be listed in the correct category!</li>
+                    <li class="list-group-item">4. Do not upload any Nazi stuff that isn't funny or musicvideo related, otherwise we will delete it. For example: <a href="http://w0bm.com/823" target="_blank">/823</a> or <a href="http://w0bm.com/554" target="_blank">/554</a></li>
                 </ul>
                 <div class="panel-body">Please follow these rules to have a great time here at w0bm!</div>
             </div>
