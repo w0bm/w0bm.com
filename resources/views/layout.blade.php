@@ -134,7 +134,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
 <script src="//imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
 <script>
-
     function flash(type, message) {
         var html = '<div class="alert alert-:TYPE: alert-dismissable" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>:REPLACE:</div>';
         var alerts = $('.flashcontainer > .container');
@@ -300,10 +299,6 @@
             html: true
         });
     });
-
-
-
-
 </script>
 </body>
 </html>
