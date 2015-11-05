@@ -134,7 +134,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
 <script src="//imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
 <script>
-
     function flash(type, message) {
         var html = '<div class="alert alert-:TYPE: alert-dismissable" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>:REPLACE:</div>';
         var alerts = $('.flashcontainer > .container');
@@ -143,33 +142,33 @@
         alertrm(jQuery);
     }
 
+    window.requestAnimFrame = (function(){
+        return window.requestAnimationFrame
+                || window.webkitRequestAnimationFrame
+                || window.mozRequestAnimationFrame
+                || function(callback) { window.setTimeout(callback, 1000 / 60);};
+    })();
 
     var video = document.getElementById('video');
     if(video !== null) {
         video.volume = 0.3;
-        video.play();
 
+        var canvas = document.getElementById('bg');
+        var context = canvas.getContext('2d');
+        var cw = canvas.width = canvas.clientWidth|0;
+        var ch = canvas.height = canvas.clientHeight|0;
 
-        var canvas = document.getElementById('bg'),
-                context = canvas.getContext('2d'),
-                cw = canvas.clientWidth ,
-                ch = canvas.clientHeight;
-
-        canvas.width = cw;
-        canvas.height = ch;
-
-
-        video.addEventListener('play', function() {
-            draw(this,context,cw,ch);
-        }, false);
-
-
-        function draw(v,c,w,h) {
-            if(v.paused || v.ended) return false;
-            c.drawImage(v,0,0,w,h);
-
-            setTimeout(draw,20,v,c,w,h);
+        function animationLoop() {
+            if(video.paused || video.ended)
+                return false;
+             context.drawImage(video, 0, 0, cw, ch);
+             window.requestAnimFrame(animationLoop);
         }
+        video.addEventListener('play', function() {
+            animationLoop();
+        });
+        if(video.autoplay)
+            animationLoop();
 
     } else {
         var canvas = document.getElementById('bg');
@@ -300,10 +299,6 @@
             html: true
         });
     });
-        
-    
-
-
 </script>
 </body>
 </html>
