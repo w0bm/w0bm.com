@@ -198,6 +198,16 @@
             }
         }
     })(jQuery);
+    
+    $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
+    	if(e.deltaY < 0) {
+    		document.getElementById('next').click();
+    	}
+    	else {
+    		document.getElementById('prev').click();
+    	}
+    	return false;
+	});
 
     (function ($) {
         $.ajaxSetup({
