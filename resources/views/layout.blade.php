@@ -200,14 +200,14 @@
     })(jQuery);
     
     $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
-    	if(e.deltaY < 0) {
+    	if(e.deltaY < 0 && $('#next').is(":visible")) {
     		document.getElementById('next').click();
     	}
-    	else {
+    	else if($('#prev').is(":visible")) {
     		document.getElementById('prev').click();
     	}
     	return false;
-	});
+    });
 
     (function ($) {
         $.ajaxSetup({
