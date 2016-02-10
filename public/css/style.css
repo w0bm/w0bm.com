@@ -4771,7 +4771,7 @@ button.list-group-item-danger.active:focus {
 .panel-footer {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
-  padding: 0px 0px 8px 30px;
+  padding: 0px 0px 8px 15px;
 }
 .panel > .list-group,
 .panel > .panel-collapse > .list-group {
@@ -6203,3 +6203,4 @@ a.list-group-item-danger.active:focus {
 .jumbotron h6 {
   color: #fff;
 }
+

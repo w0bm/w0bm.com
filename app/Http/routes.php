@@ -31,7 +31,9 @@ Route::get('upload', 'VideoController@create');
 Route::post('upload', 'VideoController@store');
 Route::get('categories', 'CategoryController@index');
 Route::get('about', function() { return view('about'); });
-
+Route::get('irc', function() { return view('irc'); });
+Route::get('impressum', function() { return view('impressum'); });
+Route::get('donate', function() { return view('donate'); });
 Route::get('togglebackground', function() {
     $request = request();
     $user = auth()->check() ? auth()->user() : null;

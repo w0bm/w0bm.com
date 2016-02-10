@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="_token" content="{{csrf_token()}}">
     <link rel="icon" href="/favicon.png">
-    <title>w0b me n0xy</title>
+    <title>w0bm.com - WebMs with sound!</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
     <link rel="favicon" 
@@ -15,90 +15,7 @@
       href="favicon.ico" />
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <style>
-        body { background: #161618; }
-        .flashcontainer {
-            position:absolute;
-            top:20px;
-            opacity: 0.8;
-            z-index: 5;
-            width: 100%
-        }
-        .flashcontainer:empty {
-            display:none;
-        }
-        .navbar {
-            margin-bottom: 0;
-        }
-        .navbar-form > .form-group > input.form-control {
-            background: rgba(32, 32, 32, 0.3);
-            color: #c8c8c8;
-        }
-        #bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            -webkit-filter: blur(100px);
-            filter:blur(100px);
-            transform: translate3d(0, 0, 0);
-            z-index: -1;
-        }
-        .navbar-inverse {
-            background-color: rgba(32, 32, 32, 0.6);
-            border: 0;
-            z-index: 3;
-        }
-        .vertical-align {
-            min-height: calc(100% - 50px);
-            min-height: calc(100vh - 50px);
-            display: flex;
-            align-items: center;
-        }
-        .wrapper {
-            width: 100%;
-        }
-        .row {
-            width: 100%;
-        }
-        .comments {
-            float: left;
-            height: calc(100% - 50px);
-            height: calc(100vh - 50px);
-            width: 350px;
-            background: rgba(32, 32, 32, 0.6);
-            padding: 5px;
-            overflow-y: scroll;
-            border-right: 1px solid #3F3F3F;
-        }
-        .comments textarea {
-            color: #c8c8c8;
-            background: rgba(90, 88, 88, 0.4) none repeat scroll 0% 0%;
-            height: 2.7em;
-            resize: vertical;
-            -webkit-transition: height 0.8s;
-            -moz-transition: height 0.8s;
-            transition: height 0.8s;
-        }
-        .comments textarea:active, .comments textarea:focus, .comments textarea:valid {
-            height: 8em;
-        }
-        a[rel=extern]:after {
-            font-family: 'FontAwesome';
-            content: "\f08e";
-            font-size: 0.8em;
-            padding-left: 2px;
-        }
-        .navbar-nav > li {
-            font-family: Oswald;
-        }
-        .navbar-inverse .navbar-nav > li > a:hover {
-            color: #2a9fd6;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}">
 </head>
 <body>
 <canvas id="bg" @if(!Session::get('background', true)) style="display: none;"@endif></canvas>
@@ -115,11 +32,11 @@
     </div>
 
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.2/isotope.pkgd.min.js"></script>
-<script src="//imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/js/isotope.pkgd.min.js"></script>
+<script src="/js/imagesloaded.pkgd.min.js"></script>
 <script>
     function flash(type, message) {
         var html = '<div class="alert alert-:TYPE: alert-dismissable" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>:REPLACE:</div>';
@@ -139,6 +56,12 @@
     var video = document.getElementById('video');
     if(video !== null) {
         video.volume = 0.3;
+        if (typeof localStorage != "undefined") {
+            video.volume = localStorage.getItem("volume") || 0.3;
+            video.addEventListener("volumechange", function () {
+                localStorage.setItem("volume", video.volume);
+            });
+        }
 
         var canvas = document.getElementById('bg');
         var context = canvas.getContext('2d');
@@ -296,6 +219,62 @@
             html: true
         });
     });
+
+    /* bye bye kadse D: greetz gz
+    (function() {
+        new Image().src = "/images/catfart/cutf.png";
+        var n = document.createElement("div");
+        var a = new Audio();
+
+        a.addEventListener("pause", function () {
+            n.setAttribute("class", "catfart");
+        });
+
+        a.addEventListener("play", function () {
+            n.setAttribute("class", "catfart farting");
+        });
+
+        n.addEventListener("mouseover", function () {
+            if (!a.paused) return;
+            a.src = "/images/catfart/pupsi" + (Math.random()*28|0) + ".mp3";
+            a.play();
+        });
+
+        n.setAttribute("class", "catfart");
+        document.body.appendChild(n);
+    })();*/
+
+    (function() {
+        var v = document.getElementById("video");
+        if (typeof v == "undefined") return;
+        var p = v.parentNode;
+        p.style.marginBottom = "1px";
+
+        var bar = document.createElement("div");
+        var outerBar = document.createElement("div");
+        outerBar.appendChild(bar);
+        p.appendChild(outerBar);
+
+        $(outerBar).css({
+            height: "1px", width: "100%",
+            overflow: "hidden", willChange: "transform",
+            position: "absolute", bottom: "0"
+        });
+
+        $(bar).css({
+            height: "inherit", width: "inherit",
+            position: "absolute", transform: "translateX(-100%)",
+            backgroundColor: "rgba(31, 178, 176, 0.4)"
+        });
+
+        var update = function () {
+            requestAnimationFrame(update);
+            if (v.paused) return;
+            var perc = 100 / v.duration * v.currentTime;
+            bar.style.transform = "translateX("+(-100 + perc)+"%)";
+        };
+        update();
+    })();
 </script>
 </body>
 </html>

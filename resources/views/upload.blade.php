@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Upload</button> Maximum filesize is 30MB | Allowed filetypes: .webm | 20 Uploads every 24h 
+                            <button type="submit" class="btn btn-default">Upload</button> Vor dem hochladen bitte die <a href="/about">AGB</a> lesen.
                         </div>
                     </div>
                 </form>
@@ -54,16 +54,13 @@
         </div>
         <div class="col-md-3">
             <div class="panel panel-primary">
-                <div class="panel-heading">Rules</div>
+                <div class="panel-heading">Das Regelwerk</div>
                 <ul class="list-group">
-                      <li class="list-group-item list-group-item-danger">w0bms goal ist not to make up a platform to spread bizarre and disgusting videos, but instead to create a collection of videos worth multiple watching. That's why we bid the uploaders to consideredly decide whether to publish a video or not. Favored are clips such as remixes, fails you can laugh about, funny cringestuff, etc.
-Uncreative gore, nazi stuff, animal abuse etc. will be deleted without comment and can result in a ban. Now please read the rules.</li>
-                    <li class="list-group-item">1. WebMs must have sound!</li>
-                    <li class="list-group-item list-group-item-danger">2. Do not upload child pornography!</li>
-                    <li class="list-group-item">3. Uploads must be listed in the correct category!</li>
-                    <li class="list-group-item">4. Do not upload any Nazi stuff that isn't funny or musicvideo related, otherwise we will delete it. For example: <a href="http://w0bm.com/823" target="_blank">/823</a> or <a href="http://w0bm.com/554" target="_blank">/554</a></li>
+                    <li class="list-group-item">1. WebMs müssen Ton haben!</li>
+                    <li class="list-group-item list-group-item-danger">2. Keine Videos mit Minderjährigen die gerade ordentlich geweitet werden. Keep it legal! ;)</li>
+                    <li class="list-group-item">3. Sei kein Hurensohn!</li>
                 </ul>
-                <div class="panel-body">Please follow these rules to have a great time here at w0bm!</div>
+                <div class="panel-body">Du kannst täglich 20 WebMs scheißeposten mit einer maximalen Dateigröße von 10MB.</div>
             </div>
         </div>
     </div>

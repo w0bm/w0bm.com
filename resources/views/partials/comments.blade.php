@@ -1,4 +1,4 @@
-<aside class="comments">
+<aside class="comments hidden-xs">
     @if(Auth::check())
         @include('partials.commentform')
     @endif

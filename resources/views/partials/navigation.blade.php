@@ -16,7 +16,7 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="{{url('categories')}}"><i class="fa fa-bars"></i> Categories</a></li>
                 <li><a href="{{url('songindex')}}"><i class="fa fa-music"></i> Songindex</a></li>
-		<li><a href="https://kiwiirc.com/client/irc.rizon.net/w0bm" target="_blank"><i class="fa fa-comment"></i> IRC</a>
+                <li><a href="{{url('irc')}}"><i class="fa fa-comment"></i> IRC</a></li>
                 <li><a href="{{url('togglebackground')}}" id="togglebg"><i class="fa fa-power-off"></i> Background</a></li>
 		<li><a href="{{url('about')}}"><i class="fa fa-exclamation"></i> About</a></li>
             </ul>
