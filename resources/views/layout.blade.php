@@ -200,10 +200,10 @@
     })(jQuery);
     
     $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
-    	if(e.deltaY < 0 && $('#next').is(":visible")) {
+    	if(e.deltaY < 0 && $('#next').css('visibility') != 'hidden') {
     		document.getElementById('next').click();
     	}
-    	else if($('#prev').is(":visible")) {
+    	else if($('#prev').css('visibility') != 'hidden') {
     		document.getElementById('prev').click();
     	}
     	return false;
