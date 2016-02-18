@@ -109,15 +109,19 @@
         }
     })(jQuery);
     
-    $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
-    	if(e.deltaY < 0 && $('#next').is(":visible")) {
-    		document.getElementById('next').click();
-    	}
-    	else if($('#prev').is(":visible")) {
-    		document.getElementById('prev').click();
-    	}
-    	return false;
-    });
+    //temporary fix for scrolling not working on other pages
+    var regex = /w0bm.com\/(?:.+\/)?(\d+)/i;
+    if(regex.test(window.location.href) && $('video').length) {
+        $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
+        	if(e.deltaY < 0 && $('#next').css('visibility') != 'hidden') {
+        		document.getElementById('next').click();
+        	}
+        	else if($('#prev').css('visibility') != 'hidden') {
+        		document.getElementById('prev').click();
+        	}
+        	return false;
+        });
+    }
 
     (function ($) {
         $.ajaxSetup({
