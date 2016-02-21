@@ -84,45 +84,41 @@
         var canvas = document.getElementById('bg');
         canvas.parentNode.removeChild(canvas);
     }
-
-    (function($){
-        document.onkeydown = checkKey;
-
-        var prev = document.getElementById('prev');
-        var next = document.getElementById('next');
-        function checkKey(event) {
-            if (event.defaultPrevented || event.target.nodeName.match(/\b(input|textarea)\b/i) ) {
-                return;
-            }
-            if(prev == undefined || next == undefined) return;
-            if(event.keyIdentifier == 'Left') {
-                if(prev.style.visibility == 'hidden') {
-                    return;
-                }
-                prev.click();
-            } else if(event.keyIdentifier == 'Right') {
-                if(next.style.visibility == 'hidden') {
-                    return;
-                }
-                next.click();
-            }
-        }
-    })(jQuery);
     
     //temporary fix for scrolling not working on other pages
     var regex = /w0bm.com\/(?:.+\/)?(\d+)/i;
     if(regex.test(window.location.href) && $('video').length) {
+        $('html').on('keypress', function(e) {
+            if(e.defaultPrevented || event.target.nodeName.match(/\b(input|textarea)\b/i)) {
+                return;
+            }
+            if(e.keyCode == 39) {
+                get_next();
+            }
+            else if(e.keyCode == 37) {
+                get_prev();
+            }
+        });
         $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
         	if(e.deltaY < 0) {
-        	    if($('#next').css('visibility') != 'hidden') {
-        		    document.getElementById('next').click();
-        	    }
+        	    get_next();
         	}
-        	else if($('#prev').css('visibility') != 'hidden') {
-        		document.getElementById('prev').click();
+        	else {
+        	    get_prev();
         	}
-        	return false;
         });
+    }
+    
+    function get_next() {
+        if($('#next').css('visibility') != 'hidden') {
+            document.getElementById('next').click();
+        }
+    }
+    
+    function get_prev() {
+        if($('#prev').css('visibility') != 'hidden') {
+            document.getElementById('prev').click();
+        }
     }
 
     (function ($) {
