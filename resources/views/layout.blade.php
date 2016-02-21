@@ -98,6 +98,9 @@
             else if(e.keyCode == 37) {
                 get_prev();
             }
+            else if(e.keyCode == 82) {
+                get_random();
+            }
         });
         $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
         	if(e.deltaY < 0) {
@@ -106,6 +109,7 @@
         	else {
         	    get_prev();
         	}
+        	return false;
         });
     }
     
@@ -119,6 +123,10 @@
         if($('#prev').css('visibility') != 'hidden') {
             document.getElementById('prev').click();
         }
+    }
+    
+    function get_random() {
+        window.location.href = $('a:contains(random)').attr('href');
     }
 
     (function ($) {
