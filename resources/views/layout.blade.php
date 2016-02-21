@@ -193,30 +193,30 @@
             }
         });
         $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
-        	if(e.deltaY < 0) {
-        	    get_next();
-        	}
-        	else {
-        	    get_prev();
-        	}
+            e.deltaY < 0 ? get_next() : get_prev();
         	return false;
         });
+        if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+            $('video').on('click', function() {
+	            $(this).get(0).paused ? $(this).get(0).play() : $(this).get(0).pause();
+            });
+        }
     }
     
     function get_next() {
         if($('#next').css('visibility') != 'hidden') {
-            document.getElementById('next').click();
+            $('#next').get(0).click();
         }
     }
     
     function get_prev() {
         if($('#prev').css('visibility') != 'hidden') {
-            document.getElementById('prev').click();
+            $('#prev').get(0).click();
         }
     }
     
     function get_random() {
-        window.location.href = $('a:contains(random)').attr('href');
+        $('a:contains(random)').get(0).click();
     }
 
     (function ($) {
