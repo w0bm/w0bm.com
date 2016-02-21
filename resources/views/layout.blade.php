@@ -216,7 +216,7 @@
     }
     
     function get_random() {
-        window.location = $('a:contains(random)').attr('href');
+        window.location.href = $('a:contains(random)').attr('href');
     }
 
     (function ($) {
