@@ -191,6 +191,9 @@
             else if(e.keyCode == 82) {
                 get_random();
             }
+            else if(e.keyCode == 70) {
+            	to_favs();
+            }
         });
         $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
             e.deltaY < 0 ? get_next() : get_prev();
@@ -217,6 +220,10 @@
     
     function get_random() {
         $('a:contains(random)').get(0).click();
+    }
+    
+    function to_favs() {
+    	$('#fav').get(0).click();
     }
 
     (function ($) {
