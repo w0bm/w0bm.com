@@ -178,11 +178,11 @@
     //temporary fix for scrolling not working on other pages
     var regex = /w0bm.com\/(?:.+\/)?(\d+)/i;
     if(regex.test(window.location.href) && $('video').length) {
-        $('html').on('keypress', function(e) {
+        $('html').on('keydown', function(e) {
             if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i)) {
                 return;
             }
-            if(e.keyCode == 39) {
+            else if(e.keyCode == 39) {
                 get_next();
             }
             else if(e.keyCode == 37) {
