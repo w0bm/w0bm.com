@@ -179,6 +179,9 @@
     var regex = /w0bm.com\/(?:.+\/)?(\d+)/i;
     if(regex.test(window.location.href) && $('video').length) {
         $('html').on('keypress', function(e) {
+            if(e.defaultPrevented || event.target.nodeName.match(/\b(input|textarea)\b/i)) {
+                return;
+            }
             if(e.keyCode == 39) {
                 get_next();
             }
