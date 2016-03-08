@@ -95,6 +95,9 @@
         .navbar-inverse .navbar-nav > li > a:hover {
             color: #2a9fd6;
         }
+        .panel-body {
+            word-wrap: break-word;
+        }
     </style>
 </head>
 <body>
