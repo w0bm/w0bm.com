@@ -219,7 +219,7 @@
     }
     
     function get_random() {
-        $('a:contains(random)').get(0).click();
+        $('#prev').next().get(0).click();
     }
     
     function to_favs() {
