@@ -4,7 +4,7 @@
     <div class="page-header">
         <h1>{{$user->username}} <small><i class="fa fa-cloud-upload"></i> {{ $user->videos()->count() }} Uploads <i class="fa fa-commenting"></i> {{ $user->comments()->count() }} Comments</small>@if($user->is('Moderator')) <span class="pull-right" style="
     color: #1FB2B0;
-"><i class="fa fa-bolt"></i></span> @endif</h1>
+"><i class="fa fa-bolt anim"></i></span> @endif</h1>
     </div>
     <div class="row">
         <div class="col-md-6">

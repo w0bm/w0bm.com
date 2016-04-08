@@ -12,13 +12,13 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class=" collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="{{url('categories')}}"><i class="fa fa-bars"></i> Categories</a></li>
                 <li><a href="{{url('songindex')}}"><i class="fa fa-music"></i> Songindex</a></li>
                 <li><a href="{{url('irc')}}"><i class="fa fa-comment"></i> IRC</a></li>
-                <li><a href="{{url('togglebackground')}}" id="togglebg"><i class="fa fa-power-off"></i> Background</a></li>
 		<li><a href="{{url('about')}}"><i class="fa fa-exclamation"></i> About</a></li>
+		<li><a href="{{url('donate')}}"><i class="fa fa-dollar"></i> Help us!</a></li>
             </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">
@@ -33,8 +33,8 @@
                         <input type="text" name="identifier" placeholder="Username/Email" class="form-control">
                         <input type="password" name="password" placeholder="Password" class="form-control">
                         <input type="checkbox" name="remember">
-                        <button type="submit" class="btn btn-primary">Login</button>
-                        <a href="{{url('register')}}" class="btn btn-success">Register</a>
+                        <button type="submit" class="btnlogin btn-primary">Login</button>
+                        <!--<a href="{{url('register')}}" class="btn btn-success">Register</a>-->
                     </div>
                 </form>
             @endif

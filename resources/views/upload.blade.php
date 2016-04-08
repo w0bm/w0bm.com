@@ -46,21 +46,23 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Upload</button> Vor dem hochladen bitte die <a href="/about">AGB</a> lesen.
+                            <button type="submit" class="btn btn-default">Shitpost</button> Before you shitpost make sure to read the <a href="/about">ToS</a> .
                         </div>
                     </div>
                 </form>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Das Regelwerk</div>
-                <ul class="list-group">
-                    <li class="list-group-item">1. WebMs müssen Ton haben!</li>
-                    <li class="list-group-item list-group-item-danger">2. Keine Videos mit Minderjährigen die gerade ordentlich geweitet werden. Keep it legal! ;)</li>
-                    <li class="list-group-item">3. Sei kein Hurensohn!</li>
-                </ul>
-                <div class="panel-body">Du kannst täglich 20 WebMs scheißeposten mit einer maximalen Dateigröße von 10MB.</div>
+            <div class="panel panel-primary rulez">
+                <div class="panel-heading"><b><i>Da Rules</i></b></div>
+                <ol class="list-group">
+                    <li class="list-group-item"><b>1.</b> WebMs need to have sound!</li>
+                    <li class="list-group-item list-group-item-danger"><b>2.</b> No child pornography!</li>
+                    <li class="list-group-item"><b>3.</b> Upload only videos you think others will like!</li>
+                    <li class="list-group-item"><b>4.</b> Don't be a faggot.</li>
+                </ol>
+                <div class="panel-body">If you need help creating WebMs, check <a href="/webm">this</a> out.</div>
+                <div class="panel-body"><b>Current Limits:</b> <br> <b>10</b> <i>uploads every 12 hours</i> <br><i>Maximum filesize:</i> <b>30MB</b> <br><i>Only</i> <b>.webm</b> <i>allowed</i></div>
             </div>
         </div>
     </div>

@@ -24,11 +24,14 @@
                         <a class="last" href="{{url($video->category->shortname, $video::whereCategoryId($video->category->id)->max('id'))}}">last →</a>
                     @endif
                     <br><span class="videoinfo">
+			<div id=".comments"></div>
+			<a href="#" id="toggle"><i class="fa fa-comments"></i></a>
+                    <a href="{{url('togglebackground')}}" id="togglebg"><i style="color:#fff200;" class="fa fa-lightbulb-o"></i></a>
                             @if(auth()->check())
                                 @if(auth()->user()->hasFaved($video->id))
-                                    <a id="fav" href="{{url($video->id . '/fav')}}"><i class="fa fa-heart"></i></a>
+                                    <a id="fav" href="{{url($video->id . '/fav')}}"><i style="color:#ff0094;" class="fa fa-heart"></i></a>
                                 @else
-                                    <a id="fav" href="{{url($video->id . '/fav')}}"><i class="fa fa-heart-o"></i></a>
+                                    <a id="fav" href="{{url($video->id . '/fav')}}"><i style="color:#ff0094;" class="fa fa-heart-o"></i></a>
                                 @endif
                             @else
                                 <a href="{{url($video->id . '/fav')}}"><i class="fa fa-heart-o"></i></a>
@@ -43,7 +46,7 @@
                                                            @if($video->interpret) <em>Interpret:</em> {{$video->interpret}}<br>@endif
                                                            @if($video->songtitle) <em>Songtitle:</em> {{$video->songtitle}}<br>@endif
                                                            @if($video->imgsource) <em>Video Source:</em> {{$video->imgsource}}<br>@endif
-                                                           <em>Category:</em> {{$video->category->name}}"></i> uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}@if($video->user->is('Moderator')) <i class="fa fa-bolt"></i>@endif</a></i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
+                                                           <em>Category:</em> {{$video->category->name}}"></i> uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}@if($video->user->is('Moderator')) <i class="fa fa-bolt anim"></i>@endif</a></i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
                 </div>
             @else
                 <div class="text-center"  style="position: unset;">
@@ -63,11 +66,14 @@
                         <a class="last" href="{{url($video->max('id'))}}">last →</a>
                     @endif
                     <br><span class="videoinfo">
+		<div id=".comments"></div>
+		<a href="#" id="toggle"><i class="fa fa-comments"></i></a>	
+		<a href="{{url('togglebackground')}}" id="togglebg"><i style="color:#fff200;" class="fa fa-lightbulb-o"></i></a>
                             @if(auth()->check())
                                 @if(auth()->user()->hasFaved($video->id))
-                                    <a id="fav" href="{{url($video->id . '/fav')}}"><i class="fa fa-heart"></i></a>
+                                    <a id="fav" href="{{url($video->id . '/fav')}}"><i style="color:#ff0094;" class="fa fa-heart"></i></a>
                                 @else
-                                    <a id="fav" href="{{url($video->id . '/fav')}}"><i class="fa fa-heart-o"></i></a>
+                                    <a id="fav" href="{{url($video->id . '/fav')}}"><i style="color:#ff0094;" class="fa fa-heart-o"></i></a>
                                 @endif
                             @else
                                 <a href="{{url($video->id . '/fav')}}"><i class="fa fa-heart-o"></i></a>
@@ -82,7 +88,7 @@
                                                            @if($video->interpret) <em>Interpret:</em> {{$video->interpret}}<br>@endif
                                                            @if($video->songtitle) <em>Songtitle:</em> {{$video->songtitle}}<br>@endif
                                                            @if($video->imgsource) <em>Video Source:</em> {{$video->imgsource}}<br>@endif
-                                                           <em>Category:</em> {{$video->category->name}}"></i> uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}@if($video->user->is('Moderator')) <i class="fa fa-bolt"></i>@endif</a></i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
+                                                           <em>Category:</em> {{$video->category->name}}"></i> uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}@if($video->user->is('Moderator')) <i class="fa fa-bolt anim"></i>@endif</a></i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="btn btn-danger" href="{{url($video->id . '/delete')}}">Delete</a>@endif</span>
 
                 </div>
             @endif

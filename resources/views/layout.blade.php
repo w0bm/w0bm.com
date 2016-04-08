@@ -9,12 +9,12 @@
     <link rel="icon" href="/favicon.png">
     <title>w0bm.com - WebMs with sound!</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
     <link rel="favicon" 
       type="image/ico" 
       href="favicon.ico" />
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}">
 </head>
 <body>
@@ -104,6 +104,9 @@
             else if(e.keyCode == 70) {
             	to_favs();
             }
+            else if(e.keyCode == 67) {
+            	$(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
+            }
         });
         $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
             e.deltaY < 0 ? get_next() : get_prev();
@@ -116,6 +119,7 @@
         }
     }
     
+
     function get_next() {
         if($('#next').css('visibility') != 'hidden') {
             $('#next').get(0).click();
@@ -292,6 +296,16 @@
         };
         update();
     })();
+
+
+    (function() {
+        var comments = localStorage.comments;
+        if (comments === undefined) localStorage.comments = true;
+        comments = comments === undefined || comments === "true";
+	$(".comments").toggle(comments);
+        $("#toggle").click(function(){$(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"))});
+    })();
+
 </script>
 </body>
 </html>

@@ -45,7 +45,7 @@ class VideoController extends Controller
         $user = auth()->check() ? auth()->user() : null;
         if(is_null($user)) return redirect('/')->with('error', 'You need to be logged in');
         
-        if(!$user->can('break_upload_limit') && $user->videos()->newlyups()->count() >= 20)
+        if(!$user->can('break_upload_limit') && $user->videos()->newlyups()->count() >= 10)
             return redirect()->back()->with('error', 'Uploadlimit reached')->withInput();
             
         
@@ -58,8 +58,8 @@ class VideoController extends Controller
         || $file->getClientOriginalExtension() != 'webm'
         || $file->getMimeType() != 'video/webm') return redirect()->back()->with('error', 'Invalid file');
         
-        if(!$user->can('break_max_filesize') && $file->getSize() > 10485760)
-            return redirect()->back()->with('error', 'File to big. Max 10MB')->withInput();
+        if(!$user->can('break_max_filesize') && $file->getSize() > 3e7)
+        return redirect()->back()->with('error', 'File to big. Max 30MB')->withInput();
 
         if(($v = Video::withTrashed()->where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null)
             return redirect($v->id)->with('error', 'Video already exists');
@@ -90,7 +90,7 @@ class VideoController extends Controller
     public function show($id)
     {
         // GZ's kläglicher versuch:
-        if(!auth()->check()) return redirect('/irc')->with('error', 'You need to be logged in to view our content');
+        //if(!auth()->check()) return redirect('/irc')->with('error', 'You need to be logged in to view our content');
 
         $video = Video::find($id);
         if(is_null($video)) return redirect()->back()->with('error', 'No video with that ID found');

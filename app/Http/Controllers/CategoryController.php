@@ -51,7 +51,7 @@ class CategoryController extends Controller
     public function showVideo($shortname, $id = null)
     {
         // GZ's kläglicher versuch:
-        if(!auth()->check()) return redirect('/irc')->with('error', 'You need to be logged in to view our content');
+        //if(!auth()->check()) return redirect('/irc')->with('error', 'You need to be logged in to view our content');
 
         $category = Category::whereShortname($shortname)->first();
         if(is_null($category)) return redirect()->back()->with('error', 'Category not found');

@@ -14,7 +14,7 @@
 Route::get('/', ['as' => 'home', function () {
     Session::reflash();
     $id = App\Models\Video::count() - 1;
-    $id = rand(0, $id);
+    $id = mt_rand(0, $id);
     $video = App\Models\Video::skip($id)->first();
     return redirect($video->id);
 }]);
@@ -30,10 +30,13 @@ Route::get('songindex', 'VideoController@index');
 Route::get('upload', 'VideoController@create');
 Route::post('upload', 'VideoController@store');
 Route::get('categories', 'CategoryController@index');
+Route::get('webm', function() { return view('webm'); });
 Route::get('about', function() { return view('about'); });
 Route::get('irc', function() { return view('irc'); });
-Route::get('impressum', function() { return view('impressum'); });
+Route::get('contact', function() { return view('contact'); });
+Route::get('privacy', function() { return view('privacy'); });
 Route::get('donate', function() { return view('donate'); });
+Route::get('login', function() { return view('login'); });
 Route::get('togglebackground', function() {
     $request = request();
     $user = auth()->check() ? auth()->user() : null;
