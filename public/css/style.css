@@ -822,7 +822,7 @@ pre code {
   .comments + div > .container {
     width: 400px;
   }
-  .comments + div > .flashcontainer {
+  .comments + div > .flashcontainer > .container {
     width: 400px;
   }
 }
@@ -833,7 +833,7 @@ pre code {
   .comments + div > .container {
     width: 620px;
   }
-  .comments + div > .flashcontainer {
+  .comments + div > .flashcontainer > .container {
     width: 620px;
   }
 }
@@ -844,7 +844,7 @@ pre code {
   .comments + div > .container {
     width: 820px;
   }
-  .comments + div > .flashcontainer {
+  .comments + div > .flashcontainer > .container {
     width: 820px;
   }
 }
