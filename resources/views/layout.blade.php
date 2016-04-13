@@ -117,9 +117,11 @@
 	            $(this).get(0).paused ? $(this).get(0).play() : $(this).get(0).pause();
             });
         }
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		if($('#bg').css('display') != 'none') $('#togglebg').click();
+	}
     }
     
-
     function get_next() {
         if($('#next').css('visibility') != 'hidden') {
             $('#next').get(0).click();
