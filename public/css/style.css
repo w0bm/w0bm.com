@@ -822,12 +822,18 @@ pre code {
   .comments + div > .container {
     width: 400px;
   }
+  .comments + div > .flashcontainer {
+    width: 400px;
+  }
 }
 @media (min-width: 992px) {
   .container {
     width: 970px;
   }
   .comments + div > .container {
+    width: 620px;
+  }
+  .comments + div > .flashcontainer {
     width: 620px;
   }
 }
@@ -838,10 +844,13 @@ pre code {
   .comments + div > .container {
     width: 820px;
   }
+  .comments + div > .flashcontainer {
+    width: 820px;
+  }
 }
 @media (min-width: 1550px) {
   .container {
-    width: 1170px!important;
+    width: 1170px !important;
   }
 }
 .container-fluid {
