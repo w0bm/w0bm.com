@@ -56,13 +56,31 @@ class Comment extends Model
         }
         $text = preg_replace($boldMather, '<strong>$1</strong>', $text);
         $text = preg_replace($italicMathcer, '<em>$1</em>', $text);
-        $text = preg_replace($delMatcher, '<s>$1</s>', $text);
         $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
         $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
         $text = preg_replace($newlineMatcher, '$1<br>', $text);
         
 
         return $text;
+    }
+
+    public static function isPicture($url) {
+        $pictypes = [
+            'jpg',
+            'png',
+            'gif',
+            'webp',
+            'bmp'
+        ];
+
+        $regex = "/^.+\.(.+)$/i";
+        
+        $type = [];
+
+        if(preg_match($regex, $url, $type) > 0) {
+            return in_array($type[1], $pictypes);
+        }
+        return false;
     }
 
     public function getMentioned() {

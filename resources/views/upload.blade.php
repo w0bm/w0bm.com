@@ -46,24 +46,23 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Upload</button>
+                            <button type="submit" class="btn btn-default">Shitpost</button> Before you shitpost make sure to read the <a href="/about">ToS</a> .
                         </div>
                     </div>
                 </form>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Rules</div>
-                <ul class="list-group">
-                      <li class="list-group-item list-group-item-danger">w0bms goal ist not to make up a platform to spread bizarre and disgusting videos, but instead to create a collection of videos worth multiple watching. That's why we bid the uploaders to consideredly decide whether to publish a video or not. Favored are clips such as remixes, fails you can laugh about, funny cringestuff, etc.
-Uncreative gore, nazi stuff, animal abuse etc. will be deleted without comment and can result in a ban. Now please read the rules.</li>
-                    <li class="list-group-item">1. WebMs must have sound!</li>
-                    <li class="list-group-item list-group-item-danger">2. Do not upload child pornography!</li>
-                    <li class="list-group-item">3. Uploads must be listed in the correct category!</li>
-                    <li class="list-group-item">4. Do not upload any Nazi stuff that isn't funny or musicvideo related, otherwise we will delete it. For example: <a href="http://w0bm.com/823" target="_blank">/823</a> or <a href="http://w0bm.com/554" target="_blank">/554</a></li>
-                </ul>
-                <div class="panel-body">Please follow these rules to have a great time here at w0bm!</div>
+            <div class="panel panel-primary rulez">
+                <div class="panel-heading"><b><i>Da Rules</i></b></div>
+                <ol class="list-group">
+                    <li class="list-group-item"><b>1.</b> WebMs need to have sound!</li>
+                    <li class="list-group-item list-group-item-danger"><b>2.</b> No child pornography!</li>
+                    <li class="list-group-item"><b>3.</b> Upload only videos you think others will like!</li>
+                    <li class="list-group-item"><b>4.</b> Don't be a faggot.</li>
+                </ol>
+                <div class="panel-body">If you need help creating WebMs, check <a href="/webm">this</a> out.</div>
+                <div class="panel-body"><b>Current Limits:</b> <br> <b>10</b> <i>uploads every 12 hours</i> <br><i>Maximum filesize:</i> <b>30MB</b> <br><i>Only</i> <b>.webm</b> <i>allowed</i></div>
             </div>
         </div>
     </div>

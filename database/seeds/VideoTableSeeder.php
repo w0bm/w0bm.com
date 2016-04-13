@@ -22,9 +22,12 @@ class VideoTableSeeder extends Seeder
         });
 
         $category = \App\Models\Category::where('shortname', '=', 'misc')->first();
-        $user = \App\Models\User::first();
+        $user = \App\Models\User::find(1);
 
         foreach($videos as $video) {
+            if(\App\Models\Video::whereFile(basename($video))->count() > 0)
+                continue;
+
             $v = new \App\Models\Video();
             $v->user()->associate($user);
             $v->category()->associate($category);

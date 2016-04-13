@@ -3,7 +3,7 @@
     <div class="page-header">
         <h1>Songindex</h1>
     </div>
-    <table class="table table-hover table-condensed table-striped">
+    <table class="table table-hover table-condensed">
         <thead>
         <tr>
             <th>ID</th>
