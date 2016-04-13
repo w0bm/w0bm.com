@@ -228,13 +228,6 @@ code {
             100% {color:red;}
 }
 
-.alert {
-        padding: 0px;
-        margin-bottom: 20px;
-        border: 0px solid transparent;
-        border-radius: 0px;
-}
-
 .btnlogin {
     display: inline-block;
     margin-bottom: 0;
