@@ -853,6 +853,10 @@ pre code {
     width: 1170px !important;
   }
 }
+.comments {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
