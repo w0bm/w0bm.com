@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Shitpost</button> Before you shitpost make sure to read the <a href="/about">ToS</a> .
+                            <button type="submit" class="btn btn-default">Upload</button> Before you upload make sure to read the <a href="/about">ToS</a> .
                         </div>
                     </div>
                 </form>
@@ -60,6 +60,7 @@
                     <li class="list-group-item list-group-item-danger"><b>2.</b> No child pornography!</li>
                     <li class="list-group-item"><b>3.</b> Upload only videos you think others will like!</li>
                     <li class="list-group-item"><b>4.</b> Don't be a faggot.</li>
+		    <li class="list-group-item"><b>5.</b> Only shitpost when you're sure it's no repost.</li>
                 </ol>
                 <div class="panel-body">If you need help creating WebMs, check <a href="/webm">this</a> out.</div>
                 <div class="panel-body"><b>Current Limits:</b> <br> <b>10</b> <i>uploads every 12 hours</i> <br><i>Maximum filesize:</i> <b>30MB</b> <br><i>Only</i> <b>.webm</b> <i>allowed</i></div>

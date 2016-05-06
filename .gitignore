@@ -4,6 +4,8 @@ Homestead.yaml
 Homestead.json
 .env
 public/b/*
+public/thumbs/*
+public/z0r*
 /.gitignore
 
 storage/deleted/*

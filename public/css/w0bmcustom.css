@@ -1,4 +1,4 @@
-body { 
+body {
     background-color: #161618;
    /* background: #161618 url("/spurdo.gif") no-repeat fixed right bottom;*/
 }
@@ -12,6 +12,28 @@ body {
     z-index: -1;
 }*/
 
+.indexedit input, .indexedit select {
+    display: none;
+}
+
+div.table {
+    display: table;
+}
+div.tr {
+    display: table-row;
+}
+div.td {
+    display: table-cell;
+}
+div.thead {
+    display: table-header-group;
+}
+div.th {
+    display: table-cell;
+}
+div.tbody {
+    display: table-row-group;
+}
 
 .catfart {
     position: fixed;
@@ -219,7 +241,7 @@ code {
             75%  {color:#23dd06;}
             100% {color:red;}
             }
-                         
+
     @-webkit-keyframes color {
             0%   {color:red;}
             25%  {color:yellow;}
@@ -264,6 +286,81 @@ body {
   animation-timing-function: ease-in-out;
 }*/
 
+
+
 video:before {
-box-shadow: 0 0 15px #000;
+    box-shadow: 0 0 15px #000;
+}
+
+.comment_image {
+  max-width: 50%;
+  max-height: 35%;
+}
+
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.navbar-default {
+    background-color: #1C1C1D;
+    border-color: #282828;
+}
+
+.navbar-brand > img {
+    display: block;
+    height: 49px;
+    margin-top: -8px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 13px !important;
+    padding-bottom: 15px;
+}
+
+.fucklaravel {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 768px) {
+  .fucklaravel {
+    width: 750px;
+  }
+  .fucklaravel + div > .fucklaravel {
+    width: 400px;
+  }
+  .fucklaravel + div > .flashcontainer > .fucklaravel {
+    width: 400px;
+  }
+}
+@media (min-width: 992px) {
+  .fucklaravel {
+    width: 970px;
+  }
+  .fucklaravel + div > .fucklaravel {
+    width: 620px;
+  }
+  .fucklaravel + div > .flashcontainer > .fucklaravel {
+    width: 620px;
+  }
+}
+@media (min-width: 1200px) {
+  .fucklaravel {
+    width: 1170px;
+  }
+  .fucklaravel + div > .fucklaravel {
+    width: 820px;
+  }
+  .fucklaravel + div > .flashcontainer > .fucklaravel {
+    width: 820px;
+  }
+}
+@media (min-width: 1550px) {
+  .fucklaravel {
+    width: 1550px !important;
+  }
 }

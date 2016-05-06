@@ -39,6 +39,7 @@ class Comment extends Model
 
     public static function simplemd($text)
     {
+	$commentcfg = config('comments');
         $nameMatcher = '/@(\w+)/i';
         $internUrlMatcher = '/https?:\/\/(?:www\.)?w0bm\.com(\S+)/i';
         $externUrlMatcher = '/(https?:\/\/(?!(?:www\.)?w0bm\.com)\S+\.\S+)/i';
@@ -46,6 +47,8 @@ class Comment extends Model
         $italicMathcer = '/_(.+)_/';
         $delMatcher = '/-(.+)-/';
         $newlineMatcher = '/(^.*$)/m';
+
+        $imageMatcher = '/(\<a href=\"(https:\/\/('.join('|',$commentcfg["allowedHosters"]).').*(png|gif|jpg))\" target=\"_blank\" rel=\"extern\"\>.*\<\/a\>)/i';
         
         if(preg_match_all($nameMatcher, $text, $users) > 0) {
             foreach ($users as $user) {
@@ -58,6 +61,7 @@ class Comment extends Model
         $text = preg_replace($italicMathcer, '<em>$1</em>', $text);
         $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
         $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
+        $text = preg_replace($imageMatcher, '<img src="$2" alt="Image" class="comment_image" />', $text);
         $text = preg_replace($newlineMatcher, '$1<br>', $text);
         
 

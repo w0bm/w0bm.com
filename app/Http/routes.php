@@ -27,6 +27,7 @@ Route::get('register', 'UserController@create');
 Route::post('register', 'UserController@store');
 Route::get('activate/{token}', 'UserController@activate');
 Route::get('songindex', 'VideoController@index');
+Route::post('songindex/{id}', 'VideoController@update');
 Route::get('upload', 'VideoController@create');
 Route::post('upload', 'VideoController@store');
 Route::get('categories', 'CategoryController@index');
@@ -35,6 +36,7 @@ Route::get('about', function() { return view('about'); });
 Route::get('irc', function() { return view('irc'); });
 Route::get('contact', function() { return view('contact'); });
 Route::get('privacy', function() { return view('privacy'); });
+Route::get('help', function() { return view('help'); });
 Route::get('donate', function() { return view('donate'); });
 Route::get('login', function() { return view('login'); });
 Route::get('togglebackground', function() {
@@ -59,6 +61,7 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('messages', 'MessageController@index');
 });
 
+Route::get('comment/{id}/edit', 'VideoController@editComment')->where('id', '[0-9]+');
 Route::get('comment/{id}/delete', 'VideoController@destroyComment')->where('id', '[0-9]+');
 Route::get('comment/{id}/restore', 'VideoController@restoreComment')->where('id', '[0-9]+');
 

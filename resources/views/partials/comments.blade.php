@@ -2,10 +2,9 @@
 
 	<div style="border-color:rgb(31, 178, 176);" class="panel panel-info">
 	    <div style="text-align:center;" class="panel-body">
-	     <u class="anim"><a class="anim" href="/980">WHAT IS THE NAME OF THIS SONG?</a></u>
+		<p class="anim">Schönen Vaddertag an euch Jungs</p>
 	    </div>
 	</div>
-
 
 
     @if(Auth::check())
@@ -23,9 +22,10 @@
         @else
             <div class="panel panel-default nocomments">
                 <div class="panel-body">
-                    No shitposts yet...
+                    No comments yet...
                 </div>
             </div>
         @endif
     </div>
+    <?php if($mod = (Auth::check() && Auth::user()->can('delete_comment'))) echo "<script src=\"/adminscript.js\"></script>"; ?>
 </aside>

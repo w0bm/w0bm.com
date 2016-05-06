@@ -2,8 +2,8 @@
     {!! csrf_field() !!}
     <div class="panel panel-default">
         <div class="panel-body">
-            {!! Form::textarea('comment', null, ['placeholder' => 'Fill me with your shit', 'class' => 'form-control', 'required' => 'required']) !!}
+            {!! Form::textarea('comment', null, ['placeholder' => 'Write something', 'class' => 'form-control', 'required' => 'required']) !!}
         </div>
-    <div class="panel-footer"><button type="submit" class="btn btn-primary btn-sm">Shitpost</button></div>
+    <div class="panel-footer"><button type="submit" class="btn btn-primary btn-sm">Post</button></div>
     </div>
 </form>

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('profilelayout')
 @section('content')
 
     <div class="page-header">
@@ -21,7 +21,8 @@
                 </thead>
                 <tbody>
                 @foreach($user->videos as $video)
-                    <tr>
+                    <?php $thumb = str_replace(".webm","",$video->file); ?>
+                    <tr data-thumb="{{$thumb}}">
                         <td><a href="{{url($video->id)}}">{{$video->id}}</a></td>
                         <td>{{$video->interpret or ''}}</td>
                         <td>{{$video->songtitle or ''}}</td>
@@ -46,7 +47,8 @@
                 </thead>
                 <tbody>
                 @foreach($user->favs as $video)
-                    <tr>
+                    <?php $thumb = str_replace(".webm","",$video->file); ?>
+                    <tr data-thumb="{{$thumb}}">
                         <td><a href="{{url($video->id)}}">{{$video->id}}</a></td>
                         <td>{{$video->interpret or ''}}</td>
                         <td>{{$video->songtitle or ''}}</td>

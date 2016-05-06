@@ -21,7 +21,10 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return view('songindex', ['videos' => Video::orderBy('id', 'ASC')->paginate(20)]);
+        return view('songindex', [
+            'videos' => Video::orderBy('id', 'ASC')->paginate(20),
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -44,11 +47,11 @@ class VideoController extends Controller
     {
         $user = auth()->check() ? auth()->user() : null;
         if(is_null($user)) return redirect('/')->with('error', 'You need to be logged in');
-        
+
         if(!$user->can('break_upload_limit') && $user->videos()->newlyups()->count() >= 10)
             return redirect()->back()->with('error', 'Uploadlimit reached')->withInput();
-            
-        
+
+
         if(!$request->hasFile('file'))
             return redirect()->back()->with('error', 'No file')->withInput();
 
@@ -57,16 +60,15 @@ class VideoController extends Controller
         if(!$file->isValid()
         || $file->getClientOriginalExtension() != 'webm'
         || $file->getMimeType() != 'video/webm') return redirect()->back()->with('error', 'Invalid file');
-        
-        if(!$user->can('break_max_filesize') && $file->getSize() > 3e7)
-        return redirect()->back()->with('error', 'File to big. Max 30MB')->withInput();
+
+        if(!$user->can('break_max_filesize') && $file->getSize() > 31457280)
+        return redirect()->back()->with('error', 'File too big. Max 30MB')->withInput();
 
         if(($v = Video::withTrashed()->where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null)
             return redirect($v->id)->with('error', 'Video already exists');
 
         $file = $file->move(public_path() . '/b/', time() . '.webm');
         $hash = sha1_file($file->getRealPath());
-
 
         $video = new Video();
         $video->file = basename($file->getRealPath());
@@ -77,6 +79,8 @@ class VideoController extends Controller
         $video->category()->associate(Category::findOrFail($request->get('category')));
         $video->hash = $hash;
         $video->save();
+
+        $this->createThumbnail(basename($file->getRealPath()));
 
         return redirect($video->id)->with('success', 'Upload successful');
     }
@@ -118,7 +122,29 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(!auth()->check())
+            return response('Not logged in', 403);
+        if(!auth()->user()->can('edit_video'))
+            return response('Not enough permissions', 403);
+
+        if(!$request->ajax())
+            return response('Invalid request', 400);
+
+        $v = Video::findOrFail($id);
+
+        if($request->has('interpret'))
+            $v->interpret = $request->input('interpret');
+        if($request->has('songtitle'))
+            $v->songtitle = $request->input('songtitle');
+        if($request->has('imgsource'))
+            $v->imgsource = $request->input('imgsource');
+        if($request->has('category'))
+            $v->category()
+                ->associate(Category::findOrFail($request->input('category')));
+
+        $v->save();
+
+        return $v;
     }
 
     /**
@@ -182,6 +208,10 @@ class VideoController extends Controller
         return $xhr ? view('partials.comment', ['comment' => $com, 'mod' => $user->can('delete_comment')]) : redirect()->back()->with('success', 'Comment successfully saved');
     }
 
+    public function editComment($id) {
+
+    }
+
     public function destroyComment($id) {
         $user = auth()->check() ? auth()->user() : null;
         if(is_null($user)) return redirect()->back()->with('error', 'Not logged in');
@@ -232,9 +262,30 @@ class VideoController extends Controller
             return $xhr ? "Video removed from favorites" : redirect()->back()->with('success', 'Video removed from favorites');
         } else {
             $user->favs()->attach($id);
-            return $xhr ? "Video favorised" : redirect()->back()->with('success', 'Video favorised');
+            return $xhr ? "Video added to favorites" : redirect()->back()->with('success', 'Video favorised');
         }
 
 
+    }
+
+    private function createThumbnail($dat) {
+      $in = "/var/www/w0bm.com/public/b"; // webm-input
+      $out = "/var/www/w0bm.com/public/thumbs"; // thumb-output
+      $tmpdir = "/var/www/w0bm.com/app/Http/Controllers/tmp"; // tempdir
+
+      $name = explode(".", $dat);
+      array_pop($name);
+      $name = join(".", $name);
+      if(!file_exists("{$out}/{$name}.gif")) {
+        $length = round(shell_exec("ffprobe -i {$in}/{$dat} -show_format -v quiet | sed -n 's/duration=//p'"));
+        for($i=1;$i<10;$i++) {
+          $act = ($i*10) * ($length / 100);
+          $ffmpeg = shell_exec("ffmpeg -ss {$act} -i {$in}/{$dat} -vf \"scale='if(gt(a,4/3),206,-1)':'if(gt(a,4/3),-1,116)'\" -vframes 1 {$tmpdir}/{$name}_{$i}.png 2>&1");
+        }
+        $tmp = shell_exec("convert -delay 27 -loop 0 {$tmpdir}/{$name}_*.png {$out}/{$name}.gif 2>&1");
+        if(@filesize("{$out}/{$name}.gif") < 2000)
+          @unlink("{$out}/{$name}.gif");
+        array_map('unlink', glob("{$tmpdir}/{$name}*.png"));
+      }
     }
 }

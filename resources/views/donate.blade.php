@@ -7,15 +7,15 @@
 </center>
 <div class="jumbotron">
 <div class="progress">
-  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
-   10€
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+   50,66€
   </div>
   </div>
 <center>
 <ul>
 <li>This is the place where you can see some transparency informations about donations and how we handle it.</li>
 <li>We will always use donations for the server and only for the server.</li>
-<li>We need about 80€ every month for the server, every kind of help is welcome.</li>
+<li>We need about 80€ to pay the server for 3 months.</li>
 <li>It basically stands and falls with it's users, so if you enjoy it show it and give something back.</li>
 </ul>
 </center>
@@ -158,6 +158,94 @@
              <td>30.03.2016</td>
              <td>capsuc</td>
          </tr>
+
+	<tr class="success">
+	    <td>19</td>
+	    <td>10€</td>
+	    <td>13.04.2016</td>
+	    <td>Flummi</td>
+	</tr>
+
+        <tr class="success">
+            <td>20</td>
+            <td>1€</td>
+            <td>19.04.2016</td>
+            <td>Anonymous</td>
+        </tr>
+
+
+        <tr class="success">
+            <td>21</td>
+            <td>2€</td>
+            <td>19.04.2016</td>
+            <td>Chizu</td>
+        </tr>
+
+        <tr class="success">
+            <td>22</td>
+            <td>10€</td>
+            <td>19.04.2016</td>
+            <td>Proph3t</td>
+        </tr>
+
+        <tr class="success">
+            <td>23</td>
+            <td>5€</td>
+            <td>19.04.2016</td>
+            <td>AssimassI</td>
+        </tr>
+
+        <tr class="success">
+            <td>24</td>
+            <td>10€</td>
+            <td>19.04.2016</td>
+            <td>Anonymous</td>
+        </tr>
+
+        <tr class="success">
+            <td>25</td>
+            <td>1€</td>
+            <td>19.04.2016</td>
+            <td>IDeclareWar</td>
+        </tr>
+
+        <tr class="success">
+            <td>26</td>
+            <td>1€</td>
+            <td>19.04.2016</td>
+            <td>Anonymous</td>
+        </tr>
+
+        <tr class="success">
+            <td>27</td>
+            <td>1,88€</td>
+            <td>20.04.2016</td>
+            <td>duke</td>
+        </tr>
+
+        <tr class="success">
+            <td>28</td>
+            <td>2,22€</td>
+            <td>20.04.2016</td>
+            <td>papabistdues</td>
+        </tr>
+
+        <tr class="danger">
+            <td>29</td>
+            <td>47,95€</td>
+            <td>21.04.2016</td>
+            <td>BKA/Server</td>
+        </tr>
+
+
+        <tr class="success">
+            <td>30</td>
+            <td>50,66€</td>
+            <td>30.04.2016</td>
+            <td>BerswaggerBerus</td>
+        </tr>
+
+
     </tbody>
 </table>
 </div>

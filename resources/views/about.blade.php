@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+<?php $comment = config('comments'); ?>
 <div class="page-header">
         <h1>About</h1>
 </div>
@@ -9,8 +10,18 @@
    <li>Press: <b style="color:#1FB2B0";>→</b> for next</li>
    <li>Press: <b style="color:#1FB2B0";>←</b> for prev</li>
    <li>Press: <b style="color:#1FB2B0";>f</b> for fav</li>
+   <li>Scroll with your mouse up and down to trigger next or prev</li>
    <li>Press: <b style="color:#1FB2B0";>c</b> to toggle the comment section</li>
 </ul>
+
+<h4>Allowed sources for image parsing in the comment section</h4>
+<p><code>Filetypes: [jpg,png,gif] - Only secure connections allowed</code></p>
+<ul>
+  @foreach($comment['allowedHosters'] as $hoster)
+    <li>https://{{$hoster}}/</li>
+  @endforeach
+</ul>
+
 <h4>The ToS</h4>
  <ol>
   <li>I try not to change w0bm, instead I try let w0bm change me.</li>
@@ -20,7 +31,11 @@
 <br>
 <br>
 <br>
-<center><a href="/contact">Contact</a> | <a href="/privacy">Privacy Policy</a> | <a href="/donate">Donate</a> 
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <center><a href="/contact">Contact</a> | <a href="/privacy">Privacy Policy</a> | <a href="/donate">Donate</a>
 <p>Inspired by <a href="http://z0r.de">z0r.de</a></p></center>
+  </div>
+</nav>
 @endsection
 

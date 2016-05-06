@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('profilelayout')
 @section('content')
     <div class="page-header">
         <h1>Songindex</h1>
@@ -15,12 +15,47 @@
         </thead>
         <tbody>
         @foreach($videos as $video)
-            <tr>
-                <td><a href="{{url($video->id)}}">{{$video->id}}</a></td>
-                <td>{{$video->interpret or ''}}</td>
-                <td>{{$video->songtitle or ''}}</td>
-                <td>{{$video->imgsource or ''}}</td>
-                <td><a href="{{url($video->category->shortname)}}">{{$video->category->name}}</a></td>
+            <?php
+                $thumb = str_replace(".webm","",$video->file);
+            ?>
+            <tr data-thumb="{{$thumb}}" class="indexedit" data-vid="{{$video->id}}">
+                <td>
+                    @if($edit = auth()->check() && auth()->user()->can('edit_video'))
+                        <form action="/songindex/{{$video->id}}" method="post" id="edit_{{$video->id}}" class="indexform"></form>
+                    @endif
+                    <span class="vinfo"><a href="{{url($video->id)}}">{{$video->id}}</a></span>
+                    @if($edit)
+                        <input type="submit" class="btn btn-primary" value="Save" form="edit_{{$video->id}}">
+                    @endif
+                </td>
+                <td>
+                    <span class="vinfo">{{$video->interpret or ''}}</span>
+                    @if($edit)
+                        <input class="form-control" type="text" name="interpret" value="{{$video->interpret or ''}}" form="edit_{{$video->id}}">
+                    @endif
+                </td>
+                <td>
+                    <span class="vinfo">{{$video->songtitle or ''}}</span>
+                    @if($edit)
+                        <input class="form-control" type="text" name="songtitle" value="{{$video->songtitle or ''}}" form="edit_{{$video->id}}">
+                    @endif
+                </td>
+                <td>
+                    <span class="vinfo">{{$video->imgsource or ''}}</span>
+                    @if($edit)
+                        <input class="form-control" type="text" name="imgsource" value="{{$video->imgsource or ''}}" form="edit_{{$video->id}}">
+                    @endif
+                </td>
+                <td>
+                    <span class="vinfo"><a href="{{url($video->category->shortname)}}">{{$video->category->name}}</a></span>
+                    @if($edit)
+                        <select class="form-control" name="category" form="edit_{{$video->id}}">
+                            @foreach($categories as $cat)
+                                <option value="{{$cat->id}}" @if($cat->shortname === $video->category->shortname) selected @endif>{{$cat->name}}</option>
+                            @endforeach
+                        </select>
+                    @endif
+                </td>
             </tr>
         @endforeach
         </tbody>
