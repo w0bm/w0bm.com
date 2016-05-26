@@ -1,8 +1,9 @@
 @extends('profilelayout')
 @section('content')
     <div class="page-header">
-        <h1>Songindex</h1>
-        <form method="get" action="search">
+	<h1>Songindex</h1>
+        
+        <form method="get">
             {!! Form::text('q', null, ['class' => 'suchleiste', 'placeholder' => 'Search']) !!}
             <button type="submit" class="suchbutton"><i style="color:white;" class="fa fa-search"></i></button>
         </form>

@@ -2,7 +2,7 @@
 
 	<div style="border-color:rgb(31, 178, 176);" class="panel panel-info">
 	    <div style="text-align:center;" class="panel-body">
-		<p class="anim">Schönen Vaddertag an euch Jungs</p>
+		<p class="anim">(づ｡◕‿‿◕｡)づ</p>
 	    </div>
 	</div>
 

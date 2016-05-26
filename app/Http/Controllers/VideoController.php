@@ -19,30 +19,25 @@ class VideoController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->has('q')){
+            $needle = '%' . $request->input('q') .'%';
+            return view('songindex', [
+                'videos' => Video::where('interpret', 'LIKE', $needle)
+                        ->orWhere('songtitle', 'LIKE', $needle)
+                        ->orderBy('id', 'ASC')
+                        ->paginate(20)->appends(['q' => $needle]),
+                'categories' => Category::all()
+            ]);
+
+        }
         return view('songindex', [
             'videos' => Video::orderBy('id', 'ASC')->paginate(20),
             'categories' => Category::all()
         ]);
     }
 
-    /**
-     * Display a listing of the search results.
-     *
-     * @return Response
-     */
-     public function search(Request $request)
-     {
-         $needle = $request->input("search");
-         return view('songindex', [
-             'videos' => Video::where('interpret', 'LIKE', $needle)
-                            ->orWhere('songtitle', 'LIKE', $needle)
-                            ->orderBy('id', 'ASC')
-                            ->paginate(20),
-             'categories' => Category::all()
-         ]);
-     }
 
     /**
      * Show the form for creating a new resource.

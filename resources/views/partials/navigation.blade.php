@@ -18,8 +18,8 @@
                 <li><a href="{{url('songindex')}}"><i class="fa fa-music"></i> Songindex</a></li>
                 <li><a href="{{url('irc')}}"><i class="fa fa-comment"></i> IRC</a></li>
 		<li><a href="{{url('about')}}"><i class="fa fa-exclamation"></i> About</a></li>
-		<li><a  href="{{url('donate')}}"><i class="fa fa-dollar"></i> Help us!</a></li>
-		<li><a href="http://sync.w0bm.com"><i class="fa fa-clock-o"></i> Sync</a></li>
+		<!--<li><a  href="{{url('donate')}}"><i class="fa fa-dollar"></i> Help us!</a></li>-->
+		<!--<li><a href="https://sync.w0bm.com" target="_blank"><i class="fa fa-clock-o"></i> Sync</a></li>-->
             </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">

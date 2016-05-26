@@ -64,7 +64,7 @@ function flash(type, message) {
             else if(e.keyCode == 70) {
             	to_favs();
             }
-            else if(e.keyCode == 67) {
+            else if(e.keyCode == 67 && !e.ctrlKey) {
             	$(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
             }
         });
@@ -331,7 +331,7 @@ function flash(type, message) {
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     */
 
-    if(/\..+\/[songindex,user].*/i.test(window.location.href)) {
+    if(/\..+\/(?:songindex|user)/i.test(window.location.href)) {
       function get_loc(e) {
         return [
           (e.clientX + $('div#thumb').width() >= $(window).width()) ? e.pageX - 5 - $('div#thumb').width() : e.pageX + 5,
