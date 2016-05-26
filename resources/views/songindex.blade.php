@@ -2,6 +2,10 @@
 @section('content')
     <div class="page-header">
         <h1>Songindex</h1>
+        <form method="POST" action="/search">
+            <input type="text" name="search" placeholder="Suche" />
+            <button class="btn btn-default"><i class="fa fa-search"></i></button>
+        </form>
     </div>
     <table class="table table-hover table-condensed">
         <thead>

@@ -28,6 +28,7 @@ Route::post('register', 'UserController@store');
 Route::get('activate/{token}', 'UserController@activate');
 Route::get('songindex', 'VideoController@index');
 Route::post('songindex/{id}', 'VideoController@update');
+Route::post('search', 'VideoController@search');
 Route::get('upload', 'VideoController@create');
 Route::post('upload', 'VideoController@store');
 Route::get('categories', 'CategoryController@index');

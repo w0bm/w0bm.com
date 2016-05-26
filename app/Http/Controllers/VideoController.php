@@ -28,6 +28,23 @@ class VideoController extends Controller
     }
 
     /**
+     * Display a listing of the search results.
+     *
+     * @return Response
+     */
+     public function search(Request $request)
+     {
+         $needle = $request->input("search");
+         return view('songindex', [
+             'videos' => Video::where('interpret', 'LIKE', $needle)
+                            ->orWhere('songtitle', 'LIKE', $needle)
+                            ->orderBy('id', 'ASC')
+                            ->paginate(20),
+             'categories' => Category::all()
+         ]);
+     }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return Response
