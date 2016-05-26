@@ -34,10 +34,10 @@ class VideoController extends Controller
      */
      public function search(Request $request)
      {
-         $needle = $request->input("search");
+         $needle = strtolower('%' . $request->input("search") . '%');
          return view('songindex', [
-             'videos' => Video::where('interpret', 'LIKE', $needle)
-                            ->orWhere('songtitle', 'LIKE', $needle)
+             'videos' => Video::where('LOWER(interpret)', 'LIKE', $needle)
+                            ->orWhere('LOWER(songtitle)', 'LIKE', $needle)
                             ->orderBy('id', 'ASC')
                             ->paginate(20),
              'categories' => Category::all()
