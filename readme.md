@@ -3,7 +3,7 @@
 [![IRC Chat](https://img.shields.io/badge/chat-irc-green.svg)](irc://irc.rizon.net/w0bm)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-w0bm.com is a fun modern website featuring many different kind of videos in webm format. It was initially thought as a z0r.de without flash, but already surpassed that in our opinion.
+[w0bm.com](https://w0bm.com) is a fun modern website featuring many different kind of videos in webm format. It was initially thought as a [z0r.de](http://z0r.de) without flash, but already surpassed that in our opinion.
 
 The page is build on top of the [Laravel Framework](https://laravel.com).
 
