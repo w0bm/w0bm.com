@@ -1,26 +1,34 @@
-## Laravel PHP Framework
+## w0bm.com
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
+[![IRC Chat](https://img.shields.io/badge/chat-irc-green.svg)](irc://irc.rizon.net/w0bm)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+w0bm.com is a fun modern website featuring many different kind of videos in webm format. It was initially thought as a z0r.de without flash, but already surpassed that in our opinion.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+The page is build on top of the [Laravel Framework](https://laravel.com).
 
-## Official Documentation
+## Installing
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+1. Clone this repository: `git clone https://github.com/w0bm/w0bm.com.git`
+2. Cd into the directory: `cd w0bm.com` and run `./composer.phar install` to install all the dependencies
+3. Create a .env file with your database information. ([Example](https://github.com/laravel/laravel/blob/master/.env.example)) and also set the `APP_KEY`
+4. Put at least 1 webm file in the `public/b` folder named `1.webm`
+5. Modify `database/seeds/DatabaseSeeder.php` and uncomment all the different seeders. (Initially you'll need all)
+6. Run `php artisan migrate` and then `php artisan db:seed`
+7. Start the development server with `php artisan serve`
+8. Check your website at `http://localhost:8000` (username: admin, password: admin)
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Make your changes, test them locally (PLEASE!!! preferable write some unit tests aswell) and make a pull request.
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Folder structure:  
+- Models: `app/Models/`
+- Routes: `app/Http/routes.php`
+- Controllers: `app/Http/Controllers`
+- Views: `resources/views`
+- JS and CSS: `public/{css,js}`
+- Database: `database/migrations`
 
 ### License
 
