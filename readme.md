@@ -11,12 +11,12 @@ The page is build on top of the [Laravel Framework](https://laravel.com).
 
 1. Clone this repository: `git clone https://github.com/w0bm/w0bm.com.git`
 2. Cd into the directory: `cd w0bm.com` and run `./composer.phar install` to install all the dependencies
-3. Create a .env file with your database information. ([Example](https://github.com/laravel/laravel/blob/master/.env.example)) and also set the `APP_KEY`
+3. Create a .env file with your database information. ([Example](https://github.com/laravel/laravel/blob/master/.env.example)) and also set the `APP_KEY` (you can generate one with `php artisan key:generate`)
 4. Put at least 1 webm file in the `public/b` folder named `1.webm`
 5. Modify `database/seeds/DatabaseSeeder.php` and uncomment all the different seeders. (Initially you'll need all)
 6. Run `php artisan migrate` and then `php artisan db:seed`
 7. Start the development server with `php artisan serve`
-8. Check your website at `http://localhost:8000` (username: admin, password: admin)
+8. Check your website at `http://localhost:8000` (username: admin, password: password)
 
 ## Contributing
 
