@@ -47,7 +47,7 @@ class Comment extends Model
         $italicMathcer = '/_(.+)_/';
         $delMatcher = '/-(.+)-/';
         $newlineMatcher = '/(^.*$)/m';
-        $greentextMatcher = '/(^>.*$)/m';
+        $greentextMatcher = '/(^&gt;.*$)/m';
 
         $imageMatcher = '/(\<a href=\"(https:\/\/('.join('|',$commentcfg["allowedHosters"]).').*(png|gif|jpg))\" target=\"_blank\" rel=\"extern\"\>.*\<\/a\>)/i';
         
