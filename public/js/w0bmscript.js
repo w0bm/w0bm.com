@@ -46,7 +46,7 @@ function flash(type, message) {
     }
 
     //temporary fix for scrolling not working on other pages
-    var regex = /w0bm.com\/(?:.+\/)?(\d+)/i;
+    var regex = /\..+\/(?:.+\/)?(\d+)/i;
     if(regex.test(window.location.href) && $('video').length) {
         $('html').on('keydown', function(e) {
             if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i)) {
@@ -270,9 +270,8 @@ function flash(type, message) {
     })();*/
 
     (function() {
-      try {
         var v = document.getElementById("video");
-        if (typeof v == "undefined") return;
+        if (v == null) return;
         var p = v.parentNode;
         p.style.marginBottom = "1px";
 
@@ -300,9 +299,6 @@ function flash(type, message) {
             bar.style.transform = "translateX("+(-100 + perc)+"%)";
         };
         update();
-      } catch(e) {
-        console.log("bitte fix mich");
-      }
     })();
 
 
