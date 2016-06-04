@@ -13,6 +13,15 @@
 
 Route::get('/', ['as' => 'home', function () {
     Session::reflash();
+
+    if(auth()->check()) {
+        $id = \App\Models\Video::whereIn('category_id', auth()->user()->categories)->count() - 1;
+        $id = mt_rand(0, $id);
+        $video = \App\Models\Video::whereIn('category_id', auth()->user()->categories)->skip($id)->first();
+
+        return redirect($video->id);
+    }
+
     $id = App\Models\Video::count() - 1;
     $id = mt_rand(0, $id);
     $video = App\Models\Video::skip($id)->first();
