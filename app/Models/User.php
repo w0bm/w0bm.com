@@ -70,4 +70,8 @@ class User extends VerifyUser
             return $vid->id == $id;
         })->isEmpty();
     }
+
+    public function categories() {
+        return $this->belongsToMany(Category::class);
+    }
 }

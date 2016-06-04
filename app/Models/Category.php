@@ -33,4 +33,8 @@ class Category extends Model
     public function videos() {
         return $this->hasMany(Video::class);
     }
+
+    public function users() {
+        return $this->belongsToMany(User::class);
+    }
 }
