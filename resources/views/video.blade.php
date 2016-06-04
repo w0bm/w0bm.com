@@ -12,7 +12,7 @@
                         <a class="first" href="#" style="visibility: hidden;">← first</a>
                         <a id="prev" href="#" style="visibility: hidden;">Prev</a> |
                     @else
-                        <a class="first" href="{{url($video->category->shortname, $video::whereCategoryId($video->category->id)->first()->id)}}">← first</a>
+                        <a class="first" href="{{url($video->category->shortname, $video->getFirstId(true))}}">← first</a>
                         <a id="prev" href="{{url($video->category->shortname, [$prev->id])}}">Prev</a> |
                     @endif
                     <a href="{{url($video->category->shortname)}}">{{$video->category->name}}</a>
@@ -21,7 +21,7 @@
                         <a class="last" href="#" style="visibility: hidden;">last →</a>
                     @else
                         | <a id="next" href="{{url($video->category->shortname, [$next->id])}}">Next</a>
-                        <a class="last" href="{{url($video->category->shortname, $video::whereCategoryId($video->category->id)->max('id'))}}">last →</a>
+                        <a class="last" href="{{url($video->category->shortname, $video->getLastId(true))}}">last →</a>
                     @endif
                     <br><span class="videoinfo">
 			<div id=".comments"></div>
@@ -54,7 +54,7 @@
                         <a class="first" href="#" style="visibility: hidden;">← first</a>
                         <a id="prev" href="#" style="visibility: hidden;">← prev</a> |
                     @else
-                        <a class="first" href="{{url($video->first()->id)}}">← first</a>
+                        <a class="first" href="{{url($video->getFirstId(false))}}">← first</a>
                         <a id="prev" href="{{url($prev->id)}}">← prev</a> |
                     @endif
                     <a href="{{url('/')}}">random</a>
@@ -63,7 +63,7 @@
                         <a class="last" href="#" style="visibility: hidden;">last →</a>
                     @else
                         | <a id="next" href="{{url($next->id)}}">next →</a>
-                        <a class="last" href="{{url($video->max('id'))}}">last →</a>
+                        <a class="last" href="{{url($video->getLastId(false))}}">last →</a>
                     @endif
                     <br><span class="videoinfo">
 		<div id=".comments"></div>

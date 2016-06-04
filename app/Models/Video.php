@@ -55,6 +55,26 @@ class Video extends Model
         return $this->belongsToMany(User::class, 'favorites');
     }
 
+    public function getFirstId($category) {
+        if($category) {
+            return static::whereCategoryId($this->category->id)->first()->id;
+        }
+        if(auth()->check()) {
+            return static::whereIn('category_id', auth()->user()->categories)->first()->id;
+        }
+        return static::first()->id;
+    }
+
+    public function getLastId($category) {
+        if($category) {
+            return static::whereCategoryId($this->category->id)->max('id');
+        }
+        if(auth()->check()) {
+            return static::whereIn('category_id', auth()->user()->categories)->max('id');
+        }
+        return static::max('id');
+    }
+
     /**
      * @param bool $category
      * @return Video
