@@ -17,12 +17,13 @@
                 <li><a href="{{url('categories')}}"><i class="fa fa-bars"></i> Categories</a></li>
                 <li><a href="{{url('songindex')}}"><i class="fa fa-music"></i> Songindex</a></li>
                 <li><a href="{{url('irc')}}"><i class="fa fa-comment"></i> IRC</a></li>
-		<li><a href="{{url('about')}}"><i class="fa fa-exclamation"></i> About</a></li>
-		<!--<li><a  href="{{url('donate')}}"><i class="fa fa-dollar"></i> Help us!</a></li>-->
-		<!--<li><a href="https://sync.w0bm.com" target="_blank"><i class="fa fa-clock-o"></i> Sync</a></li>-->
+                <li><a href="{{url('about')}}"><i class="fa fa-exclamation"></i> About</a></li>
+                <!--<li><a  href="{{url('donate')}}"><i class="fa fa-dollar"></i> Help us!</a></li>-->
+                <!--<li><a href="https://sync.w0bm.com" target="_blank"><i class="fa fa-clock-o"></i> Sync</a></li>-->
             </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" data-toggle="modal" data-target="#filterselectmodal"><i class="fa fa-filter"></i> Filter</a></li>
                     <li><a href="{{url('upload')}}"><i class="fa fa-cloud-upload"></i> Upload</a></li>
                     <li><a href="{{url('user', Auth::user()->username)}}"><i class="fa fa-user"></i> {{Auth::user()->username}}</a></li>
                     <li><a href="{{url('logout')}}"><i class="fa fa-times"></i> Logout</a></li>

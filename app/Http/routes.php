@@ -66,6 +66,8 @@ Route::get('togglebackground', function() {
     return redirect()->back()->with('success, Background toggled');
 });
 
+Route::post('filter', 'UserController@filter');
+
 Route::group(['prefix' => 'api'], function() {
     Route::get('messages', 'MessageController@index');
 });

@@ -18,7 +18,10 @@
     <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}">
 </head>
 <body>
-<canvas id="bg" @if(!Session::get('background', true)) style="display: none;"@endif></canvas>
+@if(auth()->check())
+    @include('partials.filterselect')
+@endif
+<canvas id="bg" @if(!Session::get('background', true)) style="display: none; visibility: hidden;"@endif></canvas>
 
 @include('partials.navigation')
 
@@ -30,8 +33,8 @@
         </div>
         @include('partials.flash')
     </div>
-
 </div>
+
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
