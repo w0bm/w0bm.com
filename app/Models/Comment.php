@@ -47,6 +47,7 @@ class Comment extends Model
         $italicMathcer = '/_(.+)_/';
         $delMatcher = '/-(.+)-/';
         $newlineMatcher = '/(^.*$)/m';
+        $greentextMatcher = '/(^&gt;.*$)/m';
 
         $imageMatcher = '/(\<a href=\"(https:\/\/('.join('|',$commentcfg["allowedHosters"]).').*(png|gif|jpg))\" target=\"_blank\" rel=\"extern\"\>.*\<\/a\>)/i';
         
@@ -61,7 +62,8 @@ class Comment extends Model
         $text = preg_replace($italicMathcer, '<em>$1</em>', $text);
         $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
         $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
-        $text = preg_replace($imageMatcher, '<img src="$2" alt="Image" class="comment_image" />', $text);
+	$text = preg_replace($imageMatcher, '<img src="$2" alt="Image" class="comment_image" />', $text);
+	$text = preg_replace($greentextMatcher, '<span style="color:#80FF00">$1</span>', $text);
         $text = preg_replace($newlineMatcher, '$1<br>', $text);
         
 

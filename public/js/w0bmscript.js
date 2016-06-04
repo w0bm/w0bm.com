@@ -269,9 +269,8 @@ function flash(type, message) {
     })();*/
 
     (function() {
-      try {
         var v = document.getElementById("video");
-        if (typeof v == "undefined") return;
+        if (v == null) return;
         var p = v.parentNode;
         p.style.marginBottom = "1px";
 
@@ -299,9 +298,6 @@ function flash(type, message) {
             bar.style.transform = "translateX("+(-100 + perc)+"%)";
         };
         update();
-      } catch(e) {
-        console.log("bitte fix mich");
-      }
     })();
 
 
