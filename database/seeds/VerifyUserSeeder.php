@@ -15,6 +15,7 @@ class VerifyUserSeeder extends Seeder
 			'updated_at' => date('Y-m-d H:i:s')
 		]);
 
+		$cids = \App\Models\Category::lists('id');
 		$user_id = DB::table($prefix . 'users')->insertGetId([
 			'username' => 'admin',
 			'password' => '$2a$08$rqN6idpy0FwezH72fQcdqunbJp7GJVm8j94atsTOqCeuNvc3PzH3m',
@@ -23,7 +24,8 @@ class VerifyUserSeeder extends Seeder
 			'verified' => 1,
 			'disabled' => 0,
 			'created_at' => date('Y-m-d H:i:s'),
-			'updated_at' => date('Y-m-d H:i:s')
+			'updated_at' => date('Y-m-d H:i:s'),
+			'categories' => $cids
 		]);
 
 		DB::table($prefix . 'role_user')->insert([

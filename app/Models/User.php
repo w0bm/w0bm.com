@@ -41,6 +41,11 @@ use Toddish\Verify\Models\User as VerifyUser;
  */
 class User extends VerifyUser
 {
+    protected $casts = [
+        'categories' => 'array'
+    ];
+
+
     public function videos() {
         return $this->hasMany(Video::class);
     }

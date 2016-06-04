@@ -9,6 +9,7 @@ public/z0r*
 /.gitignore
 
 storage/deleted/*
+storage/database.sqlite
 
 
 ## Directory-based project format:
