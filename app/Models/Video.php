@@ -60,10 +60,7 @@ class Video extends Model
      * @return Video
      */
     public function getNext($category = false) {
-        if(auth()->check() && !$category) {
-            return Video::whereIn('category_id' ,auth()->user()->categories)->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
-        }
-        elseif(!$category)
+        if(!$category)
             return Video::where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
         else
             return Video::whereCategoryId($this->category->id)->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
