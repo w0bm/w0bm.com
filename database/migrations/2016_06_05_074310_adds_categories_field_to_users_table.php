@@ -13,7 +13,7 @@ class AddsCategoriesFieldToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->json('categories')->default('[1,2,3,4,5,6,7,8]');
+            $table->json('categories')->nullable();
         });
     }
 
