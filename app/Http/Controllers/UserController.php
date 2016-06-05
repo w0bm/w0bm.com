@@ -126,6 +126,7 @@ class UserController extends Controller
         $user->activation_token = $activation_token;
         $user->disabled = 0;
         $user->verified = 0;
+        $user->categories = Category::lists('id');
         if($user->save()) {
             $data = [
                 'username' => $user->username,

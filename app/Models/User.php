@@ -15,6 +15,7 @@ use Toddish\Verify\Models\User as VerifyUser;
  * @property string $remember_token
  * @property boolean $verified
  * @property boolean $disabled
+ * @property array $categories
  * @property \Carbon\Carbon $deleted_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
