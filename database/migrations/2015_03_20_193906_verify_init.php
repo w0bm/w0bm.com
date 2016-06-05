@@ -46,7 +46,6 @@ class VerifyInit extends Migration
 			$table->string('remember_token', 100)->nullable()->index();
 			$table->boolean('verified')->default(0);
 			$table->boolean('disabled')->default(0);
-			$table->json('categories');
 			$table->softDeletes();
 			$table->timestamps();
 		});
