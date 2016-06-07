@@ -20,6 +20,9 @@
 <body>
 @if(auth()->check())
     @include('partials.filterselect')
+    @if(auth()->user()->can('edit_video'))
+        @include('partials.frontendedit')
+    @endif
 @endif
 <canvas id="bg" @if(!Session::get('background', true)) style="display: none; visibility: hidden;"@endif></canvas>
 

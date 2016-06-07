@@ -142,7 +142,7 @@ function flash(type, message) {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         });
-        var indexform = $('.indexform');
+        var indexform = $('.indexform, #webmedit');
         if(indexform.length) {
             var row = $('tr');
             row.on('click touchdown', function(e) {
@@ -161,10 +161,12 @@ function flash(type, message) {
             }).done(function (data) {
                 flash('success', 'Video successfully updated');
                 updaterow(self, data);
+                self.find('#webmeditmodal').modal('hide');
             }).fail(function(data){
                 flash('error', 'Error updating video');
                 flash('error', data);
                 console.log(data);
+                self.find('#webmeditmodal').modal('hide');
             });
         });
     })(jQuery);
