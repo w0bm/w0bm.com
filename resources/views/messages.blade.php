@@ -7,7 +7,7 @@
 		@foreach(auth()->user()->messagesRecv->reverse() as $message)
 		<tr>
 			{!! $message->content !!}
-			<a href="#" title="{{ $message->created_at->format('d.m.Y H:i') }}">{{ $message->created_at->diffForHumans() }}</a>
+			<a style="color: #888;" href="#" title="{{ $message->created_at->format('d.m.Y H:i') }}">{{ $message->created_at->diffForHumans() }}</a>
 		</tr>
 		<hr>
 		@endforeach
