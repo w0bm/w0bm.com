@@ -408,3 +408,18 @@ video:before {
     margin-top: -30px;
     background-color: #1FB2B0;
 }
+
+div.message > div.panel-heading > h3 {
+    font-size: 25px;
+    margin: 0px;
+    display: inline;
+}
+
+div.message > div.panel-heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+div.message > div.panel-heading > span {
+    color: #888;
+}

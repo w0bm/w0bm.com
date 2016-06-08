@@ -76,9 +76,9 @@ function flash(type, message) {
 	            $(this).get(0).paused ? $(this).get(0).play() : $(this).get(0).pause();
             });
         }
-	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		if($('#bg').css('display') != 'none') $('#togglebg').click();
-	}
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            if($('#bg').css('display') != 'none') $('#togglebg').click();
+        }
     }
 
     function get_next() {
@@ -307,71 +307,59 @@ function flash(type, message) {
         var comments = localStorage.comments;
         if (comments === undefined) localStorage.comments = true;
         comments = comments === undefined || comments === "true";
-	$(".comments").toggle(comments);
+        $(".comments").toggle(comments);
         $("#toggle").click(function(){$(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"))});
     })();
 
-    /*
-    COPYRIGHT © 2016 | jkhsjdhjs | moeller.mx
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-    */
-
     if(/\..+\/(?:songindex|user)/i.test(window.location.href)) {
-      function get_loc(e) {
-        return [
-          (e.clientX + $('div#thumb').width() >= $(window).width()) ? e.pageX - 5 - $('div#thumb').width() : e.pageX + 5,
-          (e.clientY + $('div#thumb').height() >= $(window).height()) ? e.pageY - 5 - $('div#thumb').height() : e.pageY + 5
-        ];
-      }
+        function get_loc(e) {
+            return [
+                (e.clientX + $('div#thumb').width() >= $(window).width()) ? e.pageX - 5 - $('div#thumb').width() : e.pageX + 5,
+                (e.clientY + $('div#thumb').height() >= $(window).height()) ? e.pageY - 5 - $('div#thumb').height() : e.pageY + 5
+            ];
+        }
 
-      $(document).ready(function() {
-        $('table tbody tr').on('mouseenter', function(e) {
-          var id = $(this).attr('data-thumb');
-          var lnk = 'https://w0bm.com/thumbs/' + id + '.gif';
-          var loc = get_loc(e);
-          $(document.body).prepend('<div id="thumb"></div>');
-          $('div#thumb').prepend('<img id="thumb"/>');
-          $('img#thumb').text('Loading...');
-          $('div#thumb').css({
-            'position': 'absolute',
-            'left': loc[0],
-            'top': loc[1],
-            'z-index': '5',
-            'border': '1px white solid',
-            'box-shadow': '5px 5px 7px 0px rgba(0,0,0,0.75)',
-            'color': 'white',
-            'background-color': '#181818'
-          });
-          var img = $('img#thumb');
-          var thumb = $('<img/>');
-          thumb.load(function() {
-            img.attr("src", $(this).attr("src"));
-            loc = get_loc(e);
-            $('div#thumb').css({
-              'left': loc[0],
-              'top': loc[1]
+        $(document).ready(function() {
+            $('table tbody tr').on('mouseenter', function(e) {
+                var id = $(this).attr('data-thumb');
+                var lnk = 'https://w0bm.com/thumbs/' + id + '.gif';
+                var loc = get_loc(e);
+                $(document.body).prepend('<div id="thumb"></div>');
+                $('div#thumb').prepend('<img id="thumb"/>');
+                $('img#thumb').text('Loading...');
+                $('div#thumb').css({
+                    'position': 'absolute',
+                    'left': loc[0],
+                    'top': loc[1],
+                    'z-index': '5',
+                    'border': '1px white solid',
+                    'box-shadow': '5px 5px 7px 0px rgba(0,0,0,0.75)',
+                    'color': 'white',
+                    'background-color': '#181818'
+                });
+                var img = $('img#thumb');
+                var thumb = $('<img/>');
+                thumb.load(function() {
+                    img.attr("src", $(this).attr("src"));
+                    loc = get_loc(e);
+                    $('div#thumb').css({
+                        'left': loc[0],
+                        'top': loc[1]
+                    });
+                });
+                thumb.attr("src", lnk);
+            }).on('mousemove', function(e) {
+                $('div#thumb').css({
+                    'left': get_loc(e)[0],
+                    'top': get_loc(e)[1]
+                });
+            }).on('mouseleave', function() {
+                $('#thumb').remove();
             });
-          });
-          thumb.attr("src", lnk);
-        }).on('mousemove', function(e) {
-          $('div#thumb').css({
-            'left': get_loc(e)[0],
-            'top': get_loc(e)[1]
-          });
-        }).on('mouseleave', function() {
-          $('#thumb').remove();
         });
-      });
     }
+    
+    //enable bootstrap tooltips
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
