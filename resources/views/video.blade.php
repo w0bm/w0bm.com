@@ -66,7 +66,6 @@
 											@endif
 											<em>Category:</em> {{$video->category->name}}"></i>
 						uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}@if($video->user->is('Moderator')) <i class="fa fa-bolt anim"></i>@endif</a></i>&nbsp {{ $video->created_at->diffForHumans() }}@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="" href="{{url($video->id . '/delete')}}"><i style="color:red;" class="fa fa-times" aria-hidden="true"></i></a>@endif @if(auth()->check() && auth()->user()->can('edit_video'))<a href="#" data-toggle="modal" data-target="#webmeditmodal"><i style="color:#2ada19;" class="fa fa-pencil-square"></i></a>@endif
-					</div>
 				</span>
 			</div>
 		</div>
