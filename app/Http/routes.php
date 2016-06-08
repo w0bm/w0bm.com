@@ -29,6 +29,9 @@ Route::get('/', ['as' => 'home', function () {
 }]);
 
 
+Route::get('messages', 'MessageController@page');
+Route::get('api/messages', 'MessageController@index');
+Route::post('api/messages/read', 'MessageController@read');
 Route::get('user/{username}', 'UserController@show');
 Route::get('logout', 'UserController@logout');
 Route::post('login', 'UserController@login');
