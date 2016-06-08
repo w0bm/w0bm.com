@@ -311,6 +311,12 @@ function flash(type, message) {
         $("#toggle").click(function(){$(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"))});
     })();
 
+    $('a').on('click', function(e) {
+        if($(this).attr('href') == '#') {
+            e.preventDefault();
+        }
+    });
+
     /*
     COPYRIGHT © 2016 | jkhsjdhjs | moeller.mx
 
