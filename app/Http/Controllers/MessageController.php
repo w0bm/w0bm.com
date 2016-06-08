@@ -19,6 +19,21 @@ class MessageController extends Controller
         if(!auth()->check()) return Response::create('Not found', '304');
         return auth()->user()->messagesRecv()->paginate(15);
     }
+    
+    public function page()
+    {
+        if(!auth()->check()) return redirect()->back()->with('warning', 'You are not logged in');
+        return view('messages');
+    }
+	
+    public function read(Request $request)
+    {
+        if(!auth()->check()) return Response::create('Unauthorized', '401');
+        if($request->has('m_ids')) {
+            $ids = $request->get('m_ids');
+            Message::whereTo($user->id)::whereIn('id', $ids)->update(['read' => DateTime::getTimestamp()]);
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
