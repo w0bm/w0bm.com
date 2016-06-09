@@ -34,6 +34,11 @@ class MessageController extends Controller
             Message::whereTo($user->id)::whereIn('id', $ids)->update(['read' => DateTime::getTimestamp()]);
         }
     }
+    
+    public function count_unread() {
+        if(!auth()->check()) return Response::create('Unauthorized', '401');
+        return auth()->user()->messagesRecv()->count();
+    }
 
     /**
      * Show the form for creating a new resource.

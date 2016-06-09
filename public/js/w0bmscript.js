@@ -363,3 +363,36 @@ function flash(type, message) {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
+
+    //read permissions
+    var notifications = false;
+    if(Notification.permission === "default") {
+        Notification.requestPermission(function(permission) {
+            if(permission === "granted") {
+                notifications = true;
+            }
+            else {
+                notifications = false;
+            }
+        });
+    }
+    else if(Notification.permission === "granted") {
+        notifications = true;
+    }
+
+    //check every minute for new messages
+    setInterval(function() {
+        $.ajax({
+            url: 'api/messages/unread',
+            success: function(unread) {
+                if(unread > $('span.unread_messages').text() && notifications) {
+                    var options = {
+                        body: "You have " + unread + " unread messages!",
+                        icon: "/favicon.png"
+                    };
+                    var n = new Notification("New Messages!", options);
+                }
+                $('span.unread_messages').text(unread);
+            }
+        });
+    }, 60000);
