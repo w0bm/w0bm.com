@@ -10,6 +10,7 @@ public/z0r*
 
 storage/deleted/*
 storage/database.sqlite
+storage/debugbar
 
 
 ## Directory-based project format:
