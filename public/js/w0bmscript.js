@@ -420,7 +420,7 @@ $(function () {
 
 // Notifications
 (function($) {
-    if(!Handlebars) return; // only on profilelayout
+    if(typeof Handlebars == "undefined") return; // only on profilelayout
 
     $.ajaxSetup({
         headers: {
