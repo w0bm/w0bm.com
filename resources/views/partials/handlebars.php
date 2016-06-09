@@ -8,15 +8,13 @@
             {{#each data as |value key|}}
             <a href="#" data-index="{{key}}" data-id="{{id}}" class="list-group-item {{#unless read}}list-group-item-info{{/unless}}">{{subject}}</a>
             {{else}}
-            <ul>
-                <li>No Messages</li>
-            </ul>
+            <div class="list-group-item">No messages</div>
             {{/each}}
         </div>
+        {{#if total}}
         <div class="panel-footer" id="pagination">
-
-
         </div>
+        {{/if}}
     </div>
 </script>
 
