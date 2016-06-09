@@ -21,6 +21,23 @@
 <script id="paginationtmpl" type="text/x-handlebars-template">
     <nav class="pull-right">
         <ul class="pagination">
+            {{#paginate pagination type="first"}}
+            <li {{#if disabled}}class="disabled"{{/if}}><a href="/api/messages?page={{n}}">First</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="previous"}}
+            <li {{#if disabled}}class="disabled"{{/if}}><a href="/api/messages?page={{n}}">&laquo;</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="middle" limit="7"}}
+            <li {{#if active}}class="active"{{/if}}><a href="/api/messages?page={{n}}">{{n}}</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="next"}}
+            <li {{#if disabled}}class="disabled"{{/if}}><a href="/api/messages?page={{n}}">&raquo;</a></li>
+            {{/paginate}}
+            {{#paginate pagination type="last"}}
+            <li {{#if disabled}}class="disabled"{{/if}}><a href="/api/messages?page={{n}}">Last</a></li>
+            {{/paginate}}
+
+            <!--
             <li {{#unless prev_page_url}}class="disabled"{{/unless}}>
             <a href="{{prev_page_url}}" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
@@ -33,7 +50,7 @@
             <a href="{{next_page_url}}" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
             </a>
-            </li>
+            </li> -->
         </ul>
     </nav>
     <div class="clearfix"></div>
