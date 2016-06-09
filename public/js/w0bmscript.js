@@ -82,14 +82,16 @@ if($('video').length) {
 }
 
 function get_next() {
-    if($('#next').css('visibility') != 'hidden') {
-        $('#next').get(0).click();
+    var next = $('#next');
+    if(next.css('visibility') != 'hidden') {
+        next.get(0).click();
     }
 }
 
 function get_prev() {
-    if($('#prev').css('visibility') != 'hidden') {
-        $('#prev').get(0).click();
+    var prev = $('#prev');
+    if(prev.css('visibility') != 'hidden') {
+        prev.get(0).click();
     }
 }
 
@@ -303,65 +305,132 @@ $(function() {
 })();
 
 
-(function() {
+(function($) {
     var comments = localStorage.comments;
     if (comments === undefined) localStorage.comments = true;
     comments = comments === undefined || comments === "true";
     $(".comments").toggle(comments);
     $("#toggle").click(function(){$(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"))});
-})();
+})(jQuery);
 
-if(/\..+\/(?:songindex|user)/i.test(window.location.href)) {
-    function get_loc(e) {
-        return [
-            (e.clientX + $('div#thumb').width() >= $(window).width()) ? e.pageX - 5 - $('div#thumb').width() : e.pageX + 5,
-            (e.clientY + $('div#thumb').height() >= $(window).height()) ? e.pageY - 5 - $('div#thumb').height() : e.pageY + 5
-        ];
-    }
+(function($) {
+    if(/\..+\/(?:songindex|user)/i.test(window.location.href)) {
+        var thumbd = $('div#thumb');
+        var get_loc = function(e) {
+            return [
+                (e.clientX + thumbd.width() >= $(window).width()) ? e.pageX - 5 - thumbd.width() : e.pageX + 5,
+                (e.clientY + thumbd.height() >= $(window).height()) ? e.pageY - 5 - thumbd.height() : e.pageY + 5
+            ];
+        }
 
-    $(document).ready(function() {
-        $('table tbody tr').on('mouseenter', function(e) {
-            var id = $(this).attr('data-thumb');
-            var lnk = '/thumbs/' + id + '.gif';
-            var loc = get_loc(e);
-            $(document.body).prepend('<div id="thumb"></div>');
-            var img = $('img#thumb'), thumbd = $('div#thumb');
-            thumbd.prepend('<img id="thumb"/>');
-            img.text('Loading...');
-            thumbd.css({
-                'position': 'absolute',
-                'left': loc[0],
-                'top': loc[1],
-                'z-index': '5',
-                'border': '1px white solid',
-                'box-shadow': '5px 5px 7px 0px rgba(0,0,0,0.75)',
-                'color': 'white',
-                'background-color': '#181818'
-            });
-
-            var thumb = $('<img/>');
-            thumb.load(function() {
-                img.attr("src", $(this).attr("src"));
-                loc = get_loc(e);
-                $('div#thumb').css({
+        $(document).ready(function() {
+            $('table tbody tr').on('mouseenter', function(e) {
+                var id = $(this).attr('data-thumb');
+                var lnk = '/thumbs/' + id + '.gif';
+                var loc = get_loc(e);
+                $(document.body).prepend('<div id="thumb"></div>');
+                var img = $('img#thumb');
+                thumbd.prepend('<img id="thumb"/>');
+                img.text('Loading...');
+                thumbd.css({
+                    'position': 'absolute',
                     'left': loc[0],
-                    'top': loc[1]
+                    'top': loc[1],
+                    'z-index': '5',
+                    'border': '1px white solid',
+                    'box-shadow': '5px 5px 7px 0px rgba(0,0,0,0.75)',
+                    'color': 'white',
+                    'background-color': '#181818'
                 });
+
+                var thumb = $('<img/>');
+                thumb.load(function() {
+                    img.attr("src", $(this).attr("src"));
+                    loc = get_loc(e);
+                    $('div#thumb').css({
+                        'left': loc[0],
+                        'top': loc[1]
+                    });
+                });
+                thumb.attr("src", lnk);
+            }).on('mousemove', function(e) {
+                $('div#thumb').css({
+                    'left': get_loc(e)[0],
+                    'top': get_loc(e)[1]
+                });
+            }).on('mouseleave', function() {
+                $('#thumb').remove();
             });
-            thumb.attr("src", lnk);
-        }).on('mousemove', function(e) {
-            $('div#thumb').css({
-                'left': get_loc(e)[0],
-                'top': get_loc(e)[1]
-            });
-        }).on('mouseleave', function() {
-            $('#thumb').remove();
         });
-    });
-}
+    }
+})(jQuery);
 
 //enable bootstrap tooltips
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
 
+
+// Notifications
+(function($) {
+    if(!Handlebars) return; // only on profilelayout
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+    var msglist = Handlebars.compile($('#msglist').html());
+    var msgtmpl = Handlebars.compile($('#msgtmpl').html());
+    var pagination = Handlebars.compile($('#paginationtmpl').html());
+    var jsondata = {};
+
+    var getMessages = function(url) {
+        if(!url) url = '/api/messages';
+
+        $.getJSON(url)
+            .done(function(data) {
+                $('.spinner').hide();
+                jsondata = data;
+                $('#list').html(msglist(data));
+
+                var page = {
+                    next_page_url: data.next_page_url,
+                    prev_page_url: data.prev_page_url,
+                    pages: []
+                };
+                for(var i = 1; i <= data.last_page; i++) {
+                    page.pages.push({ active: data.current_page == i, page: i});
+                }
+
+                $('#pagination').html(pagination(page));
+
+                $('#pagination a').on('click touchdown', function(e) {
+                    e.preventDefault();
+                    getMessages($(this).attr('href'));
+                });
+
+                $('#listitems a').on('click touchdown', function(e) {
+                    e.preventDefault();
+                    var self = $(this);
+                    var i = self.data('index');
+                    console.log(i);
+
+                    $('#message').html(msgtmpl(jsondata.data[i]));
+                    if(!jsondata.data[i].read) {
+
+                        $.post('/api/messages/read','m_ids[]=' + self.data('id'))
+                            .done(function(data) {
+                                self.removeClass('list-group-item-info');
+                            });
+
+                    }
+                    $('a').removeClass('active');
+                    $(this).addClass('active');
+
+                });
+            });
+    };
+    getMessages();
+})(jQuery);

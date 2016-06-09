@@ -20,6 +20,7 @@
 <body>
 @if(auth()->check())
     @include('partials.filterselect')
+    @include('partials.handlebars')
 @endif
 <canvas id="bg" @if(!Session::get('background', true)) style="display: none;"@endif></canvas>
 
@@ -40,6 +41,7 @@
 <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="/js/isotope.pkgd.min.js"></script>
 <script src="/js/imagesloaded.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
 <script src="/js/w0bmscript.js"></script>
 </body>
 </html>

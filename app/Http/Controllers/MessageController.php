@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -31,7 +32,8 @@ class MessageController extends Controller
         if(!auth()->check()) return Response::create('Unauthorized', '401');
         if($request->has('m_ids')) {
             $ids = $request->get('m_ids');
-            Message::whereTo($user->id)::whereIn('id', $ids)->update(['read' => DateTime::getTimestamp()]);
+            Message::whereTo(auth()->user()->id)->whereIn('id', $ids)->update(['read' => time() ]);
+            return 1;
         }
     }
 
