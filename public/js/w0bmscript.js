@@ -313,7 +313,7 @@ $(function() {
     $("#toggle").click(function(){$(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"))});
 })(jQuery);
 
-(function($) {
+/*(function($) {
     if(/\..+\/(?:songindex|user)/i.test(window.location.href)) {
         var thumbd = $('div#thumb');
         var get_loc = function(e) {
@@ -363,6 +363,54 @@ $(function() {
 
     }
 })(jQuery);
+*/
+if(/\..+\/(?:songindex|user)/i.test(window.location.href)) {
+    function get_loc(e) {
+        return [
+            (e.clientX + $('div#thumb').width() >= $(window).width()) ? e.pageX - 5 - $('div#thumb').width() : e.pageX + 5,
+            (e.clientY + $('div#thumb').height() >= $(window).height()) ? e.pageY - 5 - $('div#thumb').height() : e.pageY + 5
+        ];
+    }
+
+    $(document).ready(function() {
+        $('table tbody tr').on('mouseenter', function(e) {
+            var id = $(this).attr('data-thumb');
+            var lnk = 'https://w0bm.com/thumbs/' + id + '.gif';
+            var loc = get_loc(e);
+            $(document.body).prepend('<div id="thumb"></div>');
+            $('div#thumb').prepend('<img id="thumb"/>');
+            $('img#thumb').text('Loading...');
+            $('div#thumb').css({
+                'position': 'absolute',
+                'left': loc[0],
+                'top': loc[1],
+                'z-index': '5',
+                'border': '1px white solid',
+                'box-shadow': '5px 5px 7px 0px rgba(0,0,0,0.75)',
+                'color': 'white',
+                'background-color': '#181818'
+            });
+            var img = $('img#thumb');
+            var thumb = $('<img/>');
+            thumb.load(function() {
+                img.attr("src", $(this).attr("src"));
+                loc = get_loc(e);
+                $('div#thumb').css({
+                    'left': loc[0],
+                    'top': loc[1]
+                });
+            });
+            thumb.attr("src", lnk);
+        }).on('mousemove', function(e) {
+            $('div#thumb').css({
+                'left': get_loc(e)[0],
+                'top': get_loc(e)[1]
+            });
+        }).on('mouseleave', function() {
+            $('#thumb').remove();
+        });
+    });
+}
 
 //enable bootstrap tooltips
 $(function () {
