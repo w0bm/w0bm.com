@@ -23,7 +23,7 @@
             </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">
-					<li><a href="{{url('messages')}}"><i class="fa fa-envelope"></i> <span class="badge">{{Auth::user()->messagesRecv()->unread()->count()}}</span></a></li>
+					<li><a href="{{url('messages')}}"><i class="fa fa-envelope"></i> <span class="badge unread_messages">{{Auth::user()->messagesRecv()->unread()->count()}}</span></a></li>
                     <li><a href="#" data-toggle="modal" data-target="#filterselectmodal"><i class="fa fa-filter"></i> Filter</a></li>
                     <li><a href="{{url('upload')}}"><i class="fa fa-cloud-upload"></i> Upload</a></li>
                     <li><a href="{{url('user', Auth::user()->username)}}"><i class="fa fa-user"></i> {{Auth::user()->username}}</a></li>
