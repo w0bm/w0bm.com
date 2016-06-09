@@ -321,47 +321,46 @@ $(function() {
                 (e.clientX + thumbd.width() >= $(window).width()) ? e.pageX - 5 - thumbd.width() : e.pageX + 5,
                 (e.clientY + thumbd.height() >= $(window).height()) ? e.pageY - 5 - thumbd.height() : e.pageY + 5
             ];
-        }
+        };
 
-        $(document).ready(function() {
-            $('table tbody tr').on('mouseenter', function(e) {
-                var id = $(this).attr('data-thumb');
-                var lnk = '/thumbs/' + id + '.gif';
-                var loc = get_loc(e);
-                $(document.body).prepend('<div id="thumb"></div>');
-                var img = $('img#thumb');
-                thumbd.prepend('<img id="thumb"/>');
-                img.text('Loading...');
-                thumbd.css({
-                    'position': 'absolute',
-                    'left': loc[0],
-                    'top': loc[1],
-                    'z-index': '5',
-                    'border': '1px white solid',
-                    'box-shadow': '5px 5px 7px 0px rgba(0,0,0,0.75)',
-                    'color': 'white',
-                    'background-color': '#181818'
-                });
-
-                var thumb = $('<img/>');
-                thumb.load(function() {
-                    img.attr("src", $(this).attr("src"));
-                    loc = get_loc(e);
-                    $('div#thumb').css({
-                        'left': loc[0],
-                        'top': loc[1]
-                    });
-                });
-                thumb.attr("src", lnk);
-            }).on('mousemove', function(e) {
-                $('div#thumb').css({
-                    'left': get_loc(e)[0],
-                    'top': get_loc(e)[1]
-                });
-            }).on('mouseleave', function() {
-                $('#thumb').remove();
+        $('table tbody tr').on('mouseenter', function(e) {
+            var id = $(this).attr('data-thumb');
+            var lnk = '/thumbs/' + id + '.gif';
+            var loc = get_loc(e);
+            $(document.body).prepend('<div id="thumb"></div>');
+            var img = $('img#thumb');
+            thumbd.prepend('<img id="thumb"/>');
+            img.text('Loading...');
+            thumbd.css({
+                'position': 'absolute',
+                'left': loc[0],
+                'top': loc[1],
+                'z-index': '5',
+                'border': '1px white solid',
+                'box-shadow': '5px 5px 7px 0px rgba(0,0,0,0.75)',
+                'color': 'white',
+                'background-color': '#181818'
             });
+
+            var thumb = $('<img/>');
+            thumb.load(function() {
+                img.attr("src", $(this).attr("src"));
+                loc = get_loc(e);
+                $('div#thumb').css({
+                    'left': loc[0],
+                    'top': loc[1]
+                });
+            });
+            thumb.attr("src", lnk);
+        }).on('mousemove', function(e) {
+            $('div#thumb').css({
+                'left': get_loc(e)[0],
+                'top': get_loc(e)[1]
+            });
+        }).on('mouseleave', function() {
+            $('#thumb').remove();
         });
+
     }
 })(jQuery);
 
