@@ -18,7 +18,7 @@ class MessageController extends Controller
     public function index()
     {
         if(!auth()->check()) return Response::create('Not found', '304');
-        return auth()->user()->messagesRecv()->orderById('desc')->paginate(15);
+        return auth()->user()->messagesRecv()->orderBy('id', 'desc')->paginate(15);
     }
     
     public function page()
