@@ -19,7 +19,7 @@
 </script>
 
 <script id="paginationtmpl" type="text/x-handlebars-template">
-    <nav class="pull-right">
+    <nav class="mitte">
         <ul class="pagination">
             {{#paginate pagination type="first"}}
             <li {{#if disabled}}class="disabled"{{/if}}><a href="/api/messages?page={{n}}">First</a></li>

@@ -100,7 +100,7 @@
             <td>10</td>
             <td>10€</td>
             <td>31.01.2016</td>
-            <td>levelup</td>
+            <td>phaneron</td>
         </tr>
 
         <tr class="success">

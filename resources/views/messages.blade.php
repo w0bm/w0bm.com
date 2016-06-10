@@ -10,6 +10,6 @@
                 <div class="cube2"></div>
             </div>
         </div>
-        <div class="col-md-6" id="message"></div>
+        <div class="col-md-6" id="message"><h4>Select a message to display content</h4></div>
     </div>
 @endsection

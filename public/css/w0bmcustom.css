@@ -486,3 +486,9 @@ div.message > div.panel-heading > span {
         -webkit-transform: rotate(-360deg);
     }
 }
+
+.mitte {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

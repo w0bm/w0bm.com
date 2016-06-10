@@ -4214,7 +4214,7 @@ a.label:focus {
 .badge {
   display: inline-block;
   min-width: 10px;
-  padding: 3px 7px;
+  padding: 2px 7px;
   font-size: 12px;
   font-weight: bold;
   color: #ffffff;
@@ -4224,6 +4224,9 @@ a.label:focus {
   text-align: center;
   background-color: #2a9fd6;
   border-radius: 10px;
+  margin-right: -18px;
+  margin-left: -5px;
+  margin-top: -15px;
 }
 .badge:empty {
   display: none;

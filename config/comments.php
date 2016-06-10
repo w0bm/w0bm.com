@@ -6,6 +6,7 @@ return [
     'media.giphy.com',
     'files.nogf.club',
     'koyaanis.com',
-    'ptpb.pw'
+    'ptpb.pw',
+    'a.desu.sh'
   ]
 ];
