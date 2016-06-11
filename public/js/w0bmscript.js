@@ -134,10 +134,18 @@ function to_favs() {
     function updaterow(ctx, video) {
         if($('video').length) {
             var info = [];
-            info.push(video.interpret ? ' <em>Interpret:</em> ' + video.interpret : '');
-            info.push(video.songtitle ? ' <em>Songtitle:</em> ' + video.songtitle : '');
-            info.push(video.imgsource ? ' <em>Source:</em> ' + video.imgsource : '');
-            info.push(video.category.name ? ' <em>Category:</em> ' + video.category.name : '');
+            if(video.interpret) {
+                info.push(' <em>Interpret:</em> ' + video.interpret);
+            }
+            if(video.songtitle) {
+                info.push(' <em>Songtitle:</em> ' + video.songtitle);
+            }
+            if(video.imgsource) {
+                info.push(' <em>Source:</em> ' + video.imgsource);
+            }
+            if(video.category.name) {
+                info.push(' <em>Category:</em> ' + video.category.name);
+            }
             $('i.fa-info-circle').attr('data-content', info.join('<br>'));
         }
         else {
