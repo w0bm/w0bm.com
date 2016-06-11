@@ -543,7 +543,6 @@ $(function () {
                     e.preventDefault();
                     var self = $(this);
                     var i = self.data('index');
-                    console.log(i);
 
                     $('#message').html(msgtmpl(jsondata.data[i]));
                     if(!jsondata.data[i].read) {
@@ -555,7 +554,8 @@ $(function () {
 
                     }
                     $('a').removeClass('active');
-                    $(this).addClass('active');
+                    self.addClass('active');
+                    $('time.timeago').timeago();
 
                 });
             });
