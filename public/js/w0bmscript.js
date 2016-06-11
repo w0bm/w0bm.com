@@ -140,6 +140,33 @@ function to_favs() {
         row.find('.vsongtitle').html(video.songtitle || '');
         row.find('.vimgsource').html(video.imgsource || '');
         row.find('.vcategory').html('<a href="/' + video.category.shortname + '">' + video.category.name + '</a>');
+        if($('video').length != 0) {
+            var info = '';
+            if(video.interpret != null) {
+                info += ' <em>Interpret:</em> ' + video.interpret;
+            }
+            console.log(video.songtitle);
+            if(video.songtitle != null) {
+                if(info != '') {
+                    info += '<br>';
+                }
+                info += ' <em>Songtitle:</em> ' + video.songtitle;
+            }
+            if(video.imgsource != null) {
+                if(info != '') {
+                    info += '<br>';
+                }
+                info += ' <em>Source:</em> ' + video.imgsource;
+            }
+            if(video.category.name != null) {
+                if(info != '') {
+                    info += '<br>';
+                }
+                info += ' <em>Category:</em> ' + video.category.name;
+            }
+            console.log(info);
+            $('i.fa-info-circle').attr('data-content', info);
+        }
     }
 
     $.ajaxSetup({
@@ -516,33 +543,3 @@ $(function () {
     };
     getMessages();
 })(jQuery);
-
-$('div#webmeditmodal > div.modal-dialog > div.modal-content > div.modal-footer > input.btn-primary').on('click', function() {
-    var interpret = $('input#interpretedit').val();
-    var songtitle = $('input#songtitleedit').val();
-    var source = $('input#imgsourceedit').val();
-    var category = $('select#categoryselect option:selected').text();
-    var info = '';
-    if(interpret != '') {
-        info += ' <em>Interpret:</em> ' + interpret;
-    }
-    if(songtitle != '') {
-        if(info != '') {
-            info += '<br>';
-        }
-        info += ' <em>Songtitle:</em> ' + songtitle;
-    }
-    if(source != '') {
-        if(info != '') {
-            info += '<br>';
-        }
-        info += ' <em>Source:</em> ' + source;
-    }
-    if(category != '') {
-        if(info != '') {
-            info += '<br>';
-        }
-        info += ' <em>Category:</em> ' + category;
-    }
-    $('i.fa-info-circle').attr('data-content', info);
-});
