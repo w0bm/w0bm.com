@@ -64,6 +64,6 @@
         <div class="panel-body">
             {{{content}}}
         </div>
-        <div class="panel-footer">{{created_at}}</div>
+        <div class="panel-footer"><time class="timeago" datetime="{{created_at}}" title="{{created_at}}">{{created_at}}</time></div>
     </div>
 </script>

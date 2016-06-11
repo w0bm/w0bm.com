@@ -5,9 +5,10 @@ body {
 
 /*body::after {
     position: fixed !important;
-    content: url("/spurdo.gif");
+    content: url("https://koyaanis.com/i/kawaii2.gif");
     bottom: -5px;
-    right: -20px !important;
+    /*right: -20px !important;*/
+    left: 0px !important;
     opacity: 1;
     z-index: -1;
 }*/
