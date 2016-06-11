@@ -11,19 +11,19 @@
                     <div class="form-group">
                         <label for="interpret" class="col-sm-2 control-label">Interpret</label>
                         <div class="col-sm-10">
-                            {!! Form::text('interpret', null, ['class' => 'form-control', 'placeholder' => 'Interpret']) !!}
+                            {!! Form::text('interpret', null, ['id' => 'interpret', 'class' => 'form-control', 'placeholder' => 'Interpret']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="songtitle" class="col-sm-2 control-label">Song title</label>
                         <div class="col-sm-10">
-                            {!! Form::text('songtitle', null, ['class' => 'form-control', 'placeholder' => 'Song Title']) !!}
+                            {!! Form::text('songtitle', null, ['id' => 'songtitle', 'class' => 'form-control', 'placeholder' => 'Song Title']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="imgsource" class="col-sm-2 control-label">Video source</label>
                         <div class="col-sm-10">
-                            {!! Form::text('imgsource', null, ['class' => 'form-control', 'placeholder' => 'Video Source']) !!}
+                            {!! Form::text('imgsource', null, ['id' => 'imgsource', 'class' => 'form-control', 'placeholder' => 'Video Source']) !!}
                         </div>
                     </div>
                     <div class="form-group">
@@ -35,13 +35,13 @@
                                     $categories[$cat->id] = $cat->name;
                                 }
                             ?>
-                            {!! Form::select('category', $categories, 8, ['class' => 'form-control']) !!}
+                            {!! Form::select('category', $categories, 8, ['id' => 'category', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="file" class="col-sm-2 control-label">File</label>
                         <div class="col-sm-10">
-                            {!! Form::file('file', ['class' => 'form-control', 'placeholder' => 'Select file']) !!}
+                            {!! Form::file('file', ['id' => 'file', 'class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="form-group">
