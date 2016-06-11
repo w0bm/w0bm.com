@@ -516,3 +516,33 @@ $(function () {
     };
     getMessages();
 })(jQuery);
+
+$('div#webmeditmodal > div.modal-dialog > div.modal-content > div.modal-footer > input.btn-primary').on('click', function() {
+    var interpret = $('input#interpretedit').val();
+    var songtitle = $('input#songtitleedit').val();
+    var source = $('input#imgsourceedit').val();
+    var category = $('select#categoryselect option:selected').text();
+    var info = '';
+    if(interpret != '') {
+        info += ' <em>Interpret:</em> ' + interpret;
+    }
+    if(songtitle != '') {
+        if(info != '') {
+            info += '<br>';
+        }
+        info += ' <em>Songtitle:</em> ' + songtitle;
+    }
+    if(source != '') {
+        if(info != '') {
+            info += '<br>';
+        }
+        info += ' <em>Source:</em> ' + source;
+    }
+    if(category != '') {
+        if(info != '') {
+            info += '<br>';
+        }
+        info += ' <em>Category:</em> ' + category;
+    }
+    $('i.fa-info-circle').attr('data-content', info);
+});
