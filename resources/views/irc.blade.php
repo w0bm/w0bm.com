@@ -4,7 +4,7 @@
         <h2>IRC</h2>
     </div>
 <h3>irc.rizon.net #w0bm</h3>
-<img src="/irccat.gif" style="float: right; width: 25%; height: 25%">
+<img src="/irccat.gif" alt="irc cat" style="float: right; width: 25%; height: 25%">
 <br>
 <h4>IRC Rules</h4>
 <ol>
