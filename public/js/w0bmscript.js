@@ -132,37 +132,22 @@ function to_favs() {
 (function ($) {
 
     function updaterow(ctx, video) {
-        var row = ctx.parents('tr');
-        row.find('span').show();
-        row.find('input, select').hide();
-        row.find('.vinterpret').html(video.interpret || '');
-        row.find('.vsongtitle').html(video.songtitle || '');
-        row.find('.vimgsource').html(video.imgsource || '');
-        row.find('.vcategory').html('<a href="/' + video.category.shortname + '">' + video.category.name + '</a>');
-        if($('video').length != 0) {
-            var info = '';
-            if(video.interpret != null) {
-                info += ' <em>Interpret:</em> ' + video.interpret;
-            }
-            if(video.songtitle != null) {
-                if(info != '') {
-                    info += '<br>';
-                }
-                info += ' <em>Songtitle:</em> ' + video.songtitle;
-            }
-            if(video.imgsource != null) {
-                if(info != '') {
-                    info += '<br>';
-                }
-                info += ' <em>Source:</em> ' + video.imgsource;
-            }
-            if(video.category.name != null) {
-                if(info != '') {
-                    info += '<br>';
-                }
-                info += ' <em>Category:</em> ' + video.category.name;
-            }
-            $('i.fa-info-circle').attr('data-content', info);
+        if($('video').length) {
+            var info = [];
+            info.push(video.interpret ? ' <em>Interpret:</em> ' + video.interpret : '');
+            info.push(video.songtitle ? ' <em>Songtitle:</em> ' + video.songtitle : '');
+            info.push(video.imgsource ? ' <em>Source:</em> ' + video.imgsource : '');
+            info.push(video.category.name ? ' <em>Category:</em> ' + video.category.name : '');
+            $('i.fa-info-circle').attr('data-content', info.join('<br>'));
+        }
+        else {
+            var row = ctx.parents('tr');
+            row.find('span').show();
+            row.find('input, select').hide();
+            row.find('.vinterpret').html(video.interpret || '');
+            row.find('.vsongtitle').html(video.songtitle || '');
+            row.find('.vimgsource').html(video.imgsource || '');
+            row.find('.vcategory').html('<a href="/' + video.category.shortname + '">' + video.category.name + '</a>');
         }
     }
 
