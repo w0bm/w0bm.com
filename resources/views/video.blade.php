@@ -42,7 +42,6 @@
 				@endif
 				<br>
 				<span class="videoinfo">
-					<div id=".comments"></div>
 						<a href="#" id="toggle"><i class="fa fa-comments"></i></a>	
 						<a href="{{url('togglebackground')}}" id="togglebg"><i style="color:#fff200;" class="fa fa-lightbulb-o"></i></a>
 						@if(auth()->check())
