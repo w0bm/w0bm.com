@@ -132,7 +132,6 @@ function to_favs() {
 (function ($) {
 
     function updaterow(ctx, video) {
-        console.log(video);
         var row = ctx.parents('tr');
         row.find('span').show();
         row.find('input, select').hide();
@@ -145,7 +144,6 @@ function to_favs() {
             if(video.interpret != null) {
                 info += ' <em>Interpret:</em> ' + video.interpret;
             }
-            console.log(video.songtitle);
             if(video.songtitle != null) {
                 if(info != '') {
                     info += '<br>';
@@ -164,7 +162,6 @@ function to_favs() {
                 }
                 info += ' <em>Category:</em> ' + video.category.name;
             }
-            console.log(info);
             $('i.fa-info-circle').attr('data-content', info);
         }
     }
@@ -198,7 +195,6 @@ function to_favs() {
         }).fail(function(data){
             flash('error', 'Error updating video');
             flash('error', data);
-            console.log(data);
             self.find('#webmeditmodal').modal('hide');
         });
     });
