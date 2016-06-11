@@ -5,5 +5,5 @@ return [
 
     'glue' => ',',
 
-    'normalizer' => ['Str', 'slug'],
+    'normalizer' => 'mb_strtolower',
 ];

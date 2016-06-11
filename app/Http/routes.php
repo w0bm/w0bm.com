@@ -82,6 +82,7 @@ Route::get('comment/{id}/restore', 'VideoController@restoreComment')->where('id'
 Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');
 Route::get('{id}/fav', 'VideoController@favorite')->where('id', '[0-9]+');
 Route::get('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');
+Route::post('{id}/tag', 'VideoController@tag')->where('id', '[0-9]+');
 Route::post('{id}', 'VideoController@storeComment')->where('id', '[0-9]+');
 
 Route::get('{shortname}', 'CategoryController@showVideo')->where('shortname', '[a-z][a-z0-9]+');

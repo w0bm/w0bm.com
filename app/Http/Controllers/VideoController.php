@@ -275,6 +275,20 @@ class VideoController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return Video | Bool
+     */
+    public function tag(Request $request, $id) {
+        if(!$request->has('tags')) return response(500, "No tags specified");
+
+        $v = Video::findOrFail($id);
+        $v->tag($request->get('tags'));
+
+        return $v;
+
+    }
+
     private function createThumbnail($dat) {
         $in = "/var/www/w0bm.com/public/b"; // webm-input
         $out = "/var/www/w0bm.com/public/thumbs"; // thumb-output
