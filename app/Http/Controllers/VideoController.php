@@ -19,8 +19,7 @@ class VideoController extends Controller
      *
      * @return Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         if($request->has('q')){
             $needle = '%' . $request->input('q') .'%';
             return view('songindex', [
@@ -55,8 +54,7 @@ class VideoController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $user = auth()->check() ? auth()->user() : null;
         if(is_null($user)) return redirect('/')->with('error', 'You need to be logged in');
 
@@ -103,8 +101,7 @@ class VideoController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         // GZ's kläglicher versuch:
         //if(!auth()->check()) return redirect('/irc')->with('error', 'You need to be logged in to view our content');
 
@@ -132,8 +129,7 @@ class VideoController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         if(!auth()->check())
             return response('Not logged in', 403);
         if(!auth()->user()->can('edit_video'))
@@ -277,28 +273,26 @@ class VideoController extends Controller
             $user->favs()->attach($id);
             return $xhr ? "Video added to favorites" : redirect()->back()->with('success', 'Video favorised');
         }
-
-
     }
 
     private function createThumbnail($dat) {
-      $in = "/var/www/w0bm.com/public/b"; // webm-input
-      $out = "/var/www/w0bm.com/public/thumbs"; // thumb-output
-      $tmpdir = "/var/www/w0bm.com/app/Http/Controllers/tmp"; // tempdir
+        $in = "/var/www/w0bm.com/public/b"; // webm-input
+        $out = "/var/www/w0bm.com/public/thumbs"; // thumb-output
+        $tmpdir = "/var/www/w0bm.com/app/Http/Controllers/tmp"; // tempdir
 
-      $name = explode(".", $dat);
-      array_pop($name);
-      $name = join(".", $name);
-      if(!file_exists("{$out}/{$name}.gif")) {
-        $length = round(shell_exec("ffprobe -i {$in}/{$dat} -show_format -v quiet | sed -n 's/duration=//p'"));
-        for($i=1;$i<10;$i++) {
-          $act = ($i*10) * ($length / 100);
-          $ffmpeg = shell_exec("ffmpeg -ss {$act} -i {$in}/{$dat} -vf \"scale='if(gt(a,4/3),206,-1)':'if(gt(a,4/3),-1,116)'\" -vframes 1 {$tmpdir}/{$name}_{$i}.png 2>&1");
+        $name = explode(".", $dat);
+        array_pop($name);
+        $name = join(".", $name);
+        if (!file_exists("{$out}/{$name}.gif")) {
+            $length = round(shell_exec("ffprobe -i {$in}/{$dat} -show_format -v quiet | sed -n 's/duration=//p'"));
+            for ($i = 1; $i < 10; $i++) {
+                $act = ($i * 10) * ($length / 100);
+                $ffmpeg = shell_exec("ffmpeg -ss {$act} -i {$in}/{$dat} -vf \"scale='if(gt(a,4/3),206,-1)':'if(gt(a,4/3),-1,116)'\" -vframes 1 {$tmpdir}/{$name}_{$i}.png 2>&1");
+            }
+            $tmp = shell_exec("convert -delay 27 -loop 0 {$tmpdir}/{$name}_*.png {$out}/{$name}.gif 2>&1");
+            if (@filesize("{$out}/{$name}.gif") < 2000)
+                @unlink("{$out}/{$name}.gif");
+            array_map('unlink', glob("{$tmpdir}/{$name}*.png"));
         }
-        $tmp = shell_exec("convert -delay 27 -loop 0 {$tmpdir}/{$name}_*.png {$out}/{$name}.gif 2>&1");
-        if(@filesize("{$out}/{$name}.gif") < 2000)
-          @unlink("{$out}/{$name}.gif");
-        array_map('unlink', glob("{$tmpdir}/{$name}*.png"));
-      }
     }
 }

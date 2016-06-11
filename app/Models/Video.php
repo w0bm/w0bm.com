@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentTaggable\Taggable;
 
 /**
  * App\Models\Video
@@ -34,10 +35,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Video whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Video whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Video whereHash($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|User[] $faved
+ * @property-read \Illuminate\Database\Eloquent\Collection|Tag[] $tags
+ * @property-read mixed $tag_list
+ * @property-read mixed $tag_list_normalized
+ * @property-read mixed $tag_array
+ * @property-read mixed $tag_array_normalized
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Video newlyups()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Video withAllTags($tags)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Video withAnyTags($tags = array())
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Video withoutTags()
  */
 class Video extends Model
 {
     use SoftDeletes;
+    use Taggable;
 
     public function user() {
         return $this->belongsTo(User::class);

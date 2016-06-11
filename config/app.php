@@ -149,7 +149,8 @@ return [
         Toddish\Verify\Providers\VerifyServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
         App\Providers\BladeServiceProvider::class,
-        Greggilbert\Recaptcha\RecaptchaServiceProvider::class
+        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+        Cviebrock\EloquentTaggable\ServiceProvider::class
 
     ],
 
