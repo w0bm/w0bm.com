@@ -8,14 +8,15 @@
     <meta name="_token" content="{{csrf_token()}}">
     <link rel="icon" href="/favicon.png">
     <title>w0bm.com - WebMs with sound!</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
     <link rel="favicon" 
       type="image/ico" 
       href="favicon.ico" />
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="/css/w0bmcustom.css">
 </head>
 <body>
 @if(auth()->check())
@@ -44,6 +45,7 @@
 <script src="/js/isotope.pkgd.min.js"></script>
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
+<script src="/js/bootstrap-tagsinput.min.js"></script>
 <script src="/js/w0bmscript.js"></script>
 </body>
 </html>

@@ -5,5 +5,7 @@ return [
 
     'glue' => ',',
 
-    'normalizer' => 'mb_strtolower',
+    'normalizer' => function($str) {
+        return str_slug($str, '');
+    },
 ];

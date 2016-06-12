@@ -271,7 +271,7 @@ class VideoController extends Controller
             return $xhr ? "Video removed from favorites" : redirect()->back()->with('success', 'Video removed from favorites');
         } else {
             $user->favs()->attach($id);
-            return $xhr ? "Video added to favorites" : redirect()->back()->with('success', 'Video favorised');
+            return $xhr ? "Video added to favorites" : redirect()->back()->with('success', 'Video added to favorites');
         }
     }
 
@@ -280,15 +280,19 @@ class VideoController extends Controller
      * @return Video | Bool
      */
     public function tag(Request $request, $id) {
-        if(!$request->has('tags')) return response(500, "No tags specified");
+        if(!$request->has('tags')) return response(304, "No tags specified");
 
         $v = Video::findOrFail($id);
         $v->tag($request->get('tags'));
 
         return $v;
-
     }
 
+    /**
+     * Creates a .gif thumbnail to a given video file
+     * 
+     * @param string $dat File of the video
+     */
     private function createThumbnail($dat) {
         $in = "/var/www/w0bm.com/public/b"; // webm-input
         $out = "/var/www/w0bm.com/public/thumbs"; // thumb-output

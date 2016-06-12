@@ -8,7 +8,6 @@
                 <a href="{{url('comment/' . $comment->id . '/restore')}}" class=""><i style="color:green"; class="fa fa-refresh" aria-hidden="true"></i></a>
             @else
                 <a class="" href="{{url('comment/' . $comment->id . '/delete')}}"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a>
-                <!--<a class="" href="#" onclick="comment_edit($(this),{{$comment->id}})"><i style="color:cyan;" class="fa fa-pencil" aria-hidden="true"></i></a>-->
             @endif
         @endif
     </div>

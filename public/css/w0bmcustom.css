@@ -110,16 +110,26 @@ div.tbody {
     width: 100%;
 }
 
+.tags {
+    height: 100px;
+    width: 350px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    background: rgba(32, 32, 32, 0.6);
+    padding: 0 2px 2px;
+    overflow-y: scroll;
+    //border-right: 0 solid #3F3F3F;
+    //box-shadow: #FFF -20px 0px 20px;
+}
+
 .comments {
-    float: left;
-    height: calc(100% - 50px);
-    height: calc(100vh - 50px);
+    height: calc(100% - 150px); /* -150px due to tag area and general padding */
+    height: calc(100vh - 150px);
     width: 350px;
     background: rgba(32, 32, 32, 0.6);
-    padding: 2px;
-    padding-top: 0px;
+    padding: 0 2px 2px;
     overflow-y: scroll;
-    border-right: 0px solid #3F3F3F;
+    border-right: 0 solid #3F3F3F;
 }
 .comments textarea {
     color: #c8c8c8;
