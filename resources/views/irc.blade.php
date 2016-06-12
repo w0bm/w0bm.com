@@ -4,7 +4,7 @@
         <h2>IRC</h2>
     </div>
 <h3>irc.rizon.net #w0bm</h3>
-<img src="/irccat.gif" height="25%" width="25%" style="float: right;">
+<img src="/irccat.gif" alt="irc cat" style="float: right; width: 25%; height: 25%">
 <br>
 <h4>IRC Rules</h4>
 <ol>
@@ -15,9 +15,9 @@
 </ol>
 <p>Make sure to always connect via ssl to IRC. On Rizon ssl is available on port 6697 & 9999</p>
 <nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-    <center><a href="/contact">Contact</a> | <a href="/privacy">Privacy Policy</a> | <a href="/donate">Donate</a>
-<p>Inspired by <a href="http://z0r.de">z0r.de</a></p></center>
+  <div class="container" style="text-align: center">
+    <a href="/contact">Contact</a> | <a href="/privacy">Privacy Policy</a> | <a href="/donate">Donate</a>
+<p>Inspired by <a href="http://z0r.de">z0r.de</a></p>
   </div>
 </nav>
 @endsection

@@ -133,14 +133,31 @@ function to_favs() {
 (function ($) {
 
     function updaterow(ctx, video) {
-        console.log(video);
-        var row = ctx.parents('tr');
-        row.find('span').show();
-        row.find('input, select').hide();
-        row.find('.vinterpret').html(video.interpret || '');
-        row.find('.vsongtitle').html(video.songtitle || '');
-        row.find('.vimgsource').html(video.imgsource || '');
-        row.find('.vcategory').html('<a href="/' + video.category.shortname + '">' + video.category.name + '</a>');
+        if($('video').length) {
+            var info = [];
+            if(video.interpret) {
+                info.push(' <em>Interpret:</em> ' + video.interpret);
+            }
+            if(video.songtitle) {
+                info.push(' <em>Songtitle:</em> ' + video.songtitle);
+            }
+            if(video.imgsource) {
+                info.push(' <em>Source:</em> ' + video.imgsource);
+            }
+            if(video.category.name) {
+                info.push(' <em>Category:</em> ' + video.category.name);
+            }
+            $('i.fa-info-circle').attr('data-content', info.join('<br>'));
+        }
+        else {
+            var row = ctx.parents('tr');
+            row.find('span').show();
+            row.find('input, select').hide();
+            row.find('.vinterpret').html(video.interpret || '');
+            row.find('.vsongtitle').html(video.songtitle || '');
+            row.find('.vimgsource').html(video.imgsource || '');
+            row.find('.vcategory').html('<a href="/' + video.category.shortname + '">' + video.category.name + '</a>');
+        }
     }
 
     $.ajaxSetup({
@@ -172,7 +189,6 @@ function to_favs() {
         }).fail(function(data){
             flash('error', 'Error updating video');
             flash('error', data);
-            console.log(data);
             self.find('#webmeditmodal').modal('hide');
         });
     });
