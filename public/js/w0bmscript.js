@@ -141,7 +141,7 @@ function to_favs() {
                 info.push(' <em>Songtitle:</em> ' + video.songtitle);
             }
             if(video.imgsource) {
-                info.push(' <em>Source:</em> ' + video.imgsource);
+                info.push(' <em>Video Source:</em> ' + video.imgsource);
             }
             if(video.category.name) {
                 info.push(' <em>Category:</em> ' + video.category.name);
