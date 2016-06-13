@@ -1,6 +1,10 @@
 @extends('profilelayout')
 @section('content')
-            <h2>Favorites</h2>
+    	<div class="page-header">
+        <h3>{{$user->username}}<h3> <h5><a style="color:#1FB2B0;" href="/user/{{$user->username}}"><i class="fa fa-cloud-upload"></i> {{ $user->videos()->count() }} Uploads</a> <span style="color:white;"> <i class="fa fa-commenting"></i> {{ $user->comments()->count() }} Comments</span> <span style="color:#CE107C;" href="{{url('user/' . $user->username . '/favs')}}"><i class="fa fa-heart"></i> {{ $user->favs()->count() }} Favorites</span>@if($user->is('Moderator')) <span class="pull-right" style="color: #1FB2B0;"><i class="fa fa-bolt anim"></i></span>@elseif($user->is('Editor'))  <span class="pull-right" style="color: #1FB2B0;"><i class="fa fa-pencil anim"></i></span>@endif</h5>
+    	</div>
+
+	    <h3>Favorites</h3>
             <table class="table table-hover table-condensed">
                 <thead>
                 <tr>

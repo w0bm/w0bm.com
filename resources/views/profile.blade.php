@@ -1,9 +1,11 @@
 @extends('profilelayout')
 @section('content')
-    <div class="page-header">
-        <h1>{{$user->username}} <small><i class="fa fa-cloud-upload"></i> {{ $user->videos()->count() }} Uploads <i class="fa fa-commenting"></i> {{ $user->comments()->count() }} Comments <a style="color:#CE107C;" href="{{url('user/' . $user->username . '/favs')}}"><i class="fa fa-heart"></i> {{ $user->favs()->count() }} Favorites</a></small>@if($user->is('Moderator')) <span class="pull-right" style="color: #1FB2B0;"><i class="fa fa-bolt anim"></i></span>@elseif($user->is('Editor'))  <span class="pull-right" style="color: #1FB2B0;"><i class="fa fa-pencil anim"></i></span>@endif</h1>
-    </div>
-            <h2>Uploads</h2>
+<div class="page-header">
+        <h3>{{$user->username}}<h3> <h5><span style="color:#1FB2B0"><i class="fa fa-cloud-upload"></i> {{ $user->videos()->count() }} Uploads</span> <i class="fa fa-commenting"></i> {{ $user->comments()->count() }} Comments <a style="color:#CE107C;" href="{{url('user/' . $user->username . '/favs')}}"><i class="fa fa-heart"></i> {{ $user->favs()->count() }} Favorites</a>@if($user->is('Moderator')) <span class="pull-right" style="color: #1FB2B0;"><i class="fa fa-bolt anim"></i></span>@elseif($user->is('Editor'))  <span class="pull-right" style="color: #1FB2B0;"><i class="fa fa-pencil anim"></i></span>@endif</h5>
+        </div>
+
+
+	    <h3>Uploads</h3>
             <table class="table table-hover table-condensed">
                 <thead>
                 <tr>
