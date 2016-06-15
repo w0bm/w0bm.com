@@ -22,7 +22,7 @@ class VideoController extends Controller
     public function index(Request $request)
     {
         if($request->has('q')){
-            $needle = '%' . $request->input('q') .'%';
+            $needle = '%' . trim($request->input('q')) .'%';
             return view('songindex', [
                 'videos' => Video::where('interpret', 'LIKE', $needle)
                         ->orWhere('songtitle', 'LIKE', $needle)
