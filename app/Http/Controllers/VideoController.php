@@ -26,7 +26,11 @@ class VideoController extends Controller
             return view('songindex', [
                 'videos' => Video::where('interpret', 'LIKE', $needle)
                         ->orWhere('songtitle', 'LIKE', $needle)
-                        ->orderBy('id', 'ASC')
+                        ->orWhere('imgsource', 'LIKE', $needle)
+                        //->orderBy('id', 'ASC')
+                        ->orderByRaw("((interpret like '$needle') +
+                            (songtitle like '$needle') +
+                            (imgsource like '$needle')) desc")
                         ->paginate(20)->appends(['q' => trim($needle, '%')]),
                 'categories' => Category::all()
             ]);
