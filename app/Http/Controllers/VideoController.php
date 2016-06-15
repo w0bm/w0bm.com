@@ -136,7 +136,7 @@ class VideoController extends Controller
     {
         if(!auth()->check())
             return response('Not logged in', 403);
-        if(!auth()->user()->can('edit_video'))
+        if(!auth()->user()->can('edit_video') && auth()->user()->id != $id)
             return response('Not enough permissions', 403);
 
         if(!$request->ajax())
