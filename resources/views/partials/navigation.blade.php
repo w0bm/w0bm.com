@@ -1,6 +1,5 @@
 <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
@@ -11,15 +10,13 @@
             <a class="navbar-brand" href="/"><img src="{{ asset('logo.svg') }}" alt="w0bm.com"></a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class=" collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="{{url('categories')}}"><i class="fa fa-bars"></i> Categories</a></li>
                 <li><a href="{{url('songindex')}}"><i class="fa fa-music"></i> Songindex</a></li>
                 <li><a href="{{url('irc')}}"><i class="fa fa-comment"></i> IRC</a></li>
                 <li><a href="{{url('about')}}"><i class="fa fa-exclamation"></i> About</a></li>
-                <!--<li><a  href="{{url('donate')}}"><i class="fa fa-dollar"></i> Help us!</a></li>-->
-                <!--<li><a href="https://sync.w0bm.com" target="_blank"><i class="fa fa-clock-o"></i> Sync</a></li>-->
+		<li><a href="https://twitter.com/w0bm_com" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a></li>
             </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">
@@ -41,6 +38,6 @@
                     </div>
                 </form>
             @endif
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div>
+    </div>
 </nav>

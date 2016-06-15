@@ -53,7 +53,7 @@
 						@else
 							<a href="{{url($video->id . '/fav')}}"><i class="fa fa-heart-o"></i></a>
 						@endif
-						<i 	class="fa fa-info-circle"
+						<span 	class="fa fa-info-circle"
 							style="cursor: pointer"
 							data-toggle="popover"
 							data-placement="top"
@@ -63,8 +63,8 @@
 											@if($video->songtitle) <em>Songtitle:</em> {{$video->songtitle}}<br>@endif
 											@if($video->imgsource) <em>Video Source:</em> {{$video->imgsource}}<br>
 											@endif
-											<em>Category:</em> {{$video->category->name}}"></i>
-						uploaded by <i style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }}@if($video->user->is('Moderator')) <i class="fa fa-bolt anim"></i>@endif</a></i>&nbsp; <span data-toggle="tooltip" data-placement="bottom" title="{{$video->created_at->timezone('Europe/Berlin')->format('d.m.Y H:i')}}">{{ $video->created_at->diffForHumans() }}</span>@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="" href="{{url($video->id . '/delete')}}"><i style="color:red;" class="fa fa-times" aria-hidden="true"></i></a>@endif @if(auth()->check() && auth()->user()->can('edit_video'))<a href="#" data-toggle="modal" data-target="#webmeditmodal"><i style="color:#2ada19;" class="fa fa-pencil-square"></i></a>@endif
+											<em>Category:</em> {{$video->category->name}}"></span>
+						uploaded by <span style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{{ $video->user->username }} @if($video->user->is('Moderator'))<span class="fa fa-bolt anim"></span>@elseif($video->user->is('Editor'))<span class="fa fa-shield anim"></span>@elseif($video->user->is('flinny'))<img class="flinnysmall" src="{{ asset('wizard.png') }}"></img>@elseif($video->user->is('brown'))<img class="rainsmall" src="{{ asset('watermelon.png') }}"></img>@elseif($video->user->is('dank')) <img class="danksmall" src="{{ asset('weed.png') }}"></img>@endif</a></span> <span data-toggle="tooltip" data-placement="bottom" title="{{$video->created_at->timezone('Europe/Berlin')->format('d.m.Y H:i')}}">{{ $video->created_at->diffForHumans() }}</span>@if(auth()->check() && auth()->user()->can('delete_video')) <a data-confirm="Do you really want to delete this video?" class="" href="{{url($video->id . '/delete')}}"><i style="color:red;" class="fa fa-times" aria-hidden="true"></i></a>@endif @if(auth()->check() && auth()->user()->can('edit_video'))<a href="#" data-toggle="modal" data-target="#webmeditmodal"><i style="color:#2ada19;" class="fa fa-pencil-square"></i></a>@endif
 				</span>
 			</div>
 		</div>
