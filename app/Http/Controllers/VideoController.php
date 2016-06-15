@@ -136,14 +136,16 @@ class VideoController extends Controller
     {
         if(!auth()->check())
             return response('Not logged in', 403);
-        if(!auth()->user()->can('edit_video') && auth()->user()->id != $id)
-            return response('Not enough permissions', 403);
+        
 
         if(!$request->ajax())
             return response('Invalid request', 400);
 
         $v = Video::findOrFail($id);
-
+        
+        if(!auth()->user()->can('edit_video') && auth()->user()->id != $v->user_id)
+            return response('Not enough permissions', 403);
+        
         if($request->has('interpret'))
             $v->interpret = $request->input('interpret');
         if($request->has('songtitle'))
