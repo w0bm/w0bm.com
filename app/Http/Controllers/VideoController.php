@@ -24,9 +24,11 @@ class VideoController extends Controller
         if($request->has('q')){
             $needle = '%' . trim($request->input('q')) .'%';
             return view('songindex', [
-                'videos' => Video::where('interpret', 'LIKE', $needle)
+                'videos' => Video::where(function($query) {
+                    $query->where('interpret', 'LIKE', $needle)
                         ->orWhere('songtitle', 'LIKE', $needle)
-                        ->orWhere('imgsource', 'LIKE', $needle)
+                        ->orWhere('imgsource', 'LIKE', $needle);
+                })
                         //->orderBy('id', 'ASC')
                         ->orderByRaw("((interpret like '$needle') +
                             (songtitle like '$needle') +
