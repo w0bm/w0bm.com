@@ -250,4 +250,5 @@
 </table>
 </div>
 </center>
+@include('footer'))
 @endsection

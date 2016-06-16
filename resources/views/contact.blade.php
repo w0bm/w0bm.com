@@ -6,10 +6,7 @@
 <li>E-Mail: <a href="mailto:w0bm@tfwno.gf">w0bm@tfwno.gf</a></li>
 <li>Admin E-Mail: <a href="mailto:bka@tfwno.gf">bka@tfwno.gf</a></li>
 </ul>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-    <center><a href="/contact">Contact</a> | <a href="/privacy">Privacy Policy</a> | <a href="/donate">Donate</a>
-<p>Inspired by <a href="http://z0r.de">z0r.de</a></p></center>
-  </div>
-</nav>
+<h6 style="color: red;">Copyright related emails will be answered within 24 to 72 hours and infringing content will be removed as soon as possible, please provide enough information, that you are the rightful copyright holder.</h6>
+<h6>If you have something real urgent that can't wait up to 24 - 72 hours, you can contact me via IRC. For that you need to connect to the Rizon IRC Network and type in /query BKA and leave your message there. I will reply in most cases very quickly.</h6>
+@include('footer')
 @endsection
