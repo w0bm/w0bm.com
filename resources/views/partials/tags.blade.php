@@ -1,6 +1,6 @@
 <aside class="tags hidden-xs">
     @if(Auth::check())
-        <form class="form-inline" method="POST" action="/{{$video->id}}/tag" id="tagform">
+        <form class="" method="POST" action="/{{$video->id}}/tag" id="tagform">
             {!! csrf_field() !!}
             <div class="input-group">
                 <select multiple name="tags[]" data-role="tagsinput" class="form-control"></select>
