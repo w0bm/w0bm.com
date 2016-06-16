@@ -534,3 +534,19 @@ div.message > div.panel-heading > span {
 	width:  16px;
 	margin-bottom: 5px;
 }
+
+.gay {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 2px;
+}
+
+.gaysmall {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 2px;
+}
+
+.navbar-fixed-bottom, .navbar-default, .navbar {
+    height: 40px!important;
+}

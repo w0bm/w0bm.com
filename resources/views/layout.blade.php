@@ -10,12 +10,10 @@
     <title>w0bm.com - WebMs with sound!</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
-    <link rel="favicon" 
-      type="image/ico" 
-      href="favicon.ico" />
+    <link rel="favicon" type="image/ico" href="favicon.ico" />
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.0">
 </head>
 <body>
 @if(auth()->check())
