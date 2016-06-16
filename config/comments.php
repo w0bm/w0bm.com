@@ -7,6 +7,7 @@ return [
     'files.nogf.club',
     'koyaanis.com',
     'ptpb.pw',
-    'a.desu.sh'
+    'a.desu.sh',
+    'i.webp.space'
   ]
 ];

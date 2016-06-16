@@ -49,7 +49,7 @@ class Comment extends Model
         $newlineMatcher = '/(^.*$)/m';
         $greentextMatcher = '/(^&gt;.*$)/m';
 
-        $imageMatcher = '/(\<a href=\"(https:\/\/('.join('|',$commentcfg["allowedHosters"]).').*(png|gif|jpg))\" target=\"_blank\" rel=\"extern\"\>.*\<\/a\>)/i';
+        $imageMatcher = '/(\<a href=\"(https:\/\/('.join('|',$commentcfg["allowedHosters"]).').*(png|gif|jpg|webp))\" target=\"_blank\" rel=\"extern\"\>.*\<\/a\>)/i';
         
         if(preg_match_all($nameMatcher, $text, $users) > 0) {
             foreach ($users as $user) {
