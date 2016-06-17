@@ -110,7 +110,7 @@ class Comment extends Model
         $answers = [];
         if(preg_match_all($regex, $text, $answered) > 0) {
             foreach($answered[0] as $a) {
-                $answers[] = strlen($a);
+                $answers[] = mb_strlen($a);
             }
         }
         $answers = array_unique($answers);
