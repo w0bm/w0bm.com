@@ -146,7 +146,7 @@ function to_favs() {
             if(video.category.name) {
                 info.push(' <em>Category:</em> ' + video.category.name);
             }
-            $('i.fa-info-circle').attr('data-content', info.join('<br>'));
+            $('span.fa-info-circle').attr('data-content', info.join('<br>'));
         }
         else {
             var row = ctx.parents('tr');
