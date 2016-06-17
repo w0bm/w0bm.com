@@ -532,3 +532,8 @@ $(function () {
     };
     getMessages();
 })(jQuery);
+
+var messages_badge = $('ul.navbar-right > li > a > span.badge');
+if(messages_badge.text() != 0) {
+    messages_badge.css('visibility', 'visible');
+}

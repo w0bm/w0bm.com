@@ -558,3 +558,7 @@ div.message > div.panel-heading > span {
 	width:  16px;
 	margin-bottom: 2px;
 }
+
+ul.navbar-right > li > a > span.badge {
+    visibility: hidden;
+}
