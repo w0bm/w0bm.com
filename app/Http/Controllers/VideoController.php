@@ -223,6 +223,10 @@ class VideoController extends Controller
             Message::send($user->id, $mentioned->id, $user->username . ' mentioned you in a comment', view('messages.commentmention', ['video' => $video, 'user' => $user]));
         }
 
+        foreach($com->answered() as $answered) {
+            Message::send($user->id, $answered->id, $user->username . ' answered on your comment', view('messages.commentanswer', ['video' => $video, 'user' => $user]));
+        }
+
         if($user->id != $video->user->id)
             Message::send($user->id, $video->user->id, $user->username . ' commented on your video', view('messages.videocomment', ['video' => $video, 'user' => $user]));
 

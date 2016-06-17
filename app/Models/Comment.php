@@ -103,4 +103,26 @@ class Comment extends Model
 
         return array_unique($ret);
     }
+
+    public function answered() {
+        $text = $this->content;
+        $regex = '/^(\^+)/m';
+        $answers = [];
+        if(preg_match_all($regex, $text, $answered) > 0) {
+            foreach($answered[0] as $a) {
+                $answers[] = mb_strlen($a);
+            }
+        }
+        $answers = array_unique($answers);
+        $comments = $this->video->comments;
+        $total = $comments->count();
+        $ret = [];
+        foreach($answers as $c) {
+            $up = $total - $c - 1;
+            if($up >= 0) {
+                $ret[] = $comments->get($up)->user;
+            }
+        }
+        return $ret;
+    }
 }
