@@ -13,7 +13,7 @@
     <link rel="favicon" type="image/ico" href="favicon.ico" />
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.0">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.2">
 </head>
 <body>
 @if(auth()->check())
