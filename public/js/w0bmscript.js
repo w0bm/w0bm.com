@@ -545,6 +545,8 @@ $('button#read-all').on('click', function() {
             if(data == 1) {
                 flash('success', 'Marked all messages as read');
                 $('.list-group-item-info').removeClass('list-group-item-info');
+                messages_badge.text('0');
+                messages_badge.css('visibility', 'hidden');
             }
             else {
                 flash('error', 'Failed to mark all messages as read');
