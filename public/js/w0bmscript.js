@@ -537,3 +537,23 @@ var messages_badge = $('ul.navbar-right > li > a > span.badge');
 if(messages_badge.text() != 0) {
     messages_badge.css('visibility', 'visible');
 }
+
+$('button#read-all').on('click', function() {
+    $.ajax({
+        url: '/api/messages/readall',
+        success: function(data) {
+            if(data == 1) {
+                flash('success', 'Marked all messages as read');
+                $('.list-group-item-info').removeClass('list-group-item-info');
+            }
+            else {
+                flash('error', 'Failed to mark all messages as read');
+                flash('error', data);
+            }
+        },
+        fail: function(data) {
+            flash('error', 'Failed to mark all messages as read');
+            flash('error', data);
+        }
+    });
+});
