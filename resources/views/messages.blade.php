@@ -3,6 +3,7 @@
 	<div class="page-header">
         <h1>Messages</h1>
     </div>
+    <button class="btn btn-primary pull-right" id="read-all">Mark all as read</button>
     <div class="row">
         <div class="col-md-6" id="list">
             <div class="spinner">
