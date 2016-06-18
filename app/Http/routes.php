@@ -32,6 +32,7 @@ Route::get('/', ['as' => 'home', function () {
 Route::get('messages', 'MessageController@page');
 Route::get('api/messages', 'MessageController@index');
 Route::post('api/messages/read', 'MessageController@read');
+Route::get('api/messages/readall', 'MessageController@readall');
 Route::get('user/{username}', 'UserController@show');
 Route::get('user/{username}/favs', 'UserController@show_favs');
 Route::get('logout', 'UserController@logout');
