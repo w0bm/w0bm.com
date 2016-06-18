@@ -499,3 +499,72 @@ div.message > div.panel-heading > span {
     justify-content: center;
     align-items: center;
 }
+
+.rain {
+	height:32px;
+	width: 32px;
+	-webkit-transform: rotate(35deg);
+	transform: rotate(35deg);
+}
+
+
+.rainsmall {
+        height:16px;
+        width: 16px;
+        -webkit-transform: rotate(35deg);
+        transform: rotate(35deg);
+	margin-left: -3px;
+	margin-right: 1px;
+}
+
+.dank {
+	height: 32px;
+	width: 	32px;
+	margin-bottom: 6px;
+}
+
+.danksmall {
+	height: 20px;
+	width:  20px;
+	margin-bottom: 5px;
+}
+
+.flinny {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 6px;
+}
+
+.flinnysmall {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 5px;
+}
+
+.gay {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 2px;
+}
+
+.gaysmall {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 2px;
+}
+
+.duke {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 2px;
+}
+
+.dukesmall {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 2px;
+}
+
+ul.navbar-right > li > a > span.badge {
+    visibility: hidden;
+}

@@ -21,11 +21,17 @@ class VideoController extends Controller
      */
     public function index(Request $request) {
         if($request->has('q')){
-            $needle = '%' . $request->input('q') .'%';
+            $needle = '%' . trim($request->input('q')) .'%';
             return view('songindex', [
-                'videos' => Video::where('interpret', 'LIKE', $needle)
+                'videos' => Video::where(function($query) use($needle) {
+                    $query->where('interpret', 'LIKE', $needle)
                         ->orWhere('songtitle', 'LIKE', $needle)
-                        ->orderBy('id', 'ASC')
+                        ->orWhere('imgsource', 'LIKE', $needle);
+                })
+                        //->orderBy('id', 'ASC')
+                        ->orderByRaw("((interpret like '$needle') +
+                            (songtitle like '$needle') +
+                            (imgsource like '$needle')) desc")
                         ->paginate(20)->appends(['q' => trim($needle, '%')]),
                 'categories' => Category::all()
             ]);
@@ -132,14 +138,16 @@ class VideoController extends Controller
     public function update(Request $request, $id) {
         if(!auth()->check())
             return response('Not logged in', 403);
-        if(!auth()->user()->can('edit_video'))
-            return response('Not enough permissions', 403);
+        
 
         if(!$request->ajax())
             return response('Invalid request', 400);
 
         $v = Video::findOrFail($id);
-
+        
+        if(!auth()->user()->can('edit_video') && auth()->user()->id != $v->user_id)
+            return response('Not enough permissions', 403);
+        
         if($request->has('interpret'))
             $v->interpret = $request->input('interpret');
         if($request->has('songtitle'))
@@ -209,6 +217,10 @@ class VideoController extends Controller
 
         foreach($com->getMentioned() as $mentioned) {
             Message::send($user->id, $mentioned->id, $user->username . ' mentioned you in a comment', view('messages.commentmention', ['video' => $video, 'user' => $user]));
+        }
+
+        foreach($com->answered() as $answered) {
+            Message::send($user->id, $answered->id, $user->username . ' answered on your comment', view('messages.commentanswer', ['video' => $video, 'user' => $user]));
         }
 
         if($user->id != $video->user->id)

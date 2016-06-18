@@ -37,6 +37,13 @@ class MessageController extends Controller
         }
     }
 
+    public function readall()
+    {
+        if(!auth()->check()) return Response::create('Unauthorized', '401');
+        Message::whereTo(auth()->user()->id)->unread()->update(['read' => time()]);
+        return 1;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -21,7 +21,7 @@
 <body>
 @if(auth()->check())
     @include('partials.filterselect')
-    @if(auth()->user()->can('edit_video'))
+    @if(isset($video) && (auth()->user()->can('edit_video') || auth()->user()->id == $video->user_id))
         @include('partials.frontendedit')
     @endif
 @endif

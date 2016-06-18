@@ -20,7 +20,7 @@
 </ul>
 </center>
 <span class="pull-right" style="color: #1FB2B0;"><b>1BAHGReZRynKSqv1t7nLiqoD9Y5NRRuV8T</b> <i class="fa fa-btc"></i></span>
-<span class="pull-left" style="color: #1FB2B0;"><b>w0bm@tfwno.gf</b> <i class="fa fa-paypal"></i></span>
+<span class="pull-left" style="color: #1FB2B0;"><b>Not possible at this time</b> <i class="fa fa-paypal"></i></span>
 </div>
 <center>
 <table class="table">
@@ -250,4 +250,5 @@
 </table>
 </div>
 </center>
+@include('footer'))
 @endsection

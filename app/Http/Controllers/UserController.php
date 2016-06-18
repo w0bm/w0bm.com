@@ -175,6 +175,19 @@ class UserController extends Controller
         return view('profile', ['user' => $user]);
     }
 
+	public function show_favs($username)
+	{
+    	$user = User::where('username', '=', $username)->first();
+
+    	if(!$user) {
+        return redirect()->back()->with('error', 'Unknown username');
+    	}
+
+    	return view('favs', ['user' => $user]);
+	}
+
+
+
     /**
      * Show the form for editing the specified resource.
      *

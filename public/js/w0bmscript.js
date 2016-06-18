@@ -142,12 +142,12 @@ function to_favs() {
                 info.push(' <em>Songtitle:</em> ' + video.songtitle);
             }
             if(video.imgsource) {
-                info.push(' <em>Source:</em> ' + video.imgsource);
+                info.push(' <em>Video Source:</em> ' + video.imgsource);
             }
             if(video.category.name) {
                 info.push(' <em>Category:</em> ' + video.category.name);
             }
-            $('i.fa-info-circle').attr('data-content', info.join('<br>'));
+            $('span.fa-info-circle').attr('data-content', info.join('<br>'));
         }
         else {
             var row = ctx.parents('tr');
@@ -533,3 +533,30 @@ $(function () {
     };
     getMessages();
 })(jQuery);
+
+var messages_badge = $('ul.navbar-right > li > a > span.badge');
+if(messages_badge.text() != 0) {
+    messages_badge.css('visibility', 'visible');
+}
+
+$('button#read-all').on('click', function() {
+    $.ajax({
+        url: '/api/messages/readall',
+        success: function(data) {
+            if(data == 1) {
+                flash('success', 'Marked all messages as read');
+                $('.list-group-item-info').removeClass('list-group-item-info');
+                messages_badge.text('0');
+                messages_badge.css('visibility', 'hidden');
+            }
+            else {
+                flash('error', 'Failed to mark all messages as read');
+                flash('error', data);
+            }
+        },
+        fail: function(data) {
+            flash('error', 'Failed to mark all messages as read');
+            flash('error', data);
+        }
+    });
+});

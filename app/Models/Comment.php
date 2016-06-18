@@ -49,7 +49,7 @@ class Comment extends Model
         $newlineMatcher = '/(^.*$)/m';
         $greentextMatcher = '/(^&gt;.*$)/m';
 
-        $imageMatcher = '/(\<a href=\"(https:\/\/('.join('|',$commentcfg["allowedHosters"]).').*(png|gif|jpg))\" target=\"_blank\" rel=\"extern\"\>.*\<\/a\>)/i';
+        $imageMatcher = '/(\<a href=\"(https:\/\/('.join('|',$commentcfg["allowedHosters"]).').*(png|gif|jpg|webp))\" target=\"_blank\" rel=\"extern\"\>.*\<\/a\>)/i';
         
         if(preg_match_all($nameMatcher, $text, $users) > 0) {
             foreach ($users as $user) {
@@ -102,5 +102,27 @@ class Comment extends Model
         }
 
         return array_unique($ret);
+    }
+
+    public function answered() {
+        $text = $this->content;
+        $regex = '/^(\^+)/m';
+        $answers = [];
+        if(preg_match_all($regex, $text, $answered) > 0) {
+            foreach($answered[0] as $a) {
+                $answers[] = mb_strlen($a);
+            }
+        }
+        $answers = array_unique($answers);
+        $comments = $this->video->comments;
+        $total = $comments->count();
+        $ret = [];
+        foreach($answers as $c) {
+            $up = $total - $c - 1;
+            if($up >= 0) {
+                $ret[] = $comments->get($up)->user;
+            }
+        }
+        return $ret;
     }
 }
