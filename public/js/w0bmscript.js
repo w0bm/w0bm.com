@@ -344,7 +344,7 @@ if(/\..+\/(?:songindex|user)/i.test(window.location.href)) {
 
     $(document).ready(function() {
         $('table tbody tr').on('mouseenter', function(e) {
-            var id = $(this).attr('data-thumb');
+            var id = $(this).data('thumb');
             var lnk = 'https://w0bm.com/thumbs/' + id + '.gif';
             var loc = get_loc(e);
             $(document.body).prepend('<div id="thumb"></div>');
