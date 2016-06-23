@@ -32,7 +32,7 @@ class MessageController extends Controller
         if(!auth()->check()) return Response::create('Unauthorized', '401');
         if($request->has('m_ids')) {
             $ids = $request->get('m_ids');
-            Message::whereTo(auth()->user()->id)->whereIn('id', $ids)->update(['read' => time() ]);
+            Message::whereTo(auth()->user()->id)->whereIn('id', $ids)->update(['read' => date('Y-m-d H:i:s')]);
             return 1;
         }
     }
@@ -40,7 +40,7 @@ class MessageController extends Controller
     public function readall()
     {
         if(!auth()->check()) return Response::create('Unauthorized', '401');
-        Message::whereTo(auth()->user()->id)->unread()->update(['read' => time()]);
+        Message::whereTo(auth()->user()->id)->unread()->update(['read' => date('Y-m-d H:i:s')]);
         return 1;
     }
 
