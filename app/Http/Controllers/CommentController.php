@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Message;
 use App\Models\ModeratorLog;
 use App\Models\Video;
 use Illuminate\Http\Request;
-
+use Illuminate\Http\JsonResponse;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -19,9 +20,12 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if(!$request->has('username')) return JsonResponse::create('Not found', '304');
+        $user = User::whereUsername($request->get('username'))->first();
+        if(!$user) return JsonResponse::create('Not found', '304');
+        return $user->comments()->orderBy('id', 'desc')->paginate(10);
     }
 
     /**

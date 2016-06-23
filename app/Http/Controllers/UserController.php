@@ -180,10 +180,21 @@ class UserController extends Controller
     	$user = User::where('username', '=', $username)->first();
 
     	if(!$user) {
-        return redirect()->back()->with('error', 'Unknown username');
+            return redirect()->back()->with('error', 'Unknown username');
     	}
 
     	return view('favs', ['user' => $user]);
+	}
+
+    public function show_comments($username)
+	{
+    	$user = User::where('username', '=', $username)->first();
+
+    	if(!$user) {
+            return redirect()->back()->with('error', 'Unknown username');
+    	}
+
+    	return view('comments', ['user' => $user]);
 	}
 
 
