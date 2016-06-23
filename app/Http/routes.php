@@ -77,14 +77,14 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('messages', 'MessageController@index');
 });
 
-Route::get('comment/{id}/edit', 'VideoController@editComment')->where('id', '[0-9]+');
-Route::get('comment/{id}/delete', 'VideoController@destroyComment')->where('id', '[0-9]+');
-Route::get('comment/{id}/restore', 'VideoController@restoreComment')->where('id', '[0-9]+');
+Route::get('comment/{id}/edit', 'CommentController@edit')->where('id', '[0-9]+');
+Route::get('comment/{id}/delete', 'CommentController@destroy')->where('id', '[0-9]+');
+Route::get('comment/{id}/restore', 'CommentController@restore')->where('id', '[0-9]+');
 
 Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');
 Route::get('{id}/fav', 'VideoController@favorite')->where('id', '[0-9]+');
 Route::get('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');
-Route::post('{id}', 'VideoController@storeComment')->where('id', '[0-9]+');
+Route::post('{id}', 'CommentController@store')->where('id', '[0-9]+');
 
 Route::get('{shortname}', 'CategoryController@showVideo')->where('shortname', '[a-z][a-z0-9]+');
 Route::get('{shortname}/{id}', 'CategoryController@showVideo')->where(['shortname' => '[a-z][a-z0-9]+', 'id' => '[0-9]+']);
