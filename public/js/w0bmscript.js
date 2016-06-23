@@ -387,8 +387,13 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 });
 
-
 // Notifications
+var messagesBadge = $('ul.navbar-right > li > a > span.badge');
+var activeMessage;
+if(messagesBadge.text() > 0) {
+    messagesBadge.css('visibility', 'visible');
+}
+
 (function($) {
     if(typeof Handlebars == "undefined") return; // only on profilelayout
 
@@ -494,6 +499,7 @@ $(function () {
                 $('.spinner').hide();
                 jsondata = data;
                 $('#list').html(msglist(data));
+                if(typeof activeMessage != "undefined") $('#listitems a[data-id="' + activeMessage + '"]').addClass('active');
 
                 var page = {
                     pagination: {
@@ -513,6 +519,7 @@ $(function () {
                     e.preventDefault();
                     var self = $(this);
                     var i = self.data('index');
+                    activeMessage = $(this).data('id');
 
                     $('#message').html(msgtmpl(jsondata.data[i]));
                     if(!jsondata.data[i].read) {
@@ -520,33 +527,31 @@ $(function () {
                         $.post('/api/messages/read','m_ids[]=' + self.data('id'))
                             .done(function(data) {
                                 self.removeClass('list-group-item-info');
+                                messagesBadge.text(messagesBadge.text() - 1);
+                                if(messagesBadge.text() <= 0) {
+                                    messagesBadge.css('visibility', 'hidden');
+                                }
                             });
 
                     }
                     $('a').removeClass('active');
                     self.addClass('active');
                     $('time.timeago').timeago();
-
                 });
             });
     };
     getMessages();
 })(jQuery);
 
-var messages_badge = $('ul.navbar-right > li > a > span.badge');
-if(messages_badge.text() != 0) {
-    messages_badge.css('visibility', 'visible');
-}
-
-$('button#read-all').on('click', function() {
+$('button#read-all').on('click touchdown', function() {
     $.ajax({
         url: '/api/messages/readall',
         success: function(data) {
             if(data == 1) {
                 flash('success', 'Marked all messages as read');
                 $('.list-group-item-info').removeClass('list-group-item-info');
-                messages_badge.text('0');
-                messages_badge.css('visibility', 'hidden');
+                messagesBadge.text('0');
+                messagesBadge.css('visibility', 'hidden');
             }
             else {
                 flash('error', 'Failed to mark all messages as read');
