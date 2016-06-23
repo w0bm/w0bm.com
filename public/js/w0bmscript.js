@@ -389,6 +389,7 @@ $(function () {
 
 
 // Notifications
+var activeMessage;
 (function($) {
     if(typeof Handlebars == "undefined") return; // only on profilelayout
 
@@ -494,6 +495,7 @@ $(function () {
                 $('.spinner').hide();
                 jsondata = data;
                 $('#list').html(msglist(data));
+                if(typeof activeMessage != "undefined") $('#listitems a[data-id="' + activeMessage + '"]').addClass('active');
 
                 var page = {
                     pagination: {
@@ -513,6 +515,7 @@ $(function () {
                     e.preventDefault();
                     var self = $(this);
                     var i = self.data('index');
+                    activeMessage = $(this).data('id');
 
                     $('#message').html(msgtmpl(jsondata.data[i]));
                     if(!jsondata.data[i].read) {
