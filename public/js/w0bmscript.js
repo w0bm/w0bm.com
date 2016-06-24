@@ -382,6 +382,85 @@ if(/\..+\/(?:songindex|user)/i.test(window.location.href)) {
     });
 }
 
+//Pagination
+var paginate = function(pagination, options) {
+    var type = options.hash.type || 'middle';
+    var ret = '';
+    var pageCount = Number(pagination.pageCount);
+    var page = Number(pagination.page);
+    var limit;
+    if (options.hash.limit) limit = +options.hash.limit;
+    //page pageCount
+    var newContext = {};
+    switch (type) {
+        case 'middle':
+            if (typeof limit === 'number') {
+                var i = 0;
+                var leftCount = Math.ceil(limit / 2) - 1;
+                var rightCount = limit - leftCount - 1;
+                if (page + rightCount > pageCount)
+                    leftCount = limit - (pageCount - page) - 1;
+                if (page - leftCount < 1)
+                    leftCount = page - 1;
+                var start = page - leftCount;
+                while (i < limit && i < pageCount) {
+                    newContext = { n: start };
+                    if (start === page) newContext.active = true;
+                    ret = ret + options.fn(newContext);
+                    start++;
+                    i++;
+                }
+            }
+            else {
+                for (var i = 1; i <= pageCount; i++) {
+                    newContext = { n: i };
+                    if (i === page) newContext.active = true;
+                    ret = ret + options.fn(newContext);
+                }
+            }
+            break;
+        case 'previous':
+            if (page === 1) {
+                newContext = { disabled: true, n: 1 }
+            }
+            else {
+                newContext = { n: page - 1 }
+            }
+            ret = ret + options.fn(newContext);
+            break;
+        case 'next':
+            newContext = {};
+            if (page === pageCount) {
+                newContext = { disabled: true, n: pageCount }
+            }
+            else {
+                newContext = { n: page + 1 }
+            }
+            ret = ret + options.fn(newContext);
+            break;
+        case 'first':
+            if (page === 1) {
+                newContext = { disabled: true, n: 1 }
+            }
+            else {
+                newContext = { n: 1 }
+            }
+            ret = ret + options.fn(newContext);
+            break;
+        case 'last':
+            if (page === pageCount) {
+                newContext = { disabled: true, n: pageCount }
+            }
+            else {
+                newContext = { n: pageCount }
+            }
+            ret = ret + options.fn(newContext);
+            break;
+    }
+    return ret;
+};
+
+
 //enable bootstrap tooltips
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
@@ -394,154 +473,121 @@ if(messagesBadge.text() > 0) {
     messagesBadge.css('visibility', 'visible');
 }
 
-(function($) {
-    if(typeof Handlebars == "undefined") return; // only on profilelayout
+if(/\/user\/.+\/comments/i.test(location.href)) {
+    //Comment View
+    (function($) {
+        if(typeof Handlebars == "undefined") return; // only on profilelayout
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        Handlebars.registerHelper('paginate', paginate);
 
-    var paginate = function(pagination, options) {
-        var type = options.hash.type || 'middle';
-        var ret = '';
-        var pageCount = Number(pagination.pageCount);
-        var page = Number(pagination.page);
-        var limit;
-        if (options.hash.limit) limit = +options.hash.limit;
+        var comlist = Handlebars.compile($('#comlist').html());
+        var pagination = Handlebars.compile($('#paginationtmpl').html());
+        var jsondata = {};
+        var username = location.href.match(/\/user\/(.+)\/comments/i)[1];
 
-        //page pageCount
-        var newContext = {};
-        switch (type) {
-            case 'middle':
-                if (typeof limit === 'number') {
-                    var i = 0;
-                    var leftCount = Math.ceil(limit / 2) - 1;
-                    var rightCount = limit - leftCount - 1;
-                    if (page + rightCount > pageCount)
-                        leftCount = limit - (pageCount - page) - 1;
-                    if (page - leftCount < 1)
-                        leftCount = page - 1;
-                    var start = page - leftCount;
+        var getMessages = function(url) {
+            var baseUrl = '/api/comments';
+            if(!url) url = baseUrl;
 
-                    while (i < limit && i < pageCount) {
-                        newContext = { n: start };
-                        if (start === page) newContext.active = true;
-                        ret = ret + options.fn(newContext);
-                        start++;
-                        i++;
-                    }
-                }
-                else {
-                    for (var i = 1; i <= pageCount; i++) {
-                        newContext = { n: i };
-                        if (i === page) newContext.active = true;
-                        ret = ret + options.fn(newContext);
-                    }
-                }
-                break;
-            case 'previous':
-                if (page === 1) {
-                    newContext = { disabled: true, n: 1 }
-                }
-                else {
-                    newContext = { n: page - 1 }
-                }
-                ret = ret + options.fn(newContext);
-                break;
-            case 'next':
-                newContext = {};
-                if (page === pageCount) {
-                    newContext = { disabled: true, n: pageCount }
-                }
-                else {
-                    newContext = { n: page + 1 }
-                }
-                ret = ret + options.fn(newContext);
-                break;
-            case 'first':
-                if (page === 1) {
-                    newContext = { disabled: true, n: 1 }
-                }
-                else {
-                    newContext = { n: 1 }
-                }
-                ret = ret + options.fn(newContext);
-                break;
-            case 'last':
-                if (page === pageCount) {
-                    newContext = { disabled: true, n: pageCount }
-                }
-                else {
-                    newContext = { n: pageCount }
-                }
-                ret = ret + options.fn(newContext);
-                break;
-        }
-
-        return ret;
-    };
-
-    Handlebars.registerHelper('paginate', paginate);
-
-
-    var msglist = Handlebars.compile($('#msglist').html());
-    var msgtmpl = Handlebars.compile($('#msgtmpl').html());
-    var pagination = Handlebars.compile($('#paginationtmpl').html());
-    var jsondata = {};
-
-    var getMessages = function(url) {
-        if(!url) url = '/api/messages';
-
-        $.getJSON(url)
-            .done(function(data) {
-                $('.spinner').hide();
-                jsondata = data;
-                $('#list').html(msglist(data));
-                if(typeof activeMessage != "undefined") $('#listitems a[data-id="' + activeMessage + '"]').addClass('active');
-
-                var page = {
-                    pagination: {
-                        page: data.current_page,
-                        pageCount: data.last_page
-                    }
-                };
-
-                $('#pagination').html(pagination(page));
-
-                $('#pagination a').on('click touchdown', function(e) {
-                    e.preventDefault();
-                    getMessages($(this).attr('href'));
-                });
-
-                $('#listitems a').on('click touchdown', function(e) {
-                    e.preventDefault();
-                    var self = $(this);
-                    var i = self.data('index');
-                    activeMessage = $(this).data('id');
-
-                    $('#message').html(msgtmpl(jsondata.data[i]));
-                    if(!jsondata.data[i].read) {
-
-                        $.post('/api/messages/read','m_ids[]=' + self.data('id'))
-                            .done(function(data) {
-                                self.removeClass('list-group-item-info');
-                                messagesBadge.text(messagesBadge.text() - 1);
-                                if(messagesBadge.text() <= 0) {
-                                    messagesBadge.css('visibility', 'hidden');
-                                }
-                            });
-
-                    }
-                    $('a').removeClass('active');
-                    self.addClass('active');
+            $.getJSON(url, { 'username': username })
+                .done(function(data) {
+                    $('.spinner').hide();
+                    jsondata = data;
+                    $('#list').html(comlist(data));
                     $('time.timeago').timeago();
-                });
+                    var page = {
+                        pagination: {
+                            page: data.current_page,
+                            pageCount: data.last_page
+                        }
+                    };
+
+                    $('#pagination').html(pagination(page));
+
+                    $('#pagination a').on('click touchdown', function(e) {
+                        e.preventDefault();
+                        getMessages(baseUrl + '?page=' + $(this).data('page'));
+                    });
             });
-    };
-    getMessages();
-})(jQuery);
+        };
+        getMessages();
+    })(jQuery);
+}
+else {
+    (function($) {
+        if(typeof Handlebars == "undefined") return; // only on profilelayout
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        Handlebars.registerHelper('paginate', paginate);
+
+
+        var msglist = Handlebars.compile($('#msglist').html());
+        var msgtmpl = Handlebars.compile($('#msgtmpl').html());
+        var pagination = Handlebars.compile($('#paginationtmpl').html());
+        var jsondata = {};
+
+        var getMessages = function(url) {
+            var baseUrl = '/api/messages';
+            if(!url) url = baseUrl;
+
+            $.getJSON(url)
+                .done(function(data) {
+                    $('.spinner').hide();
+                    jsondata = data;
+                    $('#list').html(msglist(data));
+                    if(typeof activeMessage != "undefined") $('#listitems a[data-id="' + activeMessage + '"]').addClass('active');
+
+                    var page = {
+                        pagination: {
+                            page: data.current_page,
+                            pageCount: data.last_page
+                        }
+                    };
+
+                    $('#pagination').html(pagination(page));
+
+                    $('#pagination a').on('click touchdown', function(e) {
+                        e.preventDefault();
+                        getMessages(baseUrl + '?page=' + $(this).data('page'));
+                    });
+
+                    $('#listitems a').on('click touchdown', function(e) {
+                        e.preventDefault();
+                        var self = $(this);
+                        var i = self.data('index');
+                        activeMessage = $(this).data('id');
+
+                        $('#message').html(msgtmpl(jsondata.data[i]));
+                        if(!jsondata.data[i].read) {
+
+                            $.post('/api/messages/read','m_ids[]=' + self.data('id'))
+                                .done(function(data) {
+                                    self.removeClass('list-group-item-info');
+                                    messagesBadge.text(messagesBadge.text() - 1);
+                                    if(messagesBadge.text() <= 0) {
+                                        messagesBadge.css('visibility', 'hidden');
+                                    }
+                                });
+
+                        }
+                        $('a').removeClass('active');
+                        self.addClass('active');
+                        $('time.timeago').timeago();
+                    });
+                });
+        };
+        getMessages();
+    })(jQuery);
+}
 
 $('button#read-all').on('click touchdown', function() {
     $.ajax({
