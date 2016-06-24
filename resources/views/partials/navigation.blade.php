@@ -34,7 +34,7 @@
                         <input type="password" name="password" placeholder="Password" class="form-control">
                         <input type="checkbox" name="remember">
                         <button type="submit" class="btnlogin btn-primary">Login</button>
-                        <!--<a href="{{url('register')}}" class="btn btn-success">Register</a>-->
+                        <!--<a href="{{url('register')}}" class="btnlogin btn-success">Register</a>-->
                     </div>
                 </form>
             @endif

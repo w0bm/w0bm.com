@@ -7,7 +7,6 @@
 <h4>What is w0bm.com?</h4>
 <ul>
 <li>w0bm.com is a modern open source WebM sharing platform, free to use for anybody in the world, more details below.</li>
-<li>We stand for freedom of speech and are professionals in not giving any fucks.</li>
 <li>The mission was/is to be better than the already existing things, this is why we are here, we are here to provide people with awesome content without being a cucked shithole.</li>
 <li>We have a public GitHub repository, you are free to fork, clone and whatever you want, it's your choice. <a href="https://github.com/w0bm/">Fork Me!</a>
 </ul>
