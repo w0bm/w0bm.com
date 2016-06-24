@@ -73,7 +73,7 @@ class Comment extends Model
     }
 
     public function getRenderedViewAttribute() {
-        return static::simplemd($this->content);
+        return static::simplemd(e($this->content));
     }
 
     public static function isPicture($url) {
