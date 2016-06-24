@@ -18,9 +18,9 @@
     <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.5">
 </head>
 <body>
+@include('partials.handlebars')
 @if(auth()->check())
     @include('partials.filterselect')
-    @include('partials.handlebars')
 @endif
 <canvas id="bg" @if(!Session::get('background', true)) style="display: none;"@endif></canvas>
 

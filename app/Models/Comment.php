@@ -29,6 +29,8 @@ class Comment extends Model
 {
     use SoftDeletes;
 
+    protected $appends = ['rendered_view'];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
@@ -62,12 +64,16 @@ class Comment extends Model
         $text = preg_replace($italicMathcer, '<em>$1</em>', $text);
         $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
         $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
-	$text = preg_replace($imageMatcher, '<img src="$2" alt="Image" class="comment_image" />', $text);
-	$text = preg_replace($greentextMatcher, '<span style="color:#80FF00">$1</span>', $text);
+        $text = preg_replace($imageMatcher, '<img src="$2" alt="Image" class="comment_image" />', $text);
+        $text = preg_replace($greentextMatcher, '<span style="color:#80FF00">$1</span>', $text);
         $text = preg_replace($newlineMatcher, '$1<br>', $text);
         
 
         return $text;
+    }
+
+    public function getRenderedViewAttribute() {
+        return static::simplemd($this->content);
     }
 
     public static function isPicture($url) {
