@@ -33,8 +33,10 @@ Route::get('messages', 'MessageController@page');
 Route::get('api/messages', 'MessageController@index');
 Route::post('api/messages/read', 'MessageController@read');
 Route::get('api/messages/readall', 'MessageController@readall');
+Route::get('api/comments', 'CommentController@index');
 Route::get('user/{username}', 'UserController@show');
 Route::get('user/{username}/favs', 'UserController@show_favs');
+Route::get('user/{username}/comments', 'UserController@show_comments');
 Route::get('logout', 'UserController@logout');
 Route::post('login', 'UserController@login');
 Route::get('register', 'UserController@create');
@@ -77,14 +79,14 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('messages', 'MessageController@index');
 });
 
-Route::get('comment/{id}/edit', 'VideoController@editComment')->where('id', '[0-9]+');
-Route::get('comment/{id}/delete', 'VideoController@destroyComment')->where('id', '[0-9]+');
-Route::get('comment/{id}/restore', 'VideoController@restoreComment')->where('id', '[0-9]+');
+Route::get('comment/{id}/edit', 'CommentController@edit')->where('id', '[0-9]+');
+Route::get('comment/{id}/delete', 'CommentController@destroy')->where('id', '[0-9]+');
+Route::get('comment/{id}/restore', 'CommentController@restore')->where('id', '[0-9]+');
 
 Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');
 Route::get('{id}/fav', 'VideoController@favorite')->where('id', '[0-9]+');
 Route::get('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');
-Route::post('{id}', 'VideoController@storeComment')->where('id', '[0-9]+');
+Route::post('{id}', 'CommentController@store')->where('id', '[0-9]+');
 
 Route::get('{shortname}', 'CategoryController@showVideo')->where('shortname', '[a-z][a-z0-9]+');
 Route::get('{shortname}/{id}', 'CategoryController@showVideo')->where(['shortname' => '[a-z][a-z0-9]+', 'id' => '[0-9]+']);

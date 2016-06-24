@@ -1,5 +1,6 @@
 @extends('profilelayout')
 @section('content')
+@include('partials.msglist')
 	<div class="page-header">
         <h1>Messages</h1>
     </div>
