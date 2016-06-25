@@ -54,9 +54,9 @@ class Comment extends Model
         $imageMatcher = '/(\<a href=\"(https:\/\/('.join('|',$commentcfg["allowedHosters"]).').*(png|gif|jpg|webp))\" target=\"_blank\" rel=\"extern\"\>.*\<\/a\>)/i';
         
         if(preg_match_all($nameMatcher, $text, $users) > 0) {
-            foreach ($users as $user) {
-                if(User::whereUsername($user[0])->count() > 0) {
-                    $text = preg_replace('/@' . $user[0] . '/i', '<a href="/user/' . strtolower($user[0]) . '">@' . $user[0] . '</a>', $text);
+            foreach ($users[1] as $user) {
+                if(User::whereUsername($user)->count() > 0) {
+                    $text = preg_replace('/@' . $user . '/i', '<a href="/user/' . strtolower($user) . '">@' . $user . '</a>', $text);
                 }
             }
         }
@@ -100,9 +100,9 @@ class Comment extends Model
         $nameMatcher = '/@(\w+)/i';
         $ret = [];
         if(preg_match_all($nameMatcher, $text, $users) > 0) {
-            foreach ($users as $user) {
-                if(User::whereUsername($user[0])->count() > 0) {
-                    $ret[] = User::whereUsername($user[0])->first();
+            foreach ($users[1] as $user) {
+                if(User::whereUsername($user)->count() > 0) {
+                    $ret[] = User::whereUsername($user)->first();
                 }
             }
         }
