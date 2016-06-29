@@ -605,7 +605,7 @@ else {
     })(jQuery);
 }
 
-$('button#read-all').on('click touchdown', function() {
+function readAll() {
     $.ajax({
         url: '/api/messages/readall',
         success: function(data) {
@@ -625,4 +625,4 @@ $('button#read-all').on('click touchdown', function() {
             flash('error', data);
         }
     });
-});
+}

@@ -1,7 +1,7 @@
 <script id="msglist" type="text/x-handlebars-template">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Messages</h3>
+            <h3 class="panel-title">Messages</h3> <button class="btn btn-primary pull-right readall" onclick="readAll()">Read all</button>
         </div>
 
         <div class="list-group" id="listitems">
