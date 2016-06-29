@@ -12,6 +12,5 @@
             </div>
         </div>
         <div class="col-md-6" id="message"><h4>Select a message to display content</h4></div>
-	<button class="btn btn-primary pull-left readall" id="read-all">Mark all as read</button>
     </div>
 @endsection
