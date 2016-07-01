@@ -22,6 +22,7 @@ class VideoController extends Controller
     public function index(Request $request)
     {
         if($request->has('q')){
+            $pdo = \DB::connection()->getPdo();
             $needle = '%' . trim($request->input('q')) .'%';
             return view('songindex', [
                 'videos' => Video::where(function($query) use($needle) {
@@ -30,9 +31,9 @@ class VideoController extends Controller
                         ->orWhere('imgsource', 'LIKE', $needle);
                 })
                         //->orderBy('id', 'ASC')
-                        ->orderByRaw("((interpret like '$needle') +
-                            (songtitle like '$needle') +
-                            (imgsource like '$needle')) desc")
+                        ->orderByRaw("((interpret like " . $pdo->quote($needle) . ") +
+                            (songtitle like " . $pdo->quote($needle) . ") +
+                            (imgsource like " . $pdo->quote($needle) . ")) desc")
                         ->paginate(20)->appends(['q' => trim($needle, '%')]),
                 'categories' => Category::all()
             ]);
