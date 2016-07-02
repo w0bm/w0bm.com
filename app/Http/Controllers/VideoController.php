@@ -77,10 +77,14 @@ class VideoController extends Controller
 
         if(!$file->isValid()
         || mb_strtolower($file->getClientOriginalExtension()) !== 'webm'
-        || mb_strtolower($file->getMimeType()) !== 'video/webm') return redirect()->back()->with('error', 'Invalid file');
+        || mb_strtolower($file->getMimeType()) !== 'video/webm')
+            return redirect()->back()->with('error', 'Invalid file');
+
+        if(!$this->checkFileEncoding(basename($file->getRealPath())))
+            return redirect()->back()->with('error', 'Erroneous File Encoding! Try reencoding it');
 
         if(!$user->can('break_max_filesize') && $file->getSize() > 31457280)
-        return redirect()->back()->with('error', 'File too big. Max 30MB')->withInput();
+            return redirect()->back()->with('error', 'File too big. Max 30MB')->withInput();
 
         if(($v = Video::withTrashed()->where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null)
             return redirect($v->id)->with('error', 'Video already exists');
@@ -220,24 +224,37 @@ class VideoController extends Controller
 
     }
 
-    private function createThumbnail($dat) {
-      $in = "/var/www/w0bm.com/public/b"; // webm-input
-      $out = "/var/www/w0bm.com/public/thumbs"; // thumb-output
-      $tmpdir = "/var/www/w0bm.com/app/Http/Controllers/tmp"; // tempdir
-
-      $name = explode(".", $dat);
-      array_pop($name);
-      $name = join(".", $name);
-      if(!file_exists("{$out}/{$name}.gif")) {
-        $length = round(shell_exec("ffprobe -i {$in}/{$dat} -show_format -v quiet | sed -n 's/duration=//p'"));
-        for($i=1;$i<10;$i++) {
-          $act = ($i*10) * ($length / 100);
-          $ffmpeg = shell_exec("ffmpeg -ss {$act} -i {$in}/{$dat} -vf \"scale='if(gt(a,4/3),206,-1)':'if(gt(a,4/3),-1,116)'\" -vframes 1 {$tmpdir}/{$name}_{$i}.png 2>&1");
+    private function checkFileEncoding($dat) {
+        $in = "/var/www/w0bm.com/public/b"; // webm-input
+        $tmpdir = "/var/www/w0bm.com/app/Http/Controllers/tmp"; // tempdir
+        $name = explode(".", $dat);
+        array_pop($name);
+        $name = join(".", $name);
+        $ret = shell_exec("ffmpeg -y -ss 0 -i {$in}/{$dat} -vframes 1 {$tmpdir}/test.png 2>&1");
+        if(strpos($ret, "nothing was encoded") !== false) {
+            return false;
         }
-        $tmp = shell_exec("convert -delay 27 -loop 0 {$tmpdir}/{$name}_*.png {$out}/{$name}.gif 2>&1");
-        if(@filesize("{$out}/{$name}.gif") < 2000)
-          @unlink("{$out}/{$name}.gif");
-        array_map('unlink', glob("{$tmpdir}/{$name}*.png"));
-      }
+        return true;
+    }
+
+    private function createThumbnail($dat) {
+        $in = "/var/www/w0bm.com/public/b"; // webm-input
+        $out = "/var/www/w0bm.com/public/thumbs"; // thumb-output
+        $tmpdir = "/var/www/w0bm.com/app/Http/Controllers/tmp"; // tempdir
+
+        $name = explode(".", $dat);
+        array_pop($name);
+        $name = join(".", $name);
+        if(!file_exists("{$out}/{$name}.gif")) {
+            $length = round(shell_exec("ffprobe -i {$in}/{$dat} -show_format -v quiet | sed -n 's/duration=//p'"));
+            for($i=1;$i<10;$i++) {
+                $act = ($i*10) * ($length / 100);
+                $ffmpeg = shell_exec("ffmpeg -ss {$act} -i {$in}/{$dat} -vf \"scale='if(gt(a,4/3),206,-1)':'if(gt(a,4/3),-1,116)'\" -vframes 1 {$tmpdir}/{$name}_{$i}.png 2>&1");
+            }
+            $tmp = shell_exec("convert -delay 27 -loop 0 {$tmpdir}/{$name}_*.png {$out}/{$name}.gif 2>&1");
+            if(@filesize("{$out}/{$name}.gif") < 2000)
+                @unlink("{$out}/{$name}.gif");
+            array_map('unlink', glob("{$tmpdir}/{$name}*.png"));
+        }
     }
 }
