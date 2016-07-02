@@ -76,8 +76,8 @@ class VideoController extends Controller
         $file = $request->file('file');
 
         if(!$file->isValid()
-        || $file->getClientOriginalExtension() != 'webm'
-        || $file->getMimeType() != 'video/webm') return redirect()->back()->with('error', 'Invalid file');
+        || mb_strtolower($file->getClientOriginalExtension()) !== 'webm'
+        || mb_strtolower($file->getMimeType()) !== 'video/webm') return redirect()->back()->with('error', 'Invalid file');
 
         if(!$user->can('break_max_filesize') && $file->getSize() > 31457280)
         return redirect()->back()->with('error', 'File too big. Max 30MB')->withInput();
