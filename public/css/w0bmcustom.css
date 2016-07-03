@@ -566,3 +566,23 @@ ul.navbar-right > li > a > span.badge {
 .readall {
 	margin-top: -20px;
 }
+
+.onigiri {
+	margin-bottom: 2px;
+}
+
+.bio {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 4px;
+}
+
+.biosmall {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 4px;
+}
+
+.jkh {
+	margin-left: 0px!important;
+}
