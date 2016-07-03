@@ -182,7 +182,7 @@ function to_favs() {
     $('.indexedit').find('input, select').hide();
     if(indexform.length) {
         var row = $('tr');
-        row.on('click touchdown', function(e) {
+        row.on('dblclick touchdown', function(e) {
             var self = $(this);
             self.find('input, select').show();
             self.find('span').hide();
