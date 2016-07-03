@@ -80,9 +80,6 @@ class VideoController extends Controller
         || mb_strtolower($file->getMimeType()) !== 'video/webm')
             return redirect()->back()->with('error', 'Invalid file');
 
-        if(!$this->checkFileEncoding(basename($file->getRealPath())))
-            return redirect()->back()->with('error', 'Erroneous File Encoding! Try reencoding it');
-
         if(!$user->can('break_max_filesize') && $file->getSize() > 31457280)
             return redirect()->back()->with('error', 'File too big. Max 30MB')->withInput();
 
@@ -90,6 +87,11 @@ class VideoController extends Controller
             return redirect($v->id)->with('error', 'Video already exists');
 
         $file = $file->move(public_path() . '/b/', time() . '.webm');
+        if(!$this->checkFileEncoding(basename($file->getRealPath()))) {
+            unlink($file->getRealPath());
+            return redirect()->back()->with('error', 'Erroneous File Encoding! Try reencoding it');
+        }
+
         $hash = sha1_file($file->getRealPath());
 
         $video = new Video();
