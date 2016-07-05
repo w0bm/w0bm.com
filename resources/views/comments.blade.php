@@ -3,7 +3,7 @@
 @include('partials.profileheader')
 @include('partials.comlist')
 <h3>Comments</h3>
-<div class="row">
+<div class="row jkh">
     <div class="col-md" id="list">
         <div class="spinner">
             <div class="cube1"></div>

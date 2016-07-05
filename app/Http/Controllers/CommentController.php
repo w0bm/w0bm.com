@@ -61,16 +61,22 @@ class CommentController extends Controller
         $com->video()->associate($video);
         $com->save();
 
+        $sent = [];
         foreach($com->getMentioned() as $mentioned) {
             Message::send($user->id, $mentioned->id, $user->username . ' mentioned you in a comment', view('messages.commentmention', ['video' => $video, 'user' => $user]));
+            $sent[] = $mentioned;
         }
 
         foreach($com->answered() as $answered) {
+            if(array_search($answered, $sent) !== false)
+                continue;
             Message::send($user->id, $answered->id, $user->username . ' answered on your comment', view('messages.commentanswer', ['video' => $video, 'user' => $user]));
+            $sent[] = $answered;
         }
 
         if($user->id != $video->user->id)
-            Message::send($user->id, $video->user->id, $user->username . ' commented on your video', view('messages.videocomment', ['video' => $video, 'user' => $user]));
+            if(array_search($video->user, $sent) === false)
+                Message::send($user->id, $video->user->id, $user->username . ' commented on your video', view('messages.videocomment', ['video' => $video, 'user' => $user]));
 
         return $xhr ? view('partials.comment', ['comment' => $com, 'mod' => $user->can('delete_comment')]) : redirect()->back()->with('success', 'Comment successfully saved');
     }

@@ -66,6 +66,20 @@ if($('video').length) {
         else if(e.keyCode == 67 && !e.ctrlKey) {
             $(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
         }
+        //gamer-style
+        else if(e.keyCode == 65) {
+            get_prev();
+        }
+        else if(e.keyCode == 68) {
+            get_next();
+        }
+        //vi style
+        else if(e.keyCode == 72) {
+            get_prev();
+        }
+        else if(e.keyCode == 76) {
+            get_next();
+        }
     });
     $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
         e.deltaY < 0 ? get_next() : get_prev();
@@ -168,7 +182,7 @@ function to_favs() {
     $('.indexedit').find('input, select').hide();
     if(indexform.length) {
         var row = $('tr');
-        row.on('click touchdown', function(e) {
+        row.on('dblclick touchdown', function(e) {
             var self = $(this);
             self.find('input, select').show();
             self.find('span').hide();
