@@ -253,7 +253,7 @@ code {
 
 .btnlogin {
     display: inline-block;
-    margin-bottom: 0;
+    margin: 1px 1px -5px 1px;
     font-weight: normal;
     text-align: center;
     vertical-align: middle;
@@ -263,7 +263,7 @@ code {
     background-image: none;
     border: 1px solid transparent;
     white-space: nowrap;
-    padding: 10px 15px;
+    padding: 6px 13px;
     font-size: 12px;
     line-height: 0.7;
     border-radius: 0px;
@@ -586,3 +586,71 @@ ul.navbar-right > li > a > span.badge {
 .jkh {
 	margin-left: 0px!important;
 }
+
+.futter {
+	text-align: right;
+	float: right;
+}
+
+.logreg {
+	color: #ADADAD;
+    	font-family: Oswald;
+    	padding-top: 5px !important;
+    	font-size: 16px;
+}
+
+.eingabe {
+	display: block;
+	padding: 6px 12px!important;
+	background-color: #4a4a4a!important;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #fffefe;
+	border: 1px solid;
+	border-color: #222323;
+}
+
+input {
+	outline: 0!important;
+}
+
+.trennelement {
+    	height: 1px;
+    	margin: -3px 0;
+    	overflow: hidden;
+    	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu {
+	border: 6px solid #222222!important;
+	padding: 5px 0px!important;
+	margin: 6px -5px 0!important;
+	border-radius: 0px!important;
+}
+
+.erinnerung {
+	display: inline-block;
+	margin-top: 4px;
+	margin-bottom: 0;
+	margin-left: 4px;
+	vertical-align: middle;
+}
+
+.cheggbogs {
+    	display: inline-block;
+    	margin-top: 4px!important;
+    	margin-bottom: 0;
+    	vertical-align: middle;
+}
+
+.dropdown-menu > li > a {
+    display: block;
+    padding: 3px 5px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+
