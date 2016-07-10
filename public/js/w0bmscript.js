@@ -640,3 +640,7 @@ function readAll() {
         }
     });
 }
+
+$('ul.dropdown-menu').on('click touchdown', function(e) {
+    e.stopPropagation();
+});
