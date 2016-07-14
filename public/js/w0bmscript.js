@@ -644,3 +644,37 @@ function readAll() {
 $('ul.dropdown-menu').on('click touchdown', function(e) {
     e.stopPropagation();
 });
+
+function deleteComment(id) {
+    $.ajax({
+        url: '/comment/' + id + '/delete',
+        success: function(retval) {
+            if(retval == 'success') {
+                flash('success', 'Comment deleted');
+                var sel = $('div[data-id="' + id + '"]')
+                sel.removeClass('panel-default').addClass('panel-danger');
+                sel.children('.panel-footer').children('a[onclick]').replaceWith('<a href="#" onclick="restoreComment(' + id +')"><i style="color:green"; class="fa fa-refresh" aria-hidden="true"></i></a>');
+            }
+            else if(retval == 'not_logged_in') flash('error', 'Not logged in');
+            else if(retval == 'insufficient_permissions') flash('error', 'Insufficient permissions');
+            else flash('error', 'Unknown exception');
+        }
+    });
+}
+
+function restoreComment(id) {
+    $.ajax({
+        url: '/comment/' + id + '/restore',
+        success: function(retval) {
+            if(retval == 'success') {
+                flash('success', 'Comment restored');
+                var sel = $('div[data-id="' + id + '"]')
+                sel.removeClass('panel-danger').addClass('panel-default');
+                sel.children('.panel-footer').children('a[onclick]').replaceWith('<a href="#" onclick="deleteComment(' + id +')"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a>');
+            }
+            else if(retval == 'not_logged_in') flash('error', 'Not logged in');
+            else if(retval == 'insufficient_permissions') flash('error', 'Insufficient permissions');
+            else flash('error', 'Unknown exception');
+        }
+    });
+}
