@@ -124,7 +124,7 @@ class CommentController extends Controller
     public function destroy($id)
     {
         $user = auth()->check() ? auth()->user() : null;
-        if(is_null($user)) return redirect()->back()->with('error', 'Not logged in');
+        if(is_null($user)) return 'not_logged_in';
 
         if($user->can('delete_comment')) {
             Comment::destroy($id);
@@ -136,15 +136,15 @@ class CommentController extends Controller
             $log->target_id = $id;
             $log->save();
 
-            return redirect()->back()->with('success', 'Comment deleted');
+            return 'success';
         }
-        return redirect()->back()->with('error', 'Insufficient permissions');
+        return 'insufficient_permissions';
     }
     
     public function restore($id)
     {
         $user = auth()->check() ? auth()->user() : null;
-        if(is_null($user)) return redirect()->back()->with('error', 'Not logged in');
+        if(is_null($user)) return 'not_logged_in';
 
         if($user->can('delete_comment')) {
             Comment::withTrashed()->whereId($id)->restore();
@@ -156,8 +156,8 @@ class CommentController extends Controller
             $log->target_id = $id;
             $log->save();
 
-            return redirect()->back()->with('success', 'Comment restored');
+            return 'success';
         }
-        return redirect()->back()->with('error', 'Insufficient permissions');
+        return 'insufficient_permissions';
     }
 }
