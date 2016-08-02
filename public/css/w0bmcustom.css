@@ -670,3 +670,24 @@ input {
 .video-js .vjs-control:focus:before, .video-js .vjs-control:hover:before, .video-js .vjs-control:focus {
 	text-shadow: 0em 0em 0em transparent!important;
 }
+
+.vjs-menu-button-inline .vjs-menu {
+    opacity: 0;
+    height: 100%;
+    width: auto;
+    position: absolute;
+    left: 4em;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    -webkit-transition: all 0.9s!important;
+    -moz-transition: all 0.9s!important;
+    -o-transition: all 0.9s!important;
+    transition: all 0.9s!important;
+}
+
+.video-js .vjs-control-bar {
+    background-color: rgba(16, 16, 16, 0.68)!important;
+}
+
+
