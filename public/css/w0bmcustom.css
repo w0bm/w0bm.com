@@ -690,4 +690,13 @@ input {
     background-color: rgba(16, 16, 16, 0.68)!important;
 }
 
+.vjs-playback-rate .vjs-playback-rate-value {
+    top: -1px!important;
+    left: 1px!important;
+}
 
+.video-js .vjs-time-control {
+	font-size: 1.5em!important;
+	line-height: 1.7em!important;
+	top: 1px!important;
+}
