@@ -644,13 +644,29 @@ input {
 }
 
 .dropdown-menu > li > a {
-    display: block;
-    padding: 3px 5px;
-    clear: both;
-    font-weight: normal;
-    line-height: 1.42857143;
-    color: #ffffff;
-    white-space: nowrap;
+	display: block;
+	padding: 3px 5px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.42857143;
+	color: #ffffff;
+	white-space: nowrap;
 }
 
+.video-js {
+	position: initial!important;
+	background-color: transparent!important;
+	color: #1fb2b0!important;
+}
 
+.video-js .vjs-play-progress {
+	background-color: #1fb2b0!important;
+}
+
+.video-js .vjs-volume-level {
+	background-color: #1fb2b0!important;
+}
+
+.video-js .vjs-control:focus:before, .video-js .vjs-control:hover:before, .video-js .vjs-control:focus {
+	text-shadow: 0em 0em 0em transparent!important;
+}
