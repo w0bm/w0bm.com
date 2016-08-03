@@ -4,7 +4,7 @@
     <div class="vertical-align">
         <div class="wrapper">
             <div class="embed-responsive embed-responsive-16by9">
-                <video id="video" controls loop autoplay src="/b/{{ $video->file }}"></video>
+                <video id="video" loop autoplay controls preload="auto" src="/b/{{ $video->file }}"></video>
             </div>
 			<div class="text-center" style="position: unset;">
 				@if($category)

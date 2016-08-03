@@ -652,3 +652,33 @@ input {
     color: #ffffff;
     white-space: nowrap;
 }
+
+.video-js {
+	position: initial;
+	background-color: transparent;
+	color: #1fb2b0;
+}
+
+.video-js .vjs-play-progress {
+	background-color: #1fb2b0;
+}
+
+.video-js .vjs-volume-level {
+	background-color: #1fb2b0;
+}
+
+
+.video-js .vjs-control-bar {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+}
+
+.vjs-playback-rate .vjs-playback-rate-value {
+    top: -1px;
+    left: 1px;
+}
+
+.video-js .vjs-time-control {
+	font-size: 1.5em;
+	line-height: 1.7em;
+	top: 1px;
+}
