@@ -1,1 +1,1 @@
-registerclosed.blade.php
+registeropen.blade.php

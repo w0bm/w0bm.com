@@ -2,7 +2,7 @@
 @section('content')
 @include('partials.msglist')
 	<div class="page-header">
-        <h1>Messages</h1>
+        <h4>Messages</h4>
     </div>
     <div class="row">
         <div class="col-md-6" id="list">

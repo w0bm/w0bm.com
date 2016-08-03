@@ -15,7 +15,7 @@
                 <li><a href="{{url('categories')}}"><i class="fa fa-bars"></i> Categories</a></li>
                 <li><a href="{{url('songindex')}}"><i class="fa fa-music"></i> Songindex</a></li>
                 <li><a href="{{url('irc')}}"><i class="fa fa-comment"></i> IRC</a></li>
-		<li><a href="https://twitter.com/w0bm_com" target="_blank"><i class="fa fa-twitter-square"></i> Twitter</a></li>
+		<li><a href="ts3server://ts.w0bm.com"><i class="fa fa-microphone"></i> TeamSpeak</a></li>
 		<li><a href="{{url('about')}}"><i class="fa fa-exclamation"></i> About</a></li>
 	    </ul>
             @if(Auth::check())
@@ -40,7 +40,7 @@
 				    <li><input type="password" name="password" placeholder="Password" class="eingabe"></li>
 				    <li><button type="submit" class="btnlogin btn-primary">Login</button> <input class="cheggbogs" type="checkbox" name="remember"><span class="erinnerung">  Remember me</span></li>
 				    <li role="separator" class="divider"></li>
-				    <li class="disabled"><a href="/register">Registration status: <span class="label label-danger">Closed</span></a></li>
+				    <li class=""><a href="/register">Registration status: <span class="label label-success">Open</span></a></li>
 				  </ul>
 		</div>
 	</form>

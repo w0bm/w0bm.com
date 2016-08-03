@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 <div class="page-header">
-        <h2>Privacy</h2>
+        <h3>Privacy</h3>
     </div>
 <h5>What do we log?</h5>
 <ul>

@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
     <div class="page-header">
-        <h1>Upload</h1>
+        <h3>Upload</h3>
     </div>
     <div class="row">
         <div class="col-md-9">
@@ -58,9 +58,8 @@
                 <ol class="list-group">
                     <li class="list-group-item"><b>1.</b> WebMs need to have sound!</li>
                     <li class="list-group-item list-group-item-danger"><b>2.</b> No child pornography!</li>
-                    <li class="list-group-item"><b>3.</b> Upload only videos you think others will like!</li>
-                    <li class="list-group-item"><b>4.</b> Don't be a faggot.</li>
-		    <li class="list-group-item"><b>5.</b> Only shitpost when you're sure it's no repost.</li>
+                    <li class="list-group-item"><b>3.</b> Ask yourself: Does it fit in here?</li>
+                    <li class="list-group-item"><b>4.</b> Never upload things you don't feel good about!</li>
                 </ol>
                 <div class="panel-body">If you need help creating WebMs, check <a href="/webm">this</a> out.</div>
                 <div class="panel-body"><b>Current Limits:</b> <br> <b>10</b> <i>uploads every 12 hours</i> <br><i>Maximum filesize:</i> <b>30MB</b> <br><i>Only</i> <b>.webm</b> <i>allowed</i></div>

@@ -653,4 +653,6 @@ input {
     white-space: nowrap;
 }
 
-
+.form-control {
+	outline: aqua!important;
+}
