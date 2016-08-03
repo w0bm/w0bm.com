@@ -13,8 +13,8 @@
     <link rel="favicon" type="image/ico" href="favicon.ico" />
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link href="/css/video-js.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.66645">
-    <link href="/css/video-js.css" rel="stylesheet">
 </head>
 <body>
 @if(auth()->check())
@@ -43,7 +43,7 @@
 <script src="/js/isotope.pkgd.min.js"></script>
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
+<script src="/js/video.min.js"></script>
 <script src="/js/w0bmscript.js"></script>
-<script src="/js/video.js"></script>
 </body>
 </html>
