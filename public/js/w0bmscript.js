@@ -14,15 +14,20 @@ window.requestAnimFrame = (function(){
 })();
 
 var video = document.getElementById('video');
-if(video !== null) {
-    video.volume = 0.3;
+videojs(video, {
+    controls: true,
+    playbackRates: [0.25, 0.5, 1, 1.5, 2]
+}, function() {
+    this.addClass('video-js');
+    this.volume(0.3);
     if (typeof localStorage != "undefined") {
-        video.volume = localStorage.getItem("volume") || 0.3;
-        video.addEventListener("volumechange", function () {
-            localStorage.setItem("volume", video.volume);
+        this.volume(localStorage.getItem("volume") || 0.3);
+        this.on("volumechange", function () {
+            localStorage.setItem("volume", this.volume());
         });
     }
-
+})
+if(video !== null) {
     var canvas = document.getElementById('bg');
     var context = canvas.getContext('2d');
     var cw = canvas.width = canvas.clientWidth|0;
@@ -85,14 +90,14 @@ if($('video').length) {
         e.deltaY < 0 ? get_next() : get_prev();
         return false;
     });
-    if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
-        $('video').on('click', function() {
-            $(this).get(0).paused ? $(this).get(0).play() : $(this).get(0).pause();
-        });
-    }
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        if($('#bg').css('display') != 'none') $('#togglebg').click();
-    }
+    // if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+    //     $('video').on('click', function() {
+    //         $(this).get(0).paused ? $(this).get(0).play() : $(this).get(0).pause();
+    //     });
+    // }
+    // if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    //     if($('#bg').css('display') != 'none') $('#togglebg').click();
+    // }
 }
 
 function get_next() {
@@ -326,7 +331,7 @@ $(function() {
     var v = document.getElementById("video");
     if (v == null) return;
     var p = v.parentNode;
-    p.style.marginBottom = "1px";
+    p.style.marginBottom = "3px";
 
     var bar = document.createElement("div");
     var outerBar = document.createElement("div");
@@ -334,7 +339,7 @@ $(function() {
     p.appendChild(outerBar);
 
     $(outerBar).css({
-        height: "1px", width: "100%",
+        height: "3px", width: "100%",
         overflow: "hidden", willChange: "transform",
         position: "absolute", bottom: "0"
     });
