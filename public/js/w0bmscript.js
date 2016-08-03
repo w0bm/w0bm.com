@@ -90,14 +90,14 @@ if($('video').length) {
         e.deltaY < 0 ? get_next() : get_prev();
         return false;
     });
-/*    if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
-        $('video').on('click', function() {
-            $(this).get(0).paused ? $(this).get(0).play() : $(this).get(0).pause();
-        });
-    }*/
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        if($('#bg').css('display') != 'none') $('#togglebg').click();
-    }
+    // if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+    //     $('video').on('click', function() {
+    //         $(this).get(0).paused ? $(this).get(0).play() : $(this).get(0).pause();
+    //     });
+    // }
+    // if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    //     if($('#bg').css('display') != 'none') $('#togglebg').click();
+    // }
 }
 
 function get_next() {
