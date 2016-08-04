@@ -14,7 +14,7 @@ window.requestAnimFrame = (function(){
 })();
 
 var video = document.getElementById('video');
-if(typeof videojs != "undefined") {
+if(video !== null) {
     videojs(video, {
         controls: true,
         playbackRates: [0.25, 0.5, 1, 1.5, 2]
@@ -27,9 +27,8 @@ if(typeof videojs != "undefined") {
                 localStorage.setItem("volume", this.volume());
             });
         }
-    })
-}
-if(video !== null) {
+    });
+    
     var canvas = document.getElementById('bg');
     var context = canvas.getContext('2d');
     var cw = canvas.width = canvas.clientWidth|0;
