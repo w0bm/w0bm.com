@@ -14,20 +14,21 @@ window.requestAnimFrame = (function(){
 })();
 
 var video = document.getElementById('video');
-videojs(video, {
-    controls: true,
-    playbackRates: [0.25, 0.5, 1, 1.5, 2]
-}, function() {
-    this.addClass('video-js');
-    this.volume(0.3);
-    if (typeof localStorage != "undefined") {
-        this.volume(localStorage.getItem("volume") || 0.3);
-        this.on("volumechange", function () {
-            localStorage.setItem("volume", this.volume());
-        });
-    }
-})
 if(video !== null) {
+    videojs(video, {
+        controls: true,
+        playbackRates: [0.25, 0.5, 1, 1.5, 2]
+    }, function() {
+        this.addClass('video-js');
+        this.volume(0.3);
+        if (typeof localStorage != "undefined") {
+            this.volume(localStorage.getItem("volume") || 0.3);
+            this.on("volumechange", function () {
+                localStorage.setItem("volume", this.volume());
+            });
+        }
+    });
+    
     var canvas = document.getElementById('bg');
     var context = canvas.getContext('2d');
     var cw = canvas.width = canvas.clientWidth|0;
