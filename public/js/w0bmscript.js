@@ -15,7 +15,7 @@ window.requestAnimFrame = (function(){
 
 var video = document.getElementById('video');
 if(video !== null) {
-    videojs(video, {
+    var player = videojs(video, {
         controls: true,
         playbackRates: [0.25, 0.5, 1, 1.5, 2]
     }, function() {
@@ -37,90 +37,77 @@ if(video !== null) {
     function animationLoop() {
         if(video.paused || video.ended)
             return false;
-         context.drawImage(video, 0, 0, cw, ch);
-         window.requestAnimFrame(animationLoop);
+        context.drawImage(video, 0, 0, cw, ch);
+        window.requestAnimFrame(animationLoop);
     }
     video.addEventListener('play', function() {
         animationLoop();
     });
+
     if(video.autoplay)
         animationLoop();
+
+    function getNext() {
+        var next = $('#next');
+        if(next.css('visibility') != 'hidden') {
+            next.get(0).click();
+        }
+    }
+
+    function getPrev() {
+        var prev = $('#prev');
+        if(prev.css('visibility') != 'hidden') {
+            prev.get(0).click();
+        }
+    }
+
+    //Key Bindings
+    $('html').on('keydown', function(e) {
+        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i))
+            return;
+
+        //arrow keys
+        else if(e.keyCode == 39)
+            getNext();
+        else if(e.keyCode == 37)
+            getPrev();
+
+        //gamer-style
+        else if(e.keyCode == 65)
+            getPrev();
+        else if(e.keyCode == 68)
+            getNext();
+
+        //vi style
+        else if(e.keyCode == 72)
+            getPrev();
+        else if(e.keyCode == 76)
+            getNext();
+
+        else if(e.keyCode == 82) //click random
+            $('#prev').next().get(0).click();
+
+        else if(e.keyCode == 70) //add fav
+            $('#fav').get(0).click();
+
+        else if(e.keyCode == 67 && !e.ctrlKey) //toggle comments
+            $(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
+
+        else if(e.keyCode == 87 || e.keyCode == 38)
+            player.volume(player.volume() + 0.1);
+
+        else if(e.keyCode == 83 || e.keyCode == 40)
+            player.volume(player.volume() - 0.1);
+    });
+
+    $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
+        e.deltaY < 0 ? getNext() : getPrev();
+        return false;
+    });
 
 } else {
     var canvas = document.getElementById('bg');
     canvas.parentNode.removeChild(canvas);
-}
-
-//temporary fix for scrolling not working on other pages
-if($('video').length) {
-    $('html').on('keydown', function(e) {
-        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i)) {
-            return;
-        }
-        else if(e.keyCode == 39) {
-            get_next();
-        }
-        else if(e.keyCode == 37) {
-            get_prev();
-        }
-        else if(e.keyCode == 82) {
-            get_random();
-        }
-        else if(e.keyCode == 70) {
-            to_favs();
-        }
-        else if(e.keyCode == 67 && !e.ctrlKey) {
-            $(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
-        }
-        //gamer-style
-        else if(e.keyCode == 65) {
-            get_prev();
-        }
-        else if(e.keyCode == 68) {
-            get_next();
-        }
-        //vi style
-        else if(e.keyCode == 72) {
-            get_prev();
-        }
-        else if(e.keyCode == 76) {
-            get_next();
-        }
-    });
-    $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
-        e.deltaY < 0 ? get_next() : get_prev();
-        return false;
-    });
-    // if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
-    //     $('video').on('click', function() {
-    //         $(this).get(0).paused ? $(this).get(0).play() : $(this).get(0).pause();
-    //     });
-    // }
-    // if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    //     if($('#bg').css('display') != 'none') $('#togglebg').click();
-    // }
-}
-
-function get_next() {
-    var next = $('#next');
-    if(next.css('visibility') != 'hidden') {
-        next.get(0).click();
-    }
-}
-
-function get_prev() {
-    var prev = $('#prev');
-    if(prev.css('visibility') != 'hidden') {
-        prev.get(0).click();
-    }
-}
-
-function get_random() {
-    $('#prev').next().get(0).click();
-}
-
-function to_favs() {
-    $('#fav').get(0).click();
 }
 
 (function ($) {
