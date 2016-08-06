@@ -126,7 +126,9 @@ if(video !== null) {
         }).done(function (data) {
             flash('success', 'Comment saved successfully');
             $('.nocomments').remove();
-            $('.commentwrapper').append(data);
+            var comment = $(data).appendTo('.commentwrapper').find('time.timeago');
+            comment.timeago();
+            comment.tooltip();
             var textarea = commentform.find('textarea').val('');
             textarea.blur();
         }).fail(function(data){
@@ -484,9 +486,20 @@ var paginate = function(pagination, options) {
 };
 
 
-//enable bootstrap tooltips
+//enable bootstrap tooltips and timeago
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    var s = $.timeago.settings;
+    var str = s.strings;
+    s.refreshMillis = 1000;
+    //same format as laravel diffForHumans()
+    str.seconds = "%d seconds";
+    str.minute = "1 minute";
+    str.hour = "1 hour";
+    str.day = "1 day";
+    str.month = "1 month";
+    str.year = "1 year";
+    $('time.timeago').timeago();
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 // Notifications
@@ -523,6 +536,7 @@ if(/\/user\/.+\/comments/i.test(location.href)) {
                     jsondata = data;
                     $('#list').html(comlist(data));
                     $('time.timeago').timeago();
+                    $('time[data-toggle="tooltip"]').tooltip();
                     var page = {
                         pagination: {
                             page: data.current_page,
@@ -605,6 +619,7 @@ else {
                         $('a').removeClass('active');
                         self.addClass('active');
                         $('time.timeago').timeago();
+                        $('time[data-toggle="tooltip"]').tooltip();
                     });
                 });
         };
