@@ -682,3 +682,7 @@ input {
 	line-height: 1.7em;
 	top: 1px;
 }
+
+.strong-colored strong {
+    color: #1FB2B0;
+}
