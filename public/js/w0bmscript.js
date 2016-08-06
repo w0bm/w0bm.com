@@ -495,6 +495,7 @@ $(function () {
     str.seconds = "%d seconds";
     str.minute = "1 minute";
     str.hour = "1 hour";
+    str.hours = "%d hours";
     str.day = "1 day";
     str.month = "1 month";
     str.year = "1 year";
