@@ -83,8 +83,11 @@ class VideoController extends Controller
         if(!$user->can('break_max_filesize') && $file->getSize() > 31457280)
             return redirect()->back()->with('error', 'File too big. Max 30MB')->withInput();
 
-        if(($v = Video::withTrashed()->where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null)
+        if(($v = Video::withTrashed()->where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null) {
+            if($v->trashed())
+                return redirect()->back()->with('error', 'Video already existed and has been deleted');
             return redirect($v->id)->with('error', 'Video already exists');
+        }
 
         $file = $file->move(public_path() . '/b/', time() . '.webm');
         if(!$this->checkFileEncoding(basename($file->getRealPath()))) {
