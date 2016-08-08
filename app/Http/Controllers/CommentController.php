@@ -23,7 +23,7 @@ class CommentController extends Controller
     public function index(Request $request)
     {
         if(!$request->has('username')) return JsonResponse::create('Not found', '304');
-        $user = User::whereUsername($request->get('username'))->first();
+        $user = User::whereUsername(urldecode($request->get('username')))->first();
         if(!$user) return JsonResponse::create('Not found', '304');
         return $user->comments()->orderBy('id', 'desc')->paginate(10);
     }
