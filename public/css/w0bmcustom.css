@@ -529,6 +529,18 @@ div.message > div.panel-heading > span {
 	margin-bottom: 6px;
 }
 
+.patoy {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 6px;
+}
+
+.patoyklein {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 5px;
+}
+
 .flinnysmall {
 	height: 16px;
 	width:  16px;
