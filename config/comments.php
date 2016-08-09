@@ -8,6 +8,7 @@ return [
     'koyaanis.com',
     'ptpb.pw',
     'a.desu.sh',
-    'i.webp.space'
+    'i.webp.space',
+    'a.cuntflaps.me'
   ]
 ];
