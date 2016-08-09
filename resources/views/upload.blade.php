@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Upload</button> Before you upload make sure to read the <a href="/about">ToS</a> .
+                            <button type="submit" class="btn btn-default">Upload</button> Before you upload make sure to read the <a href="/rules">Rules</a> .
                         </div>
                     </div>
                 </form>

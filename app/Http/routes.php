@@ -50,6 +50,7 @@ Route::get('categories', 'CategoryController@index');
 Route::get('webm', function() { return view('webm'); });
 Route::get('about', function() { return view('about'); });
 Route::get('irc', function() { return view('irc'); });
+Route::get('rules', function() { return view('rules'); });
 Route::get('contact', function() { return view('contact'); });
 Route::get('privacy', function() { return view('privacy'); });
 Route::get('help', function() { return view('help'); });

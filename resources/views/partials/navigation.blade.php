@@ -40,7 +40,7 @@
 				    <li><input type="password" name="password" placeholder="Password" class="eingabe"></li>
 				    <li><button type="submit" class="btnlogin btn-primary">Login</button> <input class="cheggbogs" type="checkbox" name="remember"><span class="erinnerung">  Remember me</span></li>
 				    <li role="separator" class="divider"></li>
-				    <li class=""><a href="/register">Registration status: <span class="label label-success">Open</span></a></li>
+				    <li class="disabled"><a href="/register">Registration status: <span class="label label-danger">Closed</span></a></li>
 				  </ul>
 		</div>
 	</form>
