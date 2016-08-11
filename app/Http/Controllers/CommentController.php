@@ -89,7 +89,16 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        $comment = Comment::whereId($id)->first();
+        if(!is_null($comment)) {
+            return JsonResponse::create(array(
+                'error' => 'null',
+                'comment' => Comment::whereId($id)->first()->content)
+            );
+        }
+        return JsonResponse::create(array(
+            'error' => 'comment_not_found'
+        ));
     }
 
     /**
