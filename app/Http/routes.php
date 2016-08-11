@@ -82,7 +82,7 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('messages', 'MessageController@index');
 });
 
-Route::get('comment/{id}/edit', 'CommentController@edit')->where('id', '[0-9]+');
+Route::get('/api/comments/{id}/edit', 'CommentController@update')->where('id', '[0-9]+');
 Route::get('/api/comments/{id}/delete', 'CommentController@destroy')->where('id', '[0-9]+');
 Route::get('/api/comments/{id}/restore', 'CommentController@restore')->where('id', '[0-9]+');
 
