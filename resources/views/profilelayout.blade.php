@@ -21,6 +21,9 @@
 @include('partials.handlebars')
 @if(auth()->check())
     @include('partials.filterselect')
+    @if(auth()->user()->can('edit_user'))
+        @include('partials.banmenu')
+    @endif
 @endif
 <canvas id="bg" @if(!Session::get('background', true)) style="display: none;"@endif></canvas>
 

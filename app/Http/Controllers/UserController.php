@@ -213,7 +213,46 @@ class UserController extends Controller
     	return view('comments', ['user' => $user]);
 	}
 
+    public function ban(Request $request, $username)
+    {
+        if(!($request->has('reason') && $request->has('duration')))
+            return redirect()->back()->with('error', 'Invalid Request');
 
+        if(($reason =$request->get('reason')) == '')
+            return redirect()->back()->with('error', 'You need to specify a ban reason');
+
+        $user = auth()->check() ? auth()->user() : null;
+        if(is_null($user))
+            return redirect()->back()->with('error', 'Not logged in');
+
+        if(!$user->can('edit_user'))
+            return redirect()->back()->with('error', 'Insufficient permissions');
+
+        $days = 0;
+        $hours = 0;
+        if(($duration = $request->get('duration')) == '-1')
+            $duration = -1;
+        else if(preg_match_all("/(\d+d)?(\d+h)?/i", $duration, $matches) > 0) {
+            foreach($matches[1] as $match)
+                $days += intval($match);
+            foreach($matches[2] as $match)
+                $hours += intval($match);
+        }
+        $seconds = 24 * 60 * 60 * $days + 60 * 60 * $hours;
+
+        $userToBan = User::whereUsername($username)->first();
+        if(is_null($user))
+            return redirect()->back()->with('error', 'User not found');
+
+        $userToBan->disabled = 1;
+        $userToBan->banreason = $reason;
+        $userToBan->banend = time() + $seconds;
+        $userToBan->save();
+        if($duration == -1)
+            return redirect()->back()->with('success', 'User ' . $user->username . ' has been permanently banned');
+        else
+            return redirect()->back()->with('success', 'User ' . $user->username . ' has been banned until ' . date('d.m.Y H:i:s', $userToBan->banend) . ' UTC');
+    }
 
     /**
      * Show the form for editing the specified resource.
