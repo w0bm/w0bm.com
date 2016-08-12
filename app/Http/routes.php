@@ -82,6 +82,8 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('messages', 'MessageController@index');
 });
 
+Route::post('/api/user/{username}/ban', 'UserController@ban');
+
 Route::post('/api/comments/{id}/edit', 'CommentController@update')->where('id', '[0-9]+');
 Route::post('/api/comments/{id}/delete', 'CommentController@destroy')->where('id', '[0-9]+');
 Route::post('/api/comments/{id}/restore', 'CommentController@restore')->where('id', '[0-9]+');

@@ -80,4 +80,12 @@ class User extends VerifyUser
     public function categories() {
         return $this->belongsToMany(Category::class);
     }
+
+    public function isBanned() {
+        if($this->disabled == 1) {
+            return $this->banend == -1 || $this->banend > time();
+        }
+        return false;
+    }
+
 }
