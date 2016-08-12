@@ -249,9 +249,9 @@ class UserController extends Controller
         $userToBan->banend = time() + $seconds;
         $userToBan->save();
         if($duration == -1)
-            return redirect()->back()->with('success', 'User ' . $user->username . ' has been permanently banned');
+            return redirect()->back()->with('success', 'User ' . $userToBan->username . ' has been permanently banned');
         else
-            return redirect()->back()->with('success', 'User ' . $user->username . ' has been banned until ' . date('d.m.Y H:i:s', $userToBan->banend) . ' UTC');
+            return redirect()->back()->with('success', 'User ' . $userToBan->username . ' has been banned until ' . date('d.m.Y H:i:s', $userToBan->banend) . ' UTC');
     }
 
     /**
