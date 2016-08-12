@@ -643,9 +643,10 @@ function readAll() {
                 flash('error', data);
             }
         },
-        fail: function(data) {
+        error: function(jqxhr, status, error) {
             flash('error', 'Failed to mark all messages as read');
-            flash('error', data);
+            flash('error', status);
+            flash('error', error);
         }
     });
 }
@@ -669,9 +670,10 @@ function deleteComment(self) {
             else if(retval == 'insufficient_permissions') flash('error', 'Insufficient permissions');
             else flash('error', 'Unknown exception');
         },
-        fail: function(retval) {
+        error: function(jqxhr, status, error) {
             flash('error', 'Failed deleting comment');
-            flash('error', retval);
+            flash('error', status);
+            flash('error', error);
         }
     });
 }
@@ -690,9 +692,10 @@ function restoreComment(self) {
             else if(retval == 'insufficient_permissions') flash('error', 'Insufficient permissions');
             else flash('error', 'Unknown exception');
         },
-        fail: function(retval) {
+        error: function(jqxhr, status, error) {
             flash('error', 'Failed restoring comment');
-            flash('error', retval);
+            flash('error', status);
+            flash('error', error);
         }
     });
 }
@@ -743,9 +746,10 @@ function editComment(self) {
                             _this.replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
                             body.attr('contenteditable', 'false');
                         },
-                        fail: function(retval) {
+                        error: function(jqxhr, status, error) {
                             flash('error', 'Failed saving comment');
-                            flash('error', retval);
+                            flash('error', status);
+                            flash('error', error);
                             body.html(text);
                             _this.off();
                             _this.next().remove();
@@ -760,9 +764,10 @@ function editComment(self) {
             else
                 flash('error', 'Unknown exception');
         },
-        fail: function(retval) {
+        error: function(jqxhr, status, error) {
             flash('error', 'Failed receiving non-rendered comment from API');
-            flash('error', retval);
+            flash('error', status);
+            flash('error', error);
         }
     });
 }
