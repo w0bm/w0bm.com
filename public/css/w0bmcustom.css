@@ -702,3 +702,8 @@ input {
 .strong-colored strong {
     color: #1FB2B0;
 }
+
+/* Comment edits */
+.panel-body[contenteditable='true'] {
+   background-color: rgba(0,0,0,0.2);
+}
