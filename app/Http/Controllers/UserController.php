@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 use Symfony\Component\HttpFoundation\Response;
 use Toddish\Verify\Helpers\Verify;
@@ -29,7 +30,22 @@ class UserController extends Controller
                case Verify::INVALID_CREDENTIALS:
                    return redirect()->back()->with('error', 'Invalid credentials');
                case Verify::DISABLED:
-                   return redirect()->back()->with('error', 'You are banned.');
+                   $user = User::whereUsername($request->get('identifier'))
+                           ->orWhere('email', $request->get('identifier'))
+                           ->first();
+
+                   if($user->banend == -1) {
+                       return redirect()->back()->with('error', 'You are permanently banned for \'' . $user->banreason . '\'.');
+                   }
+                   // if ban expired unban and relogin.
+                   if($user->banend < time()) {
+                       $user->banend = null;
+                       $user->disabled = false;
+                       $user->banreason = null;
+                       $user->save();
+                       return $this->login($request);
+                   }
+                   return redirect()->back()->with('error', 'You are banned for another ' .  Carbon::createFromTimestamp($user->banend)->diffForHumans(null, true) . '. Reason: \''. $user->banreason .'\'');
                case Verify::UNVERIFIED:
                    return redirect()->back()->with('error', 'Please verify your account');
            }
