@@ -89,7 +89,16 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        $comment = Comment::whereId($id)->first();
+        if(!is_null($comment)) {
+            return JsonResponse::create(array(
+                'error' => 'null',
+                'comment' => Comment::whereId($id)->first()->content)
+            );
+        }
+        return JsonResponse::create(array(
+            'error' => 'comment_not_found'
+        ));
     }
 
     /**
@@ -112,7 +121,31 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(!($request->has('comment')))
+            return JsonResponse::create(array('error' => 'invalid_request'));
+
+        $user = auth()->check() ? auth()->user() : null;
+        if(is_null($user))
+            return JsonResponse::create(array('error' => 'not_logged_in'));
+
+        if(!$user->can('edit_comment'))
+            return JsonResponse::create(array('error' => 'not_enough_permissions'));
+
+        $comment = Comment::whereId($id)->first();
+        $comment->content = trim($request->get('comment'));
+        $comment->save();
+
+        $log = new ModeratorLog();
+        $log->user()->associate($user);
+        $log->type = 'edit';
+        $log->target_type = 'comment';
+        $log->target_id = $id;
+        $log->save();
+
+        return JsonResponse::create(array(
+            'error' => 'null',
+            'rendered_comment' => Comment::simplemd($comment->content)
+        ));
     }
 
     /**

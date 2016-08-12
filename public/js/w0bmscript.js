@@ -63,7 +63,7 @@ if(video !== null) {
 
     //Key Bindings
     $('html').on('keydown', function(e) {
-        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i))
+        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i) || $(e.target).attr('contenteditable') == 'true')
             return;
 
         //arrow keys
@@ -643,9 +643,10 @@ function readAll() {
                 flash('error', data);
             }
         },
-        fail: function(data) {
+        error: function(jqxhr, status, error) {
             flash('error', 'Failed to mark all messages as read');
-            flash('error', data);
+            flash('error', status);
+            flash('error', error);
         }
     });
 }
@@ -654,36 +655,118 @@ $('ul.dropdown-menu').on('click touchdown', function(e) {
     e.stopPropagation();
 });
 
-function deleteComment(id) {
+function deleteComment(self) {
+    var comment = self.closest('div[data-id]');
     $.ajax({
-        url: '/comment/' + id + '/delete',
+        url: '/api/comments/' + comment.data('id') + '/delete',
         success: function(retval) {
             if(retval == 'success') {
                 flash('success', 'Comment deleted');
-                var sel = $('div[data-id="' + id + '"]')
-                sel.removeClass('panel-default').addClass('panel-danger');
-                sel.children('.panel-footer').children('a[onclick]').replaceWith('<a href="#" onclick="restoreComment(' + id +')"><i style="color:green"; class="fa fa-refresh" aria-hidden="true"></i></a>');
+                comment.removeClass('panel-default').addClass('panel-danger');
+                comment.find('.panel-footer').children('a[onclick="deleteComment($(this))"]').replaceWith('<a href="#" onclick="restoreComment($(this))"><i style="color:green"; class="fa fa-refresh" aria-hidden="true"></i></a>');
+                comment.find('.panel-footer > a[onclick="editComment($(this))"]').remove();
             }
             else if(retval == 'not_logged_in') flash('error', 'Not logged in');
             else if(retval == 'insufficient_permissions') flash('error', 'Insufficient permissions');
             else flash('error', 'Unknown exception');
+        },
+        error: function(jqxhr, status, error) {
+            flash('error', 'Failed deleting comment');
+            flash('error', status);
+            flash('error', error);
         }
     });
 }
 
-function restoreComment(id) {
+function restoreComment(self) {
+    var comment = self.closest('div[data-id]');
     $.ajax({
-        url: '/comment/' + id + '/restore',
+        url: '/api/comments/' + comment.data('id') + '/restore',
         success: function(retval) {
             if(retval == 'success') {
                 flash('success', 'Comment restored');
-                var sel = $('div[data-id="' + id + '"]')
-                sel.removeClass('panel-danger').addClass('panel-default');
-                sel.children('.panel-footer').children('a[onclick]').replaceWith('<a href="#" onclick="deleteComment(' + id +')"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a>');
+                comment.removeClass('panel-danger').addClass('panel-default');
+                comment.find('.panel-footer').children('a[onclick]').replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
             }
             else if(retval == 'not_logged_in') flash('error', 'Not logged in');
             else if(retval == 'insufficient_permissions') flash('error', 'Insufficient permissions');
             else flash('error', 'Unknown exception');
+        },
+        error: function(jqxhr, status, error) {
+            flash('error', 'Failed restoring comment');
+            flash('error', status);
+            flash('error', error);
+        }
+    });
+}
+
+function editComment(self) {
+    var comment = self.closest('div[data-id]');
+    var body = comment.find('.panel-body');
+    var text = body.html();
+    var id = comment.data('id');
+    $.ajax({
+        url: '/api/comments/' + id,
+        success: function(retval) {
+            if(retval.error == 'null') {
+                body.text(retval.comment);
+                body.attr('contenteditable', 'true');
+                self.prev().remove();
+                self.replaceWith('<a href="#" class="saveCommentEdit"><i class="fa fa-floppy-o" aria-hidden="true"></i></a> <a href="#" class="abortCommentEdit"><i style="color:red;" class="fa fa-ban" aria-hidden="true"></i></a>');
+                comment.find('.abortCommentEdit').on('click', function(e) {
+                    e.preventDefault();
+                    $(this).off();
+                    $(this).prev().remove();
+                    $(this).replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
+                    body.attr('contenteditable', 'false');
+                    body.html(text);
+                });
+                comment.find('.saveCommentEdit').on('click', function(e) {
+                    var _this = $(this);
+                    e.preventDefault();
+                    $.ajax({
+                        url: '/api/comments/' + id + '/edit',
+                        method: 'POST',
+                        data: { comment: body.text() },
+                        success: function(retval) {
+                            if(retval.error == 'null') {
+                                body.html(retval.rendered_comment);
+                                flash('success', 'Comment edited successfully');
+                            }
+                            else {
+                                body.html(text);
+                                if(retval.error == 'invalid_request')
+                                    flash('error', 'Invalid request was sent by your browser');
+                                else if(retval.error == 'not_logged_in')
+                                    flash('error', 'Not logged in');
+                                else if(retval.error == 'not_enough_permissions')
+                                    flash('error', 'Insufficient permissions');
+                            }
+                        },
+                        error: function(jqxhr, status, error) {
+                            flash('error', 'Failed saving comment');
+                            flash('error', status);
+                            flash('error', error);
+                            body.html(text);
+                        },
+                        complete: function() {
+                            _this.off();
+                            _this.next().remove();
+                            _this.replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
+                            body.attr('contenteditable', 'false');
+                        }
+                    });
+                });
+            }
+            else if(retval.error == 'comment_not_found')
+                flash('error', 'Comment does not exist');
+            else
+                flash('error', 'Unknown exception');
+        },
+        error: function(jqxhr, status, error) {
+            flash('error', 'Failed receiving non-rendered comment from API');
+            flash('error', status);
+            flash('error', error);
         }
     });
 }
