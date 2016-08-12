@@ -21,7 +21,7 @@
 @include('partials.handlebars')
 @if(auth()->check())
     @include('partials.filterselect')
-    @if($user && auth()->user()->can('edit_user'))
+    @if(isset($user) && auth()->user()->can('edit_user'))
         @include('partials.banmenu')
     @endif
 @endif
