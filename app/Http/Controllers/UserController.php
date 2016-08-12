@@ -218,7 +218,7 @@ class UserController extends Controller
         if(!($request->has('reason') && $request->has('duration')))
             return redirect()->back()->with('error', 'Invalid Request');
 
-        if(($reason =$request->get('reason')) == '')
+        if(($reason = $request->get('reason')) == '')
             return redirect()->back()->with('error', 'You need to specify a ban reason');
 
         $user = auth()->check() ? auth()->user() : null;
