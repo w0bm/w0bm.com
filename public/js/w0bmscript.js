@@ -657,8 +657,17 @@ $('ul.dropdown-menu').on('click touchdown', function(e) {
 
 function deleteComment(self) {
     var comment = self.closest('div[data-id]');
+    var id = comment.data('id');
+    var username = $(comment.children('.panel-footer').children('a')[0]).text();
+    do {
+        var reason = prompt('Reason for deleting comment ' + id + ' by ' + username);
+        if(reason == null)
+            return;
+    } while(reason == '');
     $.ajax({
         url: '/api/comments/' + comment.data('id') + '/delete',
+        method: 'POST',
+        data: { reason: reason },
         success: function(retval) {
             if(retval == 'success') {
                 flash('success', 'Comment deleted');
@@ -666,12 +675,13 @@ function deleteComment(self) {
                 comment.find('.panel-footer').children('a[onclick="deleteComment($(this))"]').replaceWith('<a href="#" onclick="restoreComment($(this))"><i style="color:green"; class="fa fa-refresh" aria-hidden="true"></i></a>');
                 comment.find('.panel-footer > a[onclick="editComment($(this))"]').remove();
             }
+            else if(retval == 'invalid_request') flash('error', 'Invalid request');
             else if(retval == 'not_logged_in') flash('error', 'Not logged in');
             else if(retval == 'insufficient_permissions') flash('error', 'Insufficient permissions');
             else flash('error', 'Unknown exception');
         },
         error: function(jqxhr, status, error) {
-            flash('error', 'Failed deleting comment');
+            flash('error', 'Unknwon exception');
             flash('error', status);
             flash('error', error);
         }
@@ -680,16 +690,28 @@ function deleteComment(self) {
 
 function restoreComment(self) {
     var comment = self.closest('div[data-id]');
+    var id = comment.data('id');
+    var username = $(comment.children('.panel-footer').children('a')[0]).text();
+    do {
+        var reason = prompt('Reason for restoring comment ' + id + ' by ' + username);
+        if(reason == null)
+            return;
+    } while(reason == '');
+    console.log(reason);
     $.ajax({
         url: '/api/comments/' + comment.data('id') + '/restore',
+        method: 'POST',
+        data: { reason: reason },
         success: function(retval) {
             if(retval == 'success') {
                 flash('success', 'Comment restored');
                 comment.removeClass('panel-danger').addClass('panel-default');
                 comment.find('.panel-footer').children('a[onclick]').replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
             }
+            else if(retval == 'invalid_request') flash('error', 'Invalid request');
             else if(retval == 'not_logged_in') flash('error', 'Not logged in');
             else if(retval == 'insufficient_permissions') flash('error', 'Insufficient permissions');
+            else if(retval == 'comment_not_deleted') flash('error', 'Comment is not deleted');
             else flash('error', 'Unknown exception');
         },
         error: function(jqxhr, status, error) {
@@ -739,12 +761,16 @@ function editComment(self) {
                                     flash('error', 'Invalid request was sent by your browser');
                                 else if(retval.error == 'not_logged_in')
                                     flash('error', 'Not logged in');
-                                else if(retval.error == 'not_enough_permissions')
+                                else if(retval.error == 'insufficient_permissions')
                                     flash('error', 'Insufficient permissions');
+                                else if(retval.error == 'comment_not_found')
+                                    flash('error', 'Comment does not exist');
+                                else
+                                    flash('error', 'Unknown exception');
                             }
                         },
                         error: function(jqxhr, status, error) {
-                            flash('error', 'Failed saving comment');
+                            flash('error', 'Unknown exception');
                             flash('error', status);
                             flash('error', error);
                             body.html(text);

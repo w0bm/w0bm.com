@@ -83,8 +83,8 @@ Route::group(['prefix' => 'api'], function() {
 });
 
 Route::post('/api/comments/{id}/edit', 'CommentController@update')->where('id', '[0-9]+');
-Route::get('/api/comments/{id}/delete', 'CommentController@destroy')->where('id', '[0-9]+');
-Route::get('/api/comments/{id}/restore', 'CommentController@restore')->where('id', '[0-9]+');
+Route::post('/api/comments/{id}/delete', 'CommentController@destroy')->where('id', '[0-9]+');
+Route::post('/api/comments/{id}/restore', 'CommentController@restore')->where('id', '[0-9]+');
 
 Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');
 Route::get('{id}/fav', 'VideoController@favorite')->where('id', '[0-9]+');
