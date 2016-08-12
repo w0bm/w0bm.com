@@ -129,9 +129,11 @@ class CommentController extends Controller
             return JsonResponse::create(array('error' => 'not_logged_in'));
 
         if(!$user->can('edit_comment'))
-            return JsonResponse::create(array('error' => 'not_enough_permissions'));
+            return JsonResponse::create(array('error' => 'insufficient_permissions'));
 
-        $comment = Comment::whereId($id)->first();
+        if(is_null($comment = Comment::whereId($id)->first()))
+            return JsonResponse::create(array('error' => 'comment_not_found'));
+
         $comment->content = trim($request->get('comment'));
         $comment->save();
 
@@ -154,43 +156,80 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        if(!$request->has('reason'))
+            return 'invalid_request';
+
+        $reason = $request->get('reason');
+        if($reason == '')
+            return 'invalid_request';
+
         $user = auth()->check() ? auth()->user() : null;
-        if(is_null($user)) return 'not_logged_in';
+        if(is_null($user))
+            return 'not_logged_in';
 
-        if($user->can('delete_comment')) {
-            Comment::destroy($id);
+        if(!$user->can('delete_comment'))
+            return 'insufficient_permissions';
 
-            $log = new ModeratorLog();
-            $log->user()->associate($user);
-            $log->type = 'delete';
-            $log->target_type = 'comment';
-            $log->target_id = $id;
-            $log->save();
+        $comment = Comment::whereId($id)->first();
+        if(is_null($comment))
+            return 'comment_not_found';
 
-            return 'success';
-        }
-        return 'insufficient_permissions';
+        $receiver = $comment->user;
+        $video = $comment->video;
+        Comment::destroy($id);
+
+        if($user->id != $receiver->id)
+            Message::send($user->id, $receiver->id, $user->username . ' deleted your comment', view('messages.moderation.commentdelete', ['video' => $video, 'user' => $user, 'comment' => $comment, 'reason' => $reason]));
+
+        $log = new ModeratorLog();
+        $log->user()->associate($user);
+        $log->type = 'delete';
+        $log->target_type = 'comment';
+        $log->target_id = $id;
+        $log->save();
+
+        return 'success';
     }
     
-    public function restore($id)
+    public function restore(Request $request, $id)
     {
+        if(!$request->has('reason'))
+            return 'invalid_request';
+
+        $reason = $request->get('reason');
+        if($reason == '')
+            return 'invalid_request';
+
         $user = auth()->check() ? auth()->user() : null;
-        if(is_null($user)) return 'not_logged_in';
+        if(is_null($user))
+            return 'not_logged_in';
 
-        if($user->can('delete_comment')) {
-            Comment::withTrashed()->whereId($id)->restore();
+        if(!$user->can('delete_comment'))
+            return 'insufficient_permissions';
 
-            $log = new ModeratorLog();
-            $log->user()->associate($user);
-            $log->type = 'restore';
-            $log->target_type = 'comment';
-            $log->target_id = $id;
-            $log->save();
+        $comment = Comment::withTrashed()->whereId($id)->first();
+        if(is_null($comment))
+            return 'comment_not_found';
 
-            return 'success';
-        }
-        return 'insufficient_permissions';
+        if(!$comment->trashed())
+            return 'comment_not_deleted';
+
+        $receiver = $comment->user;
+        $video = $comment->video;
+        $comment->restore();
+
+        if($user->id != $receiver->id)
+            Message::send($user->id, $receiver->id, $user->username . ' restored your comment', view('messages.moderation.commentrestore', ['video' => $video, 'user' => $user, 'comment' => $comment, 'reason' => $reason]));
+
+        $log = new ModeratorLog();
+        $log->user()->associate($user);
+        $log->type = 'delete';
+        $log->target_type = 'comment';
+        $log->target_id = $id;
+        $log->save();
+
+        return 'success';
     }
 }
