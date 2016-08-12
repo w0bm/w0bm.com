@@ -63,7 +63,7 @@ if(video !== null) {
 
     //Key Bindings
     $('html').on('keydown', function(e) {
-        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i))
+        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i) || $(e.target).attr('contenteditable') == 'true')
             return;
 
         //arrow keys
@@ -726,6 +726,7 @@ function editComment(self) {
                     e.preventDefault();
                     $.ajax({
                         url: '/api/comments/' + id + '/edit',
+                        method: 'POST',
                         data: { comment: body.text() },
                         success: function(retval) {
                             if(retval.error == 'null') {
@@ -741,16 +742,14 @@ function editComment(self) {
                                 else if(retval.error == 'not_enough_permissions')
                                     flash('error', 'Insufficient permissions');
                             }
-                            _this.off();
-                            _this.next().remove();
-                            _this.replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
-                            body.attr('contenteditable', 'false');
                         },
                         error: function(jqxhr, status, error) {
                             flash('error', 'Failed saving comment');
                             flash('error', status);
                             flash('error', error);
                             body.html(text);
+                        },
+                        complete: function() {
                             _this.off();
                             _this.next().remove();
                             _this.replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
