@@ -33,19 +33,18 @@ class UserController extends Controller
                    $user = User::whereUsername($request->get('identifier'))
                            ->orWhere('email', $request->get('identifier'))
                            ->first();
-
-                   if($user->banend == -1) {
+                   if($user->banend->eq(Carbon::create(0,0,0,0,0,0))) {
                        return redirect()->back()->with('error', 'You are permanently banned for \'' . $user->banreason . '\'.');
                    }
                    // if ban expired unban and relogin.
-                   if($user->banend < time()) {
+                   if($user->banend->lt(Carbon::now())) {
                        $user->banend = null;
-                       $user->disabled = false;
+                       $user->disabled = 0;
                        $user->banreason = null;
                        $user->save();
                        return $this->login($request);
                    }
-                   return redirect()->back()->with('error', 'You are banned for another ' .  Carbon::createFromTimestamp($user->banend)->diffForHumans(null, true) . '. Reason: \''. $user->banreason .'\'');
+                   return redirect()->back()->with('error', 'You are banned for another ' .  $user->banend->diffForHumans(null, true) . '. Reason: \''. $user->banreason .'\'');
                case Verify::UNVERIFIED:
                    return redirect()->back()->with('error', 'Please verify your account');
            }
@@ -218,7 +217,7 @@ class UserController extends Controller
         if(!($request->has('reason') && $request->has('duration')))
             return redirect()->back()->with('error', 'Invalid Request');
 
-        if(($reason = $request->get('reason')) == '')
+        if(trim($reason = $request->get('reason')) == '')
             return redirect()->back()->with('error', 'You need to specify a ban reason');
 
         $user = auth()->check() ? auth()->user() : null;
@@ -227,18 +226,26 @@ class UserController extends Controller
 
         if(!$user->can('edit_user'))
             return redirect()->back()->with('error', 'Insufficient permissions');
-
-        $days = 0;
-        $hours = 0;
-        if(($duration = $request->get('duration')) == '-1')
-            $duration = -1;
-        else if(preg_match_all("/(\d+d)?(\d+h)?/i", $duration, $matches) > 0) {
-            foreach($matches[1] as $match)
-                $days += intval($match);
-            foreach($matches[2] as $match)
-                $hours += intval($match);
+        
+        $perm = false;
+        if(($duration = $request->get('duration')) == '-1') {
+            $duration = Carbon::create(0,0,0,0,0,0);
+            $perm = true;
+        } else {
+            preg_match('/^(\d+[yYaA])?\s*(\d+M)?\s*(\d+[wW])?\s*(\d+[dD])?\s*(\d+[Hh])?\s*(\d+[m])?\s*(\d+[sS])?$/m', $duration, $duration);
+            array_shift($duration);
+            $duration = array_map(function($elem) {
+                return intval(mb_substr($elem, 0, -1));
+            }, $duration);
+            $duration = Carbon::now()
+                ->addYears($duration[0] ?? 0)
+                ->addMonths($duration[1] ?? 0)
+                ->addWeeks($duration[2] ?? 0)
+                ->addDays($duration[3] ?? 0)
+                ->addHours($duration[4] ?? 0)
+                ->addMinutes($duration[5] ?? 0)
+                ->addSeconds($duration[6] ?? 0);
         }
-        $seconds = 24 * 60 * 60 * $days + 60 * 60 * $hours;
 
         $userToBan = User::whereUsername($username)->first();
         if(is_null($user))
@@ -246,15 +253,12 @@ class UserController extends Controller
 
         $userToBan->disabled = 1;
         $userToBan->banreason = $reason;
-        if($duration == -1)
-            $userToBan->banend = $duration;
-        else
-            $userToBan->banend = time() + $seconds;
+        $userToBan->banend = $duration;
         $userToBan->save();
-        if($duration == -1)
+        if($perm)
             return redirect()->back()->with('success', 'User ' . $userToBan->username . ' has been permanently banned');
         else
-            return redirect()->back()->with('success', 'User ' . $userToBan->username . ' has been banned until ' . date('d.m.Y H:i:s', $userToBan->banend) . ' UTC');
+            return redirect()->back()->with('success', 'User ' . $userToBan->username . ' has been banned until ' . $userToBan->banend->format('d.m.Y H:i:s') . ' UTC');
     }
 
     /**
