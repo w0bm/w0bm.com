@@ -750,7 +750,7 @@ function editComment(self) {
                     $.ajax({
                         url: '/api/comments/' + id + '/edit',
                         method: 'POST',
-                        data: { comment: body.html().replace(/<br>/g, '\r\n') },
+                        data: { comment: body.html().replace(/<br>/g, '\n') },
                         success: function(retval) {
                             if(retval.error == 'null') {
                                 body.html(retval.rendered_comment);
