@@ -732,7 +732,7 @@ function editComment(self) {
         url: '/api/comments/' + id,
         success: function(retval) {
             if(retval.error == 'null') {
-                body.text(retval.comment);
+                body.html(retval.comment.replace(/\r?\n/g, '<br>'));
                 body.attr('contenteditable', 'true');
                 self.prev().remove();
                 self.replaceWith('<a href="#" class="saveCommentEdit"><i class="fa fa-floppy-o" aria-hidden="true"></i></a> <a href="#" class="abortCommentEdit"><i style="color:red;" class="fa fa-ban" aria-hidden="true"></i></a>');
@@ -750,7 +750,7 @@ function editComment(self) {
                     $.ajax({
                         url: '/api/comments/' + id + '/edit',
                         method: 'POST',
-                        data: { comment: body.text() },
+                        data: { comment: body.html().replace(/<br>/g, '\n') },
                         success: function(retval) {
                             if(retval.error == 'null') {
                                 body.html(retval.rendered_comment);
