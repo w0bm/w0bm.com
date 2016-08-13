@@ -17,7 +17,8 @@ var video = document.getElementById('video');
 if(video !== null) {
     var player = videojs(video, {
         controls: true,
-        playbackRates: [0.25, 0.5, 1, 1.5, 2]
+        playbackRates: [0.25, 0.5, 1, 1.5, 2],
+        inactivityTimeout: 250
     }, function() {
         this.addClass('video-js');
         this.volume(0.3);
