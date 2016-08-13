@@ -246,7 +246,10 @@ class UserController extends Controller
 
         $userToBan->disabled = 1;
         $userToBan->banreason = $reason;
-        $userToBan->banend = time() + $seconds;
+        if($duration == -1)
+            $userToBan->banend = $duration;
+        else
+            $userToBan->banend = time() + $seconds;
         $userToBan->save();
         if($duration == -1)
             return redirect()->back()->with('success', 'User ' . $userToBan->username . ' has been permanently banned');
