@@ -18,7 +18,19 @@ if(video !== null) {
     var player = videojs(video, {
         controls: true,
         playbackRates: [0.25, 0.5, 1, 1.5, 2],
-        inactivityTimeout: 250
+        inactivityTimeout: 0,
+        controlBar: {
+            children: {
+                'playToggle': {},
+                'progressControl': {},
+                'currentTimeDisplay': {},
+                'timeDivider': {},
+                'durationDisplay': {},
+                'volumeControl': {},
+                'playbackRateMenuButton': {},
+                'fullscreenToggle': {}
+            }
+        }
     }, function() {
         this.addClass('video-js');
         this.volume(0.3);
@@ -797,3 +809,42 @@ function editComment(self) {
         }
     });
 }
+
+$(function () {
+    var cBar = $('.vjs-control-bar');
+    var cBarStatus = false;
+    var hoveringControls = false;
+    var timeout;
+    function autoHideControls() {
+        if(hoveringControls) return;
+        cBar.hide();
+        cBarStatus = false;
+    }
+    $('video').on('mousemove', function () {
+        if(cBarStatus) return;
+        cBar.css('display', 'flex');
+        cBarStatus = true;
+        timeout = setTimeout(autoHideControls, 1000);
+    }).on('mouseleave', function (e) {
+        if(e.relatedTarget == $('div.vjs-progress-control.vjs-control').get(0)) {
+            hoveringControls = true;
+            timeout = setTimeout(autoHideControls, 1000);
+            return;
+        }
+        if(!cBarStatus) return;
+        cBar.hide();
+        cBarStatus = false;
+        clearTimeout(timeout);
+    });
+    $('div.vjs-progress-control.vjs-control').on('mouseleave', function (e) {
+        if(e.relatedTarget == $('video').get(0)) {
+            hoveringControls = false;
+            timeout = setTimeout(autoHideControls, 1000);
+            return;
+        }
+        if(!cBarStatus) return;
+        cBar.hide();
+        cBarStatus = false;
+        clearTimeout(timeout);
+    });
+});
