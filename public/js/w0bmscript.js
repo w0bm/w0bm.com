@@ -18,7 +18,19 @@ if(video !== null) {
     var player = videojs(video, {
         controls: true,
         playbackRates: [0.25, 0.5, 1, 1.5, 2],
-        inactivityTimeout: 250
+        inactivityTimeout: 0,
+        controlBar: {
+            children: {
+                'playToggle': {},
+                'progressControl': {},
+                'currentTimeDisplay': {},
+                'timeDivider': {},
+                'durationDisplay': {},
+                'volumeControl': {},
+                'playbackRateMenuButton': {},
+                'fullscreenToggle': {}
+            }
+        }
     }, function() {
         this.addClass('video-js');
         this.volume(0.3);
@@ -797,3 +809,22 @@ function editComment(self) {
         }
     });
 }
+
+$(function () {
+    var cBar = $('.vjs-control-bar');
+    var cBarStatus = false;
+    $('video').on('mousemove', function () {
+        if(cBarStatus) return;
+        cBar.css('display', 'flex');
+        cBarStatus = true;
+    }).on('mouseleave', function (e) {
+        if($(e.relatedTarget).is('[class^="vjs"]') || !cBarStatus) return;
+        cBar.hide();
+        cBarStatus = false;
+    });
+    $('[class^="vjs"').on('mouseleave', function (e) {
+        if(e.relatedTarget == $('video').get(0) || $(e.relatedTarget).is('[class^="vjs"]') || !cBarStatus) return;
+        cBar.hide();
+        cBarStatus = false;
+    });
+});
