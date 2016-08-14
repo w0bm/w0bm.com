@@ -813,38 +813,18 @@ function editComment(self) {
 $(function () {
     var cBar = $('.vjs-control-bar');
     var cBarStatus = false;
-    var hoveringControls = false;
-    var timeout;
-    function autoHideControls() {
-        if(hoveringControls) return;
-        cBar.hide();
-        cBarStatus = false;
-    }
     $('video').on('mousemove', function () {
         if(cBarStatus) return;
         cBar.css('display', 'flex');
         cBarStatus = true;
-        timeout = setTimeout(autoHideControls, 1000);
     }).on('mouseleave', function (e) {
-        if(e.relatedTarget == $('div.vjs-progress-control.vjs-control').get(0)) {
-            hoveringControls = true;
-            timeout = setTimeout(autoHideControls, 1000);
-            return;
-        }
-        if(!cBarStatus) return;
+        if($(e.relatedTarget).is('[class^="vjs"]') || !cBarStatus) return;
         cBar.hide();
         cBarStatus = false;
-        clearTimeout(timeout);
     });
-    $('div.vjs-progress-control.vjs-control').on('mouseleave', function (e) {
-        if(e.relatedTarget == $('video').get(0)) {
-            hoveringControls = false;
-            timeout = setTimeout(autoHideControls, 1000);
-            return;
-        }
-        if(!cBarStatus) return;
+    $('[class^="vjs"').on('mouseleave', function (e) {
+        if(e.relatedTarget == $('video').get(0) || $(e.relatedTarget).is('[class^="vjs"]') || !cBarStatus) return;
         cBar.hide();
         cBarStatus = false;
-        clearTimeout(timeout);
     });
 });
