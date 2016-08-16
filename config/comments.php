@@ -9,6 +9,7 @@ return [
     'ptpb.pw',
     'a.desu.sh',
     'i.webp.space',
-    'a.cuntflaps.me'
+    'a.cuntflaps.me',
+    'f0ck.me'
   ]
 ];
