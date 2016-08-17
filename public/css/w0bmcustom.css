@@ -529,6 +529,18 @@ div.message > div.panel-heading > span {
 	margin-bottom: 6px;
 }
 
+.patoy {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 6px;
+}
+
+.patoyklein {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 5px;
+}
+
 .flinnysmall {
 	height: 16px;
 	width:  16px;
@@ -673,7 +685,7 @@ input {
 
 
 .video-js .vjs-control-bar {
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    background: rgba(34, 34, 34, 0.61)
 }
 
 .vjs-playback-rate .vjs-playback-rate-value {
@@ -689,4 +701,25 @@ input {
 
 .strong-colored strong {
     color: #1FB2B0;
+}
+
+/* Comment edits */
+.panel-body[contenteditable='true'] {
+   background-color: rgba(0,0,0,0.2);
+}
+
+.video-js .vjs-current-time, .video-js .vjs-time-divider, .video-js .vjs-duration {
+    display: block;
+}
+
+.video-js .vjs-current-time {
+    padding-right: 0px;
+}
+
+.video-js .vjs-duration {
+    padding-left: 0px;
+}
+
+.video-js .vjs-control-bar {
+    display: none;
 }

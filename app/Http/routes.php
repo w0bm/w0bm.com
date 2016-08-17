@@ -34,6 +34,7 @@ Route::get('api/messages', 'MessageController@index');
 Route::post('api/messages/read', 'MessageController@read');
 Route::get('api/messages/readall', 'MessageController@readall');
 Route::get('api/comments', 'CommentController@index');
+Route::get('api/comments/{id}', 'CommentController@show')->where('id', '[0-9]+');
 Route::get('user/{username}', 'UserController@show');
 Route::get('user/{username}/favs', 'UserController@show_favs');
 Route::get('user/{username}/comments', 'UserController@show_comments');
@@ -81,9 +82,11 @@ Route::group(['prefix' => 'api'], function() {
     Route::get('messages', 'MessageController@index');
 });
 
-Route::get('comment/{id}/edit', 'CommentController@edit')->where('id', '[0-9]+');
-Route::get('comment/{id}/delete', 'CommentController@destroy')->where('id', '[0-9]+');
-Route::get('comment/{id}/restore', 'CommentController@restore')->where('id', '[0-9]+');
+Route::post('/api/user/{username}/ban', 'UserController@ban');
+
+Route::post('/api/comments/{id}/edit', 'CommentController@update')->where('id', '[0-9]+');
+Route::post('/api/comments/{id}/delete', 'CommentController@destroy')->where('id', '[0-9]+');
+Route::post('/api/comments/{id}/restore', 'CommentController@restore')->where('id', '[0-9]+');
 
 Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');
 Route::get('{id}/fav', 'VideoController@favorite')->where('id', '[0-9]+');
