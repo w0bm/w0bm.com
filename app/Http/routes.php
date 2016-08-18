@@ -58,23 +58,6 @@ Route::get('help', function() { return view('help'); });
 Route::get('donate', function() { return view('donate'); });
 Route::get('transparency', function() { return view('transparency'); });
 Route::get('login', function() { return view('login'); });
-Route::get('togglebackground', function() {
-    $request = request();
-    $user = auth()->check() ? auth()->user() : null;
-
-    if(is_null($user)) {
-        Session::put('background', !Session::get('background', true));
-    } else {
-        $user->background = !$user->background;
-        Session::put('background', $user->background);
-        $user->save();
-    }
-
-    if($request->ajax())
-        return json_encode(true);
-
-    return redirect()->back()->with('success, Background toggled');
-});
 
 Route::post('filter', 'UserController@filter');
 

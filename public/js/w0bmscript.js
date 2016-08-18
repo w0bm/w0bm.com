@@ -42,23 +42,68 @@ if(video !== null) {
         }
     });
     
+    if(localStorage.bgFps === undefined)
+        localStorage.bgFps = 50;
+    var fps = localStorage.bgFps;
+
     var canvas = document.getElementById('bg');
     var context = canvas.getContext('2d');
-    var cw = canvas.width = canvas.clientWidth|0;
-    var ch = canvas.height = canvas.clientHeight|0;
+    var cw = canvas.width = canvas.clientWidth | 0;
+    var ch = canvas.height = canvas.clientHeight | 0;
 
-    function animationLoop() {
-        if(video.paused || video.ended)
-            return false;
-        context.drawImage(video, 0, 0, cw, ch);
-        window.requestAnimFrame(animationLoop);
+    function calcIntervalMs(fps) {
+        return Math.floor(1 / fps * 1000);
     }
-    video.addEventListener('play', function() {
-        animationLoop();
+
+    var intervalMs;
+    var interval;
+
+    if(fps != 0)
+        intervalMs = calcIntervalMs(fps)
+
+    function drawBackground() {
+        context.drawImage(video, 0, 0, cw, ch);
+    }
+
+    video.addEventListener('pause', function () {
+        if(fps != 0 && interval)
+            clearInterval(interval);
     });
 
-    if(video.autoplay)
-        animationLoop();
+    video.addEventListener('play', function () {
+        if(fps != 0) {
+            if(interval)
+                clearInterval(interval);
+            interval = setInterval(drawBackground, intervalMs);
+        }
+    });
+
+    $('#togglebg').on('click', function (e) {
+        e.preventDefault();
+        var newFps = prompt('Enter the FPS you wish background is rendered with (0 = disabled)', fps);
+        if(newFps == null)
+            return;
+        if(newFps == parseInt(newFps) && newFps >= 0) {
+            localStorage.bgFps = newFps;
+            fps = newFps;
+            if(fps != 0) {
+                intervalMs = calcIntervalMs(fps);
+                if(interval)
+                    clearInterval(interval);
+                interval = setInterval(drawBackground, intervalMs);
+                if($(canvas).css('display') == 'none')
+                    $(canvas).css('display', 'block');
+            }
+            else {
+                if(interval)
+                    clearInterval(interval);
+                $(canvas).css('display', 'none');
+            }
+        }
+        else
+            alert('You didn\'t enter a valid number.');
+    });
+
 
     function getNext() {
         var next = $('#next');

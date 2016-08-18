@@ -23,7 +23,7 @@
         @include('partials.frontendedit')
     @endif
 @endif
-<canvas class="hidden-xs" id="bg" @if(!Session::get('background', true)) style="display: none; visibility: hidden;"@endif></canvas>
+<canvas class="hidden-xs" id="bg"></canvas>
 
 @include('partials.navigation')
 
