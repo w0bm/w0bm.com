@@ -723,3 +723,15 @@ input {
 .video-js .vjs-control-bar {
     display: none;
 }
+
+.americagay {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 2px;
+}
+
+.americagaysmall {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 2px;
+}
