@@ -23,7 +23,7 @@
         @include('partials.frontendedit')
     @endif
 @endif
-<canvas class="hidden-xs" id="bg" @if(!Session::get('background', true)) style="display: none; visibility: hidden;"@endif></canvas>
+<canvas class="hidden-xs" id="bg"></canvas>
 
 @include('partials.navigation')
 
@@ -43,7 +43,8 @@
 <script src="/js/isotope.pkgd.min.js"></script>
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
+<script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
-<script src="/js/w0bmscript.js?v=1.0.0"></script>
+<script src="/js/w0bmscript.js?v=1.0.1"></script>
 </body>
 </html>

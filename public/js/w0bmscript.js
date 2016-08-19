@@ -41,24 +41,40 @@ if(video !== null) {
             });
         }
     });
-    
+
+    if(localStorage.getItem('background') == undefined) {
+        if($.browser.mobile)
+            localStorage.setItem('background', 'false');
+        else
+            localStorage.setItem('background', 'true');
+    }
+    var background = localStorage.getItem('background') === 'true';
+
     var canvas = document.getElementById('bg');
     var context = canvas.getContext('2d');
-    var cw = canvas.width = canvas.clientWidth|0;
-    var ch = canvas.height = canvas.clientHeight|0;
+    var cw = canvas.width = canvas.clientWidth | 0;
+    var ch = canvas.height = canvas.clientHeight | 0;
 
     function animationLoop() {
-        if(video.paused || video.ended)
-            return false;
+        if(video.paused || video.ended || !background)
+            return;
         context.drawImage(video, 0, 0, cw, ch);
         window.requestAnimFrame(animationLoop);
     }
-    video.addEventListener('play', function() {
+
+    video.addEventListener('play', animationLoop);
+
+    $('#togglebg').on('click', function (e) {
+        e.preventDefault();
+        background = !background;
+        localStorage.setItem('background', background.toString());
+        if(background)
+            $(canvas).css('display', 'block');
+        else
+            $(canvas).css('display', 'none');
         animationLoop();
     });
 
-    if(video.autoplay)
-        animationLoop();
 
     function getNext() {
         var next = $('#next');
