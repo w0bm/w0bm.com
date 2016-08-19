@@ -41,67 +41,36 @@ if(video !== null) {
             });
         }
     });
-    
-    if(localStorage.bgFps === undefined)
-        localStorage.bgFps = 50;
-    var fps = localStorage.bgFps;
+
+    if(localStorage.getItem('background') == undefined)
+        localStorage.setItem('background', 'false');
+    var background = localStorage.getItem('background') === 'true';
 
     var canvas = document.getElementById('bg');
     var context = canvas.getContext('2d');
     var cw = canvas.width = canvas.clientWidth | 0;
     var ch = canvas.height = canvas.clientHeight | 0;
 
-    function calcIntervalMs(fps) {
-        return Math.floor(1 / fps * 1000);
-    }
-
-    var intervalMs;
-    var interval;
-
-    if(fps != 0)
-        intervalMs = calcIntervalMs(fps)
-
-    function drawBackground() {
+    function animationLoop() {
+        if(video.paused || video.ended || !background)
+            return;
         context.drawImage(video, 0, 0, cw, ch);
+        window.requestAnimFrame(animationLoop);
     }
-
-    video.addEventListener('pause', function () {
-        if(fps != 0 && interval)
-            clearInterval(interval);
-    });
 
     video.addEventListener('play', function () {
-        if(fps != 0) {
-            if(interval)
-                clearInterval(interval);
-            interval = setInterval(drawBackground, intervalMs);
-        }
+        animationLoop();
     });
 
     $('#togglebg').on('click', function (e) {
         e.preventDefault();
-        var newFps = prompt('Enter the FPS you wish background is rendered with (0 = disabled)', fps);
-        if(newFps == null)
-            return;
-        if(newFps == parseInt(newFps) && newFps >= 0) {
-            localStorage.bgFps = newFps;
-            fps = newFps;
-            if(fps != 0) {
-                intervalMs = calcIntervalMs(fps);
-                if(interval)
-                    clearInterval(interval);
-                interval = setInterval(drawBackground, intervalMs);
-                if($(canvas).css('display') == 'none')
-                    $(canvas).css('display', 'block');
-            }
-            else {
-                if(interval)
-                    clearInterval(interval);
-                $(canvas).css('display', 'none');
-            }
-        }
+        background = !background;
+        localStorage.setItem('background', background.toString());
+        if(background)
+            $(canvas).css('display', 'block');
         else
-            alert('You didn\'t enter a valid number.');
+            $(canvas).css('display', 'none');
+        animationLoop();
     });
 
 
