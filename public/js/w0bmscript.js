@@ -55,6 +55,9 @@ if(video !== null) {
     var cw = canvas.width = canvas.clientWidth | 0;
     var ch = canvas.height = canvas.clientHeight | 0;
 
+    if(!background)
+        $(canvas).css('display', 'none');
+
     function animationLoop() {
         if(video.paused || video.ended || !background)
             return;
