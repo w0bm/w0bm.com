@@ -58,9 +58,7 @@ if(video !== null) {
         window.requestAnimFrame(animationLoop);
     }
 
-    video.addEventListener('play', function () {
-        animationLoop();
-    });
+    video.addEventListener('play', animationLoop);
 
     $('#togglebg').on('click', function (e) {
         e.preventDefault();
