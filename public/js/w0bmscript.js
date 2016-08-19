@@ -42,8 +42,12 @@ if(video !== null) {
         }
     });
 
-    if(localStorage.getItem('background') == undefined)
-        localStorage.setItem('background', 'false');
+    if(localStorage.getItem('background') == undefined) {
+        if($.browser.mobile)
+            localStorage.setItem('background', 'false');
+        else
+            localStorage.setItem('background', 'true');
+    }
     var background = localStorage.getItem('background') === 'true';
 
     var canvas = document.getElementById('bg');
