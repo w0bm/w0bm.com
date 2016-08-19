@@ -14,7 +14,7 @@
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link href="/css/video-js.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.9">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.10">
 </head>
 <body>
 @if(auth()->check())
