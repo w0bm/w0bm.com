@@ -15,7 +15,6 @@
                 <li><a href="{{url('categories')}}"><i class="fa fa-bars"></i> Categories</a></li>
                 <li><a href="{{url('songindex')}}"><i class="fa fa-music"></i> Songindex</a></li>
                 <li><a href="{{url('irc')}}"><i class="fa fa-comment"></i> IRC</a></li>
-		<li><a href="ts3server://ts.w0bm.com"><i class="fa fa-microphone"></i> TeamSpeak</a></li>
 		<li><a href="{{url('about')}}"><i class="fa fa-exclamation"></i> About</a></li>
 	    </ul>
             @if(Auth::check())
