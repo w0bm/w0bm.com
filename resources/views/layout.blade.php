@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="_token" content="{{csrf_token()}}">
     <link rel="icon" href="/favicon.png">
-    <title>w0bm.com – WebMs with sound!</title>
+    <title>@if(isset($video)){{ $video->id }}@endif – w0bm.com</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
     <link rel="favicon" type="image/ico" href="favicon.ico" />
