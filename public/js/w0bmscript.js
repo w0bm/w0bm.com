@@ -176,16 +176,16 @@ if(video !== null) {
         if($('video').length) {
             var info = [];
             if(video.interpret) {
-                info.push(' <em>Interpret:</em> ' + video.interpret);
+                info.push(' <strong>Interpret:</strong> ' + video.interpret);
             }
             if(video.songtitle) {
-                info.push(' <em>Songtitle:</em> ' + video.songtitle);
+                info.push(' <strong>Songtitle:</strong> ' + video.songtitle);
             }
             if(video.imgsource) {
-                info.push(' <em>Video Source:</em> ' + video.imgsource);
+                info.push(' <strong>Video Source:</strong> ' + video.imgsource);
             }
             if(video.category.name) {
-                info.push(' <em>Category:</em> ' + video.category.name);
+                info.push(' <strong>Category:</strong> ' + video.category.name);
             }
             $('span.fa-info-circle').attr('data-content', info.join('<br>'));
         }
