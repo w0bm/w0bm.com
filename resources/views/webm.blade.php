@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('profilelayout')
 @section('content')
 <div class="page-header">
         <h1>How to WebM</h1>

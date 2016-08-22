@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('profilelayout')
 @section('content')
 <div class="page-header">
         <h4>General Rules for w0bm.com</h4>

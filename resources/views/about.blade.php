@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('profilelayout')
 @section('content')
 <?php $comment = config('comments'); ?>
 <div class="page-header">

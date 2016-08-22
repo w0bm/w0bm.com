@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('profilelayout')
 @section('content')
 <h4>Contact</h4>
 <img src="/traurig.gif" height="25%" width="25%" style="float: right;">

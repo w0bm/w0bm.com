@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('profilelayout')
 @section('content')
 <div class="page-header">
         <h3>IRC</h3>
