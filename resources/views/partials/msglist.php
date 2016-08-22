@@ -26,6 +26,6 @@
         <div class="panel-body">
             {{{content}}}
         </div>
-        <div class="panel-footer"><time class="timeago" data-toggle="tooltip" datetime="{{created_at}}+0000" title="{{created_at}} UTC"></time></div>
+        <div class="panel-footer"><time class="timeago" data-toggle="tooltip" datetime="{{created_at}}+0000" title="{{created_at}}+0000"></time></div>
     </div>
 </script>

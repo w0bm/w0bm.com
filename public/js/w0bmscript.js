@@ -523,6 +523,8 @@ $(function () {
     var s = $.timeago.settings;
     var str = s.strings;
     s.refreshMillis = 1000;
+    s.allowFuture = true;
+    s.localeTitle = true;
     //same format as laravel diffForHumans()
     str.seconds = "%d seconds";
     str.minute = "1 minute";
@@ -531,6 +533,7 @@ $(function () {
     str.day = "1 day";
     str.month = "1 month";
     str.year = "1 year";
+    str.suffixFromNow = null;
     $('time.timeago').timeago();
     $('[data-toggle="tooltip"]').tooltip();
 });
