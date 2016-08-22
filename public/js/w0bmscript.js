@@ -95,7 +95,7 @@ if(video !== null) {
 
     //Key Bindings
     $('html').on('keydown', function(e) {
-        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i) || $(e.target).attr('contenteditable') == 'true')
+        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i))
             return;
 
         //arrow keys
