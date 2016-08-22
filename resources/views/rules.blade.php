@@ -13,7 +13,7 @@
 <h5>Uploading</h5>
 <ol>
 	<li>Everything you upload <strong style="color:#1FB2B0;">must</strong> be acceptable with Dutch law</li>
-	<li>Absolutely no child pornography in any way! Loli content is excluded from this, so shut the fuck up; if you can't acceppt those 5 loli videos get the fuck out!</li>
+	<li>Absolutely no child pornography in any way! Loli content is excluded from this, so shut the fuck up; if you can't accept those 5 loli videos get the fuck out!</li>
 	<li>No shocking content, I mean mostly Gore with this, this site is friendly and shouldn't scare people in any ways, with the exception of weird porn. This includes scat, puke, and all the weird japanese fetish videos. They are all welcome here!</li>	
 	<li>Reposting is not a crime! But in most cases it can be prevented with the use of the <a href="https://w0bm.com/songindex">search form</a>.
 	<li>Put your uploads in the correct category, if you have a video that doesn't fit in any of the categories always put it in the Misc category</li.>
