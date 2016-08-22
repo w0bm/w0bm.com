@@ -9,13 +9,13 @@
                 <form class="form-horizontal" method="post" action="upload" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     <div class="form-group">
-                        <label for="interpret" class="col-sm-2 control-label">Interpret</label>
+                        <label for="interpret" class="col-sm-2 control-label">Artist</label>
                         <div class="col-sm-10">
-                            {!! Form::text('interpret', null, ['id' => 'interpret', 'class' => 'form-control', 'placeholder' => 'Interpret']) !!}
+                            {!! Form::text('interpret', null, ['id' => 'interpret', 'class' => 'form-control', 'placeholder' => 'Artist']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="songtitle" class="col-sm-2 control-label">Song title</label>
+                        <label for="songtitle" class="col-sm-2 control-label">Song Title</label>
                         <div class="col-sm-10">
                             {!! Form::text('songtitle', null, ['id' => 'songtitle', 'class' => 'form-control', 'placeholder' => 'Song Title']) !!}
                         </div>
