@@ -176,7 +176,7 @@ if(video !== null) {
         if($('video').length) {
             var info = [];
             if(video.interpret) {
-                info.push(' <strong>Interpret:</strong> ' + video.interpret);
+                info.push(' <strong>Artist:</strong> ' + video.interpret);
             }
             if(video.songtitle) {
                 info.push(' <strong>Songtitle:</strong> ' + video.songtitle);
@@ -729,7 +729,6 @@ function restoreComment(self) {
         if(reason == null)
             return;
     } while(reason == '');
-    console.log(reason);
     $.ajax({
         url: '/api/comments/' + comment.data('id') + '/restore',
         method: 'POST',
