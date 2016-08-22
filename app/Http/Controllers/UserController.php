@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Models\ModeratorLog;
 
 use Symfony\Component\HttpFoundation\Response;
 use Toddish\Verify\Helpers\Verify;
@@ -255,6 +256,14 @@ class UserController extends Controller
         $userToBan->banreason = $reason;
         $userToBan->banend = $duration;
         $userToBan->save();
+
+        $log = new ModeratorLog();
+        $log->user()->associate($user);
+        $log->type = 'ban';
+        $log->target_type = 'user';
+        $log->target_id = $userToBan->id;
+        $log->save();
+
         if($perm)
             return redirect()->back()->with('success', 'User ' . $userToBan->username . ' has been permanently banned');
         else
