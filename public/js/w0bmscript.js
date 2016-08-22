@@ -95,7 +95,7 @@ if(video !== null) {
 
     //Key Bindings
     $('html').on('keydown', function(e) {
-        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i) || $(e.target).attr('contenteditable') == 'true')
+        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i))
             return;
 
         //arrow keys
@@ -176,16 +176,16 @@ if(video !== null) {
         if($('video').length) {
             var info = [];
             if(video.interpret) {
-                info.push(' <em>Interpret:</em> ' + video.interpret);
+                info.push(' <strong>Artist:</strong> ' + video.interpret);
             }
             if(video.songtitle) {
-                info.push(' <em>Songtitle:</em> ' + video.songtitle);
+                info.push(' <strong>Songtitle:</strong> ' + video.songtitle);
             }
             if(video.imgsource) {
-                info.push(' <em>Video Source:</em> ' + video.imgsource);
+                info.push(' <strong>Video Source:</strong> ' + video.imgsource);
             }
             if(video.category.name) {
-                info.push(' <em>Category:</em> ' + video.category.name);
+                info.push(' <strong>Category:</strong> ' + video.category.name);
             }
             $('span.fa-info-circle').attr('data-content', info.join('<br>'));
         }
@@ -523,6 +523,8 @@ $(function () {
     var s = $.timeago.settings;
     var str = s.strings;
     s.refreshMillis = 1000;
+    s.allowFuture = true;
+    s.localeTitle = true;
     //same format as laravel diffForHumans()
     str.seconds = "%d seconds";
     str.minute = "1 minute";
@@ -531,6 +533,7 @@ $(function () {
     str.day = "1 day";
     str.month = "1 month";
     str.year = "1 year";
+    str.suffixFromNow = null;
     $('time.timeago').timeago();
     $('[data-toggle="tooltip"]').tooltip();
 });
@@ -590,7 +593,7 @@ if(/\/user\/.+\/comments/i.test(location.href)) {
 }
 else {
     (function($) {
-        if(typeof Handlebars == "undefined") return; // only on profilelayout
+        if(typeof Handlebars == "undefined" || !$('#msglist').length) return; // only on profilelayout
 
         $.ajaxSetup({
             headers: {
@@ -729,7 +732,6 @@ function restoreComment(self) {
         if(reason == null)
             return;
     } while(reason == '');
-    console.log(reason);
     $.ajax({
         url: '/api/comments/' + comment.data('id') + '/restore',
         method: 'POST',
@@ -757,61 +759,54 @@ function restoreComment(self) {
 function editComment(self) {
     var comment = self.closest('div[data-id]');
     var body = comment.find('.panel-body');
-    var text = body.html();
     var id = comment.data('id');
     $.ajax({
         url: '/api/comments/' + id,
         success: function(retval) {
             if(retval.error == 'null') {
-                body.html(retval.comment.replace(/\r?\n/g, '<br>'));
-                body.attr('contenteditable', 'true');
+                var textarea = $('<textarea class="form-control">');
+                body.replaceWith(textarea);
+                textarea.val($('<div>').html(retval.comment).text());
                 self.prev().remove();
                 self.replaceWith('<a href="#" class="saveCommentEdit"><i class="fa fa-floppy-o" aria-hidden="true"></i></a> <a href="#" class="abortCommentEdit"><i style="color:red;" class="fa fa-ban" aria-hidden="true"></i></a>');
                 comment.find('.abortCommentEdit').on('click', function(e) {
                     e.preventDefault();
-                    $(this).off();
                     $(this).prev().remove();
                     $(this).replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
-                    body.attr('contenteditable', 'false');
-                    body.html(text);
+                    textarea.replaceWith(body);
                 });
                 comment.find('.saveCommentEdit').on('click', function(e) {
-                    var _this = $(this);
                     e.preventDefault();
+                    var _this = $(this);
                     $.ajax({
                         url: '/api/comments/' + id + '/edit',
                         method: 'POST',
-                        data: { comment: body.html().replace(/<br>/g, '\n') },
+                        data: { comment: textarea.val() },
                         success: function(retval) {
                             if(retval.error == 'null') {
                                 body.html(retval.rendered_comment);
                                 flash('success', 'Comment edited successfully');
                             }
-                            else {
-                                body.html(text);
-                                if(retval.error == 'invalid_request')
-                                    flash('error', 'Invalid request was sent by your browser');
-                                else if(retval.error == 'not_logged_in')
-                                    flash('error', 'Not logged in');
-                                else if(retval.error == 'insufficient_permissions')
-                                    flash('error', 'Insufficient permissions');
-                                else if(retval.error == 'comment_not_found')
-                                    flash('error', 'Comment does not exist');
-                                else
-                                    flash('error', 'Unknown exception');
-                            }
+                            else if(retval.error == 'invalid_request')
+                                flash('error', 'Invalid request was sent by your browser');
+                            else if(retval.error == 'not_logged_in')
+                                flash('error', 'Not logged in');
+                            else if(retval.error == 'insufficient_permissions')
+                                flash('error', 'Insufficient permissions');
+                            else if(retval.error == 'comment_not_found')
+                                flash('error', 'Comment does not exist');
+                            else
+                                flash('error', 'Unknown exception');
                         },
                         error: function(jqxhr, status, error) {
                             flash('error', 'Unknown exception');
                             flash('error', status);
                             flash('error', error);
-                            body.html(text);
                         },
                         complete: function() {
-                            _this.off();
+                            textarea.replaceWith(body);
                             _this.next().remove();
                             _this.replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
-                            body.attr('contenteditable', 'false');
                         }
                     });
                 });

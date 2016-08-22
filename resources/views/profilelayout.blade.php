@@ -15,7 +15,7 @@
       href="favicon.ico" />
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.5">
+    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.11">
 </head>
 <body>
 @include('partials.handlebars')
@@ -46,6 +46,6 @@
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/handlebars.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
-<script src="/js/w0bmscript.js"></script>
+<script src="/js/w0bmscript.js?v=1.0.3"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link href="/css/video-js.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.10">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.11">
 </head>
 <body>
 @if(auth()->check())
@@ -45,6 +45,6 @@
 <script src="/js/jquery.timeago.js"></script>
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
-<script src="/js/w0bmscript.js?v=1.0.2"></script>
+<script src="/js/w0bmscript.js?v=1.0.3"></script>
 </body>
 </html>
