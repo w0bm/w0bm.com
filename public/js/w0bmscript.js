@@ -593,7 +593,7 @@ if(/\/user\/.+\/comments/i.test(location.href)) {
 }
 else {
     (function($) {
-        if(typeof Handlebars == "undefined") return; // only on profilelayout
+        if(typeof Handlebars == "undefined" || !$('#msglist').length) return; // only on profilelayout
 
         $.ajaxSetup({
             headers: {
