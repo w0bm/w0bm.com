@@ -757,61 +757,54 @@ function restoreComment(self) {
 function editComment(self) {
     var comment = self.closest('div[data-id]');
     var body = comment.find('.panel-body');
-    var text = body.html();
     var id = comment.data('id');
     $.ajax({
         url: '/api/comments/' + id,
         success: function(retval) {
             if(retval.error == 'null') {
-                body.html(retval.comment.replace(/\r?\n/g, '<br>'));
-                body.attr('contenteditable', 'true');
+                var textarea = $('<textarea class="form-control">');
+                body.replaceWith(textarea);
+                textarea.val($('<div>').html(retval.comment).text());
                 self.prev().remove();
                 self.replaceWith('<a href="#" class="saveCommentEdit"><i class="fa fa-floppy-o" aria-hidden="true"></i></a> <a href="#" class="abortCommentEdit"><i style="color:red;" class="fa fa-ban" aria-hidden="true"></i></a>');
                 comment.find('.abortCommentEdit').on('click', function(e) {
                     e.preventDefault();
-                    $(this).off();
                     $(this).prev().remove();
                     $(this).replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
-                    body.attr('contenteditable', 'false');
-                    body.html(text);
+                    textarea.replaceWith(body);
                 });
                 comment.find('.saveCommentEdit').on('click', function(e) {
-                    var _this = $(this);
                     e.preventDefault();
+                    var _this = $(this);
                     $.ajax({
                         url: '/api/comments/' + id + '/edit',
                         method: 'POST',
-                        data: { comment: body.html().replace(/<br>/g, '\n') },
+                        data: { comment: textarea.val() },
                         success: function(retval) {
                             if(retval.error == 'null') {
                                 body.html(retval.rendered_comment);
                                 flash('success', 'Comment edited successfully');
                             }
-                            else {
-                                body.html(text);
-                                if(retval.error == 'invalid_request')
-                                    flash('error', 'Invalid request was sent by your browser');
-                                else if(retval.error == 'not_logged_in')
-                                    flash('error', 'Not logged in');
-                                else if(retval.error == 'insufficient_permissions')
-                                    flash('error', 'Insufficient permissions');
-                                else if(retval.error == 'comment_not_found')
-                                    flash('error', 'Comment does not exist');
-                                else
-                                    flash('error', 'Unknown exception');
-                            }
+                            else if(retval.error == 'invalid_request')
+                                flash('error', 'Invalid request was sent by your browser');
+                            else if(retval.error == 'not_logged_in')
+                                flash('error', 'Not logged in');
+                            else if(retval.error == 'insufficient_permissions')
+                                flash('error', 'Insufficient permissions');
+                            else if(retval.error == 'comment_not_found')
+                                flash('error', 'Comment does not exist');
+                            else
+                                flash('error', 'Unknown exception');
                         },
                         error: function(jqxhr, status, error) {
                             flash('error', 'Unknown exception');
                             flash('error', status);
                             flash('error', error);
-                            body.html(text);
                         },
                         complete: function() {
-                            _this.off();
+                            textarea.replaceWith(body);
                             _this.next().remove();
                             _this.replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
-                            body.attr('contenteditable', 'false');
                         }
                     });
                 });
