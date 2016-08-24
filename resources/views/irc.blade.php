@@ -6,7 +6,7 @@
 <img src="/irccat.gif" alt="irc cat" style="float: right; width: 25%; height: 25%;">
 <h4>irc.n0xy.net +6697 (ssl only) #w0bm</h4>
 <p><code>SHA256 Fingerprint=10:2F:90:45:53:B9:1E:F8:7A:B4:7B:AE:03:70:4C:84:70:7A:A9:EE:11:49:2B:79:A0:7A:2D:01:B2:E6:0F:41</code></p>
-<p>Don't have a desktop  client? Why not join our Network via webirc? <a href="https://webirc.n0xy.net" target="about_blank">>>webirc.n0xy.net</a></p>
+<p>Don't have a desktop  client? Why not join our Network via webirc? <a href="https://webirc.n0xy.net/#w0bm" target="about_blank">>>webirc.n0xy.net</a></p>
 <div class="page-header">
 <h4>IRC Rules</h4>
 </div>
