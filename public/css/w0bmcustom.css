@@ -731,3 +731,7 @@ input {
 	width:  16px;
 	margin-bottom: 2px;
 }
+
+.alert {
+	border-radius: 0;
+}
