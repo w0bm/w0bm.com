@@ -92,7 +92,7 @@ class VideoController extends Controller
         $file = $file->move(public_path() . '/b/', time() . '.webm');
         if(!$this->checkFileEncoding(basename($file->getRealPath()))) {
             unlink($file->getRealPath());
-            return redirect()->back()->with('error', 'Erroneous File Encoding! Try reencoding it');
+            return redirect()->back()->with('error', 'Erroneous File Encoding! Read: https/w0bm.com/webm');
         }
 
         $hash = sha1_file($file->getRealPath());
