@@ -8,6 +8,7 @@ use App\Models\Message;
 use App\Models\ModeratorLog;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -63,36 +64,39 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
+        if(!$request->hasFile('file') || !$request->has('category'))
+            return JsonResponse::create(array('error' => 'invalid_request'));
+
         $user = auth()->check() ? auth()->user() : null;
-        if(is_null($user)) return redirect('/')->with('error', 'You need to be logged in');
+        if(is_null($user))
+            return JsonResponse::create(array('error' => 'not_logged_in'));
 
         if(!$user->can('break_upload_limit') && $user->videos()->newlyups()->count() >= 10)
-            return redirect()->back()->with('error', 'Uploadlimit reached')->withInput();
-
-
-        if(!$request->hasFile('file'))
-            return redirect()->back()->with('error', 'No file')->withInput();
+            return JsonResponse::create(array('error' => 'uploadlimit_reached'));
 
         $file = $request->file('file');
 
         if(!$file->isValid()
         || mb_strtolower($file->getClientOriginalExtension()) !== 'webm'
         || mb_strtolower($file->getMimeType()) !== 'video/webm')
-            return redirect()->back()->with('error', 'Invalid file');
+            return JsonResponse::create(array('error' => 'invalid_file'));
 
         if(!$user->can('break_max_filesize') && $file->getSize() > 31457280)
-            return redirect()->back()->with('error', 'File too big. Max 30MB')->withInput();
+            return JsonResponse::create(array('error' => 'file_too_big'));
 
         if(($v = Video::withTrashed()->where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null) {
             if($v->trashed())
-                return redirect()->back()->with('error', 'Video already existed and has been deleted');
-            return redirect($v->id)->with('error', 'Video already exists');
+                return JsonResponse::create(array('error' => 'already_exists'));
+            return JsonResponse::create(array(
+                'error' => 'already_exists',
+                'video_id' => $v->id
+            ));
         }
 
         $file = $file->move(public_path() . '/b/', time() . '.webm');
         if(!$this->checkFileEncoding(basename($file->getRealPath()))) {
             unlink($file->getRealPath());
-            return redirect()->back()->with('error', 'Erroneous File Encoding! Try reencoding it');
+            return JsonResponse::create(array('error' => 'erroneous_file_encoding'));
         }
 
         $hash = sha1_file($file->getRealPath());
@@ -109,7 +113,10 @@ class VideoController extends Controller
 
         $this->createThumbnail(basename($file->getRealPath()));
 
-        return redirect($video->id)->with('success', 'Upload successful');
+        return JsonResponse::create(array(
+            'error' => 'null',
+            'video_id' => $video->id
+        ));
     }
 
     /**
