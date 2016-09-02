@@ -3,7 +3,7 @@
     <div class="page-header">
         <h3>Upload</h3>
     </div>
-    <div class="row">
+    <div class="row row-upload">
         <div class="col-md-6" style="white-space: nowrap; padding: 0px;">
             <div class="form-group">
                 <label for="interpret" class="col-sm-2 control-label">Artist</label>
