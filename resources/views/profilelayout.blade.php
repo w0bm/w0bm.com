@@ -15,7 +15,7 @@
       href="favicon.ico" />
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.12">
+    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.13">
 </head>
 <body>
 @include('partials.handlebars')
