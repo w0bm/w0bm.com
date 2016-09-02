@@ -735,3 +735,72 @@ input {
 	width:  16px;
 	margin-bottom: 2px;
 }
+
+select.form-control, input.form-control {
+    background-color: #353434;
+}
+
+#dragndrop {
+    border: 3px dashed #353434;
+    border-radius: 5px;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+    padding: 0px;
+    background-color: #121214;
+    color: #888;
+}
+
+#dragndrop-link {
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+#dragndrop-link:hover {
+    text-decoration: none;
+}
+
+#dragndrop-text {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#dragndrop-text > video {
+    width: 70%;
+    margin-top: 15px;
+}
+
+.progress {background: rgba(74, 201, 28, 0); border: 1px solid rgba(255, 255, 255, 1); border-radius: 5px; height: 20px;}
+.progress-bar-custom {background: rgba(47, 196, 47, 1);} 
+.progress-striped .progress-bar-custom {background-color: rgba(47, 196, 47, 1); background-image: -webkit-gradient(linear,0 100%,100% 0,color-stop(0.25,rgba(255, 255, 255, 0.15),color-stop(0.25,transparent),color-stop(0.5,transparent),color-stop(0.5,rgba(255, 255, 255, 0.15)),color-stop(0.75,rgba(255, 255, 255, 0.15)),color-stop(0.75,transparent),to(transparent))); background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, 0.15) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, 0.15) 50%,rgba(255, 255, 255, 0.15) 75%,transparent 75%,transparent); background-image: linear-gradient(45deg,rgba(255, 255, 255, 0.15) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, 0.15) 50%,rgba(255, 255, 255, 0.15) 75%,transparent 75%,transparent); background-size: 36px 36px;}
+
+#dragndrop-clear {
+    color: red;
+}
+
+#dragndrop-clear:hover {
+    text-decoration: none;
+}
+
+.progress-striped {
+    margin-bottom: 0px;
+}
+
+.upload-info {
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.row > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
+}
