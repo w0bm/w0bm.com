@@ -3,6 +3,10 @@ body {
    /* background: #161618 url("/spurdo.gif") no-repeat fixed right bottom;*/
 }
 
+a:focus {
+    outline: none;
+}
+
 /*body::after {
     position: fixed !important;
     content: url("https://koyaanis.com/i/kawaii2.gif");
