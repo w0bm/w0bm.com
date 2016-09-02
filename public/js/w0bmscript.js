@@ -1073,6 +1073,10 @@ $(function() {
             flash('error', 'No file selected');
             return;
         }
+        if(jqXHR && (jqXHR.readyState == 0 || jqXHR.readyState == 1 || jqXHR.readyState == 3)) {
+            flash('info', 'Already uploading');
+            return;
+        }
         submitForm($('#interpret').val(), $('#songtitle').val(), $('#imgsource').val(), $('#category').val(), currentFile);
     });
 });
