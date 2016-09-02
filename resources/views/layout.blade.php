@@ -7,16 +7,15 @@
     <meta charset="UTF-8">
     <meta name="_token" content="{{csrf_token()}}">
     <link rel="icon" href="/favicon.png">
-    <title>w0bm.com - WebMs with sound!</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/jquery.mCustomScrollbar.min.css">
-    <link rel="favicon" 
-      type="image/ico" 
-      href="favicon.ico" />
-    <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+    <title>@if(isset($video)){{ $video->id }} –@endif w0bm.com</title>
+    <link rel="favicon" href="favicon.ico" type="image/ico">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Oswald" type="text/css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
-    <link rel="stylesheet" href="/css/w0bmcustom.css">
+    <link rel="stylesheet" href="/css/video-js.min.css">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.13">
 </head>
 <body>
 @if(auth()->check())
@@ -25,7 +24,7 @@
         @include('partials.frontendedit')
     @endif
 @endif
-<canvas id="bg" @if(!Session::get('background', true)) style="display: none; visibility: hidden;"@endif></canvas>
+<canvas class="hidden-xs" id="bg"></canvas>
 
 @include('partials.navigation')
 
@@ -41,11 +40,13 @@
 
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-tagsinput.min.js"></script>
 <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="/js/isotope.pkgd.min.js"></script>
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
-<script src="/js/bootstrap-tagsinput.min.js"></script>
+<script src="/js/jquery.detectmobilebrowser.js"></script>
+<script src="/js/video.min.js"></script>
 <script src="/js/w0bmscript.js"></script>
 </body>
 </html>

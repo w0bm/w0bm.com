@@ -29,6 +29,8 @@ class Comment extends Model
 {
     use SoftDeletes;
 
+    protected $appends = ['rendered_view'];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
@@ -37,9 +39,8 @@ class Comment extends Model
         return $this->belongsTo(Video::class);
     }
 
-    public static function simplemd($text)
-    {
-	$commentcfg = config('comments');
+    public static function simplemd($text) {
+        $commentcfg = config('comments');
         $nameMatcher = '/@(\w+)/i';
         $internUrlMatcher = '/https?:\/\/(?:www\.)?w0bm\.com(\S+)/i';
         $externUrlMatcher = '/(https?:\/\/(?!(?:www\.)?w0bm\.com)\S+\.\S+)/i';
@@ -51,23 +52,26 @@ class Comment extends Model
 
         $imageMatcher = '/(\<a href=\"(https:\/\/('.join('|',$commentcfg["allowedHosters"]).').*(png|gif|jpg|webp))\" target=\"_blank\" rel=\"extern\"\>.*\<\/a\>)/i';
         
+        $text = preg_replace($boldMather, '<strong>$1</strong>', $text);
+        
+        $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
+        $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
+        $text = preg_replace($imageMatcher, '<img src="$2" alt="Image" class="comment_image" />', $text);
+        $text = preg_replace($greentextMatcher, '<span style="color:#80FF00">$1</span>', $text);
+        $text = preg_replace($newlineMatcher, '$1<br>', $text);
         if(preg_match_all($nameMatcher, $text, $users) > 0) {
-            foreach ($users as $user) {
-                if(User::whereUsername($user[0])->count() > 0) {
-                    $text = preg_replace('/@' . $user[0] . '/i', '<a href="/user/' . strtolower($user[0]) . '">@' . $user[0] . '</a>', $text);
+            foreach ($users[1] as $user) {
+                if(User::whereUsername($user)->count() > 0) {
+                    $text = preg_replace('/@' . $user . '/i', '<a href="/user/' . strtolower($user) . '">@' . $user . '</a>', $text);
                 }
             }
         }
-        $text = preg_replace($boldMather, '<strong>$1</strong>', $text);
-        $text = preg_replace($italicMathcer, '<em>$1</em>', $text);
-        $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
-        $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
-	$text = preg_replace($imageMatcher, '<img src="$2" alt="Image" class="comment_image" />', $text);
-	$text = preg_replace($greentextMatcher, '<span style="color:#80FF00">$1</span>', $text);
-        $text = preg_replace($newlineMatcher, '$1<br>', $text);
-        
 
         return $text;
+    }
+
+    public function getRenderedViewAttribute() {
+        return static::simplemd(e($this->content));
     }
 
     public static function isPicture($url) {
@@ -94,9 +98,9 @@ class Comment extends Model
         $nameMatcher = '/@(\w+)/i';
         $ret = [];
         if(preg_match_all($nameMatcher, $text, $users) > 0) {
-            foreach ($users as $user) {
-                if(User::whereUsername($user[0])->count() > 0) {
-                    $ret[] = User::whereUsername($user[0])->first();
+            foreach ($users[1] as $user) {
+                if(User::whereUsername($user)->count() > 0) {
+                    $ret[] = User::whereUsername($user)->first();
                 }
             }
         }

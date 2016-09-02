@@ -15,93 +15,131 @@ window.requestAnimFrame = (function(){
 
 var video = document.getElementById('video');
 if(video !== null) {
-    video.volume = 0.3;
-    if (typeof localStorage != "undefined") {
-        video.volume = localStorage.getItem("volume") || 0.3;
-        video.addEventListener("volumechange", function () {
-            localStorage.setItem("volume", video.volume);
-        });
+    var player = videojs(video, {
+        controls: true,
+        playbackRates: [0.25, 0.5, 1, 1.5, 2],
+        inactivityTimeout: 0,
+        controlBar: {
+            children: {
+                'playToggle': {},
+                'progressControl': {},
+                'currentTimeDisplay': {},
+                'timeDivider': {},
+                'durationDisplay': {},
+                'volumeControl': {},
+                'playbackRateMenuButton': {},
+                'fullscreenToggle': {}
+            }
+        }
+    }, function() {
+        this.addClass('video-js');
+        this.volume(0.3);
+        if (typeof localStorage != "undefined") {
+            this.volume(localStorage.getItem("volume") || 0.3);
+            this.on("volumechange", function () {
+                localStorage.setItem("volume", this.volume());
+            });
+        }
+    });
+
+    if(localStorage.getItem('background') == undefined) {
+        if($.browser.mobile)
+            localStorage.setItem('background', 'false');
+        else
+            localStorage.setItem('background', 'true');
     }
+    var background = localStorage.getItem('background') === 'true';
 
     var canvas = document.getElementById('bg');
     var context = canvas.getContext('2d');
-    var cw = canvas.width = canvas.clientWidth|0;
-    var ch = canvas.height = canvas.clientHeight|0;
+    var cw = canvas.width = canvas.clientWidth | 0;
+    var ch = canvas.height = canvas.clientHeight | 0;
+
+    if(!background)
+        $(canvas).css('display', 'none');
 
     function animationLoop() {
-        if(video.paused || video.ended)
-            return false;
-         context.drawImage(video, 0, 0, cw, ch);
-         window.requestAnimFrame(animationLoop);
+        if(video.paused || video.ended || !background)
+            return;
+        context.drawImage(video, 0, 0, cw, ch);
+        window.requestAnimFrame(animationLoop);
     }
-    video.addEventListener('play', function() {
+
+    video.addEventListener('play', animationLoop);
+
+    $('#togglebg').on('click', function (e) {
+        e.preventDefault();
+        background = !background;
+        localStorage.setItem('background', background.toString());
+        if(background)
+            $(canvas).css('display', 'block');
+        else
+            $(canvas).css('display', 'none');
         animationLoop();
     });
-    if(video.autoplay)
-        animationLoop();
+
+
+    function getNext() {
+        var next = $('#next');
+        if(next.css('visibility') != 'hidden') {
+            next.get(0).click();
+        }
+    }
+
+    function getPrev() {
+        var prev = $('#prev');
+        if(prev.css('visibility') != 'hidden') {
+            prev.get(0).click();
+        }
+    }
+
+    //Key Bindings
+    $('html').on('keydown', function(e) {
+        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i))
+            return;
+
+        //arrow keys
+        else if(e.keyCode == 39)
+            getNext();
+        else if(e.keyCode == 37)
+            getPrev();
+
+        //gamer-style
+        else if(e.keyCode == 65)
+            getPrev();
+        else if(e.keyCode == 68)
+            getNext();
+
+        //vi style
+        else if(e.keyCode == 72)
+            getPrev();
+        else if(e.keyCode == 76)
+            getNext();
+
+        else if(e.keyCode == 82) //click random
+            $('#prev').next().get(0).click();
+
+        else if(e.keyCode == 70) //add fav
+            $('#fav').get(0).click();
+
+        else if(e.keyCode == 67 && !e.ctrlKey) //toggle comments
+            $(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
+
+        else if(e.keyCode == 87 || e.keyCode == 38)
+            player.volume(player.volume() + 0.1);
+
+        else if(e.keyCode == 83 || e.keyCode == 40)
+            player.volume(player.volume() - 0.1);
+    });
+
+    $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
+        e.deltaY < 0 ? getNext() : getPrev();
+        return false;
+    });
 
 } else {
     var canvas = document.getElementById('bg');
     canvas.parentNode.removeChild(canvas);
-}
-
-//temporary fix for scrolling not working on other pages
-if($('video').length) {
-    $('html').on('keydown', function(e) {
-        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i)) {
-            return;
-        }
-        else if(e.keyCode == 39) {
-            get_next();
-        }
-        else if(e.keyCode == 37) {
-            get_prev();
-        }
-        else if(e.keyCode == 82) {
-            get_random();
-        }
-        else if(e.keyCode == 70) {
-            to_favs();
-        }
-        else if(e.keyCode == 67 && !e.ctrlKey) {
-            $(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
-        }
-    });
-    $('.wrapper > div:not(.aside)').on('DOMMouseScroll mousewheel', function(e) {
-        e.deltaY < 0 ? get_next() : get_prev();
-        return false;
-    });
-    if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
-        $('video').on('click', function() {
-            $(this).get(0).paused ? $(this).get(0).play() : $(this).get(0).pause();
-        });
-    }
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        $('#bg').remove();
-        //if($('#bg').css('display') != 'none') $('#togglebg').click();
-    }
-}
-
-function get_next() {
-    var next = $('#next');
-    if(next.css('visibility') != 'hidden') {
-        next.get(0).click();
-    }
-}
-
-function get_prev() {
-    var prev = $('#prev');
-    if(prev.css('visibility') != 'hidden') {
-        prev.get(0).click();
-    }
-}
-
-function get_random() {
-    $('#prev').next().get(0).click();
-}
-
-function to_favs() {
-    $('#fav').get(0).click();
 }
 
 (function ($) {
@@ -120,7 +158,9 @@ function to_favs() {
         }).done(function (data) {
             flash('success', 'Comment saved successfully');
             $('.nocomments').remove();
-            $('.commentwrapper').append(data);
+            var comment = $(data).appendTo('.commentwrapper').find('time.timeago');
+            comment.timeago();
+            comment.tooltip();
             var textarea = commentform.find('textarea').val('');
             textarea.blur();
         }).fail(function(data){
@@ -136,16 +176,16 @@ function to_favs() {
         if($('video').length) {
             var info = [];
             if(video.interpret) {
-                info.push(' <em>Interpret:</em> ' + video.interpret);
+                info.push(' <strong>Artist:</strong> ' + video.interpret);
             }
             if(video.songtitle) {
-                info.push(' <em>Songtitle:</em> ' + video.songtitle);
+                info.push(' <strong>Songtitle:</strong> ' + video.songtitle);
             }
             if(video.imgsource) {
-                info.push(' <em>Video Source:</em> ' + video.imgsource);
+                info.push(' <strong>Video Source:</strong> ' + video.imgsource);
             }
             if(video.category.name) {
-                info.push(' <em>Category:</em> ' + video.category.name);
+                info.push(' <strong>Category:</strong> ' + video.category.name);
             }
             $('span.fa-info-circle').attr('data-content', info.join('<br>'));
         }
@@ -169,7 +209,7 @@ function to_favs() {
     $('.indexedit').find('input, select').hide();
     if(indexform.length) {
         var row = $('tr');
-        row.on('click touchdown', function(e) {
+        row.on('dblclick touchdown', function(e) {
             var self = $(this);
             self.find('input, select').show();
             self.find('span').hide();
@@ -265,7 +305,23 @@ $('#categories').imagesLoaded(function () {
 
 $(function() {
     $('[data-toggle="popover"]').popover({
-        html: true
+        html: true,
+        trigger: 'manual',
+        container: $(this).attr('id'),
+        placement: 'top',
+    }).on('mouseenter', function () {
+        var _this = this;
+        $(this).popover('show');
+        $(this).siblings('.popover').on('mouseleave', function () {
+            $(_this).popover('hide');
+        });
+    }).on('mouseleave', function () {
+        var _this = this;
+        setTimeout(function () {
+            if (!$('.popover:hover').length) {
+                $(_this).popover('hide')
+            }
+        }, 100);
     });
 });
 
@@ -297,7 +353,7 @@ $(function() {
     var v = document.getElementById("video");
     if (v == null) return;
     var p = v.parentNode;
-    p.style.marginBottom = "1px";
+    p.style.marginBottom = "3px";
 
     var bar = document.createElement("div");
     var outerBar = document.createElement("div");
@@ -305,7 +361,7 @@ $(function() {
     p.appendChild(outerBar);
 
     $(outerBar).css({
-        height: "1px", width: "100%",
+        height: "3px", width: "100%",
         overflow: "hidden", willChange: "transform",
         position: "absolute", bottom: "0"
     });
@@ -345,7 +401,7 @@ if(/\..+\/(?:songindex|user)/i.test(window.location.href)) {
 
     $(document).ready(function() {
         $('table tbody tr').on('mouseenter', function(e) {
-            var id = $(this).attr('data-thumb');
+            var id = $(this).data('thumb');
             var lnk = 'https://w0bm.com/thumbs/' + id + '.gif';
             var loc = get_loc(e);
             $(document.body).prepend('<div id="thumb"></div>');
@@ -383,180 +439,644 @@ if(/\..+\/(?:songindex|user)/i.test(window.location.href)) {
     });
 }
 
-//enable bootstrap tooltips
+//Pagination
+var paginate = function(pagination, options) {
+    var type = options.hash.type || 'middle';
+    var ret = '';
+    var pageCount = Number(pagination.pageCount);
+    var page = Number(pagination.page);
+    var limit;
+    if (options.hash.limit) limit = +options.hash.limit;
+    //page pageCount
+    var newContext = {};
+    switch (type) {
+        case 'middle':
+            if (typeof limit === 'number') {
+                var i = 0;
+                var leftCount = Math.ceil(limit / 2) - 1;
+                var rightCount = limit - leftCount - 1;
+                if (page + rightCount > pageCount)
+                    leftCount = limit - (pageCount - page) - 1;
+                if (page - leftCount < 1)
+                    leftCount = page - 1;
+                var start = page - leftCount;
+                while (i < limit && i < pageCount) {
+                    newContext = { n: start };
+                    if (start === page) newContext.active = true;
+                    ret = ret + options.fn(newContext);
+                    start++;
+                    i++;
+                }
+            }
+            else {
+                for (var i = 1; i <= pageCount; i++) {
+                    newContext = { n: i };
+                    if (i === page) newContext.active = true;
+                    ret = ret + options.fn(newContext);
+                }
+            }
+            break;
+        case 'previous':
+            if (page === 1) {
+                newContext = { disabled: true, n: 1 }
+            }
+            else {
+                newContext = { n: page - 1 }
+            }
+            ret = ret + options.fn(newContext);
+            break;
+        case 'next':
+            newContext = {};
+            if (page === pageCount) {
+                newContext = { disabled: true, n: pageCount }
+            }
+            else {
+                newContext = { n: page + 1 }
+            }
+            ret = ret + options.fn(newContext);
+            break;
+        case 'first':
+            if (page === 1) {
+                newContext = { disabled: true, n: 1 }
+            }
+            else {
+                newContext = { n: 1 }
+            }
+            ret = ret + options.fn(newContext);
+            break;
+        case 'last':
+            if (page === pageCount) {
+                newContext = { disabled: true, n: pageCount }
+            }
+            else {
+                newContext = { n: pageCount }
+            }
+            ret = ret + options.fn(newContext);
+            break;
+    }
+    return ret;
+};
+
+
+//enable bootstrap tooltips and timeago
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    var s = $.timeago.settings;
+    var str = s.strings;
+    s.refreshMillis = 1000;
+    s.allowFuture = true;
+    s.localeTitle = true;
+    //same format as laravel diffForHumans()
+    str.seconds = "%d seconds";
+    str.minute = "1 minute";
+    str.hour = "1 hour";
+    str.hours = "%d hours";
+    str.day = "1 day";
+    str.month = "1 month";
+    str.year = "1 year";
+    str.suffixFromNow = null;
+    $('time.timeago').timeago();
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
-
 // Notifications
-(function($) {
-    if(typeof Handlebars == "undefined") return; // only on profilelayout
-
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
-
-    var paginate = function(pagination, options) {
-        var type = options.hash.type || 'middle';
-        var ret = '';
-        var pageCount = Number(pagination.pageCount);
-        var page = Number(pagination.page);
-        var limit;
-        if (options.hash.limit) limit = +options.hash.limit;
-
-        //page pageCount
-        var newContext = {};
-        switch (type) {
-            case 'middle':
-                if (typeof limit === 'number') {
-                    var i = 0;
-                    var leftCount = Math.ceil(limit / 2) - 1;
-                    var rightCount = limit - leftCount - 1;
-                    if (page + rightCount > pageCount)
-                        leftCount = limit - (pageCount - page) - 1;
-                    if (page - leftCount < 1)
-                        leftCount = page - 1;
-                    var start = page - leftCount;
-
-                    while (i < limit && i < pageCount) {
-                        newContext = { n: start };
-                        if (start === page) newContext.active = true;
-                        ret = ret + options.fn(newContext);
-                        start++;
-                        i++;
-                    }
-                }
-                else {
-                    for (var i = 1; i <= pageCount; i++) {
-                        newContext = { n: i };
-                        if (i === page) newContext.active = true;
-                        ret = ret + options.fn(newContext);
-                    }
-                }
-                break;
-            case 'previous':
-                if (page === 1) {
-                    newContext = { disabled: true, n: 1 }
-                }
-                else {
-                    newContext = { n: page - 1 }
-                }
-                ret = ret + options.fn(newContext);
-                break;
-            case 'next':
-                newContext = {};
-                if (page === pageCount) {
-                    newContext = { disabled: true, n: pageCount }
-                }
-                else {
-                    newContext = { n: page + 1 }
-                }
-                ret = ret + options.fn(newContext);
-                break;
-            case 'first':
-                if (page === 1) {
-                    newContext = { disabled: true, n: 1 }
-                }
-                else {
-                    newContext = { n: 1 }
-                }
-                ret = ret + options.fn(newContext);
-                break;
-            case 'last':
-                if (page === pageCount) {
-                    newContext = { disabled: true, n: pageCount }
-                }
-                else {
-                    newContext = { n: pageCount }
-                }
-                ret = ret + options.fn(newContext);
-                break;
-        }
-
-        return ret;
-    };
-
-    Handlebars.registerHelper('paginate', paginate);
-
-
-    var msglist = Handlebars.compile($('#msglist').html());
-    var msgtmpl = Handlebars.compile($('#msgtmpl').html());
-    var pagination = Handlebars.compile($('#paginationtmpl').html());
-    var jsondata = {};
-
-    var getMessages = function(url) {
-        if(!url) url = '/api/messages';
-
-        $.getJSON(url)
-            .done(function(data) {
-                $('.spinner').hide();
-                jsondata = data;
-                $('#list').html(msglist(data));
-
-                var page = {
-                    pagination: {
-                        page: data.current_page,
-                        pageCount: data.last_page
-                    }
-                };
-
-                $('#pagination').html(pagination(page));
-
-                $('#pagination a').on('click touchdown', function(e) {
-                    e.preventDefault();
-                    getMessages($(this).attr('href'));
-                });
-
-                $('#listitems a').on('click touchdown', function(e) {
-                    e.preventDefault();
-                    var self = $(this);
-                    var i = self.data('index');
-
-                    $('#message').html(msgtmpl(jsondata.data[i]));
-                    if(!jsondata.data[i].read) {
-
-                        $.post('/api/messages/read','m_ids[]=' + self.data('id'))
-                            .done(function(data) {
-                                self.removeClass('list-group-item-info');
-                            });
-
-                    }
-                    $('a').removeClass('active');
-                    self.addClass('active');
-                    $('time.timeago').timeago();
-
-                });
-            });
-    };
-    getMessages();
-})(jQuery);
-
-var messages_badge = $('ul.navbar-right > li > a > span.badge');
-if(messages_badge.text() != 0) {
-    messages_badge.css('visibility', 'visible');
+var messagesBadge = $('ul.navbar-right > li > a > span.badge');
+var activeMessage;
+if(messagesBadge.text() > 0) {
+    messagesBadge.css('visibility', 'visible');
 }
 
-$('button#read-all').on('click', function() {
+if(/\/user\/.+\/comments/i.test(location.href)) {
+    //Comment View
+    (function($) {
+        if(typeof Handlebars == "undefined") return; // only on profilelayout
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        Handlebars.registerHelper('paginate', paginate);
+
+        var comlist = Handlebars.compile($('#comlist').html());
+        var pagination = Handlebars.compile($('#paginationtmpl').html());
+        var jsondata = {};
+        var username = location.href.match(/\/user\/(.+)\/comments/i)[1];
+
+        var getMessages = function(url) {
+            var baseUrl = '/api/comments';
+            if(!url) url = baseUrl;
+
+            $.getJSON(url, { 'username': username })
+                .done(function(data) {
+                    $('.spinner').hide();
+                    jsondata = data;
+                    $('#list').html(comlist(data));
+                    $('time.timeago').timeago();
+                    $('time[data-toggle="tooltip"]').tooltip();
+                    var page = {
+                        pagination: {
+                            page: data.current_page,
+                            pageCount: data.last_page
+                        }
+                    };
+
+                    $('#pagination').html(pagination(page));
+
+                    $('#pagination a').on('click touchdown', function(e) {
+                        e.preventDefault();
+                        getMessages(baseUrl + '?page=' + $(this).data('page'));
+                    });
+            });
+        };
+        getMessages();
+    })(jQuery);
+}
+else {
+    (function($) {
+        if(typeof Handlebars == "undefined" || !$('#msglist').length) return; // only on profilelayout
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        Handlebars.registerHelper('paginate', paginate);
+
+
+        var msglist = Handlebars.compile($('#msglist').html());
+        var msgtmpl = Handlebars.compile($('#msgtmpl').html());
+        var pagination = Handlebars.compile($('#paginationtmpl').html());
+        var jsondata = {};
+
+        var getMessages = function(url) {
+            var baseUrl = '/api/messages';
+            if(!url) url = baseUrl;
+
+            $.getJSON(url)
+                .done(function(data) {
+                    $('.spinner').hide();
+                    jsondata = data;
+                    $('#list').html(msglist(data));
+                    if(typeof activeMessage != "undefined") $('#listitems a[data-id="' + activeMessage + '"]').addClass('active');
+
+                    var page = {
+                        pagination: {
+                            page: data.current_page,
+                            pageCount: data.last_page
+                        }
+                    };
+
+                    $('#pagination').html(pagination(page));
+
+                    $('#pagination a').on('click touchdown', function(e) {
+                        e.preventDefault();
+                        getMessages(baseUrl + '?page=' + $(this).data('page'));
+                    });
+
+                    $('#listitems a').on('click touchdown', function(e) {
+                        e.preventDefault();
+                        var self = $(this);
+                        var i = self.data('index');
+                        activeMessage = $(this).data('id');
+
+                        $('#message').html(msgtmpl(jsondata.data[i]));
+                        if(!jsondata.data[i].read) {
+
+                            $.post('/api/messages/read','m_ids[]=' + self.data('id'))
+                                .done(function(data) {
+                                    self.removeClass('list-group-item-info');
+                                    messagesBadge.text(messagesBadge.text() - 1);
+                                    if(messagesBadge.text() <= 0) {
+                                        messagesBadge.css('visibility', 'hidden');
+                                    }
+                                });
+
+                        }
+                        $('a').removeClass('active');
+                        self.addClass('active');
+                        $('time.timeago').timeago();
+                        $('time[data-toggle="tooltip"]').tooltip();
+                    });
+                });
+        };
+        getMessages();
+    })(jQuery);
+}
+
+function readAll() {
     $.ajax({
         url: '/api/messages/readall',
         success: function(data) {
             if(data == 1) {
                 flash('success', 'Marked all messages as read');
                 $('.list-group-item-info').removeClass('list-group-item-info');
-                messages_badge.text('0');
-                messages_badge.css('visibility', 'hidden');
+                messagesBadge.text('0');
+                messagesBadge.css('visibility', 'hidden');
             }
             else {
                 flash('error', 'Failed to mark all messages as read');
                 flash('error', data);
             }
         },
-        fail: function(data) {
+        error: function(jqxhr, status, error) {
             flash('error', 'Failed to mark all messages as read');
-            flash('error', data);
+            flash('error', status);
+            flash('error', error);
         }
+    });
+}
+
+$('ul.dropdown-menu').on('click touchdown', function(e) {
+    e.stopPropagation();
+});
+
+function deleteComment(self) {
+    var comment = self.closest('div[data-id]');
+    var id = comment.data('id');
+    var username = $(comment.children('.panel-footer').children('a')[0]).text();
+    do {
+        var reason = prompt('Reason for deleting comment ' + id + ' by ' + username);
+        if(reason == null)
+            return;
+    } while(reason == '');
+    $.ajax({
+        url: '/api/comments/' + comment.data('id') + '/delete',
+        method: 'POST',
+        data: { reason: reason },
+        success: function(retval) {
+            if(retval == 'success') {
+                flash('success', 'Comment deleted');
+                comment.removeClass('panel-default').addClass('panel-danger');
+                comment.find('.panel-footer').children('a[onclick="deleteComment($(this))"]').replaceWith('<a href="#" onclick="restoreComment($(this))"><i style="color:green"; class="fa fa-refresh" aria-hidden="true"></i></a>');
+                comment.find('.panel-footer > a[onclick="editComment($(this))"]').remove();
+            }
+            else if(retval == 'invalid_request') flash('error', 'Invalid request');
+            else if(retval == 'not_logged_in') flash('error', 'Not logged in');
+            else if(retval == 'insufficient_permissions') flash('error', 'Insufficient permissions');
+            else flash('error', 'Unknown exception');
+        },
+        error: function(jqxhr, status, error) {
+            flash('error', 'Unknwon exception');
+            flash('error', status);
+            flash('error', error);
+        }
+    });
+}
+
+function restoreComment(self) {
+    var comment = self.closest('div[data-id]');
+    var id = comment.data('id');
+    var username = $(comment.children('.panel-footer').children('a')[0]).text();
+    do {
+        var reason = prompt('Reason for restoring comment ' + id + ' by ' + username);
+        if(reason == null)
+            return;
+    } while(reason == '');
+    $.ajax({
+        url: '/api/comments/' + comment.data('id') + '/restore',
+        method: 'POST',
+        data: { reason: reason },
+        success: function(retval) {
+            if(retval == 'success') {
+                flash('success', 'Comment restored');
+                comment.removeClass('panel-danger').addClass('panel-default');
+                comment.find('.panel-footer').children('a[onclick]').replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
+            }
+            else if(retval == 'invalid_request') flash('error', 'Invalid request');
+            else if(retval == 'not_logged_in') flash('error', 'Not logged in');
+            else if(retval == 'insufficient_permissions') flash('error', 'Insufficient permissions');
+            else if(retval == 'comment_not_deleted') flash('error', 'Comment is not deleted');
+            else flash('error', 'Unknown exception');
+        },
+        error: function(jqxhr, status, error) {
+            flash('error', 'Failed restoring comment');
+            flash('error', status);
+            flash('error', error);
+        }
+    });
+}
+
+function editComment(self) {
+    var comment = self.closest('div[data-id]');
+    var body = comment.find('.panel-body');
+    var id = comment.data('id');
+    $.ajax({
+        url: '/api/comments/' + id,
+        success: function(retval) {
+            if(retval.error == 'null') {
+                var textarea = $('<textarea class="form-control">');
+                body.replaceWith(textarea);
+                textarea.val($('<div>').html(retval.comment).text());
+                self.prev().remove();
+                self.replaceWith('<a href="#" class="saveCommentEdit"><i class="fa fa-floppy-o" aria-hidden="true"></i></a> <a href="#" class="abortCommentEdit"><i style="color:red;" class="fa fa-ban" aria-hidden="true"></i></a>');
+                comment.find('.abortCommentEdit').on('click', function(e) {
+                    e.preventDefault();
+                    $(this).prev().remove();
+                    $(this).replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
+                    textarea.replaceWith(body);
+                });
+                comment.find('.saveCommentEdit').on('click', function(e) {
+                    e.preventDefault();
+                    var _this = $(this);
+                    $.ajax({
+                        url: '/api/comments/' + id + '/edit',
+                        method: 'POST',
+                        data: { comment: textarea.val() },
+                        success: function(retval) {
+                            if(retval.error == 'null') {
+                                body.html(retval.rendered_comment);
+                                flash('success', 'Comment edited successfully');
+                            }
+                            else if(retval.error == 'invalid_request')
+                                flash('error', 'Invalid request was sent by your browser');
+                            else if(retval.error == 'not_logged_in')
+                                flash('error', 'Not logged in');
+                            else if(retval.error == 'insufficient_permissions')
+                                flash('error', 'Insufficient permissions');
+                            else if(retval.error == 'comment_not_found')
+                                flash('error', 'Comment does not exist');
+                            else
+                                flash('error', 'Unknown exception');
+                        },
+                        error: function(jqxhr, status, error) {
+                            flash('error', 'Unknown exception');
+                            flash('error', status);
+                            flash('error', error);
+                        },
+                        complete: function() {
+                            textarea.replaceWith(body);
+                            _this.next().remove();
+                            _this.replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
+                        }
+                    });
+                });
+            }
+            else if(retval.error == 'comment_not_found')
+                flash('error', 'Comment does not exist');
+            else
+                flash('error', 'Unknown exception');
+        },
+        error: function(jqxhr, status, error) {
+            flash('error', 'Failed receiving non-rendered comment from API');
+            flash('error', status);
+            flash('error', error);
+        }
+    });
+}
+
+$(function () {
+    var cBar = $('.vjs-control-bar');
+    var cBarStatus = false;
+    $('video').on('mousemove', function () {
+        if(cBarStatus) return;
+        cBar.css('display', 'flex');
+        cBarStatus = true;
+    }).on('mouseleave', function (e) {
+        if($(e.relatedTarget).is('[class^="vjs"]') || !cBarStatus) return;
+        cBar.hide();
+        cBarStatus = false;
+    });
+    $('[class^="vjs"').on('mouseleave', function (e) {
+        if(e.relatedTarget == $('video').get(0) || $(e.relatedTarget).is('[class^="vjs"]') || !cBarStatus) return;
+        cBar.hide();
+        cBarStatus = false;
+    });
+});
+
+//upload
+$(function() {
+    if(!/\/upload/.test(location.href))
+        return;
+    var defaultPreview = $('#dragndrop-text').html();
+    var defaultDragNDropColor = $('#dragndrop').css('color');
+    var defaultDragNDropBorderColor = $('#dragndrop').css('border-left-color');
+    var defaultDragNDropBackgroundColor = $('#dragndrop').css('background-color');
+    var counter = 0;
+    var currentFile;
+    var jqXHR;
+    function applyDefaultDragNDropCSS() {
+        $('#dragndrop').css({
+            'color': defaultDragNDropColor,
+            'border-color': defaultDragNDropBorderColor,
+            'background-color': defaultDragNDropBackgroundColor
+        });
+    }
+    function humanFileSize(size) {
+        var i = Math.floor(Math.log(size) / Math.log(1024));
+        return (size / Math.pow(1024, i)).toFixed(2) + ' ' + ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'][i];
+    }
+    function dragndropLinkClickHandler(e) {
+        e.preventDefault();
+        $('input[type="file"]').trigger('click');
+    }
+    function restoreDefaultPreview() {
+        $('#dragndrop-link').on('click', dragndropLinkClickHandler);
+        $('#dragndrop-link').attr('href', '#');
+        $('#dragndrop-text').html(defaultPreview);
+    }
+    function createPreview(file) {
+        $('#dragndrop-link').removeAttr('href').off('click');
+        $('#dragndrop-text').html('<video id="video_preview" src="' + URL.createObjectURL(file) + '" autoplay controls loop></video><br><span class="upload-info">' + file.name + ' &mdash; ' + humanFileSize(file.size) + ' &mdash; <a id="dragndrop-clear" class="fa fa-times" href="#"></a></span><br><div class="progress progress-striped" style="display: none;"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span class="upload-info sr-only">0%</span></div></div><span class="upload-info"><span id="upload-stats" style="display: none;"></span></span>');
+        $('#video_preview').prop('volume', 0);
+        $('#dragndrop-clear').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            currentFile = null;
+            $(this).off('click');
+            applyDefaultDragNDropCSS();
+            restoreDefaultPreview();
+            if(jqXHR && jqXHR.statusText != "abort") {
+                jqXHR.abort();
+                currentFile = null;
+                restoreDefaultPreview();
+            }
+        });
+    }
+    function checkFile(file) {
+        var tooBig = file.size > 31457280;
+        var invalid = file.type !== "video/webm";
+        if(tooBig || invalid) {
+            flash('error', invalid ? 'Invalid file' : 'File too big. Max 30MB');
+            applyDefaultDragNDropCSS();
+            return false;
+        }
+        return true;
+    }
+    function submitForm(interpret, songtitle, imgsource, category, file) {
+        var lastState = {
+            'loaded': 0,
+            'secondsElapsed': 0
+        };
+        var speed = [];
+        var lastSpeedIndex = 0;
+        function interval() {
+            var avgSpeed = 0;
+            var length = speed.length;
+            var i;
+            for(i = lastSpeedIndex; i < length; i++)
+                avgSpeed += speed[i];
+            avgSpeed = avgSpeed / (i - lastSpeedIndex);
+            lastSpeedIndex = lastSpeedIndex + (i - lastSpeedIndex);
+            $('#upload-stats').text('Speed: ' + humanFileSize(Math.floor(avgSpeed)) + '/s  ' + ' Uploaded: ' + humanFileSize(lastState.loaded));
+        }
+        var statsInterval;
+        var formData = new FormData();
+        formData.append('interpret', interpret);
+        formData.append('songtitle', songtitle);
+        formData.append('imgsource', imgsource);
+        formData.append('category', category);
+        formData.append('file', file);
+        $('.progress-striped, #upload-stats').css('opacity', 0).slideDown('fast').animate({opacity: 1}, {queue: false, duration: 'fast'});
+        jqXHR = $.ajax({
+            url: '/api/upload',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(cb) {
+                switch(cb.error) {
+                    case 'null':
+                        if(cb.video_id) {
+                            flash('success', 'Upload successful: <a href="/' + cb.video_id + '">/' + cb.video_id + '</a>. Redirect in 3 seconds...');
+                            setTimeout(function() {
+                                location.href = '/' + cb.video_id;
+                            }, 3000);
+                        }
+                        else
+                            flash('error', 'Unexpected Exception');
+                        break;
+                    case 'invalid_request':
+                        flash('error', 'Invalid request');
+                        break;
+                    case 'not_logged_in':
+                        flash('error', 'Not logged in');
+                        break;
+                    case 'uploadlimit_reached':
+                        flash('error', 'Uploadlimit reached');
+                        break;
+                    case 'invalid_file':
+                        flash('error', 'Invalid file');
+                        break;
+                    case 'file_too_big':
+                        flash('error', 'File too big. Max 30MB');
+                        break;
+                    case 'already_exists':
+                        if(cb.video_id)
+                            flash('error', 'Video already exists: <a href="/' + cb.video_id + '">/' + cb.video_id + '</a>');
+                        else
+                            flash('error', 'Video already existed but has been deleted');
+                        break;
+                    case 'erroneous_file_encoding':
+                        flash('error', 'Erroneous file encoding. <a href="/webm">Try reencoding it</a>');
+                        break;
+                    default:
+                        flash('error', 'Unexpected exception');
+                        break;
+                }
+                if(cb.error != 'null') {
+                    $('.progress-bar-custom').css('background-color', 'red');
+                    $('.progress-bar-custom').text('Upload failed');
+                }
+                $('#upload-stats').html($('#upload-stats').html().replace(/Uploaded: .*/, 'Uploaded: ' + humanFileSize(currentFile.size)));
+            },
+            error: function(jqXHR, status, error) {
+                if(error == 'abort') {
+                    flash('info', 'Upload aborted');
+                    return;
+                }
+                flash('error', 'Upload failed');
+                flash('error', status);
+                flash('error', error);
+            },
+            complete: function() {
+                clearInterval(statsInterval);
+            },
+            xhr: function() {
+                var xhr = $.ajaxSettings.xhr();
+                var started_at = new Date();
+                $('.progress-bar-custom').css('background-color', 'rgba(47, 196, 47, 1)');
+                xhr.upload.onprogress = function(e) {
+                    var percentage = Math.floor(e.loaded / e.total * 100);
+                    var secondsElapsed = (new Date().getTime() - started_at.getTime()) / 1000;
+                    var bytesPerSecond = (e.loaded - lastState.loaded) / (secondsElapsed - lastState.secondsElapsed);
+                    $('.progress-bar-custom').css('width', percentage + '%');
+                    $('.progress-bar-custom').text(percentage + '%');
+                    lastState.secondsElapsed = secondsElapsed;
+                    lastState.loaded = e.loaded;
+                    speed.push(bytesPerSecond);
+                    if(!statsInterval) {
+                        interval();
+                        statsInterval = setInterval(interval, 500);
+                    }
+                };
+                return xhr;
+            }
+        });
+    }
+    $('input[type="file"]').on('change', function(e) {
+        if(!this.files.length)
+            return;
+        var file = this.files[0];
+        if(checkFile(file)) {
+            currentFile = file;
+            createPreview(file);
+        }
+        $(this).wrap('<form>').closest('form').get(0).reset();
+        $(this).unwrap();
+    });
+    $('#dragndrop-link').on('click', dragndropLinkClickHandler);
+    $(document).on('dragenter', function(e) {
+        e.preventDefault();
+        counter++;
+        var dt = e.originalEvent.dataTransfer;
+        if(dt.types != null && (dt.types.indexOf ? dt.types.indexOf('Files') === 0 : dt.types.contains('application/x-moz-file'))) {
+            $('#dragndrop').css({
+                'color': '#BBB',
+                'border-color': '#656464',
+                'background-color': '#323234'
+            });
+        }
+    }).on('dragleave', function() {
+        counter--;
+        if(counter === 0)
+            applyDefaultDragNDropCSS();
+    }).on('dragover', function(e) {
+        e.preventDefault();
+    }).on('drop', function(e) {
+        e.preventDefault();
+        if(!$(e.target).is('#dragndrop-text')) {
+            applyDefaultDragNDropCSS();
+        }
+    });
+    $('#dragndrop-text').on('dragover', function(e) {
+        var dt = e.originalEvent.dataTransfer;
+        var effect = dt.effectAllowed;
+        dt.dropEffect = 'move' === effect || 'linkMove' === effect ? 'move' : 'copy';
+    }).on('drop', function(e) {
+        if(!e.originalEvent.dataTransfer.files.length)
+            return;
+        if(jqXHR && jqXHR.statusText != "abort") {
+            jqXHR.abort();
+            currentFile = null;
+            restoreDefaultPreview();
+        }
+        var file = e.originalEvent.dataTransfer.files[0];
+        applyDefaultDragNDropCSS();
+        if(checkFile(file)) {
+            currentFile = file;
+            createPreview(file);
+            counter = 0;
+        }
+    });
+    $('button#btn-upload').on('click', function() {
+        if(!currentFile) {
+            flash('error', 'No file selected');
+            return;
+        }
+        if(jqXHR && (jqXHR.readyState == 0 || jqXHR.readyState == 1 || jqXHR.readyState == 3)) {
+            flash('info', 'Already uploading');
+            return;
+        }
+        submitForm($('#interpret').val(), $('#songtitle').val(), $('#imgsource').val(), $('#category').val(), currentFile);
     });
 });

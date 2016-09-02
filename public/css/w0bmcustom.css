@@ -3,6 +3,10 @@ body {
    /* background: #161618 url("/spurdo.gif") no-repeat fixed right bottom;*/
 }
 
+a:focus {
+    outline: none;
+}
+
 /*body::after {
     position: fixed !important;
     content: url("https://koyaanis.com/i/kawaii2.gif");
@@ -263,7 +267,7 @@ code {
 
 .btnlogin {
     display: inline-block;
-    margin-bottom: 0;
+    margin: 1px 1px -5px 1px;
     font-weight: normal;
     text-align: center;
     vertical-align: middle;
@@ -272,7 +276,7 @@ code {
     background-image: none;
     border: 1px solid transparent;
     white-space: nowrap;
-    padding: 10px 15px;
+    padding: 6px 13px;
     font-size: 12px;
     line-height: 0.7;
     border-radius: 0;
@@ -535,6 +539,18 @@ div.message > div.panel-heading > span {
 	margin-bottom: 6px;
 }
 
+.patoy {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 6px;
+}
+
+.patoyklein {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 5px;
+}
+
 .flinnysmall {
 	height: 16px;
 	width:  16px;
@@ -567,4 +583,230 @@ div.message > div.panel-heading > span {
 
 ul.navbar-right > li > a > span.badge {
     visibility: hidden;
+}
+
+.readall {
+	margin-top: -20px;
+}
+
+.onigiri {
+	margin-bottom: 2px;
+}
+
+.bio {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 4px;
+}
+
+.biosmall {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 4px;
+}
+
+.jkh {
+	margin-left: 0px!important;
+}
+
+.futter {
+	text-align: right;
+	float: right;
+}
+
+.logreg {
+	color: #ADADAD;
+    	font-family: Oswald;
+    	padding-top: 5px !important;
+    	font-size: 16px;
+}
+
+.eingabe {
+	display: block;
+	padding: 6px 12px!important;
+	background-color: #4a4a4a!important;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #fffefe;
+	border: 1px solid;
+	border-color: #222323;
+}
+
+input {
+	outline: 0!important;
+}
+
+.trennelement {
+    	height: 1px;
+    	margin: -3px 0;
+    	overflow: hidden;
+    	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu {
+	border: 6px solid #222222!important;
+	padding: 5px 0px!important;
+	margin: 6px -5px 0!important;
+	border-radius: 0px!important;
+}
+
+.erinnerung {
+	display: inline-block;
+	margin-top: 4px;
+	margin-bottom: 0;
+	margin-left: 4px;
+	vertical-align: middle;
+}
+
+.cheggbogs {
+    	display: inline-block;
+    	margin-top: 4px!important;
+    	margin-bottom: 0;
+    	vertical-align: middle;
+}
+
+.dropdown-menu > li > a {
+    display: block;
+    padding: 3px 5px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.form-control {
+	outline: aqua!important;
+}
+
+.video-js {
+	position: initial;
+	background-color: transparent;
+	color: #1fb2b0;
+}
+
+.video-js .vjs-play-progress {
+	background-color: #1fb2b0;
+}
+
+.video-js .vjs-volume-level {
+	background-color: #1fb2b0;
+}
+
+
+.video-js .vjs-control-bar {
+    background: rgba(34, 34, 34, 0.61)
+}
+
+.vjs-playback-rate .vjs-playback-rate-value {
+    top: -1px;
+    left: 1px;
+}
+
+.video-js .vjs-time-control {
+	font-size: 1.5em;
+	line-height: 1.7em;
+	top: 1px;
+}
+
+.strong-colored strong {
+    color: #1FB2B0;
+}
+
+.video-js .vjs-current-time, .video-js .vjs-time-divider, .video-js .vjs-duration {
+    display: block;
+}
+
+.video-js .vjs-current-time {
+    padding-right: 0px;
+}
+
+.video-js .vjs-duration {
+    padding-left: 0px;
+}
+
+.video-js .vjs-control-bar {
+    display: none;
+}
+
+.americagay {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 2px;
+	margin-left: 5px;
+}
+
+.americagaysmall {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 2px;
+}
+
+select.form-control, input.form-control {
+    background-color: #353434;
+}
+
+#dragndrop {
+    border: 3px dashed #353434;
+    border-radius: 5px;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+    padding: 0px;
+    background-color: #121214;
+    color: #888;
+}
+
+#dragndrop-link {
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+#dragndrop-link:hover {
+    text-decoration: none;
+}
+
+#dragndrop-text {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#dragndrop-text > video {
+    width: 70%;
+    margin-top: 15px;
+}
+
+.progress {background: rgb(26, 27, 26); border: 1px solid rgb(76, 73, 73); border-radius: 0px; height: 20px;}
+.progress-bar-custom {background: rgba(47, 196, 47, 1);} 
+.progress-striped .progress-bar-custom {background-color: rgba(47, 196, 47, 1); background-image: -webkit-gradient(linear,0 100%,100% 0,color-stop(0.25,rgba(255, 255, 255, 0.15),color-stop(0.25,transparent),color-stop(0.5,transparent),color-stop(0.5,rgba(255, 255, 255, 0.15)),color-stop(0.75,rgba(255, 255, 255, 0.15)),color-stop(0.75,transparent),to(transparent))); background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, 0.15) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, 0.15) 50%,rgba(255, 255, 255, 0.15) 75%,transparent 75%,transparent); background-image: linear-gradient(45deg,rgba(255, 255, 255, 0.15) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, 0.15) 50%,rgba(255, 255, 255, 0.15) 75%,transparent 75%,transparent); background-size: 36px 36px;}
+
+#dragndrop-clear {
+    color: red;
+}
+
+#dragndrop-clear:hover {
+    text-decoration: none;
+}
+
+.progress-striped {
+    margin-bottom: 0px;
+}
+
+.upload-info {
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.row-upload {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.row-upload > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
 }

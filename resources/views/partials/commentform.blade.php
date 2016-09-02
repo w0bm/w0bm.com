@@ -1,4 +1,4 @@
-<form id="commentForm" action="{{action('VideoController@storeComment', ['id' => $video->id])}}" method="post">
+<form id="commentForm" action="{{action('CommentController@store', ['id' => $video->id])}}" method="post">
     {!! csrf_field() !!}
     <div class="panel panel-default">
         <div class="panel-body">
