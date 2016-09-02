@@ -842,3 +842,241 @@ $(function () {
         cBarStatus = false;
     });
 });
+
+//upload
+$(function() {
+    if(!/\/upload/.test(location.href))
+        return;
+    var defaultPreview = $('#dragndrop-text').html();
+    var defaultDragNDropColor = $('#dragndrop').css('color');
+    var defaultDragNDropBorderColor = $('#dragndrop').css('border-left-color');
+    var defaultDragNDropBackgroundColor = $('#dragndrop').css('background-color');
+    var counter = 0;
+    var currentFile;
+    var jqXHR;
+    function applyDefaultDragNDropCSS() {
+        $('#dragndrop').css({
+            'color': defaultDragNDropColor,
+            'border-color': defaultDragNDropBorderColor,
+            'background-color': defaultDragNDropBackgroundColor
+        });
+    }
+    function humanFileSize(size) {
+        var i = Math.floor(Math.log(size) / Math.log(1024));
+        return (size / Math.pow(1024, i)).toFixed(2) + ' ' + ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'][i];
+    }
+    function dragndropLinkClickHandler(e) {
+        e.preventDefault();
+        $('input[type="file"]').trigger('click');
+    }
+    function restoreDefaultPreview() {
+        $('#dragndrop-link').on('click', dragndropLinkClickHandler);
+        $('#dragndrop-link').attr('href', '#');
+        $('#dragndrop-text').html(defaultPreview);
+    }
+    function createPreview(file) {
+        $('#dragndrop-link').removeAttr('href').off('click');
+        $('#dragndrop-text').html('<video id="video_preview" src="' + URL.createObjectURL(file) + '" autoplay controls loop></video><br><span class="upload-info">' + file.name + ' &mdash; ' + humanFileSize(file.size) + ' &mdash; <a id="dragndrop-clear" class="fa fa-times" href="#"></a></span><br><div class="progress progress-striped" style="display: none;"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span class="upload-info sr-only">0%</span></div></div><span class="upload-info"><span id="upload-stats" style="display: none;"></span></span>');
+        $('#video_preview').prop('volume', 0);
+        $('#dragndrop-clear').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            currentFile = null;
+            $(this).off('click');
+            applyDefaultDragNDropCSS();
+            restoreDefaultPreview();
+            if(jqXHR && jqXHR.statusText != "abort") {
+                jqXHR.abort();
+                currentFile = null;
+                restoreDefaultPreview();
+            }
+        });
+    }
+    function checkFile(file) {
+        var tooBig = file.size > 31457280;
+        var invalid = file.type !== "video/webm";
+        if(tooBig || invalid) {
+            flash('error', invalid ? 'Invalid file' : 'File too big. Max 30MB');
+            applyDefaultDragNDropCSS();
+            return false;
+        }
+        return true;
+    }
+    function submitForm(interpret, songtitle, imgsource, category, file) {
+        var lastState = {
+            'loaded': 0,
+            'secondsElapsed': 0
+        };
+        var speed = [];
+        var lastSpeedIndex = 0;
+        function interval() {
+            var avgSpeed = 0;
+            var length = speed.length;
+            var i;
+            for(i = lastSpeedIndex; i < length; i++)
+                avgSpeed += speed[i];
+            avgSpeed = avgSpeed / (i - lastSpeedIndex);
+            lastSpeedIndex = lastSpeedIndex + (i - lastSpeedIndex);
+            $('#upload-stats').text('Speed: ' + humanFileSize(Math.floor(avgSpeed)) + '/s  ' + ' Uploaded: ' + humanFileSize(lastState.loaded));
+        }
+        var statsInterval;
+        var formData = new FormData();
+        formData.append('interpret', interpret);
+        formData.append('songtitle', songtitle);
+        formData.append('imgsource', imgsource);
+        formData.append('category', category);
+        formData.append('file', file);
+        $('.progress-striped, #upload-stats').css('opacity', 0).slideDown('fast').animate({opacity: 1}, {queue: false, duration: 'fast'});
+        jqXHR = $.ajax({
+            url: '/api/upload',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(cb) {
+                switch(cb.error) {
+                    case 'null':
+                        if(cb.video_id) {
+                            flash('success', 'Upload successful: <a href="/' + cb.video_id + '">/' + cb.video_id + '</a>. Redirect in 3 seconds...');
+                            setTimeout(function() {
+                                location.href = '/' + cb.video_id;
+                            }, 3000);
+                        }
+                        else
+                            flash('error', 'Unexpected Exception');
+                        break;
+                    case 'invalid_request':
+                        flash('error', 'Invalid request');
+                        break;
+                    case 'not_logged_in':
+                        flash('error', 'Not logged in');
+                        break;
+                    case 'uploadlimit_reached':
+                        flash('error', 'Uploadlimit reached');
+                        break;
+                    case 'invalid_file':
+                        flash('error', 'Invalid file');
+                        break;
+                    case 'file_too_big':
+                        flash('error', 'File too big. Max 30MB');
+                        break;
+                    case 'already_exists':
+                        if(cb.video_id)
+                            flash('error', 'Video already exists: <a href="/' + cb.video_id + '">/' + cb.video_id + '</a>');
+                        else
+                            flash('error', 'Video already existed but has been deleted');
+                        break;
+                    case 'erroneous_file_encoding':
+                        flash('error', 'Erroneous file encoding. <a href="/webm">Try reencoding it</a>');
+                        break;
+                    default:
+                        flash('error', 'Unexpected exception');
+                        break;
+                }
+                if(cb.error != 'null') {
+                    $('.progress-bar-custom').css('background-color', 'red');
+                    $('.progress-bar-custom').text('Upload failed');
+                }
+                $('#upload-stats').html($('#upload-stats').html().replace(/Uploaded: .*/, 'Uploaded: ' + humanFileSize(currentFile.size)));
+            },
+            error: function(jqXHR, status, error) {
+                if(error == 'abort') {
+                    flash('info', 'Upload aborted');
+                    return;
+                }
+                flash('error', 'Upload failed');
+                flash('error', status);
+                flash('error', error);
+            },
+            complete: function() {
+                clearInterval(statsInterval);
+            },
+            xhr: function() {
+                var xhr = $.ajaxSettings.xhr();
+                var started_at = new Date();
+                $('.progress-bar-custom').css('background-color', 'rgba(47, 196, 47, 1)');
+                xhr.upload.onprogress = function(e) {
+                    var percentage = Math.floor(e.loaded / e.total * 100);
+                    var secondsElapsed = (new Date().getTime() - started_at.getTime()) / 1000;
+                    var bytesPerSecond = (e.loaded - lastState.loaded) / (secondsElapsed - lastState.secondsElapsed);
+                    $('.progress-bar-custom').css('width', percentage + '%');
+                    $('.progress-bar-custom').text(percentage + '%');
+                    lastState.secondsElapsed = secondsElapsed;
+                    lastState.loaded = e.loaded;
+                    speed.push(bytesPerSecond);
+                    if(!statsInterval) {
+                        interval();
+                        statsInterval = setInterval(interval, 500);
+                    }
+                };
+                return xhr;
+            }
+        });
+    }
+    $('input[type="file"]').on('change', function(e) {
+        if(!this.files.length)
+            return;
+        var file = this.files[0];
+        if(checkFile(file)) {
+            currentFile = file;
+            createPreview(file);
+        }
+        $(this).wrap('<form>').closest('form').get(0).reset();
+        $(this).unwrap();
+    });
+    $('#dragndrop-link').on('click', dragndropLinkClickHandler);
+    $(document).on('dragenter', function(e) {
+        e.preventDefault();
+        counter++;
+        var dt = e.originalEvent.dataTransfer;
+        if(dt.types != null && (dt.types.indexOf ? dt.types.indexOf('Files') === 0 : dt.types.contains('application/x-moz-file'))) {
+            $('#dragndrop').css({
+                'color': '#BBB',
+                'border-color': '#656464',
+                'background-color': '#323234'
+            });
+        }
+    }).on('dragleave', function() {
+        counter--;
+        if(counter === 0)
+            applyDefaultDragNDropCSS();
+    }).on('dragover', function(e) {
+        e.preventDefault();
+    }).on('drop', function(e) {
+        e.preventDefault();
+        if(!$(e.target).is('#dragndrop-text')) {
+            applyDefaultDragNDropCSS();
+        }
+    });
+    $('#dragndrop-text').on('dragover', function(e) {
+        var dt = e.originalEvent.dataTransfer;
+        var effect = dt.effectAllowed;
+        dt.dropEffect = 'move' === effect || 'linkMove' === effect ? 'move' : 'copy';
+    }).on('drop', function(e) {
+        if(!e.originalEvent.dataTransfer.files.length)
+            return;
+        if(jqXHR && jqXHR.statusText != "abort") {
+            jqXHR.abort();
+            currentFile = null;
+            restoreDefaultPreview();
+        }
+        var file = e.originalEvent.dataTransfer.files[0];
+        applyDefaultDragNDropCSS();
+        if(checkFile(file)) {
+            currentFile = file;
+            createPreview(file);
+            counter = 0;
+        }
+    });
+    $('button#btn-upload').on('click', function() {
+        if(!currentFile) {
+            flash('error', 'No file selected');
+            return;
+        }
+        if(jqXHR && (jqXHR.readyState == 0 || jqXHR.readyState == 1 || jqXHR.readyState == 3)) {
+            flash('info', 'Already uploading');
+            return;
+        }
+        submitForm($('#interpret').val(), $('#songtitle').val(), $('#imgsource').val(), $('#category').val(), currentFile);
+    });
+});

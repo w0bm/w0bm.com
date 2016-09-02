@@ -41,7 +41,6 @@ Route::get('activate/{token}', 'UserController@activate');
 Route::get('songindex', 'VideoController@index');
 Route::post('songindex/{id}', 'VideoController@update');
 Route::get('upload', 'VideoController@create');
-Route::post('upload', 'VideoController@store');
 Route::get('categories', 'CategoryController@index');
 Route::get('webm', function() { return view('webm'); });
 Route::get('about', function() { return view('about'); });
@@ -79,6 +78,8 @@ Route::group(['prefix' => 'api'], function() {
     Route::group(['prefix' => 'user'], function() {
         Route::post('{username}/ban', 'UserController@ban');
     });
+
+    Route::post('upload', 'VideoController@store');
 });
 
 Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');

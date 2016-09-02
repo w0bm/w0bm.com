@@ -1,57 +1,57 @@
-@extends('layout')
+@extends('profilelayout')
 @section('content')
     <div class="page-header">
         <h3>Upload</h3>
     </div>
     <div class="row">
-        <div class="col-md-9">
-            <div class="row">
-                <form class="form-horizontal" method="post" action="upload" enctype="multipart/form-data">
-                    {!! csrf_field() !!}
-                    <div class="form-group">
-                        <label for="interpret" class="col-sm-2 control-label">Artist</label>
-                        <div class="col-sm-10">
-                            {!! Form::text('interpret', null, ['id' => 'interpret', 'class' => 'form-control', 'placeholder' => 'Artist']) !!}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="songtitle" class="col-sm-2 control-label">Song Title</label>
-                        <div class="col-sm-10">
-                            {!! Form::text('songtitle', null, ['id' => 'songtitle', 'class' => 'form-control', 'placeholder' => 'Song Title']) !!}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="imgsource" class="col-sm-2 control-label">Video source</label>
-                        <div class="col-sm-10">
-                            {!! Form::text('imgsource', null, ['id' => 'imgsource', 'class' => 'form-control', 'placeholder' => 'Video Source']) !!}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="category" class="col-sm-2 control-label">Category</label>
-                        <div class="col-sm-10">
-                            <?php
-                                $categories = [];
-                                foreach(App\Models\Category::all() as $cat) {
-                                    $categories[$cat->id] = $cat->name;
-                                }
-                            ?>
-                            {!! Form::select('category', $categories, 8, ['id' => 'category', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="file" class="col-sm-2 control-label">File</label>
-                        <div class="col-sm-10">
-                            {!! Form::file('file', ['id' => 'file', 'class' => 'form-control']) !!}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Upload</button> Before you upload make sure to read the <a href="/rules">Rules</a> .
-                        </div>
-                    </div>
-                </form>
+        <div class="col-md-6" style="white-space: nowrap; padding: 0px;">
+            <div class="form-group">
+                <label for="interpret" class="col-sm-2 control-label">Artist</label>
+                <div class="col-sm-10">
+                    {!! Form::text('interpret', null, ['id' => 'interpret', 'class' => 'form-control', 'placeholder' => 'Artist']) !!}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="songtitle" class="col-sm-2 control-label">Song Title</label>
+                <div class="col-sm-10">
+                    {!! Form::text('songtitle', null, ['id' => 'songtitle', 'class' => 'form-control', 'placeholder' => 'Song Title']) !!}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="imgsource" class="col-sm-2 control-label">Video source</label>
+                <div class="col-sm-10">
+                    {!! Form::text('imgsource', null, ['id' => 'imgsource', 'class' => 'form-control', 'placeholder' => 'Video Source']) !!}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="category" class="col-sm-2 control-label">Category</label>
+                <div class="col-sm-10">
+                    <?php
+                        $categories = [];
+                        foreach(App\Models\Category::all() as $cat)
+                            $categories[$cat->id] = $cat->name;
+                    ?>
+                    {!! Form::select('category', $categories, 8, ['id' => 'category', 'class' => 'form-control']) !!}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    Before you upload make sure to read the <a href="/rules">Rules</a>.<br>
+                    <button id="btn-upload" type="button" style="width: 100%; height: 40px;" class="btn btn-default">Upload</button>
+                </div>
             </div>
         </div>
+        <div id="dragndrop" class="form-group col-md-3">
+            <a id="dragndrop-link" href="#">
+                <span style="display: table; width: 100%; height: 100%;">
+                    <span id="dragndrop-text">
+                        <i class="fa fa-cloud-upload"></i><br>
+                        Drop file or click!
+                    </span>
+                </span>
+            </a>
+        </div>
+        <input name="file" type="file" class="hidden" accept=".webm"></input>
         <div class="col-md-3">
             <div class="panel panel-primary rulez">
                 <div class="panel-heading"><b><i>Da Rules</i></b></div>
