@@ -773,7 +773,7 @@ select.form-control, input.form-control {
     margin-top: 15px;
 }
 
-.progress {background: rgba(74, 201, 28, 0); border: 1px solid rgba(255, 255, 255, 1); border-radius: 5px; height: 20px;}
+.progress {background: rgb(26, 27, 26); border: 1px solid rgb(76, 73, 73); border-radius: 0px; height: 20px;}
 .progress-bar-custom {background: rgba(47, 196, 47, 1);} 
 .progress-striped .progress-bar-custom {background-color: rgba(47, 196, 47, 1); background-image: -webkit-gradient(linear,0 100%,100% 0,color-stop(0.25,rgba(255, 255, 255, 0.15),color-stop(0.25,transparent),color-stop(0.5,transparent),color-stop(0.5,rgba(255, 255, 255, 0.15)),color-stop(0.75,rgba(255, 255, 255, 0.15)),color-stop(0.75,transparent),to(transparent))); background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, 0.15) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, 0.15) 50%,rgba(255, 255, 255, 0.15) 75%,transparent 75%,transparent); background-image: linear-gradient(45deg,rgba(255, 255, 255, 0.15) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, 0.15) 50%,rgba(255, 255, 255, 0.15) 75%,transparent 75%,transparent); background-size: 36px 36px;}
 
