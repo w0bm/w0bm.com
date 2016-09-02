@@ -967,7 +967,7 @@ $(function() {
                             flash('error', 'Video already existed but has been deleted');
                         break;
                     case 'erroneous_file_encoding':
-                        flash('error', 'Erroneous file encoding. Try reencoding it');
+                        flash('error', 'Erroneous file encoding. <a href="/webm">Try reencoding it</a>');
                         break;
                     default:
                         flash('error', 'Unexpected exception');

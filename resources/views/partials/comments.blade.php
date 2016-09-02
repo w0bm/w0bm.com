@@ -2,7 +2,7 @@
 
 	<div style="border-color:rgb(31, 178, 176);" class="panel panel-info">
 	    <div style="text-align:center;" class="panel-body">
-		<p class="anim">Hau du ju du wis ze gammischu?</p>
+		<p class="anim">(•⊙ω⊙•)</p>
 	    </div>
 	</div>
 

@@ -1,5 +1,4 @@
 @extends('layout')
-
 @section('content')
     <div class="page-header">
         <h3>Categories</h3>

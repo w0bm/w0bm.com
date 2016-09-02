@@ -42,8 +42,8 @@
 				@endif
 				<br>
 				<span class="videoinfo">
-						<a href="#" id="toggle"><i class="fa fa-comments"></i></a>	
-						<a href="#" id="togglebg"><i style="color:#fff200;" class="fa fa-lightbulb-o"></i></a>
+						<a href="#togglecomments" id="toggle"><i class="fa fa-comments"></i></a>	
+						<a href="#togglebg" id="togglebg"><i style="color:#fff200;" class="fa fa-lightbulb-o"></i></a>
 						@if(auth()->check())
 							@if(auth()->user()->hasFaved($video->id))
 								<a id="fav" href="{{url($video->id . '/fav')}}"><i style="color:#ff0094;" class="fa fa-heart"></i></a>
