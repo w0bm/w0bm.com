@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Toddish\Verify\Models\User as VerifyUser;
+use Carbon\Carbon;
 
 /**
  * App\Models\User
@@ -53,6 +54,13 @@ class User extends VerifyUser
         'categories' => 'array'
     ];
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'banend'
+    ];
+
 
     public function videos() {
         return $this->hasMany(Video::class);
@@ -87,4 +95,12 @@ class User extends VerifyUser
     public function categories() {
         return $this->belongsToMany(Category::class);
     }
+
+    public function isBanned() {
+        if($this->disabled == 1) {
+            return $this->banend->eq(Carbon::create(0,0,0,0,0,0)) || $this->banend->gt(Carbon::now());
+        }
+        return false;
+    }
+
 }

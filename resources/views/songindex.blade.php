@@ -1,7 +1,7 @@
 @extends('profilelayout')
 @section('content')
     <div class="page-header">
-	<h1>Songindex</h1>
+	<h3>Songindex</h3>
         
         <form method="get">
             {!! Form::text('q', null, ['class' => 'suchleiste', 'placeholder' => 'Search']) !!}
@@ -12,7 +12,7 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Interpret</th>
+            <th>Artist</th>
             <th>Songtitle</th>
             <th>Video Source</th>
             <th>Category</th>

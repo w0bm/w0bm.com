@@ -12,6 +12,7 @@ storage/deleted/*
 storage/database.sqlite
 storage/debugbar
 
+.vscode/
 
 ## Directory-based project format:
 .idea/

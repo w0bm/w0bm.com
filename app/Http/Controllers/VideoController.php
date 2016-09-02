@@ -8,6 +8,7 @@ use App\Models\Message;
 use App\Models\ModeratorLog;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -21,6 +22,7 @@ class VideoController extends Controller
      */
     public function index(Request $request) {
         if($request->has('q')){
+            $pdo = \DB::connection()->getPdo();
             $needle = '%' . trim($request->input('q')) .'%';
             return view('songindex', [
                 'videos' => Video::where(function($query) use($needle) {
@@ -29,9 +31,9 @@ class VideoController extends Controller
                         ->orWhere('imgsource', 'LIKE', $needle);
                 })
                         //->orderBy('id', 'ASC')
-                        ->orderByRaw("((interpret like '$needle') +
-                            (songtitle like '$needle') +
-                            (imgsource like '$needle')) desc")
+                        ->orderByRaw("((interpret like " . $pdo->quote($needle) . ") +
+                            (songtitle like " . $pdo->quote($needle) . ") +
+                            (imgsource like " . $pdo->quote($needle) . ")) desc")
                         ->paginate(20)->appends(['q' => trim($needle, '%')]),
                 'categories' => Category::all()
             ]);
@@ -42,7 +44,6 @@ class VideoController extends Controller
             'categories' => Category::all()
         ]);
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -60,30 +61,43 @@ class VideoController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
+        if(!$request->hasFile('file') || !$request->has('category'))
+            return JsonResponse::create(array('error' => 'invalid_request'));
+
         $user = auth()->check() ? auth()->user() : null;
-        if(is_null($user)) return redirect('/')->with('error', 'You need to be logged in');
+        if(is_null($user))
+            return JsonResponse::create(array('error' => 'not_logged_in'));
 
         if(!$user->can('break_upload_limit') && $user->videos()->newlyups()->count() >= 10)
-            return redirect()->back()->with('error', 'Uploadlimit reached')->withInput();
-
-
-        if(!$request->hasFile('file'))
-            return redirect()->back()->with('error', 'No file')->withInput();
+            return JsonResponse::create(array('error' => 'uploadlimit_reached'));
 
         $file = $request->file('file');
 
         if(!$file->isValid()
-        || $file->getClientOriginalExtension() != 'webm'
-        || $file->getMimeType() != 'video/webm') return redirect()->back()->with('error', 'Invalid file');
+        || mb_strtolower($file->getClientOriginalExtension()) !== 'webm'
+        || mb_strtolower($file->getMimeType()) !== 'video/webm')
+            return JsonResponse::create(array('error' => 'invalid_file'));
 
         if(!$user->can('break_max_filesize') && $file->getSize() > 31457280)
-        return redirect()->back()->with('error', 'File too big. Max 30MB')->withInput();
+            return JsonResponse::create(array('error' => 'file_too_big'));
 
-        if(($v = Video::withTrashed()->where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null)
-            return redirect($v->id)->with('error', 'Video already exists');
+        if(($v = Video::withTrashed()->where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null) {
+            if($v->trashed())
+                return JsonResponse::create(array('error' => 'already_exists'));
+            return JsonResponse::create(array(
+                'error' => 'already_exists',
+                'video_id' => $v->id
+            ));
+        }
 
         $file = $file->move(public_path() . '/b/', time() . '.webm');
+        if(!$this->checkFileEncoding(basename($file->getRealPath()))) {
+            unlink($file->getRealPath());
+            return JsonResponse::create(array('error' => 'erroneous_file_encoding'));
+        }
+
         $hash = sha1_file($file->getRealPath());
 
         $video = new Video();
@@ -98,7 +112,10 @@ class VideoController extends Controller
 
         $this->createThumbnail(basename($file->getRealPath()));
 
-        return redirect($video->id)->with('success', 'Upload successful');
+        return JsonResponse::create(array(
+            'error' => 'null',
+            'video_id' => $video->id
+        ));
     }
 
     /**
@@ -198,79 +215,6 @@ class VideoController extends Controller
         return redirect()->back()->with('error', 'Insufficient permissions');
     }
 
-    public function storeComment(Request $request, $id) {
-
-        $user = auth()->check() ? auth()->user() : null;
-        $xhr = $request->ajax();
-
-        if(is_null($user)) return $xhr ? "Not logged in" : redirect()->back()->with('error', 'Not logged in');
-        if(!$request->has('comment')) return $xhr ? "You need to enter a comment" : redirect()->back()->with('error', 'You need to enter a comment');
-        if(mb_strlen(trim($request->get('comment'))) > 1000 ) return $xhr ? "Comment to long" : redirect()->back()->with('error', 'Comment to long');
-
-        $video = Video::findOrFail($id);
-
-        $com = new Comment();
-        $com->content = trim($request->get('comment'));
-        $com->user()->associate($user);
-        $com->video()->associate($video);
-        $com->save();
-
-        foreach($com->getMentioned() as $mentioned) {
-            Message::send($user->id, $mentioned->id, $user->username . ' mentioned you in a comment', view('messages.commentmention', ['video' => $video, 'user' => $user]));
-        }
-
-        foreach($com->answered() as $answered) {
-            Message::send($user->id, $answered->id, $user->username . ' answered on your comment', view('messages.commentanswer', ['video' => $video, 'user' => $user]));
-        }
-
-        if($user->id != $video->user->id)
-            Message::send($user->id, $video->user->id, $user->username . ' commented on your video', view('messages.videocomment', ['video' => $video, 'user' => $user]));
-
-        return $xhr ? view('partials.comment', ['comment' => $com, 'mod' => $user->can('delete_comment')]) : redirect()->back()->with('success', 'Comment successfully saved');
-    }
-
-    public function editComment($id) {
-
-    }
-
-    public function destroyComment($id) {
-        $user = auth()->check() ? auth()->user() : null;
-        if(is_null($user)) return redirect()->back()->with('error', 'Not logged in');
-
-        if($user->can('delete_comment')) {
-            Comment::destroy($id);
-
-            $log = new ModeratorLog();
-            $log->user()->associate($user);
-            $log->type = 'delete';
-            $log->target_type = 'comment';
-            $log->target_id = $id;
-            $log->save();
-
-            return redirect()->back()->with('success', 'Comment deleted');
-        }
-        return redirect()->back()->with('error', 'Insufficient permissions');
-    }
-
-    public function restoreComment($id) {
-        $user = auth()->check() ? auth()->user() : null;
-        if(is_null($user)) return redirect()->back()->with('error', 'Not logged in');
-
-        if($user->can('delete_comment')) {
-            Comment::withTrashed()->whereId($id)->restore();
-
-            $log = new ModeratorLog();
-            $log->user()->associate($user);
-            $log->type = 'restore';
-            $log->target_type = 'comment';
-            $log->target_id = $id;
-            $log->save();
-
-            return redirect()->back()->with('success', 'Comment restored');
-        }
-        return redirect()->back()->with('error', 'Insufficient permissions');
-    }
-
     public function favorite($id) {
         $user = auth()->check() ? auth()->user() : null;
         $xhr = \Request::ajax();
@@ -300,9 +244,22 @@ class VideoController extends Controller
         return $v;
     }
 
+    private function checkFileEncoding($dat) {
+        $in = "/var/www/w0bm.com/public/b"; // webm-input
+        $tmpdir = "/var/www/w0bm.com/app/Http/Controllers/tmp"; // tempdir
+        $name = explode(".", $dat);
+        array_pop($name);
+        $name = join(".", $name);
+        $ret = shell_exec("ffmpeg -y -ss 0 -i {$in}/{$dat} -vframes 1 {$tmpdir}/test.png 2>&1");
+        if(strpos($ret, "nothing was encoded") !== false) {
+            return false;
+        }
+        return true;
+    }
+
     /**
      * Creates a .gif thumbnail to a given video file
-     * 
+     *
      * @param string $dat File of the video
      */
     private function createThumbnail($dat) {
@@ -313,14 +270,14 @@ class VideoController extends Controller
         $name = explode(".", $dat);
         array_pop($name);
         $name = join(".", $name);
-        if (!file_exists("{$out}/{$name}.gif")) {
+        if(!file_exists("{$out}/{$name}.gif")) {
             $length = round(shell_exec("ffprobe -i {$in}/{$dat} -show_format -v quiet | sed -n 's/duration=//p'"));
             for ($i = 1; $i < 10; $i++) {
                 $act = ($i * 10) * ($length / 100);
                 $ffmpeg = shell_exec("ffmpeg -ss {$act} -i {$in}/{$dat} -vf \"scale='if(gt(a,4/3),206,-1)':'if(gt(a,4/3),-1,116)'\" -vframes 1 {$tmpdir}/{$name}_{$i}.png 2>&1");
             }
             $tmp = shell_exec("convert -delay 27 -loop 0 {$tmpdir}/{$name}_*.png {$out}/{$name}.gif 2>&1");
-            if (@filesize("{$out}/{$name}.gif") < 2000)
+            if(@filesize("{$out}/{$name}.gif") < 2000)
                 @unlink("{$out}/{$name}.gif");
             array_map('unlink', glob("{$tmpdir}/{$name}*.png"));
         }
