@@ -794,13 +794,13 @@ select.form-control, input.form-control {
     font-weight: normal;
 }
 
-.row {
+.row-upload {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.row > [class*="col-"] {
+.row-upload > [class*="col-"] {
     display: flex;
     flex-direction: column;
 }
