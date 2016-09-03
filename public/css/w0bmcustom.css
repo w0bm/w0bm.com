@@ -811,3 +811,8 @@ select.form-control, input.form-control {
 	background-color: white;
 	text-align:center;
 }
+
+.reich {
+	font-family: 'UnifrakturCook', cursive;
+	color: #F2F5F4;
+}
