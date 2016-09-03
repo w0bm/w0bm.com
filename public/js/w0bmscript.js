@@ -132,11 +132,10 @@ if(video !== null) {
             player.volume(player.volume() - 0.1);
     });
 
-    $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
+    $('.wrapper > div:not(.aside)').on('DOMMouseScroll mousewheel', function(e) {
         e.deltaY < 0 ? getNext() : getPrev();
         return false;
     });
-
 } else {
     var canvas = document.getElementById('bg');
     canvas.parentNode.removeChild(canvas);
