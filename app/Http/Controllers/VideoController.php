@@ -53,7 +53,8 @@ class VideoController extends Controller
      */
     public function create()
     {
-       return view('upload');
+        $user = auth()->check() ? auth()->user() : null;
+        return view('upload', ['user' => $user]);
     }
 
     /**

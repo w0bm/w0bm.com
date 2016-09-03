@@ -37,11 +37,11 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button id="btn-upload" type="button" style="width: 100%; height: 40px;" class="btn btn-default">Upload</button>
-		<p style="text-align:center; padding-top: 5px;">Before you click upload make sure you have read the <a href="/rules">Rules</a></p>
+                    <p style="text-align:center; padding-top: 5px;">Before you click upload make sure you have read the <a href="/rules">Rules</a></p>
                 </div>
             </div>
         </div>
-        <div id="dragndrop" class="form-group col-md-3">
+        <div id="dragndrop" class="form-group col-md-3" data-uploadlimit="{{ isset($user) ? ($user->can('break_max_filesize') ? 'false' : 'true') : 'true' }}">
             <a id="dragndrop-link" href="#">
                 <span style="display: table; width: 100%; height: 100%;">
                     <span id="dragndrop-text">
