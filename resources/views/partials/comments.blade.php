@@ -1,6 +1,6 @@
 <aside class="comments hidden-xs">
 
-	<div style="border-color: rgb(84, 84, 84);" class="panel panel-info">
+	<div style="border: 3px solid #1fb2b0;margin-bottom:1px;" class="panel panel-info">
 	    <div class="panel-body motd">
 		<span>(•⊙ω⊙•) WOLLT IHR DIE TOTALEN WEBMS?</span>
 	    </div>
