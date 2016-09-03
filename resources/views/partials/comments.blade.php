@@ -1,8 +1,8 @@
 <aside class="comments hidden-xs">
 
-	<div style="border-color:rgb(31, 178, 176);" class="panel panel-info">
+	<div style="border-color: rgb(84, 84, 84);" class="panel panel-info">
 	    <div style="text-align:center;" class="panel-body">
-		<p class="anim">(•⊙ω⊙•)</p>
+		<span style="color:#bc23d3;">(•⊙ω⊙•)</span>
 	    </div>
 	</div>
 
