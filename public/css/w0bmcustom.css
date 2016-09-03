@@ -815,3 +815,11 @@ select.form-control, input.form-control {
 	font-family: 'UnifrakturCook', cursive;
 	color: #F2F5F4;
 }
+
+#dragndrop:hover {        
+    border-color: #1fb2b0;
+}                         
+
+#dragndrop-text:hover {
+    color: #1fb2b0;
+}
