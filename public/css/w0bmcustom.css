@@ -814,6 +814,7 @@ select.form-control, input.form-control {
 .reich {
 	font-family: 'UnifrakturCook', cursive;
 	color: #F2F5F4;
+	font-size: 18px;
 }
 
 #dragndrop:hover {        
