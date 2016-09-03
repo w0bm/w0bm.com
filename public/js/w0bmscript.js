@@ -895,7 +895,7 @@ $(function() {
     function checkFile(file) {
         var tooBig = file.size > 31457280;
         var invalid = file.type !== "video/webm";
-        if(tooBig || invalid) {
+        if((tooBig && $('#dragndrop').data('uploadlimit')) || invalid) {
             flash('error', invalid ? 'Invalid file' : 'File too big. Max 30MB');
             applyDefaultDragNDropCSS();
             return false;
