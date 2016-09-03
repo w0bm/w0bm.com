@@ -1,8 +1,8 @@
 <aside class="comments hidden-xs">
 
 	<div style="border-color: rgb(84, 84, 84);" class="panel panel-info">
-	    <div style="text-align:center;" class="panel-body">
-		<span style="color:#bc23d3;">(•⊙ω⊙•)</span>
+	    <div class="panel-body motd">
+		<span>(•⊙ω⊙•) WOLLT IHR DIE TOTALEN WEBMS?</span>
 	    </div>
 	</div>
 

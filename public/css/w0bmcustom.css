@@ -804,3 +804,10 @@ select.form-control, input.form-control {
     display: flex;
     flex-direction: column;
 }
+
+.motd {
+	font-family: 'UnifrakturCook', cursive;
+	color: black;
+	background-color: white;
+	text-align:center;
+}

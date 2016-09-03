@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
     <link rel="favicon" type="image/ico" href="favicon.ico" />
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700" rel="stylesheet">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link href="/css/video-js.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.13">
