@@ -94,7 +94,7 @@ if(video !== null) {
     }
 
     //Key Bindings
-    $('html').on('keydown', function(e) {
+    $(document).on('keydown', function(e) {
         if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i))
             return;
 
@@ -130,11 +130,14 @@ if(video !== null) {
 
         else if(e.keyCode == 83 || e.keyCode == 40)
             player.volume(player.volume() - 0.1);
+
+        else if(e.keyCode == 32)
+            player.paused() ? player.play() : player.pause();
     });
 
     $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
+        e.preventDefault();
         e.deltaY < 0 ? getNext() : getPrev();
-        return false;
     });
 
 } else {
