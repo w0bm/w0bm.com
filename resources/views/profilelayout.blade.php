@@ -14,13 +14,17 @@
       type="image/ico"
       href="favicon.ico" />
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.5">
+    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.13">
 </head>
 <body>
 @include('partials.handlebars')
 @if(auth()->check())
     @include('partials.filterselect')
+    @if(isset($user) && auth()->user()->can('edit_user'))
+        @include('partials.banmenu')
+    @endif
 @endif
 <canvas id="bg" @if(!Session::get('background', true)) style="display: none;"@endif></canvas>
 
@@ -43,6 +47,6 @@
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/handlebars.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
-<script src="/js/w0bmscript.js"></script>
+<script src="/js/w0bmscript.js?v=1.1.1"></script>
 </body>
 </html>

@@ -49,11 +49,13 @@ class Comment extends Model
         $delMatcher = '/-(.+)-/';
         $newlineMatcher = '/(^.*$)/m';
         $greentextMatcher = '/(^&gt;.*$)/m';
-
+	$krebsCSSmatcher = '/%(.+)%/';
+	$DeutschlandMatcher = '/!(.+)!/';
         $imageMatcher = '/(\<a href=\"(https:\/\/('.join('|',$commentcfg["allowedHosters"]).').*(png|gif|jpg|webp))\" target=\"_blank\" rel=\"extern\"\>.*\<\/a\>)/i';
         
         $text = preg_replace($boldMather, '<strong>$1</strong>', $text);
-        $text = preg_replace($italicMathcer, '<em>$1</em>', $text);
+        $text = preg_replace($krebsCSSmatcher, '<span class="anim">$1</span>', $text);
+	$text = preg_replace($DeutschlandMatcher, '<span class="reich">$1</span>', $text);
         $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
         $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
         $text = preg_replace($imageMatcher, '<img src="$2" alt="Image" class="comment_image" />', $text);

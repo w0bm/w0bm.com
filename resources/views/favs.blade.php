@@ -6,7 +6,7 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Interpret</th>
+                    <th>Artist</th>
                     <th>Songtitle</th>
                     <th>Video Source</th>
                     <th>Category</th>

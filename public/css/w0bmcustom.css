@@ -3,6 +3,10 @@ body {
    /* background: #161618 url("/spurdo.gif") no-repeat fixed right bottom;*/
 }
 
+a:focus {
+    outline: none;
+}
+
 /*body::after {
     position: fixed !important;
     content: url("https://koyaanis.com/i/kawaii2.gif");
@@ -529,6 +533,18 @@ div.message > div.panel-heading > span {
 	margin-bottom: 6px;
 }
 
+.patoy {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 6px;
+}
+
+.patoyklein {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 5px;
+}
+
 .flinnysmall {
 	height: 16px;
 	width:  16px;
@@ -644,59 +660,167 @@ input {
 }
 
 .dropdown-menu > li > a {
-	display: block;
-	padding: 3px 5px;
-	clear: both;
-	font-weight: normal;
-	line-height: 1.42857143;
-	color: #ffffff;
-	white-space: nowrap;
+    display: block;
+    padding: 3px 5px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.form-control {
+	outline: aqua!important;
 }
 
 .video-js {
-	position: initial!important;
-	background-color: transparent!important;
-	color: #1fb2b0!important;
+	position: initial;
+	background-color: transparent;
+	color: #1fb2b0;
 }
 
 .video-js .vjs-play-progress {
-	background-color: #1fb2b0!important;
+	background-color: #1fb2b0;
 }
 
 .video-js .vjs-volume-level {
-	background-color: #1fb2b0!important;
+	background-color: #1fb2b0;
 }
 
-.video-js .vjs-control:focus:before, .video-js .vjs-control:hover:before, .video-js .vjs-control:focus {
-	text-shadow: 0em 0em 0em transparent!important;
-}
-
-.vjs-menu-button-inline .vjs-menu {
-    opacity: 0;
-    height: 100%;
-    width: auto;
-    position: absolute;
-    left: 4em;
-    top: 0;
-    padding: 0;
-    margin: 0;
-    -webkit-transition: all 0.9s!important;
-    -moz-transition: all 0.9s!important;
-    -o-transition: all 0.9s!important;
-    transition: all 0.9s!important;
-}
 
 .video-js .vjs-control-bar {
-    background-color: rgba(16, 16, 16, 0.68)!important;
+    background: rgba(34, 34, 34, 0.61)
 }
 
 .vjs-playback-rate .vjs-playback-rate-value {
-    top: -1px!important;
-    left: 1px!important;
+    top: -1px;
+    left: 1px;
 }
 
 .video-js .vjs-time-control {
-	font-size: 1.5em!important;
-	line-height: 1.7em!important;
-	top: 1px!important;
+	font-size: 1.5em;
+	line-height: 1.7em;
+	top: 1px;
+}
+
+.strong-colored strong {
+    color: #1FB2B0;
+}
+
+.video-js .vjs-current-time, .video-js .vjs-time-divider, .video-js .vjs-duration {
+    display: block;
+}
+
+.video-js .vjs-current-time {
+    padding-right: 0px;
+}
+
+.video-js .vjs-duration {
+    padding-left: 0px;
+}
+
+.video-js .vjs-control-bar {
+    display: none;
+}
+
+.americagay {
+	height: 32px;
+	width:  32px;
+	margin-bottom: 2px;
+	margin-left: 5px;
+}
+
+.americagaysmall {
+	height: 16px;
+	width:  16px;
+	margin-bottom: 2px;
+}
+
+select.form-control, input.form-control {
+    background-color: #353434;
+}
+
+#dragndrop {
+    border: 3px dashed #353434;
+    border-radius: 5px;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem;
+    padding: 0px;
+    background-color: #121214;
+    color: #888;
+}
+
+#dragndrop-link {
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+#dragndrop-link:hover {
+    text-decoration: none;
+}
+
+#dragndrop-text {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#dragndrop-text > video {
+    width: 70%;
+    margin-top: 15px;
+}
+
+.progress {background: rgb(26, 27, 26); border: 1px solid rgb(76, 73, 73); border-radius: 0px; height: 20px;}
+.progress-bar-custom {background: rgba(47, 196, 47, 1);} 
+.progress-striped .progress-bar-custom {background-color: rgba(47, 196, 47, 1); background-image: -webkit-gradient(linear,0 100%,100% 0,color-stop(0.25,rgba(255, 255, 255, 0.15),color-stop(0.25,transparent),color-stop(0.5,transparent),color-stop(0.5,rgba(255, 255, 255, 0.15)),color-stop(0.75,rgba(255, 255, 255, 0.15)),color-stop(0.75,transparent),to(transparent))); background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, 0.15) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, 0.15) 50%,rgba(255, 255, 255, 0.15) 75%,transparent 75%,transparent); background-image: linear-gradient(45deg,rgba(255, 255, 255, 0.15) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, 0.15) 50%,rgba(255, 255, 255, 0.15) 75%,transparent 75%,transparent); background-size: 36px 36px;}
+
+#dragndrop-clear {
+    color: red;
+}
+
+#dragndrop-clear:hover {
+    text-decoration: none;
+}
+
+.progress-striped {
+    margin-bottom: 0px;
+}
+
+.upload-info {
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+.row-upload {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.row-upload > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
+}
+
+.motd {
+	font-family: 'UnifrakturCook', cursive;
+	color: #F2F5F4;
+	text-align:center;
+}
+
+.reich {
+	font-family: 'UnifrakturCook', cursive;
+	color: #F2F5F4;
+	font-size: 18px;
+}
+
+#dragndrop:hover {        
+    border-color: #1fb2b0;
+}                         
+
+#dragndrop-text:hover {
+    color: #1fb2b0;
 }
