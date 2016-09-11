@@ -95,7 +95,7 @@ if(video !== null) {
 
     //Key Bindings
     $(document).on('keydown', function(e) {
-        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i))
+        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i) || e.ctrlKey || e.altKey || e.shiftKey)
             return;
 
         //arrow keys
@@ -122,7 +122,7 @@ if(video !== null) {
         else if(e.keyCode == 70) //add fav
             $('#fav').get(0).click();
 
-        else if(e.keyCode == 67 && !e.ctrlKey) //toggle comments
+        else if(e.keyCode == 67) //toggle comments
             $(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
 
         else if(e.keyCode == 87 || e.keyCode == 38)
@@ -136,6 +136,8 @@ if(video !== null) {
     });
 
     $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
+        if(e.ctrlKey || e.altKey || e.shiftKey)
+            return;
         e.preventDefault();
         e.deltaY < 0 ? getNext() : getPrev();
     });
