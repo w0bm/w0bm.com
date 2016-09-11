@@ -824,3 +824,9 @@ select.form-control, input.form-control {
 #dragndrop-text:hover {
     color: #1fb2b0;
 }
+
+.islam {
+	background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1235px-Flag_of_the_United_States.svg.png);
+    background-repeat: repeat-x;
+    background-size: contain;
+}
