@@ -21,9 +21,9 @@
 		</div>
 	</div>
 	<p>We accept Bitcoin and PayPal but we highly recommend Bitcoin overall because PayPal wants everytime I make a transaction with my hoster 2,30€ and this is just bullshit, so my advice is Bitcoin.</p>
-	<i class="fa fa-btc" style="color: #1FB2B0;" aria-hidden="true"></i> <span>1PXqtRtZLYwRFKKks7tipVXeauGSpy3u4z</span>
+	<i class="fa fa-btc" style="color: #1FB2B0;" aria-hidden="true"></i> <span style="font-family:monospace;color:#1FB2B0;">1PXqtRtZLYwRFKKks7tipVXeauGSpy3u4z</code>
 	<br />
-	<i class="fa fa-paypal" style="color: #1FB2B0;"></i> <span>paypal@w0bm.com</span>
+	<i class="fa fa-paypal" style="color: #1FB2B0;"></i> <span style="font-family:monospace;coloR:#1FB2B0;">paypal@w0bm.com</span>
 </div>
 @include('footer')
 @endsection
