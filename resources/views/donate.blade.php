@@ -16,7 +16,7 @@
 	<h5>Overview: ~</h5>
 	<p>Goal is 90€ every 3 months</p>
 	<div class="progress">
-  		<div class="progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="color:white; width: 0%;">
+  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="color:white; width: 0%;">
 		0€  
 		</div>
 	</div>
