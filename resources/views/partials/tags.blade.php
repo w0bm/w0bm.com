@@ -1,10 +1,10 @@
 <aside class="tags hidden-xs">
     @if(Auth::check())
         <div class="input-group">
-            <select multiple name="tags[]" data-role="tagsinput" class="form-control"></select>
-            {{--<input type="text" class="form-control" placeholder="Input tags…" name="tags" data-role="tagsinput">--}}
+            {{--<select multiple name="tags[]" data-role="tagsinput" class="form-control"></select>--}}
+            <input id="tags" type="text" class="form-control" placeholder="Input tags…" name="tags" data-role="tagsinput">
             <span class="input-group-btn">
-                <input type="submit" class="form-control">
+                <button href="/{{$video->id}}/tag" id="submittags" type="submit" class="form-control">Submit</button>
             </span>
         </div>
     @endif

@@ -22,21 +22,29 @@ class VideoController extends Controller
      */
     public function index(Request $request) {
         if($request->has('q')){
-            $pdo = \DB::connection()->getPdo();
-            $needle = '%' . trim($request->input('q')) .'%';
+
             return view('songindex', [
-                'videos' => Video::where(function($query) use($needle) {
-                    $query->where('interpret', 'LIKE', $needle)
-                        ->orWhere('songtitle', 'LIKE', $needle)
-                        ->orWhere('imgsource', 'LIKE', $needle);
-                })
-                        //->orderBy('id', 'ASC')
-                        ->orderByRaw("((interpret like " . $pdo->quote($needle) . ") +
-                            (songtitle like " . $pdo->quote($needle) . ") +
-                            (imgsource like " . $pdo->quote($needle) . ")) desc")
-                        ->paginate(20)->appends(['q' => trim($needle, '%')]),
+                // TODO: add ordering
+                'videos' => Video::withAllTags($needle = trim($request->input('q')))
+                    ->paginate(20)->appends(['q' => $needle]),
                 'categories' => Category::all()
             ]);
+
+            // $pdo = \DB::connection()->getPdo();
+            // $needle = '%' . trim($request->input('q')) .'%';
+            // return view('songindex', [
+            //     'videos' => Video::where(function($query) use($needle) {
+            //         $query->where('interpret', 'LIKE', $needle)
+            //             ->orWhere('songtitle', 'LIKE', $needle)
+            //             ->orWhere('imgsource', 'LIKE', $needle);
+            //     })
+            //             //->orderBy('id', 'ASC')
+            //             ->orderByRaw("((interpret like " . $pdo->quote($needle) . ") +
+            //                 (songtitle like " . $pdo->quote($needle) . ") +
+            //                 (imgsource like " . $pdo->quote($needle) . ")) desc")
+            //             ->paginate(20)->appends(['q' => trim($needle, '%')]),
+            //     'categories' => Category::all()
+            // ]);
 
         }
         return view('songindex', [
@@ -241,7 +249,7 @@ class VideoController extends Controller
         $v = Video::findOrFail($id);
         $v->tag($request->get('tags'));
 
-        return $v;
+        return $v->toJson();
     }
 
     private function checkFileEncoding($dat) {

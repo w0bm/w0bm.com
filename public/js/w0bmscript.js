@@ -167,6 +167,22 @@ if(video !== null) {
             flash('error', data);
         });
     });
+    
+    var tagsinput = $('#tags'),
+        submit = $('#submittags');
+    submit.on('click touchdown', function (e) {
+        e.preventDefault();
+        console.log('submitted');
+        console.log(tagsinput.serialize());
+        $.ajax({
+            type: 'POST',
+            url: submit.attr('href'),
+            data: tagsinput.serialize()
+        }).done(function (data) {
+            flash('success', 'Tags saved successfully');
+            //TODO: Update tags
+        }); //TODO: Add .fail
+    });
 })(jQuery);
 
 (function ($) {
