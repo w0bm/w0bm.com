@@ -26,7 +26,7 @@ class Icon extends Model
                 return '<i class="fa fa-' . $this->icon . '"></i>';
             case 'img':
             case 'image':
-                return '<img class="icon" src="/' . ltrim($icon->icon, '/') . '" alt="' . $icon->icon . '">';
+                return '<img class="icon" src="/' . ltrim($this->icon, '/') . '" alt="' . $this->icon . '">';
             default:
                 return '';
         }
