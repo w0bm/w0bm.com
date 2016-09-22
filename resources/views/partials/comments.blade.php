@@ -2,7 +2,7 @@
 
 	<div style="border: 3px solid #1fb2b0;margin-bottom:1px;" class="panel panel-info">
 	    <div class="panel-body">
-		<div style="text-align:center;">Tomorrow first birthday.</div>
+		<div style="text-align:center;"><a href="/donate" target="_blank">Pls halp ;_;</a></div>
 	   </div>
 	</div>
 
