@@ -7,21 +7,25 @@
   <div class="col-xs-6">
 <h5>About: ~</h5>
 <ul>
-<li /><p>First of all we as your webm provider want to be as transparent as possible to you, our so loved user, feel assfucked :3</p>
-<li /><p>w0bm is a slut, a traffic slut, a money slut and a slut in general, you know what I mean.</p>
-<li /><p>It's getting more difficult to pay the bill with the increasing amount of users, so it's time to reopen donations to collect enough money for the server.</p>
-<li /><p>We know that people love shit, thats apparently one reason why people are browsing w0bm but that's not what I mean in first place, I am talking about something little you will get for your donation beside an alive and well doing w0bm</p>
+<li><p>First of all we as your webm provider want to be as transparent as possible to you, our so loved user, feel assfucked :3</p></li>
+<li><p>w0bm is a slut, a traffic slut, a money slut and a slut in general, you know what I mean.</p></li>
+<li><p>It's getting more difficult to pay the bill with the increasing amount of users, so it's time to reopen donations to collect enough money for the server.</p></li>
+<li><p>We know that people love shit, thats apparently one reason why people are browsing w0bm but that's not what I mean in first place, I am talking about something little you will get for your donation beside an alive and well doing w0bm</p></li>
+</ul>
 <h6>Rewards:</h6>
 <ul>
-<li /><p>If you donate 5€ you can choose an icon from <a href="http://fontawesome.io/icons/">fontawesome.io/icons</a></p>
-<li /><p>If you donate 10€ or more you can choose your own personalized icon.</p>
-<li /><p>To claim your icon please join our <a href="/irc">IRC</a></p>
+<li><p>If you donate 5€ you can choose an icon from <a href="http://fontawesome.io/icons/">fontawesome.io/icons</a></p></li>
+<li><p>If you donate 10€ or more you can choose your own personalized icon.</p></li>
+<li><p>To claim your icon please join our <a href="/irc">IRC</a></p></li>
   </div>
   <div class="col-xs-6">
+</div>
+
+<div class="col-md-6">
 	<h5>Overview: ~</h5>
 	<p>Goal is 90€ and needs to be reached until 17.10.2016</p>
 	<div class="progress">
-  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 43%;">
+  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 53%;">
 		53,20€  
 		</div>
 	</div>

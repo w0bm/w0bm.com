@@ -499,12 +499,16 @@ div.message > div.panel-heading > span {
 }
 
 .rain {
-	height:32px;
-	width: 32px;
 	-webkit-transform: rotate(35deg);
 	transform: rotate(35deg);
 }
 
+img.icon[src="/images/icons/watermelon.png"] {
+	-webkit-transform: rotate(35deg);
+	transform: rotate(35deg);
+	margin-left: -3px;
+	margin-right: 1px;
+}
 
 .rainsmall {
         height:16px;
@@ -837,6 +841,7 @@ select.form-control, input.form-control {
 
 img.icon {
     max-height: 1.1em;
+    max-width: 1.1em;
     vertical-align: middle;
     margin-bottom: 0.2em;
 }
