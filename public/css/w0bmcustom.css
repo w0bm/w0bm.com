@@ -837,6 +837,7 @@ select.form-control, input.form-control {
 
 img.icon {
     max-height: 1.1em;
+    max-width: 1.1em;
     vertical-align: middle;
     margin-bottom: 0.2em;
 }
