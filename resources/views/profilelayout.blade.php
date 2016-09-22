@@ -16,7 +16,7 @@
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.15">
+    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.19">
 </head>
 <body>
 @include('partials.handlebars')
