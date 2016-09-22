@@ -849,3 +849,19 @@ img.icon {
 .progress-bar-success {
    background: #0AA400;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #9b9999!important;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: rgba(85, 85, 85, 0.96)!important;
+    width: 10px;
+    max-height: 10px!important;
+}
+::-webkit-scrollbar-thumb {
+   width: 15px;
+   background: #9b9999!important;
+}
