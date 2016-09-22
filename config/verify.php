@@ -12,8 +12,8 @@ return [
 
 	// Define Models if you extend them
 	'models' => [
-		'user' => 'Toddish\Verify\Models\User',
-		'role' => 'Toddish\Verify\Models\Role',
+		'user' => 'App\Models\User',
+		'role' => 'App\Models\Role',
 		'permission' => 'Toddish\Verify\Models\Permission',
 	],
 

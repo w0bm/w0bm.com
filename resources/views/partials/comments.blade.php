@@ -27,5 +27,4 @@
             </div>
         @endif
     </div>
-    <?php if($mod = (Auth::check() && Auth::user()->can('delete_comment'))) echo "<script src=\"/adminscript.js\"></script>"; ?>
 </aside>
