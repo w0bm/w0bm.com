@@ -5,7 +5,7 @@
     </div>
 <h5>What do we log?</h5>
 <ul>
-<li>Anything our webserver (Nginx) logs within it's logfile.</li>
+<li>Anything our webserver (Nginx) and Piwik logs within it's logfiles.</li>
 <li>Information you provide while using our service this includes:</li>
 <ul>
 <li>Your Username</li>
@@ -15,10 +15,8 @@
 <li>Your uploads</li>
 </ul>
 </ul>
-<h5>What we don't log</h5>
-<ul>
-<li>Your IP in our database linked to your comments, uploads or account</li>
 </ul>
-<h5>Short: We do log something, but it's not easy to identify a single user just with the Nginx access log. We use the access log mainly to keep track over our traffic and for some information about the site in general. We use the command line tool "Goaccess" to parse the log.</h5>
+<h6>We use Piwik to monitor activities on our website, if you don't want to be tracked, please untick the checkbox down below.</h6>
+<iframe style="border: 0; height: 150px; width: 800px;" src="https://stats.w0bm.com/index.php?module=CoreAdminHome&action=optOut&language=en"></iframe>
 @include('footer')
 @endsection
