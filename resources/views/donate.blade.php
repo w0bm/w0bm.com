@@ -25,8 +25,8 @@
 	<h5>Overview: ~</h5>
 	<p>Goal is 90€ and needs to be reached until 17.10.2016</p>
 	<div class="progress">
-  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 63%;">
-		63,20€  
+  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 79%;">
+		79.32€  
 		</div>
 	</div>
 	<p>We accept Bitcoin and PayPal but we highly recommend Bitcoin overall because PayPal wants everytime I make a transaction with my hoster 2,30€ and this is just bullshit, so my advice is Bitcoin.</p>
@@ -90,6 +90,14 @@
             <td>10€</td>
 	    <td>PayPal</td>
 	    <td>22.09.2016</td>
+        </tr>
+
+	<tr class="success">
+            <td>6.</td>
+            <td><a href="/user/szt">szt</a></td>
+            <td>16,12€</td>
+	    <td>BTC</td>
+	    <td>23.09.2016</td>
         </tr>
 
 	</tbody>
