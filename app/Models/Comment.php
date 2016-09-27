@@ -52,8 +52,9 @@ class Comment extends Model
         $greentextMatcher = '/(^&gt;.*$)/m';
         $krebsCSSmatcher = '/%(.+)%/';
         $deutschlandMatcher = '/!(.+)!/';
-        
+        $clickableTimestampMatcher = '/(?<=\s|^)([0-5]?\d:[0-5]\d)(?=\s|$)/m';
         $imageMatcher = '/(?:\<a href=\"(https:\/\/(?:'.join('|',$commentcfg["allowedHosters"]).').*(?:'.join('|',$commentcfg["allowedImageFileExtensions"]).'))\" target=\"_blank\" rel=\"extern\">.*<\/a>)/i';
+
         $text = preg_replace($boldMatcher, '<strong>$1</strong>', $text);
         $text = preg_replace($krebsCSSmatcher, '<span class="anim">$1</span>', $text);
         $text = preg_replace($deutschlandMatcher, '<span class="reich">$1</span>', $text);
@@ -61,6 +62,7 @@ class Comment extends Model
         $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
         $text = preg_replace($imageMatcher, '<img src="$1" alt="Image" class="comment_image" />', $text);
         $text = preg_replace($greentextMatcher, '<span style="color:#80FF00">$1</span>', $text);
+        $text = preg_replace($clickableTimestampMatcher, '<a class="comment_clickable_timestamp" href="#">$1</a>', $text);
         $text = preg_replace($newlineMatcher, '$1<br>', $text);
         if(preg_match_all($nameMatcher, $text, $users) > 0) {
             foreach ($users[1] as $user) {

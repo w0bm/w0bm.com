@@ -147,6 +147,21 @@ if(video !== null) {
     canvas.parentNode.removeChild(canvas);
 }
 
+function commentClickableTimestamp(e) {
+    e.preventDefault();
+    var match = $(e.target).text().match(/(\d{1,2}):(\d{2})/);
+    if(match) {
+        var seek = parseInt(match[1]) * 60 + parseInt(match[2]);
+        if(seek <= player.duration()) player.currentTime(seek);
+    }
+}
+
+
+$(function() {
+    $('.comment_clickable_timestamp').on('click', commentClickableTimestamp);
+});
+
+
 (function ($) {
     $.ajaxSetup({
         headers: {
@@ -166,6 +181,7 @@ if(video !== null) {
             var comment = $(data).appendTo('.commentwrapper').find('time.timeago');
             comment.timeago();
             comment.tooltip();
+            comment.closest('.panel-footer').siblings('.panel-body').find('.comment_clickable_timestamp').on('click', commentClickableTimestamp);
             var textarea = commentform.find('textarea').val('');
             textarea.blur();
         }).fail(function(data){
@@ -881,7 +897,7 @@ $(function() {
     }
     function createPreview(file) {
         $('#dragndrop-link').removeAttr('href').off('click');
-        $('#dragndrop-text').html('<video id="video_preview" src="' + URL.createObjectURL(file) + '" autoplay controls loop></video><br><span class="upload-info">' + file.name + ' &mdash; ' + humanFileSize(file.size) + ' &mdash; <a id="dragndrop-clear" class="fa fa-times" href="#"></a></span><br><div class="progress progress-striped" style="display: none;"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span class="upload-info sr-only">0%</span></div></div><span class="upload-info"><span id="upload-stats" style="display: none;"></span></span>');
+        $('#dragndrop-text').html('<video id="video_preview" src="' + URL.createObjectURL(file) + '" autoplay controls loop></video><br><span class="upload-info">' + file.name + ' &mdash; ' + humanFileSize(file.size) + ' &mdash; <a id="dragndrop-clear" class="fa fa-times" href="#"></a></span><br><div class="progress progress-striped" style="display: none; margin-left: 10px; margin-right: 10px;"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span class="upload-info sr-only">0%</span></div></div><span class="upload-info"><span id="upload-stats" style="display: none;"></span></span>');
         $('#video_preview').prop('volume', 0);
         $('#dragndrop-clear').on('click', function(e) {
             e.preventDefault();
