@@ -77,25 +77,6 @@ class Comment extends Model
         return static::simplemd(e($this->content));
     }
 
-    public static function isPicture($url) {
-        $pictypes = [
-            'jpg',
-            'png',
-            'gif',
-            'webp',
-            'bmp'
-        ];
-
-        $regex = "/^.+\.(.+)$/i";
-        
-        $type = [];
-
-        if(preg_match($regex, $url, $type) > 0) {
-            return in_array($type[1], $pictypes);
-        }
-        return false;
-    }
-
     public function getMentioned() {
         $text = $this->content;
         $nameMatcher = '/@(\w+)/i';
