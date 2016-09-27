@@ -32,7 +32,7 @@
    <li>*gg* will become: <strong>gg</strong></li>
 </ul>
 <h4>Allowed sources for image parsing in the comment section</h4>
-<p><code>Filetypes: [jpg,png,gif,webp] - Only secure connections allowed</code></p>
+<p><code>Filetypes: [{{ join(',', $comment['allowedImageFileExtensions']) }}] - Only secure connections allowed</code></p>
 <ul>
   @foreach($comment['allowedHosters'] as $hoster)
     <li>https://{{$hoster}}/</li>

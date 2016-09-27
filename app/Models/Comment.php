@@ -54,6 +54,7 @@ class Comment extends Model
         $deutschlandMatcher = '/!(.+)!/';
         $imageMatcher = '/(\<a href=\"(https:\/\/('.join('|',$commentcfg["allowedHosters"]).').*(png|gif|jpg|webp))\" target=\"_blank\" rel=\"extern\"\>.*\<\/a\>)/i';
         
+        $imageMatcher = '/(?:\<a href=\"(https:\/\/(?:'.join('|',$commentcfg["allowedHosters"]).').*(?:'.join('|',$commentcfg["allowedImageFileExtensions"]).'))\" target=\"_blank\" rel=\"extern\">.*<\/a>)/i';
         $text = preg_replace($boldMatcher, '<strong>$1</strong>', $text);
         $text = preg_replace($krebsCSSmatcher, '<span class="anim">$1</span>', $text);
         $text = preg_replace($deutschlandMatcher, '<span class="reich">$1</span>', $text);
