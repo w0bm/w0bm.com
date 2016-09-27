@@ -16,7 +16,7 @@
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.19">
+    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.20">
 <!-- Piwik -->
 <script type="text/javascript">
   var _paq = _paq || [];
@@ -62,6 +62,6 @@
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/handlebars.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
-<script src="/js/w0bmscript.js?v=1.1.2"></script>
+<script src="/js/w0bmscript.js?v=1.1.3"></script>
 </body>
 </html>
