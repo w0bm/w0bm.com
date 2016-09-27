@@ -96,7 +96,7 @@ class Comment extends Model
 
     public function answered() {
         $text = $this->content;
-        $regex = '/^(\^+)/m';
+        $regex = '/^(?:%|!|\*)*(\^+)/m';
         $answers = [];
         if(preg_match_all($regex, $text, $answered) > 0) {
             foreach($answered[0] as $a) {
