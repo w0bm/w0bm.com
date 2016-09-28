@@ -149,6 +149,7 @@ if(video !== null) {
 
 function commentClickableTimestamp(e) {
     e.preventDefault();
+    if(!player) return;
     var match = $(e.target).text().match(/(\d{1,2}):(\d{2})/);
     if(match) {
         var seek = parseInt(match[1]) * 60 + parseInt(match[2]);
