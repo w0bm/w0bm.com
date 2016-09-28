@@ -41,25 +41,28 @@ class Comment extends Model
 
     public static function simplemd($text) {
         $commentcfg = config('comments');
+
         $nameMatcher = '/@(\w+)/i';
         $internUrlMatcher = '/https?:\/\/(?:www\.)?w0bm\.com(\S+)/i';
         $externUrlMatcher = '/(https?:\/\/(?!(?:www\.)?w0bm\.com)\S+\.\S+)/i';
-        $boldMather = '/\*(.+)\*/';
-        $italicMathcer = '/_(.+)_/';
+        $boldMatcher = '/\*(.+)\*/';
+        $italicMatcher = '/_(.+)_/';
         $delMatcher = '/-(.+)-/';
         $newlineMatcher = '/(^.*$)/m';
         $greentextMatcher = '/(^&gt;.*$)/m';
-	$krebsCSSmatcher = '/%(.+)%/';
-	$DeutschlandMatcher = '/!(.+)!/';
-        $imageMatcher = '/(\<a href=\"(https:\/\/('.join('|',$commentcfg["allowedHosters"]).').*(png|gif|jpg|webp))\" target=\"_blank\" rel=\"extern\"\>.*\<\/a\>)/i';
-        
-        $text = preg_replace($boldMather, '<strong>$1</strong>', $text);
+        $krebsCSSmatcher = '/%(.+)%/';
+        $deutschlandMatcher = '/!(.+)!/';
+        $clickableTimestampMatcher = '/(?<=\s|^)([0-5]?\d:[0-5]\d)(?=\s|$)/m';
+        $imageMatcher = '/(?:\<a href=\"(https:\/\/(?:'.join('|',$commentcfg["allowedHosters"]).').*(?:'.join('|',$commentcfg["allowedImageFileExtensions"]).'))\" target=\"_blank\" rel=\"extern\">.*<\/a>)/i';
+
+        $text = preg_replace($boldMatcher, '<strong>$1</strong>', $text);
         $text = preg_replace($krebsCSSmatcher, '<span class="anim">$1</span>', $text);
-	$text = preg_replace($DeutschlandMatcher, '<span class="reich">$1</span>', $text);
+        $text = preg_replace($deutschlandMatcher, '<span class="reich">$1</span>', $text);
         $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
         $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
-        $text = preg_replace($imageMatcher, '<img src="$2" alt="Image" class="comment_image" />', $text);
+        $text = preg_replace($imageMatcher, '<img src="$1" alt="Image" class="comment_image" />', $text);
         $text = preg_replace($greentextMatcher, '<span style="color:#80FF00">$1</span>', $text);
+        $text = preg_replace($clickableTimestampMatcher, '<a class="comment_clickable_timestamp" href="#">$1</a>', $text);
         $text = preg_replace($newlineMatcher, '$1<br>', $text);
         if(preg_match_all($nameMatcher, $text, $users) > 0) {
             foreach ($users[1] as $user) {
@@ -74,25 +77,6 @@ class Comment extends Model
 
     public function getRenderedViewAttribute() {
         return static::simplemd(e($this->content));
-    }
-
-    public static function isPicture($url) {
-        $pictypes = [
-            'jpg',
-            'png',
-            'gif',
-            'webp',
-            'bmp'
-        ];
-
-        $regex = "/^.+\.(.+)$/i";
-        
-        $type = [];
-
-        if(preg_match($regex, $url, $type) > 0) {
-            return in_array($type[1], $pictypes);
-        }
-        return false;
     }
 
     public function getMentioned() {
@@ -112,7 +96,7 @@ class Comment extends Model
 
     public function answered() {
         $text = $this->content;
-        $regex = '/^(\^+)/m';
+        $regex = '/^(?:%|!|\*)*(\^+)/m';
         $answers = [];
         if(preg_match_all($regex, $text, $answered) > 0) {
             foreach($answered[0] as $a) {

@@ -773,7 +773,7 @@ select.form-control, input.form-control {
 }
 
 #dragndrop-text > video {
-    width: 70%;
+    width: 90%;
     margin-top: 15px;
 }
 
@@ -820,10 +820,6 @@ select.form-control, input.form-control {
 	color: #F2F5F4;
 	font-size: 18px;
 }
-
-#dragndrop:hover {        
-    border-color: #1fb2b0;
-}                         
 
 #dragndrop-text:hover {
     color: #1fb2b0;

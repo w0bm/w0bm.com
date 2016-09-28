@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700" rel="stylesheet">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link href="/css/video-js.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.19">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.20">
 <!-- Piwik -->
 <script type="text/javascript">
   var _paq = _paq || [];
@@ -61,6 +61,6 @@
 <script src="/js/jquery.timeago.js"></script>
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
-<script src="/js/w0bmscript.js?v=1.1.2"></script>
+<script src="/js/w0bmscript.js?v=1.1.3"></script>
 </body>
 </html>

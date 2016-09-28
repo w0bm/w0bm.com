@@ -8,5 +8,11 @@ return [
     'i.webp.space',
     'a.cuntflaps.me',
     'f0ck.me'
+  ],
+  'allowedImageFileExtensions' => [
+    'jpg',
+    'png',
+    'gif',
+    'webp'
   ]
 ];
