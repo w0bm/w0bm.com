@@ -1,4 +1,3 @@
-<span style="font-weight:bold;">Comment:</span>
 <div class="panel panel-default">
     <div class="panel-body">
         @simplemd($comment->content)
