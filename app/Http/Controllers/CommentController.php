@@ -161,7 +161,7 @@ class CommentController extends Controller
         if(!$request->has('reason'))
             return 'invalid_request';
 
-        $reason = $request->get('reason');
+        $reason = trim($request->get('reason'));
         if($reason == '')
             return 'invalid_request';
 
@@ -188,6 +188,7 @@ class CommentController extends Controller
         $log->type = 'delete';
         $log->target_type = 'comment';
         $log->target_id = $id;
+        $log->reason = $reason;
         $log->save();
 
         return 'success';
@@ -198,7 +199,7 @@ class CommentController extends Controller
         if(!$request->has('reason'))
             return 'invalid_request';
 
-        $reason = $request->get('reason');
+        $reason = trim($request->get('reason'));
         if($reason == '')
             return 'invalid_request';
 
@@ -225,9 +226,10 @@ class CommentController extends Controller
 
         $log = new ModeratorLog();
         $log->user()->associate($user);
-        $log->type = 'delete';
+        $log->type = 'restore';
         $log->target_type = 'comment';
         $log->target_id = $id;
+        $log->reason = $reason;
         $log->save();
 
         return 'success';

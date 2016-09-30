@@ -1102,3 +1102,63 @@ $(function() {
         submitForm($('#interpret').val(), $('#songtitle').val(), $('#imgsource').val(), $('#category').val(), currentFile);
     });
 });
+
+$(function() {
+    $('#delete_video').on('click', function(e) {
+        e.preventDefault();
+        var match = location.href.match(/(\d+)(?!.*\/.)/);
+        if(!match) return;
+        var id = match[1];
+        match = $('.fa-info-circle').siblings('span').children('a[href]').attr('href').match(/user\/(.*)/);
+        if(!match) return;
+        var username = match[1];
+        do {
+            var reason = prompt('Reason for deleting video ' + id + ' by ' + username);
+            if(reason == null)
+                return;
+        } while(reason == '');
+        $.ajax({
+            url: '/api/video/' + id + '/delete',
+            method: 'POST',
+            data: { reason: reason },
+            success: function(cb) {
+                if(!cb || !cb.error) {
+                    flash('error', 'Unknown exception');
+                    return;
+                }
+                switch(cb.error) {
+                    case 'null':
+                        flash('success', 'Video deleted. Redirect in 3 seconds...');
+                        setTimeout(function() {
+                            location.href = '/';
+                        }, 3000);
+                        break;
+                    case 'invalid_request':
+                        flash('error', 'Invalid request');
+                        break;
+                    case 'not_logged_in':
+                        flash('error', 'Not logged in');
+                        break;
+                    case 'insufficient_permissions':
+                        flash('error', 'Insufficient permissions');
+                        break;
+                    case 'video_not_found':
+                        flash('error', 'Video not found. Perhaps it has already been deleted');
+                        break;
+                    default:
+                        flash('error', 'Unknown exception');
+                }
+                if(cb.warnings.length) {
+                    cb.warnings.forEach(function(entry) {
+                        flash('warning', entry);
+                    });
+                }
+            },
+            error: function(jqxhr, status, error) {
+                flash('error', 'Unknwon exception');
+                flash('error', status);
+                flash('error', error);
+            }
+        });
+    });
+});

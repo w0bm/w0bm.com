@@ -80,12 +80,16 @@ Route::group(['prefix' => 'api'], function() {
         Route::post('{username}/ban', 'UserController@ban');
     });
 
+    // /api/video
+    Route::group(['prefix' => 'video'], function() {
+        Route::post('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');
+    });
+
     Route::post('upload', 'VideoController@store');
 });
 
 Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');
 Route::get('{id}/fav', 'VideoController@favorite')->where('id', '[0-9]+');
-Route::get('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');
 Route::post('{id}', 'CommentController@store')->where('id', '[0-9]+');
 
 Route::get('{shortname}', 'CategoryController@showVideo')->where('shortname', '[a-z][a-z0-9]+');
