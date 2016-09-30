@@ -26,8 +26,7 @@ class AddReadFieldToMessagesTable extends Migration
     public function down()
     {
         Schema::table('messages', function(Blueprint $table) {
-            $table->dropColumn('read');
-            $table->dropColumn('subject');
+            $table->dropColumn(['read', 'subject']);
         });
     }
 }

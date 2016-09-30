@@ -26,8 +26,7 @@ class AddBanningToUserTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('banreason')->nullable();
-            $table->dropColumn('banend')->nullable();
+            $table->dropColumn(['banreason', 'banend']);
         });
     }
 }
