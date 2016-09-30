@@ -181,6 +181,13 @@ class VideoController extends Controller
 
         $v->save();
 
+        $log = new ModeratorLog();
+        $log->user()->associate($user);
+        $log->type = 'edit';
+        $log->target_type = 'video';
+        $log->target_id = $v->id;
+        $log->save();
+
         return $v;
     }
 
