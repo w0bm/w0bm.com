@@ -13,6 +13,13 @@ window.requestAnimFrame = (function(){
             || function(callback) { window.setTimeout(callback, 1000 / 60);};
 })();
 
+Array.prototype.average = function() {
+    var sum = 0;
+    for(var i = 0; i < this.length; i++)
+        sum += this[i];
+    return sum / this.length;
+};
+
 var video = document.getElementById('video');
 if(video !== null) {
     var player = videojs(video, {
@@ -722,7 +729,7 @@ function deleteComment(self) {
             return;
     } while(reason == '');
     $.ajax({
-        url: '/api/comments/' + comment.data('id') + '/delete',
+        url: '/api/comments/' + id + '/delete',
         method: 'POST',
         data: { reason: reason },
         success: function(retval) {
@@ -755,7 +762,7 @@ function restoreComment(self) {
             return;
     } while(reason == '');
     $.ajax({
-        url: '/api/comments/' + comment.data('id') + '/restore',
+        url: '/api/comments/' + id + '/restore',
         method: 'POST',
         data: { reason: reason },
         success: function(retval) {
@@ -909,8 +916,7 @@ $(function() {
             restoreDefaultPreview();
             if(jqXHR && jqXHR.statusText != "abort") {
                 jqXHR.abort();
-                currentFile = null;
-                restoreDefaultPreview();
+                jqXHR = null;
             }
         });
     }
@@ -938,8 +944,8 @@ $(function() {
             for(i = lastSpeedIndex; i < length; i++)
                 avgSpeed += speed[i];
             avgSpeed = avgSpeed / (i - lastSpeedIndex);
-            lastSpeedIndex = lastSpeedIndex + (i - lastSpeedIndex);
-            $('#upload-stats').text('Speed: ' + humanFileSize(Math.floor(avgSpeed)) + '/s  ' + ' Uploaded: ' + humanFileSize(lastState.loaded));
+            lastSpeedIndex = i;
+            $('#upload-stats').text('Speed: ' + humanFileSize(Math.floor(avgSpeed)) + '/s Uploaded: ' + humanFileSize(lastState.loaded));
         }
         var statsInterval;
         var formData = new FormData();
@@ -999,9 +1005,10 @@ $(function() {
                     $('.progress-bar-custom').css('background-color', 'red');
                     $('.progress-bar-custom').text('Upload failed');
                 }
-                $('#upload-stats').html($('#upload-stats').html().replace(/Uploaded: .*/, 'Uploaded: ' + humanFileSize(currentFile.size)));
+                $('#upload-stats').text('Speed: ' + humanFileSize(Math.floor(speed.average())) + '/s Uploaded: ' + humanFileSize(currentFile.size));
             },
             error: function(jqXHR, status, error) {
+                jqXHR = null;
                 if(error == 'abort') {
                     flash('info', 'Upload aborted');
                     return;
