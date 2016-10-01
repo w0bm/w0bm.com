@@ -63,20 +63,20 @@ class CommentController extends Controller
 
         $sent = [];
         foreach($com->getMentioned() as $mentioned) {
-            Message::send($user->id, $mentioned->id, $user->username . ' mentioned you in a comment', view('messages.commentmention', ['video' => $video, 'user' => $user]));
+            Message::send($user->id, $mentioned->id, $user->username . ' mentioned you in a comment', view('messages.commentmention', ['video' => $video, 'user' => $user, 'comment' => $com]));
             $sent[] = $mentioned;
         }
 
         foreach($com->answered() as $answered) {
             if(array_search($answered, $sent) !== false)
                 continue;
-            Message::send($user->id, $answered->id, $user->username . ' answered on your comment', view('messages.commentanswer', ['video' => $video, 'user' => $user]));
+            Message::send($user->id, $answered->id, $user->username . ' answered on your comment', view('messages.commentanswer', ['video' => $video, 'user' => $user, 'comment' => $com]));
             $sent[] = $answered;
         }
 
         if($user->id != $video->user->id)
             if(array_search($video->user, $sent) === false)
-                Message::send($user->id, $video->user->id, $user->username . ' commented on your video', view('messages.videocomment', ['video' => $video, 'user' => $user]));
+                Message::send($user->id, $video->user->id, $user->username . ' commented on your video', view('messages.videocomment', ['video' => $video, 'user' => $user, 'comment' => $com]));
 
         return $xhr ? view('partials.comment', ['comment' => $com, 'mod' => $user->can('delete_comment')]) : redirect()->back()->with('success', 'Comment successfully saved');
     }
@@ -161,7 +161,7 @@ class CommentController extends Controller
         if(!$request->has('reason'))
             return 'invalid_request';
 
-        $reason = $request->get('reason');
+        $reason = trim($request->get('reason'));
         if($reason == '')
             return 'invalid_request';
 
@@ -181,13 +181,14 @@ class CommentController extends Controller
         Comment::destroy($id);
 
         if($user->id != $receiver->id)
-            Message::send($user->id, $receiver->id, $user->username . ' deleted your comment', view('messages.moderation.commentdelete', ['video' => $video, 'user' => $user, 'comment' => $comment, 'reason' => $reason]));
+            Message::send(1, $receiver->id, 'A moderator deleted your comment', view('messages.moderation.commentdelete', ['video' => $video, 'comment' => $comment, 'reason' => $reason]));
 
         $log = new ModeratorLog();
         $log->user()->associate($user);
         $log->type = 'delete';
         $log->target_type = 'comment';
         $log->target_id = $id;
+        $log->reason = $reason;
         $log->save();
 
         return 'success';
@@ -198,7 +199,7 @@ class CommentController extends Controller
         if(!$request->has('reason'))
             return 'invalid_request';
 
-        $reason = $request->get('reason');
+        $reason = trim($request->get('reason'));
         if($reason == '')
             return 'invalid_request';
 
@@ -221,13 +222,14 @@ class CommentController extends Controller
         $comment->restore();
 
         if($user->id != $receiver->id)
-            Message::send($user->id, $receiver->id, $user->username . ' restored your comment', view('messages.moderation.commentrestore', ['video' => $video, 'user' => $user, 'comment' => $comment, 'reason' => $reason]));
+            Message::send(1, $receiver->id, 'A moderator restored your comment', view('messages.moderation.commentrestore', ['video' => $video, 'comment' => $comment, 'reason' => $reason]));
 
         $log = new ModeratorLog();
         $log->user()->associate($user);
-        $log->type = 'delete';
+        $log->type = 'restore';
         $log->target_type = 'comment';
         $log->target_id = $id;
+        $log->reason = $reason;
         $log->save();
 
         return 'success';

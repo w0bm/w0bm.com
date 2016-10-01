@@ -10,15 +10,15 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="interpretedit">Interpret</label>
-                            <input class="form-control" type="text" name="interpret" id="interpretedit" value="{{ $video->interpret or ''}}" placeholder="Interpret">
+                            <label for="interpretedit">Artist</label>
+                            <input class="form-control" type="text" name="interpret" id="interpretedit" value="{{ $video->interpret or ''}}" placeholder="Artist">
                         </div>
                         <div class="form-group">
                             <label for="songtitleedit">Songtitle</label>
                             <input class="form-control" type="text" name="songtitle" id="songtitleedit" value="{{ $video->songtitle or ''}}" placeholder="Songtitle">
                         </div>
                         <div class="form-group">
-                            <label for="imgsourceedit">Image source</label>
+                            <label for="imgsourceedit">Video Source</label>
                             <input class="form-control" type="text" name="imgsource" id="imgsourceedit" value="{{ $video->imgsource or ''}}" placeholder="Image source">
     
                         </div>

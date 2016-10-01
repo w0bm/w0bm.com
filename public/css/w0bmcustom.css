@@ -307,7 +307,7 @@ video:before {
 }
 
 .comment_image {
-  max-width: 50%;
+  max-width: 200px;
   max-height: 35%;
 }
 
@@ -505,12 +505,16 @@ div.message > div.panel-heading > span {
 }
 
 .rain {
-	height:32px;
-	width: 32px;
 	-webkit-transform: rotate(35deg);
 	transform: rotate(35deg);
 }
 
+img.icon[src="/images/icons/watermelon.png"] {
+	-webkit-transform: rotate(35deg);
+	transform: rotate(35deg);
+	margin-left: -3px;
+	margin-right: 1px;
+}
 
 .rainsmall {
         height:16px;
@@ -775,7 +779,7 @@ select.form-control, input.form-control {
 }
 
 #dragndrop-text > video {
-    width: 70%;
+    width: 90%;
     margin-top: 15px;
 }
 
@@ -809,4 +813,57 @@ select.form-control, input.form-control {
 .row-upload > [class*="col-"] {
     display: flex;
     flex-direction: column;
+}
+
+.motd {
+	font-family: 'UnifrakturCook', cursive;
+	color: #F2F5F4;
+	text-align:center;
+}
+
+.reich {
+	font-family: 'UnifrakturCook', cursive;
+	color: #F2F5F4;
+	font-size: 18px;
+}
+
+#dragndrop-text:hover {
+    color: #1fb2b0;
+}
+
+.islam {
+	background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1235px-Flag_of_the_United_States.svg.png);
+    background-repeat: repeat-x;
+    background-size: contain;
+}
+
+.911 {
+	text-shadow: 0 1px #808d93, -1px 0 #cdd2d5, -1px 2px #808d93, -2px 1px #cdd2d5, -2px 3px #808d93, -3px 2px #cdd2d5, -3px 4px #808d93, -4px 3px #cdd2d5, -4px 5px #808d93, -5px 4px #cdd2d5, -5px 6px #808d93, -6px 5px #cdd2d5, -6px 7px #808d93, -7px 6px #cdd2d5, -7px 8px #808d93, -8px 7px #cdd2d5;
+}
+
+img.icon {
+    max-height: 1.1em;
+    max-width: 1.1em;
+    vertical-align: middle;
+    margin-bottom: 0.2em;
+}
+
+.progress-bar-success {
+   background: #0AA400;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #9b9999!important;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: rgba(85, 85, 85, 0.96)!important;
+    width: 10px;
+    max-height: 10px!important;
+}
+::-webkit-scrollbar-thumb {
+   width: 15px;
+   background: #9b9999!important;
 }

@@ -14,8 +14,24 @@
       type="image/ico"
       href="favicon.ico" />
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.13">
+    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.20">
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//stats.w0bm.com/";
+    _paq.push(['setTrackerUrl', u+'js']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//stats.w0bm.com/js?idsite=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
 </head>
 <body>
 @include('partials.handlebars')
@@ -46,6 +62,6 @@
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/handlebars.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
-<script src="/js/w0bmscript.js?v=1.1.0"></script>
+<script src="/js/w0bmscript.js?v=1.1.3"></script>
 </body>
 </html>

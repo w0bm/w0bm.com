@@ -13,6 +13,13 @@ window.requestAnimFrame = (function(){
             || function(callback) { window.setTimeout(callback, 1000 / 60);};
 })();
 
+Array.prototype.average = function() {
+    var sum = 0;
+    for(var i = 0; i < this.length; i++)
+        sum += this[i];
+    return sum / this.length;
+};
+
 var video = document.getElementById('video');
 if(video !== null) {
     var player = videojs(video, {
@@ -94,8 +101,8 @@ if(video !== null) {
     }
 
     //Key Bindings
-    $('html').on('keydown', function(e) {
-        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i))
+    $(document).on('keydown', function(e) {
+        if(e.defaultPrevented || e.target.nodeName.match(/\b(input|textarea)\b/i) || e.ctrlKey || e.altKey || e.shiftKey)
             return;
 
         //arrow keys
@@ -122,7 +129,7 @@ if(video !== null) {
         else if(e.keyCode == 70) //add fav
             $('#fav').get(0).click();
 
-        else if(e.keyCode == 67 && !e.ctrlKey) //toggle comments
+        else if(e.keyCode == 67) //toggle comments
             $(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
 
         else if(e.keyCode == 87 || e.keyCode == 38)
@@ -130,16 +137,37 @@ if(video !== null) {
 
         else if(e.keyCode == 83 || e.keyCode == 40)
             player.volume(player.volume() - 0.1);
+
+        else if(e.keyCode == 32)
+            player.paused() ? player.play() : player.pause();
     });
 
     $('.wrapper > div:not(.aside)').on('DOMMouseScroll mousewheel', function(e) {
+        if(e.ctrlKey || e.altKey || e.shiftKey)
+            return;
+        e.preventDefault();
         e.deltaY < 0 ? getNext() : getPrev();
-        return false;
     });
 } else {
     var canvas = document.getElementById('bg');
     canvas.parentNode.removeChild(canvas);
 }
+
+function commentClickableTimestamp(e) {
+    e.preventDefault();
+    if(!player) return;
+    var match = $(e.target).text().match(/(\d{1,2}):(\d{2})/);
+    if(match) {
+        var seek = parseInt(match[1]) * 60 + parseInt(match[2]);
+        if(seek <= player.duration()) player.currentTime(seek);
+    }
+}
+
+
+$(function() {
+    $('.comment_clickable_timestamp').on('click', commentClickableTimestamp);
+});
+
 
 (function ($) {
     $.ajaxSetup({
@@ -160,6 +188,7 @@ if(video !== null) {
             var comment = $(data).appendTo('.commentwrapper').find('time.timeago');
             comment.timeago();
             comment.tooltip();
+            comment.closest('.panel-footer').siblings('.panel-body').find('.comment_clickable_timestamp').on('click', commentClickableTimestamp);
             var textarea = commentform.find('textarea').val('');
             textarea.blur();
         }).fail(function(data){
@@ -715,7 +744,7 @@ function deleteComment(self) {
             return;
     } while(reason == '');
     $.ajax({
-        url: '/api/comments/' + comment.data('id') + '/delete',
+        url: '/api/comments/' + id + '/delete',
         method: 'POST',
         data: { reason: reason },
         success: function(retval) {
@@ -748,7 +777,7 @@ function restoreComment(self) {
             return;
     } while(reason == '');
     $.ajax({
-        url: '/api/comments/' + comment.data('id') + '/restore',
+        url: '/api/comments/' + id + '/restore',
         method: 'POST',
         data: { reason: reason },
         success: function(retval) {
@@ -891,7 +920,7 @@ $(function() {
     }
     function createPreview(file) {
         $('#dragndrop-link').removeAttr('href').off('click');
-        $('#dragndrop-text').html('<video id="video_preview" src="' + URL.createObjectURL(file) + '" autoplay controls loop></video><br><span class="upload-info">' + file.name + ' &mdash; ' + humanFileSize(file.size) + ' &mdash; <a id="dragndrop-clear" class="fa fa-times" href="#"></a></span><br><div class="progress progress-striped" style="display: none;"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span class="upload-info sr-only">0%</span></div></div><span class="upload-info"><span id="upload-stats" style="display: none;"></span></span>');
+        $('#dragndrop-text').html('<video id="video_preview" src="' + URL.createObjectURL(file) + '" autoplay controls loop></video><br><span class="upload-info">' + file.name + ' &mdash; ' + humanFileSize(file.size) + ' &mdash; <a id="dragndrop-clear" class="fa fa-times" href="#"></a></span><br><div class="progress progress-striped" style="display: none; margin-left: 10px; margin-right: 10px;"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span class="upload-info sr-only">0%</span></div></div><span class="upload-info"><span id="upload-stats" style="display: none;"></span></span>');
         $('#video_preview').prop('volume', 0);
         $('#dragndrop-clear').on('click', function(e) {
             e.preventDefault();
@@ -902,15 +931,14 @@ $(function() {
             restoreDefaultPreview();
             if(jqXHR && jqXHR.statusText != "abort") {
                 jqXHR.abort();
-                currentFile = null;
-                restoreDefaultPreview();
+                jqXHR = null;
             }
         });
     }
     function checkFile(file) {
         var tooBig = file.size > 31457280;
         var invalid = file.type !== "video/webm";
-        if(tooBig || invalid) {
+        if((tooBig && $('#dragndrop').data('uploadlimit')) || invalid) {
             flash('error', invalid ? 'Invalid file' : 'File too big. Max 30MB');
             applyDefaultDragNDropCSS();
             return false;
@@ -931,8 +959,8 @@ $(function() {
             for(i = lastSpeedIndex; i < length; i++)
                 avgSpeed += speed[i];
             avgSpeed = avgSpeed / (i - lastSpeedIndex);
-            lastSpeedIndex = lastSpeedIndex + (i - lastSpeedIndex);
-            $('#upload-stats').text('Speed: ' + humanFileSize(Math.floor(avgSpeed)) + '/s  ' + ' Uploaded: ' + humanFileSize(lastState.loaded));
+            lastSpeedIndex = i;
+            $('#upload-stats').text('Speed: ' + humanFileSize(Math.floor(avgSpeed)) + '/s Uploaded: ' + humanFileSize(lastState.loaded));
         }
         var statsInterval;
         var formData = new FormData();
@@ -992,9 +1020,10 @@ $(function() {
                     $('.progress-bar-custom').css('background-color', 'red');
                     $('.progress-bar-custom').text('Upload failed');
                 }
-                $('#upload-stats').html($('#upload-stats').html().replace(/Uploaded: .*/, 'Uploaded: ' + humanFileSize(currentFile.size)));
+                $('#upload-stats').text('Speed: ' + humanFileSize(Math.floor(speed.average())) + '/s Uploaded: ' + humanFileSize(currentFile.size));
             },
             error: function(jqXHR, status, error) {
+                jqXHR = null;
                 if(error == 'abort') {
                     flash('info', 'Upload aborted');
                     return;
@@ -1093,5 +1122,65 @@ $(function() {
             return;
         }
         submitForm($('#interpret').val(), $('#songtitle').val(), $('#imgsource').val(), $('#category').val(), currentFile);
+    });
+});
+
+$(function() {
+    $('#delete_video').on('click', function(e) {
+        e.preventDefault();
+        var match = location.href.match(/(\d+)(?!.*\/.)/);
+        if(!match) return;
+        var id = match[1];
+        match = $('.fa-info-circle').siblings('span').children('a[href]').attr('href').match(/user\/(.*)/);
+        if(!match) return;
+        var username = match[1];
+        do {
+            var reason = prompt('Reason for deleting video ' + id + ' by ' + username);
+            if(reason == null)
+                return;
+        } while(reason == '');
+        $.ajax({
+            url: '/api/video/' + id + '/delete',
+            method: 'POST',
+            data: { reason: reason },
+            success: function(cb) {
+                if(!cb || !cb.error) {
+                    flash('error', 'Unknown exception');
+                    return;
+                }
+                switch(cb.error) {
+                    case 'null':
+                        flash('success', 'Video deleted. Redirect in 3 seconds...');
+                        setTimeout(function() {
+                            location.href = '/';
+                        }, 3000);
+                        break;
+                    case 'invalid_request':
+                        flash('error', 'Invalid request');
+                        break;
+                    case 'not_logged_in':
+                        flash('error', 'Not logged in');
+                        break;
+                    case 'insufficient_permissions':
+                        flash('error', 'Insufficient permissions');
+                        break;
+                    case 'video_not_found':
+                        flash('error', 'Video not found. Perhaps it has already been deleted');
+                        break;
+                    default:
+                        flash('error', 'Unknown exception');
+                }
+                if(cb.warnings.length) {
+                    cb.warnings.forEach(function(entry) {
+                        flash('warning', entry);
+                    });
+                }
+            },
+            error: function(jqxhr, status, error) {
+                flash('error', 'Unknwon exception');
+                flash('error', status);
+                flash('error', error);
+            }
+        });
     });
 });

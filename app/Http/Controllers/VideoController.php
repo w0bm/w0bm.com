@@ -60,7 +60,8 @@ class VideoController extends Controller
      */
     public function create()
     {
-       return view('upload');
+        $user = auth()->check() ? auth()->user() : null;
+        return view('upload', ['user' => $user]);
     }
 
     /**
@@ -163,14 +164,14 @@ class VideoController extends Controller
     public function update(Request $request, $id) {
         if(!auth()->check())
             return response('Not logged in', 403);
-        
+        $user = auth()->user();
 
         if(!$request->ajax())
             return response('Invalid request', 400);
 
         $v = Video::findOrFail($id);
         
-        if(!auth()->user()->can('edit_video') && auth()->user()->id != $v->user_id)
+        if(!$user->can('edit_video') && $user->id != $v->user_id)
             return response('Not enough permissions', 403);
         
         if($request->has('interpret'))
@@ -185,6 +186,13 @@ class VideoController extends Controller
 
         $v->save();
 
+        $log = new ModeratorLog();
+        $log->user()->associate($user);
+        $log->type = 'edit';
+        $log->target_type = 'video';
+        $log->target_id = $v->id;
+        $log->save();
+
         return $v;
     }
 
@@ -194,33 +202,45 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $user = auth()->check() ? auth()->user() : null;
 
-        if(is_null($user)) return redirect()->back()->with('error', 'Not logged in');
+        if(is_null($user)) return JsonResponse::create(['error' => 'not_logged_in']);
+
+        if(!$request->has('reason') || trim($request->get('reason')) == '') return JsonResponse::create(['error', 'invalid_request']);
+
+        $reason = trim($request->get('reason'));
 
         if($user->can('delete_video')) {
+            $warnings = [];
             $vid = Video::find($id);
+            if(!$vid)
+                return JsonResponse(['error' => 'video_not_found']);
+
             foreach($vid->comments as $comment) {
                 $comment->delete(); // delete associated comments
             }
             $vid->faved()->detach();
             if(!\File::move(public_path() . '/b/' . $vid->file, storage_path() . '/deleted/' . $vid->file))
-                \Session::flash('warning', 'Could not move file');
+                $warnings[] = 'Could not move file';
 
             $vid->delete();
+            $receiver = $vid->user;
+            if($user->id != $receiver->id)
+                Message::send(1, $receiver->id, 'A moderator deleted your video', view('messages.moderation.videodelete', ['video' => $vid, 'reason' => $reason, 'videoinfo' => ['artist' => $vid->interpret, 'songtitle' => $vid->songtitle, 'video_source' => $vid->imgsource, 'category' => $vid->category->name]]));
 
             $log = new ModeratorLog();
             $log->user()->associate($user);
             $log->type = 'delete';
             $log->target_type = 'video';
             $log->target_id = $id;
+            $log->reason = $reason;
             $log->save();
 
-            return redirect('/')->with('success', 'Video deleted');
+            return JsonResponse::create(['error' => 'null', 'warnings' => $warnings]);
         }
-        return redirect()->back()->with('error', 'Insufficient permissions');
+        return JsonResponse::create(['error' => 'insufficient_permissions']);
     }
 
     public function favorite($id) {
