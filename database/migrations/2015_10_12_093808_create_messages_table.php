@@ -29,6 +29,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        \Illuminate\Support\Facades\Schema::dropTable('messages');
+        \Illuminate\Support\Facades\Schema::drop('messages');
     }
 }
