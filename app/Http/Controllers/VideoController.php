@@ -22,12 +22,13 @@ class VideoController extends Controller
      */
     public function index(Request $request) {
         if($request->has('q')){
-
+            $needle = trim($request->input('q'));
             return view('songindex', [
                 // TODO: add ordering
-                'videos' => Video::withAllTags($needle = trim($request->input('q')))
+                'videos' => Video::withAllTags($needle)
                     ->paginate(20)->appends(['q' => $needle]),
-                'categories' => Category::all()
+                'categories' => Category::all(),
+                'q' => $needle
             ]);
 
             // $pdo = \DB::connection()->getPdo();
