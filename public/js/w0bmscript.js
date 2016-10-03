@@ -198,10 +198,25 @@ $(function() {
     });
     
     var tagsinput = $('#tags'),
-        submit = $('#submittags');
+        submit = $('#submittags'),
+        tagdisplay = $('#tag-display');
+    tagsinput.on('beforeItemAdd', function (e) {
+        var tags = tagdisplay.children().children();
+        tagdisplay.children().children().each((i, entry) => {
+            if(entry.innerText.toLowerCase() === e.item.toLowerCase()) {
+                e.cancel = true;
+                flash('info', 'Tag already exists');
+                return;
+            }
+        });
+    });
     submit.on('click touchdown', function (e) {
         e.preventDefault();
-        $.ajax({
+        if(!tagsinput.tagsinput('items').length) {
+            flash('info', 'No tags specified');
+            return;
+        }
+        jqXHR = $.ajax({
             type: 'POST',
             url: submit.attr('href'),
             data: tagsinput.serialize()
@@ -212,11 +227,13 @@ $(function() {
             }
             flash('success', 'Tags saved successfully');
             if(data.tags && typeof data.tags === "object") {
-                $('#tag-display > a').remove();
+                var tags = [];
                 data.tags.forEach(function (tag) {
-                    $('#tag-display').append('<a href="/songindex?q=' + tag.normalized + '"><span class="label label-default">' + tag.name + '</span></a>');
-                    $('#tag-display').append(' ');
+                    tags.push('<a href="/songindex?q=' + tag.normalized + '"><span class="label label-default">' + tag.name + '</span></a>');
                 });
+                tagdisplay.children('a').remove();
+                tagdisplay.append(tags.join(" "));
+                tagsinput.tagsinput('removeAll');
             }
         }).fail(function (data) {
             flash('error', 'Error saving tags');
