@@ -264,12 +264,11 @@ class VideoController extends Controller
      * @return Video | Bool
      */
     public function tag(Request $request, $id) {
-        if(!$request->has('tags')) return response(304, "No tags specified");
+        if(!$request->has('tags')) return response("No tags specified", 304);
 
         $v = Video::findOrFail($id);
-        $v->tag($request->get('tags'));
-
-        return $v->toJson();
+        if(is_null($v)) return response("Video not found", 404);
+        return $v->tag($request->get('tags'));
     }
 
     private function checkFileEncoding($dat) {
