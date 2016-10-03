@@ -40,6 +40,13 @@ use Carbon\Carbon;
  * @method static \Illuminate\Database\Query\Builder|\Toddish\Verify\Models\User unverified()
  * @method static \Illuminate\Database\Query\Builder|\Toddish\Verify\Models\User disabled()
  * @method static \Illuminate\Database\Query\Builder|\Toddish\Verify\Models\User enabled()
+ * @property boolean $background
+ * @property-read \Illuminate\Database\Eloquent\Collection|ModeratorLog[] $moderator_log
+ * @property-read \Illuminate\Database\Eloquent\Collection|Message[] $messagesSent
+ * @property-read \Illuminate\Database\Eloquent\Collection|Message[] $messagesRecv
+ * @property-read \Illuminate\Database\Eloquent\Collection|Video[] $favs
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereBackground($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereCategories($value)
  */
 class User extends VerifyUser
 {

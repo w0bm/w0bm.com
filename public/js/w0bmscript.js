@@ -142,13 +142,12 @@ if(video !== null) {
             player.paused() ? player.play() : player.pause();
     });
 
-    $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
+    $('.wrapper > div:not(.aside)').on('DOMMouseScroll mousewheel', function(e) {
         if(e.ctrlKey || e.altKey || e.shiftKey)
             return;
         e.preventDefault();
         e.deltaY < 0 ? getNext() : getPrev();
     });
-
 } else {
     var canvas = document.getElementById('bg');
     canvas.parentNode.removeChild(canvas);
@@ -195,6 +194,51 @@ $(function() {
         }).fail(function(data){
             flash('error', 'Error saving comment');
             flash('error', data);
+        });
+    });
+    
+    var tagsinput = $('#tags'),
+        submit = $('#submittags'),
+        tagdisplay = $('#tag-display');
+    tagsinput.on('beforeItemAdd', function (e) {
+        var tags = tagdisplay.children().children();
+        tagdisplay.children().children().each((i, entry) => {
+            if(entry.innerText.toLowerCase() === e.item.toLowerCase()) {
+                e.cancel = true;
+                flash('info', 'Tag already exists');
+                return;
+            }
+        });
+    });
+    submit.on('click touchdown', function (e) {
+        e.preventDefault();
+        if(!tagsinput.tagsinput('items').length) {
+            flash('info', 'No tags specified');
+            return;
+        }
+        jqXHR = $.ajax({
+            type: 'POST',
+            url: submit.attr('href'),
+            data: tagsinput.serialize()
+        }).done(function (data) {
+            if(!data) {
+                flash('info', 'No tags specified');
+                return;
+            }
+            flash('success', 'Tags saved successfully');
+            if(data.tags && typeof data.tags === "object") {
+                var tags = [];
+                data.tags.forEach(function (tag) {
+                    tags.push('<a href="/songindex?q=' + tag.normalized + '"><span class="label label-default">' + tag.name + '</span></a>');
+                });
+                tagdisplay.children('a').remove();
+                tagdisplay.append(tags.join(" "));
+                tagsinput.tagsinput('removeAll');
+            }
+        }).fail(function (data) {
+            flash('error', 'Error saving tags');
+            if(data.status === 404 && data.responseText === "Video not found")
+                flash('error', 'Video not found. Perhaps it has been deleted');
         });
     });
 })(jQuery);
@@ -310,7 +354,7 @@ $(function() {
 })(jQuery);
 
 (function ($) {
-    $(".comments").mCustomScrollbar({
+    $(".comments, .tags").mCustomScrollbar({
         axis: 'y',
         theme: 'minimal',
         scrollInertia: 0

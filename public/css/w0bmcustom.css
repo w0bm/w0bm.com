@@ -114,20 +114,30 @@ div.tbody {
     width: 100%;
 }
 
+.tags {
+    height: 100px;
+    width: 350px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    background: rgba(32, 32, 32, 0.6);
+    padding: 0 2px 2px;
+    overflow-y: scroll;
+    //border-right: 0 solid #3F3F3F;
+    //box-shadow: #FFF -20px 0px 20px;
+}
+
 .comments {
-    float: left;
-    height: calc(100% - 50px);
-    height: calc(100vh - 50px);
+    height: calc(100% - 150px); /* -150px due to tag area nav bar */
+    height: calc(100vh - 150px);
     width: 350px;
     background: rgba(32, 32, 32, 0.6);
-    padding: 2px;
-    padding-top: 0px;
+    padding: 0 2px 2px;
     overflow-y: scroll;
-    border-right: 0px solid #3F3F3F;
+    border-right: 0 solid #3F3F3F;
 }
 .comments textarea {
     color: #c8c8c8;
-    background: rgba(90, 88, 88, 0.4) none repeat scroll 0% 0%;
+    background: rgba(90, 88, 88, 0.4) none repeat scroll 0 0;
     height: 2.7em;
     resize: vertical;
     -webkit-transition: height 0.8s;
@@ -153,7 +163,7 @@ a[rel=extern]:after {
  .panel-footer {
  border-bottom-right-radius: 3px;
  border-bottom-left-radius: 3px;
- padding: 0px 0px 8px 15px;
+ padding: 0 0 8px 15px;
  }
 
 th {
@@ -182,11 +192,11 @@ td, th {
 }
 
 code {
-    padding: 0px 0px;
+    padding: 0 0;
     font-size: 90%;
     color: #8b2ada;
     background-color: #161618;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .panel-primary {
@@ -261,7 +271,6 @@ code {
     font-weight: normal;
     text-align: center;
     vertical-align: middle;
-    -ms-touch-action: manipulation;
     touch-action: manipulation;
     cursor: pointer;
     background-image: none;
@@ -270,7 +279,7 @@ code {
     padding: 6px 13px;
     font-size: 12px;
     line-height: 0.7;
-    border-radius: 0px;
+    border-radius: 0;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -376,10 +385,9 @@ video:before {
     font-size: 14px;
     line-height: 1.42857143;
     color: #888888;
-    background-color: #1C1C1D;
-    background-image: none;
+    background: #1C1C1D none;
     border: 1px solid #282828;
-    border-radius: 0px;
+    border-radius: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
@@ -395,28 +403,26 @@ video:before {
     font-weight: normal;
     text-align: center;
     vertical-align: middle;
-    -ms-touch-action: manipulation;
     touch-action: manipulation;
     cursor: pointer;
-    background-image: none;
     border: 1px solid transparent;
     white-space: nowrap;
     padding: 10px 15px;
     font-size: 12px;
     line-height: 0.7;
-    border-radius: 0px;
+    border-radius: 0;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     float: right;
     margin-top: -30px;
-    background-color: #1FB2B0;
+    background: #1FB2B0 none;
 }
 
 div.message > div.panel-heading > h3 {
     font-size: 25px;
-    margin: 0px;
+    margin: 0;
     display: inline;
 }
 
@@ -860,4 +866,24 @@ img.icon {
 ::-webkit-scrollbar-thumb {
    width: 15px;
    background: #9b9999!important;
+}
+
+.bootstrap-tagsinput {
+    color: #c8c8c8;
+    background: rgba(90, 88, 88, 0.4) none repeat scroll 0 0;
+    border: 1px solid #282828;
+    border-radius: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    width: 79%;
+}
+
+#submittags {
+    /*line-height: 0;*/
+    /*font-size: 14px;*/
+}
+
+.tags {
+    box-shadow: -13px 0px 10px 5px #000
 }

@@ -20,24 +20,32 @@ class VideoController extends Controller
      *
      * @return Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         if($request->has('q')){
-            $pdo = \DB::connection()->getPdo();
-            $needle = '%' . trim($request->input('q')) .'%';
+            $needle = trim($request->input('q'));
             return view('songindex', [
-                'videos' => Video::where(function($query) use($needle) {
-                    $query->where('interpret', 'LIKE', $needle)
-                        ->orWhere('songtitle', 'LIKE', $needle)
-                        ->orWhere('imgsource', 'LIKE', $needle);
-                })
-                        //->orderBy('id', 'ASC')
-                        ->orderByRaw("((interpret like " . $pdo->quote($needle) . ") +
-                            (songtitle like " . $pdo->quote($needle) . ") +
-                            (imgsource like " . $pdo->quote($needle) . ")) desc")
-                        ->paginate(20)->appends(['q' => trim($needle, '%')]),
-                'categories' => Category::all()
+                // TODO: add ordering
+                'videos' => Video::withAllTags($needle)
+                    ->paginate(20)->appends(['q' => $needle]),
+                'categories' => Category::all(),
+                'q' => $needle
             ]);
+
+            // $pdo = \DB::connection()->getPdo();
+            // $needle = '%' . trim($request->input('q')) .'%';
+            // return view('songindex', [
+            //     'videos' => Video::where(function($query) use($needle) {
+            //         $query->where('interpret', 'LIKE', $needle)
+            //             ->orWhere('songtitle', 'LIKE', $needle)
+            //             ->orWhere('imgsource', 'LIKE', $needle);
+            //     })
+            //             //->orderBy('id', 'ASC')
+            //             ->orderByRaw("((interpret like " . $pdo->quote($needle) . ") +
+            //                 (songtitle like " . $pdo->quote($needle) . ") +
+            //                 (imgsource like " . $pdo->quote($needle) . ")) desc")
+            //             ->paginate(20)->appends(['q' => trim($needle, '%')]),
+            //     'categories' => Category::all()
+            // ]);
 
         }
         return view('songindex', [
@@ -126,8 +134,7 @@ class VideoController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         // GZ's kläglicher versuch:
         //if(!auth()->check()) return redirect('/irc')->with('error', 'You need to be logged in to view our content');
 
@@ -155,8 +162,7 @@ class VideoController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         if(!auth()->check())
             return response('Not logged in', 403);
         $user = auth()->user();
@@ -250,10 +256,20 @@ class VideoController extends Controller
             return $xhr ? "Video removed from favorites" : redirect()->back()->with('success', 'Video removed from favorites');
         } else {
             $user->favs()->attach($id);
-            return $xhr ? "Video added to favorites" : redirect()->back()->with('success', 'Video favorised');
+            return $xhr ? "Video added to favorites" : redirect()->back()->with('success', 'Video added to favorites');
         }
+    }
 
+    /**
+     * @param Request $request
+     * @return Video | Bool
+     */
+    public function tag(Request $request, $id) {
+        if(!$request->has('tags')) return response("No tags specified", 304);
 
+        $v = Video::findOrFail($id);
+        if(is_null($v)) return response("Video not found", 404);
+        return $v->tag($request->get('tags'));
     }
 
     private function checkFileEncoding($dat) {
@@ -269,6 +285,11 @@ class VideoController extends Controller
         return true;
     }
 
+    /**
+     * Creates a .gif thumbnail to a given video file
+     *
+     * @param string $dat File of the video
+     */
     private function createThumbnail($dat) {
         $in = "/var/www/w0bm.com/public/b"; // webm-input
         $out = "/var/www/w0bm.com/public/thumbs"; // thumb-output
@@ -279,8 +300,8 @@ class VideoController extends Controller
         $name = join(".", $name);
         if(!file_exists("{$out}/{$name}.gif")) {
             $length = round(shell_exec("ffprobe -i {$in}/{$dat} -show_format -v quiet | sed -n 's/duration=//p'"));
-            for($i=1;$i<10;$i++) {
-                $act = ($i*10) * ($length / 100);
+            for ($i = 1; $i < 10; $i++) {
+                $act = ($i * 10) * ($length / 100);
                 $ffmpeg = shell_exec("ffmpeg -ss {$act} -i {$in}/{$dat} -vf \"scale='if(gt(a,4/3),206,-1)':'if(gt(a,4/3),-1,116)'\" -vframes 1 {$tmpdir}/{$name}_{$i}.png 2>&1");
             }
             $tmp = shell_exec("convert -delay 27 -loop 0 {$tmpdir}/{$name}_*.png {$out}/{$name}.gif 2>&1");
