@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="/css/video-js.min.css">
-    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.20">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.21">
 <!-- Piwik -->
 <script type="text/javascript">
   var _paq = _paq || [];
@@ -63,6 +63,6 @@
 <script src="/js/jquery.timeago.js"></script>
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
-<script src="/js/w0bmscript.js?v=1.1.3"></script>
+<script src="/js/w0bmscript.js?v=1.1.4"></script>
 </body>
 </html>
