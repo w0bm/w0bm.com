@@ -867,3 +867,23 @@ img.icon {
    width: 15px;
    background: #9b9999!important;
 }
+
+.bootstrap-tagsinput {
+    color: #c8c8c8;
+    background: rgba(90, 88, 88, 0.4) none repeat scroll 0 0;
+    border: 1px solid #282828;
+    border-radius: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    width: 79%;
+}
+
+#submittags {
+    /*line-height: 0;*/
+    /*font-size: 14px;*/
+}
+
+.tags {
+    box-shadow: -13px 0px 10px 5px #000
+}
