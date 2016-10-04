@@ -81,7 +81,7 @@ class User extends VerifyUser
     public function messagesRecv() {
         return $this->hasMany(Message::class, 'to');
     }
-	
+    
     public function favs() {
         return $this->belongsToMany(Video::class, 'favorites');
     }
