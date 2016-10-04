@@ -231,7 +231,7 @@ $(function() {
                 data.tags.forEach(function (tag) {
                     tags.push('<a href="/songindex?q=' + tag.normalized + '"><span class="label label-default">' + tag.name + '</span></a>');
                 });
-                tagdisplay.children('a').remove();
+                tagdisplay.empty();
                 tagdisplay.append(tags.join(" "));
                 tagsinput.tagsinput('removeAll');
             }
