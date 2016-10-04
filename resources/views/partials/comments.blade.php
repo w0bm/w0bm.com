@@ -1,8 +1,8 @@
 <aside class="comments hidden-xs">
 
 	<div style="border: 3px solid #1fb2b0;margin-bottom:1px;" class="panel panel-info">
-	    <div class="panel-body">
-		<div style="text-align:center;"><a href="/donate" target="_blank">We added two rewards for donations</a></div>
+	    <div class="panel-body deutsch">
+		<div><span>Deutschland, Deutschland über alles!</div>
 	   </div>
 	</div>
 

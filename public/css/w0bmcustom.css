@@ -887,3 +887,18 @@ img.icon {
 .tags {
     box-shadow: -13px 0px 10px 5px #000
 }
+
+/* Deutschland */
+.deutsch {
+    background-image: -webkit-linear-gradient(#000000 33%, #dd0000 33%, #dd0000 66%, #ffce00 66%);
+    background-image: -o-linear-gradient(#000000 33%, #dd0000 33%, #dd0000 66%, #ffce00 66%);
+    background-image: -moz-linear-gradient(#000000 33%, #dd0000 33%, #dd0000 66%, #ffce00 66%);
+    background-image: linear-gradient(#000000 33%, #dd0000 33%, #dd0000 66%, #ffce00 66%);
+    width: 100%;
+
+    font-family: 'UnifrakturCook', cursive;
+    color: #F2F5F4;
+    text-align: center;
+    font-size: 1.3em;
+    text-shadow: rgb(3, 3, 3) 4px 4px 4px;
+}
