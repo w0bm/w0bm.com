@@ -92,6 +92,23 @@ class User extends VerifyUser
         })->isEmpty();
     }
 
+    public function icon() {
+        return $this->belongsTo(Icon::class, 'icon_id');
+    }
+
+    public function activeIcon() {
+        $icon = $this->icon;
+        if($icon === null) {
+            $roles = $this->roles;
+            $roles = $roles->sortByDesc('level');
+
+            foreach($roles as $role) {
+                if($role !== null) $icon = $role->icon;
+            }
+        }
+        return $icon;
+    }
+
     public function categories() {
         return $this->belongsToMany(Category::class);
     }

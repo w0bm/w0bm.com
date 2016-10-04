@@ -49,6 +49,7 @@ Route::get('rules', function() { return view('rules'); });
 Route::get('contact', function() { return view('contact'); });
 Route::get('privacy', function() { return view('privacy'); });
 Route::get('help', function() { return view('help'); });
+Route::get('map', function() { return view('map'); });
 Route::get('donate', function() { return view('donate'); });
 Route::get('transparency', function() { return view('transparency'); });
 Route::get('login', function() { return view('login'); });
@@ -79,12 +80,16 @@ Route::group(['prefix' => 'api'], function() {
         Route::post('{username}/ban', 'UserController@ban');
     });
 
+    // /api/video
+    Route::group(['prefix' => 'video'], function() {
+        Route::post('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');
+    });
+
     Route::post('upload', 'VideoController@store');
 });
 
 Route::get('{id}', 'VideoController@show')->where('id', '[0-9]+');
 Route::get('{id}/fav', 'VideoController@favorite')->where('id', '[0-9]+');
-Route::get('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');
 Route::post('{id}', 'CommentController@store')->where('id', '[0-9]+');
 Route::post('{id}/tag', 'VideoController@tag')->where('id', '[0-9]+');
 

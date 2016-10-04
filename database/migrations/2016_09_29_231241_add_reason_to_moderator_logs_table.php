@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddBanningToUserTable extends Migration
+class AddReasonToModeratorLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,8 @@ class AddBanningToUserTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('banreason')->nullable();
-            $table->timestamp('banend')->nullable();
+        Schema::table('moderator_logs', function (Blueprint $table) {
+            $table->string('reason')->nullable()->after('target_id');
         });
     }
 
@@ -25,8 +24,8 @@ class AddBanningToUserTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['banreason', 'banend']);
+        Schema::table('moderator_logs', function (Blueprint $table) {
+            $table->dropColumn('reason');
         });
     }
 }

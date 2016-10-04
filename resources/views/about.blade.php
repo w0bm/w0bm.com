@@ -21,9 +21,18 @@
    <li>Press: <strong>F</strong> for fav</li>
    <li>Scroll with your mouse up and down to trigger next or prev</li>
    <li>Press: <strong>C</strong> to toggle the comment section</li>
+   <li>Press: <strong>SPACE</strong> to pause/unpause the video</li>
+</ul>
+
+<h4 id="format">Comment formatting</h4>
+<ul>
+   <li>>mfw w0bm is nice :3 will become: <span style="color:#80FF00;">>mfw w0bm is nice :3</span></li>
+   <li>!Pantsu Pantsu Pantsu! will become: <span class="reich">Pantsu Pantsu Pantsu</span></li>
+   <li>%KREBS KREBS KREBS KREBS% will become: <span class="anim">KREBS KREBS KREBS KREBS</span></li>
+   <li>*gg* will become: <strong>gg</strong></li>
 </ul>
 <h4>Allowed sources for image parsing in the comment section</h4>
-<p><code>Filetypes: [jpg,png,gif,webp] - Only secure connections allowed</code></p>
+<p><code>Filetypes: [{{ join(',', $comment['allowedImageFileExtensions']) }}] - Only secure connections allowed</code></p>
 <ul>
   @foreach($comment['allowedHosters'] as $hoster)
     <li>https://{{$hoster}}/</li>
