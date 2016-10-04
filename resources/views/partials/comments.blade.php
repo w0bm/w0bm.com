@@ -2,7 +2,7 @@
 
 	<div style="border: 3px solid #1fb2b0;margin-bottom:1px;" class="panel panel-info">
 	    <div class="panel-body motd">
-		<div><span>420 blaze it <img class="icon" src="https://w0bm.com/images/icons/weed.png" /></span></div>
+		<div><span class="anim">420 blaze it <img class="icon" src="https://w0bm.com/images/icons/weed.png" /></span></div>
 	   </div>
 	</div>
 
