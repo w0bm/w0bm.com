@@ -14,6 +14,7 @@
 Route::get('/', ['as' => 'home', function () {
     Session::reflash();
 
+    //dd(\App\Models\Video::filtered()->toSql());
     $id = \App\Models\Video::filtered()->count() - 1;
     $id = mt_rand(0, $id);
     $video = \App\Models\Video::filtered()->skip($id)->first();

@@ -46,12 +46,16 @@ class AddTags extends Command
         $count = 0;
         foreach(Video::withTrashed()->with('category')->get() as $v) {
             echo 'Updating Video with ID: ', $v->id, PHP_EOL;
-            $v->tag([ $v->category->shortname
-                    , $v->category->name
-                    , $v->interpret
-                    , $v->songtitle
-                    , $v->imgsource
-                    ]);
+            $v->detag();
+            $v->tag('sfw');
+            array_map(function($t) use ($v) {
+                $v->tag($t);
+            },  [ $v->category->shortname
+                , $v->category->name
+                , $v->interpret
+                , $v->songtitle
+                , $v->imgsource
+            ]);
             $count++;
         }
         echo PHP_EOL, PHP_EOL, 'Updated ', $count, ' Videos.', PHP_EOL, PHP_EOL, PHP_EOL;

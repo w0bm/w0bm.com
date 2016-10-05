@@ -114,13 +114,11 @@ class Video extends Model
     public function scopeFiltered($query) {
         if(auth()->check()) {
             $user = auth()->user();
-            $normalized = app(TagService::class)->buildTagArrayNormalized($user->categories);
-            if (empty($normalized)) {
-                return $query;
-            }
-            return $query->has('tags', '=', count($normalized), 'and', function (Builder $q) use ($normalized) {
-                $q->whereNotIn('normalized', $normalized);
-            });
+
+            $ids = Video::withAnyTags($user->categories)->select('id')->get()->map(function($v) {
+                return $v->id;
+            })->all();
+            return $query->whereNotIn('id', $ids);
         } else {
             // TODO: filter if post has sfw & nsfw tags
             return $query->withAllTags('sfw');
