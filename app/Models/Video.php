@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentTaggable\Taggable;
+use Cviebrock\EloquentTaggable\Services\TagService;
 
 /**
  * App\Models\Video
@@ -71,20 +73,14 @@ class Video extends Model
         if($category) {
             return static::whereCategoryId($this->category->id)->first()->id;
         }
-        if(auth()->check()) {
-            return static::whereIn('category_id', auth()->user()->categories)->first()->id;
-        }
-        return static::first()->id;
+        return static::filtered()->first()->id;
     }
 
     public function getLastId($category) {
         if($category) {
             return static::whereCategoryId($this->category->id)->max('id');
         }
-        if(auth()->check()) {
-            return static::whereIn('category_id', auth()->user()->categories)->max('id');
-        }
-        return static::max('id');
+        return static::filtered()->max('id');
     }
 
     /**
@@ -92,13 +88,11 @@ class Video extends Model
      * @return Video
      */
     public function getNext($category = false) {
-        if(auth()->check() && !$category) {
-            return Video::whereIn('category_id', auth()->user()->categories)->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
-        }
-        elseif(!$category)
-            return Video::where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
-        else
+        if(!$category) {
+            return Video::filtered()->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
+        } else {
             return Video::whereCategoryId($this->category->id)->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
+        }
     }
 
     /**
@@ -106,16 +100,28 @@ class Video extends Model
      * @return Video
      */
     public function getPrev($category = false) {
-        if(auth()->check() && !$category) {
-            return Video::whereIn('category_id', auth()->user()->categories)->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
-        }
-        elseif(!$category)
-            return Video::where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
-        else
+        if(!$category) {
+            return Video::filtered()->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
+        } else {
             return Video::whereCategoryId($this->category->id)->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
+        }
     }
 
     public function scopeNewlyups($query) {
         return $query->where('created_at', '>=', Carbon::now()->subHours(12));
+    }
+
+    public function scopeFiltered($query) {
+        if(auth()->check()) {
+            $user = auth()->user();
+
+            $ids = Video::withAnyTags($user->categories)->select('id')->get()->map(function($v) {
+                return $v->id;
+            })->all();
+            return $query->whereNotIn('id', $ids);
+        } else {
+            // TODO: filter if post has sfw & nsfw tags
+            return $query->withAllTags('sfw');
+        }
     }
 }

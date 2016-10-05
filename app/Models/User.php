@@ -51,6 +51,7 @@ use Carbon\Carbon;
 class User extends VerifyUser
 {
     protected $casts = [
+        // TODO: rename db column to tag filters
         'categories' => 'array'
     ];
 
@@ -81,7 +82,7 @@ class User extends VerifyUser
     public function messagesRecv() {
         return $this->hasMany(Message::class, 'to');
     }
-	
+    
     public function favs() {
         return $this->belongsToMany(Video::class, 'favorites');
     }
@@ -109,9 +110,9 @@ class User extends VerifyUser
         return $icon;
     }
 
-    public function categories() {
-        return $this->belongsToMany(Category::class);
-    }
+//    public function categories() {
+//        return $this->belongsToMany(Category::class);
+//    }
 
     public function isBanned() {
         if($this->disabled == 1) {

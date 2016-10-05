@@ -63,6 +63,6 @@
 <script src="/js/jquery.timeago.js"></script>
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
-<script src="/js/w0bmscript.js?v=1.1.4"></script>
+<script src="/js/w0bmscript.js?v=1.1.6"></script>
 </body>
 </html>

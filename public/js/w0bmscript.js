@@ -246,6 +246,7 @@ $(function() {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         }
     });
+    // Comments
     var commentform = $('#commentForm');
     commentform.on('submit', function (e) {
         e.preventDefault();
@@ -267,7 +268,8 @@ $(function() {
             flash('error', data);
         });
     });
-    
+
+    //Tags
     let tagsinput = $('#tags'),
         submit = $('#submittags'),
         tagdisplay = $('#tag-display');
@@ -315,6 +317,23 @@ $(function() {
             }
             else
                 error ? flash(error.type, error.text) : flash('error', 'Unknown exception');
+        });
+    });
+
+    // Filter
+    var filter = $('#filter'),
+        submitfilter = $('#submitfilter');
+    submitfilter.on('click touchdown', function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: submitfilter.attr('href'),
+            data: filter.serialize()
+        }).done(function() {
+            flash('success', 'Filter successfully updated');
+            $('#filterselectmodal').modal('hide');
+        }).fail(function(data) {
+            flash('error', 'Error updating tags');
         });
     });
 })(jQuery);

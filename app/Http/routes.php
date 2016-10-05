@@ -14,18 +14,13 @@
 Route::get('/', ['as' => 'home', function () {
     Session::reflash();
 
-    if(auth()->check()) {
-        $id = \App\Models\Video::whereIn('category_id', auth()->user()->categories)->count() - 1;
-        $id = mt_rand(0, $id);
-        $video = \App\Models\Video::whereIn('category_id', auth()->user()->categories)->skip($id)->first();
-
-        return redirect($video->id);
-    }
-
-    $id = App\Models\Video::count() - 1;
+    //dd(\App\Models\Video::filtered()->toSql());
+    $id = \App\Models\Video::filtered()->count() - 1;
     $id = mt_rand(0, $id);
-    $video = App\Models\Video::skip($id)->first();
+    $video = \App\Models\Video::filtered()->skip($id)->first();
+
     return redirect($video->id);
+
 }]);
 
 
