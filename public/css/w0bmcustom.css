@@ -902,3 +902,15 @@ img.icon {
     font-size: 1.3em;
     text-shadow: rgb(3, 3, 3) 4px 4px 4px;
 }
+
+.default-link {
+    color: #fff;
+}
+
+.default-link:hover {
+    color: #fff;
+}
+
+.default-link:focus {
+    color: #fff;
+}
