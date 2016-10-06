@@ -119,6 +119,11 @@ class VideoController extends Controller
         $video->category()->associate(Category::findOrFail($request->get('category')));
         $video->hash = $hash;
         $video->save();
+        $video->tag($video->interpret);
+        $video->tag($video->songtitle);
+        $video->tag($video->imgsource);
+        $video->tag($video->category->shortname);
+        $video->tag($video->category->name);
 
         $this->createThumbnail(basename($file->getRealPath()));
 
@@ -175,15 +180,24 @@ class VideoController extends Controller
         if(!$user->can('edit_video') && $user->id != $v->user_id)
             return response('Not enough permissions', 403);
         
-        if($request->has('interpret'))
+        if($request->has('interpret')) {
             $v->interpret = $request->input('interpret');
-        if($request->has('songtitle'))
+            $v->tag($request->input('interpret'));
+        }
+        if($request->has('songtitle')) {
             $v->songtitle = $request->input('songtitle');
-        if($request->has('imgsource'))
+            $v->tag($request->input('songtitle'));
+        }
+        if($request->has('imgsource')) {
             $v->imgsource = $request->input('imgsource');
-        if($request->has('category'))
-            $v->category()
-                ->associate(Category::findOrFail($request->input('category')));
+            $v->tag($request->input('imgsource'));
+        }
+        if($request->has('category')) {
+            $cat = Category::findOrFail($request->input('category'));
+            $v->category()->associate($cat);
+            $v->tag($cat->name);
+            $v->tag($cat->shortname);
+        }
 
         $v->save();
 
