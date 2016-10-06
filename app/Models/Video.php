@@ -113,9 +113,11 @@ class Video extends Model
 
     public function scopeFiltered($query) {
         if(auth()->check()) {
-            $user = auth()->user();
+            $categories = auth()->user()->categories;
+            if(empty($categories))
+                return $query;
 
-            $ids = Video::withAnyTags($user->categories)->select('id')->get()->map(function($v) {
+            $ids = Video::withAnyTags($categories)->select('id')->get()->map(function($v) {
                 return $v->id;
             })->all();
             return $query->whereNotIn('id', $ids);
