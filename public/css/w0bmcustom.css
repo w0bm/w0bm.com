@@ -879,6 +879,11 @@ img.icon {
     width: 79%;
 }
 
+.modal-body > .bootstrap-tagsinput {
+    position: relative;
+    width: 100%;
+}
+
 #submittags {
     /*line-height: 0;*/
     /*font-size: 14px;*/
