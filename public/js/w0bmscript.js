@@ -201,7 +201,7 @@ if(videoElem !== null) {
             $('#fav').get(0).click();
 
         else if(e.keyCode == 67) //toggle comments
-            $(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
+            $(".aside").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
 
         else if(e.keyCode == 87 || e.keyCode == 38)
             player.volume(player.volume() + 0.1);
@@ -555,8 +555,8 @@ $(function() {
     var comments = localStorage.comments;
     if (comments === undefined) localStorage.comments = true;
     comments = comments === undefined || comments === "true";
-    $(".comments").toggle(comments);
-    $("#toggle").click(function(){$(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"))});
+    $(".aside").toggle(comments);
+    $("#toggle").click(function(){$(".aside").fadeToggle(localStorage.comments = !(localStorage.comments == "true"))});
 })(jQuery);
 
 
