@@ -879,6 +879,11 @@ img.icon {
     width: 79%;
 }
 
+.modal-body > .bootstrap-tagsinput {
+    position: relative;
+    width: 100%;
+}
+
 #submittags {
     /*line-height: 0;*/
     /*font-size: 14px;*/
@@ -901,4 +906,16 @@ img.icon {
     text-align: center;
     font-size: 1.3em;
     text-shadow: rgb(3, 3, 3) 4px 4px 4px;
+}
+
+.default-link {
+    color: #fff;
+}
+
+.default-link:hover {
+    color: #fff;
+}
+
+.default-link:focus {
+    color: #fff;
 }

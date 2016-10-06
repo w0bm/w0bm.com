@@ -221,9 +221,9 @@ class VideoController extends Controller
     {
         $user = auth()->check() ? auth()->user() : null;
 
-        if(is_null($user)) return JsonResponse::create(['error' => 'not_logged_in']);
+        if(is_null($user)) return new JsonResponse(['error' => 'not_logged_in']);
 
-        if(!$request->has('reason') || trim($request->get('reason')) == '') return JsonResponse::create(['error', 'invalid_request']);
+        if(!$request->has('reason') || trim($request->get('reason')) == '') return new JsonResponse(['error' => 'invalid_request']);
 
         $reason = trim($request->get('reason'));
 
@@ -231,7 +231,7 @@ class VideoController extends Controller
             $warnings = [];
             $vid = Video::find($id);
             if(!$vid)
-                return JsonResponse(['error' => 'video_not_found']);
+                return new JsonResponse(['error' => 'video_not_found']);
 
             foreach($vid->comments as $comment) {
                 $comment->delete(); // delete associated comments
@@ -253,9 +253,9 @@ class VideoController extends Controller
             $log->reason = $reason;
             $log->save();
 
-            return JsonResponse::create(['error' => 'null', 'warnings' => $warnings]);
+            return new JsonResponse(['error' => 'null', 'warnings' => $warnings]);
         }
-        return JsonResponse::create(['error' => 'insufficient_permissions']);
+        return new JsonResponse(['error' => 'insufficient_permissions']);
     }
 
     public function favorite($id) {
@@ -279,11 +279,28 @@ class VideoController extends Controller
      * @return Video | Bool
      */
     public function tag(Request $request, $id) {
-        if(!$request->has('tags')) return response("No tags specified", 304);
-
+        if(!$request->has('tags')) return new JsonResponse(["error" => "invalid_request"]);
+        $tags = $request->get('tags');
+        if(!count($tags)) return new JsonResponse(["error" => "no_tags_specified"]);
         $v = Video::findOrFail($id);
-        if(is_null($v)) return response("Video not found", 404);
-        return $v->tag($request->get('tags'));
+        if(is_null($v)) return new JsonResponse(["error" => "video_not_found"]);
+        $v->tag($tags);
+        $v['error'] = 'null';
+        $v['can_edit_video'] = auth()->check() ? auth()->user()->can('edit_video') : false;
+        return $v;
+    }
+    
+    public function untag(Request $request, $id) {
+        if(!$request->has('tag') || trim($request->get('tag')) == "") return new JsonResponse(["error" => "invalid_request"]);
+        $user = auth()->check() ? auth()->user() : null;
+        if(is_null($user)) return new JsonResponse(["error" => "not_logged_in"]);
+        if(!$user->can('edit_video')) return new JsonResponse(["error" => "insufficient_permissions"]);
+        $tag = trim($request->get('tag'));
+        $v = Video::findOrFail($id);
+        if(is_null($v)) return new JsonResponse(["error" => "video_not_found"]);
+        $v = $v->untag($tag);
+        $v['error'] = 'null';
+        return $v;
     }
 
     private function checkFileEncoding($dat) {
