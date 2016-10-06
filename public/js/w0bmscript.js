@@ -276,11 +276,12 @@ $(function() {
 
     function tagDeleteHandler(e) {
         e.preventDefault();
+        if(!confirm('Do you really want to delete this tag?')) return;
         video.untag($(this).siblings().text(), (success, error, warnings, cb) => {
             if(success) {
                 flash('success', 'Tag successfully deleted');
                 let tags = [];
-                for(tag of cb.tags)
+                for(let tag of cb.tags)
                     tags.push('<span class="label label-default"><a href="/songindex?q=' + tag.normalized + '" class="default-link">' + tag.name + '</a> <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a></span>');
                 tagdisplay.empty();
                 tagdisplay.append(tags.join(" "));
@@ -294,7 +295,7 @@ $(function() {
     $('.delete-tag').on('click', tagDeleteHandler);
     
     tagsinput.on('beforeItemAdd', e => {
-        for(tag of video.tags) {
+        for(let tag of video.tags) {
             if(tag.toLowerCase() === e.item.toLowerCase()) {
                 e.cancel = true;
                 flash('info', 'Tag already exists');
@@ -308,7 +309,7 @@ $(function() {
             if(success) {
                 flash('success', 'Tags saved successfully');
                 var tags = [];
-                for(tag of cb.tags)
+                for(let tag of cb.tags)
                     tags.push('<span class="label label-default"><a href="/songindex?q=' + tag.normalized + '" class="default-link">' + tag.name + '</a>' + (cb.can_edit_video ? ' <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a>' : '') + '</span>');
                 tagdisplay.empty();
                 tagdisplay.append(tags.join(" "));
@@ -864,9 +865,10 @@ function deleteComment(self) {
     var username = $(comment.children('.panel-footer').children('a')[0]).text();
     do {
         var reason = prompt('Reason for deleting comment ' + id + ' by ' + username);
-        if(reason == null)
+        if(reason === null)
             return;
-    } while(reason == '');
+        reason = reason.trim();
+    } while(!reason);
     $.ajax({
         url: '/api/comments/' + id + '/delete',
         method: 'POST',
@@ -897,9 +899,10 @@ function restoreComment(self) {
     var username = $(comment.children('.panel-footer').children('a')[0]).text();
     do {
         var reason = prompt('Reason for restoring comment ' + id + ' by ' + username);
-        if(reason == null)
+        if(reason === null)
             return;
-    } while(reason == '');
+        reason = reason.trim();
+    } while(!reason);
     $.ajax({
         url: '/api/comments/' + id + '/restore',
         method: 'POST',
@@ -1004,7 +1007,7 @@ $(function () {
         cBar.hide();
         cBarStatus = false;
     });
-    $('[class^="vjs"').on('mouseleave', function (e) {
+    $('[class^="vjs"]').on('mouseleave', function (e) {
         if(e.relatedTarget == $('video').get(0) || $(e.relatedTarget).is('[class^="vjs"]') || !cBarStatus) return;
         cBar.hide();
         cBarStatus = false;
@@ -1257,12 +1260,12 @@ $(function() {
             if(reason === null)
                 return;
             reason = reason.trim();
-        } while(reason === '');
+        } while(!reason);
         video.delete(reason, (success, error, warnings) => {
             if(success) {
                 flash('success', 'Video deleted. Redirect in 3 seconds...');
                 setTimeout(() => location.href = '/', 3000);
-                for(warn of warnings)
+                for(let warn of warnings)
                     flash('warning', warn);
             }
             else
