@@ -47,7 +47,12 @@ class AddTags extends Command
         foreach(Video::withTrashed()->with('category')->get() as $v) {
             echo 'Updating Video with ID: ', $v->id, PHP_EOL;
             $v->detag();
-            $v->tag('sfw');
+            // quick and dirty. not 100% correct though.
+            if($v->category->shortname === 'pr0n')
+                $v->tag('nsfw');
+            else
+                $v->tag('sfw');
+
             array_map(function($t) use ($v) {
                 $v->tag($t);
             },  [ $v->category->shortname
