@@ -54,9 +54,7 @@ class AddTags extends Command
                 else
                 $v->tag('sfw');
 
-                array_map(function($t) use ($v) {
-                    $v->tag($t);
-                },  [ $v->category->shortname
+                $v->tag(array_filter([$v->category->shortname
                     , $v->category->name
                     , $v->interpret
                     , $v->songtitle

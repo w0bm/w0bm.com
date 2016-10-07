@@ -7,5 +7,5 @@ return [
 
     'normalizer' => function($str) {
         return str_slug($str, '');
-    },
+    }
 ];
