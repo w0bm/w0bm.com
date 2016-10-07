@@ -71,30 +71,30 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Add tags to filter
-     *
-     * @param Request $request
-     * @return Response
-     */
     public function filter(Request $request) {
         //dd($request->get('categories'));
         if(!auth()->check())
             return Response::create("Not logged in", 401);
-        if(!$request->has('filter'))
-            $filter = [];
-        else
-            $filter = explode(',', $request->get('filter'));
+        if(!$request->has('categories') || empty($request->get('categories')))
+            return Response::create("Need to select at least 1 category", 500);
 
+        $allcats = Category::lists('id')->toArray();
+        sort($allcats);
+        $categories = $request->get('categories');
+        sort($categories);
+        foreach($categories as $cat) {
+            if(!in_array($cat, $allcats))
+                return Response::create("Invalid Category id: " . $cat, 500);
+        }
 
-        auth()->user()->categories = $filter;
+        auth()->user()->categories = $categories;
         auth()->user()->save();
 
         if(!$request->ajax())
             return redirect()->back()->with('success', 'Filter settings saved');
 
 
-        return Response::create(json_encode($filter));
+        return Response::create($categories);
     }
 
     /**

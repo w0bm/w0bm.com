@@ -819,10 +819,10 @@ pre code {
   .container {
     width: 750px;
   }
-  .aside + div > .container {
+  .comments + div > .container {
     width: 400px;
   }
-  .aside + div > .flashcontainer > .container {
+  .comments + div > .flashcontainer > .container {
     width: 400px;
   }
 }
@@ -830,10 +830,10 @@ pre code {
   .container {
     width: 970px;
   }
-  .aside + div > .container {
+  .comments + div > .container {
     width: 620px;
   }
-  .aside + div > .flashcontainer > .container {
+  .comments + div > .flashcontainer > .container {
     width: 620px;
   }
 }
@@ -841,10 +841,10 @@ pre code {
   .container {
     width: 1170px;
   }
-  .aside + div > .container {
+  .comments + div > .container {
     width: 820px;
   }
-  .aside + div > .flashcontainer > .container {
+  .comments + div > .flashcontainer > .container {
     width: 820px;
   }
 }

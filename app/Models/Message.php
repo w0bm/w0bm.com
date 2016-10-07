@@ -6,31 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * App\Models\Message
- *
- * @property integer $id
- * @property integer $from
- * @property integer $to
- * @property string $content
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- * @property string $deleted_at
- * @property string $read
- * @property string $subject
- * @property-read User $fromUser
- * @property-read User $toUser
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Message whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Message whereFrom($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Message whereTo($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Message whereContent($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Message whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Message whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Message whereDeletedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Message whereRead($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Message whereSubject($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Message unread()
- */
 class Message extends Model {
     use SoftDeletes;
 

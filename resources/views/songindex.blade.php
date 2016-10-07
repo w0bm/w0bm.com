@@ -4,7 +4,7 @@
 	<h3>Songindex</h3>
         
         <form method="get">
-            {!! Form::text('q', isset($q) ? $q : null, ['class' => 'suchleiste', 'placeholder' => 'Search']) !!}
+            {!! Form::text('q', null, ['class' => 'suchleiste', 'placeholder' => 'Search']) !!}
             <button type="submit" class="suchbutton"><i style="color:white;" class="fa fa-search"></i></button>
         </form>
     </div>

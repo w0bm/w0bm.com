@@ -57,12 +57,11 @@
 </div>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="/js/bootstrap-tagsinput.min.js"></script>
 <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="/js/isotope.pkgd.min.js"></script>
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/handlebars.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
-<script src="/js/w0bmscript.min.js?v=1.1.6"></script>
+<script src="/js/w0bmscript.js?v=1.1.3"></script>
 </body>
 </html>

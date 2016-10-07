@@ -22,7 +22,7 @@
         @else
             <div class="panel panel-default nocomments">
                 <div class="panel-body">
-                    No comments yet …
+                    No comments yet...
                 </div>
             </div>
         @endif
