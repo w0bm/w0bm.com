@@ -1,9 +1,15 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "w0bm/w0bm.com",
+    "description": "Webm image board.",
+    "keywords": ["webm", "laravel", "image board"],
     "license": "MIT",
     "type": "project",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/w0bm/eloquent-taggable"
+        }
+    ],
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
@@ -11,8 +17,9 @@
         "doctrine/dbal": "^2.5",
         "toddish/verify": "^5.0",
         "guzzlehttp/guzzle": "^6.1",
-        "illuminate/html": "^5.0",
-        "greggilbert/recaptcha": "^2.0"
+        "laravelcollective/html": "^5.0",
+        "greggilbert/recaptcha": "^2.0",
+        "cviebrock/eloquent-taggable": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

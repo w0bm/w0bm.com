@@ -38,6 +38,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Video extends Model
 {
     use SoftDeletes;
+    use \Cviebrock\EloquentTaggable\Taggable;
 
     public function user() {
         return $this->belongsTo(User::class);
@@ -105,5 +106,18 @@ class Video extends Model
 
     public function scopeNewlyups($query) {
         return $query->where('created_at', '>=', Carbon::now()->subHours(12));
+    }
+
+    public function scopeFiltered($query) {
+        if(auth()->check()) {
+            $categories = auth()->user()->categories;
+            if(empty($categories))
+                return $query;
+
+            return $query->withoutAnyTags($categories);
+        } else {
+            // TODO: filter if post has sfw & nsfw tags
+            return $query->withAllTags('sfw');
+        }
     }
 }
