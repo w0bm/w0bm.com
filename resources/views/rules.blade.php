@@ -6,7 +6,7 @@
 <h5>General</h5>
 <ol>
 	<li>Content on this site is intended for people over the age of 18 only, if you are under 18 get the fuck out right now and don't tell your mom I didn't warn you!</li>
-	<li>Leaking of private information is strictly forbidden, go fuck yourself and post it somewhere on reddit you fucking faggot!</li>
+	<li>Leaking of private information is strictly forbidden.</li>
 	<li>No more shocking videos. This includes the following types of videos: <strong style="color:red;">Gore, violence (against animals, humans), rape videos and anything else that is shocking!</strong> For more information please read Rule 3 in the Uploading Rules.</li>
 </ol>
 
@@ -14,7 +14,7 @@
 <ol>
 	<li>Everything you upload <strong style="color:#1FB2B0;">must</strong> be acceptable with Dutch law</li>
 	<li>Absolutely no child pornography in any way! Loli content is excluded from this, so shut the fuck up; if you can't accept those 5 loli videos get the fuck out!</li>
-	<li>No shocking content, I mean mostly Gore with this, this site is friendly and shouldn't scare people in any ways, with the exception of weird porn. This includes scat, puke, and all the weird japanese fetish videos. They are all welcome here!</li>	
+	<li>No shocking content, I mean mostly Gore with this, this site is friendly and shouldn't scare people in any ways, with the exception of weird porn.</li>	
 	<li>Reposting is not a crime! But in most cases it can be prevented with the use of the <a href="https://w0bm.com/songindex">search form</a>.
 	<li>Put your uploads in the correct category, if you have a video that doesn't fit in any of the categories always put it in the Misc category</li.>
 	<li>The focus is on videos you can easily watch 200 times a day over and over so upload only catchy shit! For example: <a href="/39">/39</a></li>
