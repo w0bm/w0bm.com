@@ -20,24 +20,32 @@ class VideoController extends Controller
      *
      * @return Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         if($request->has('q')){
-            $pdo = \DB::connection()->getPdo();
-            $needle = '%' . trim($request->input('q')) .'%';
+            $needle = trim($request->input('q'));
             return view('songindex', [
-                'videos' => Video::where(function($query) use($needle) {
-                    $query->where('interpret', 'LIKE', $needle)
-                        ->orWhere('songtitle', 'LIKE', $needle)
-                        ->orWhere('imgsource', 'LIKE', $needle);
-                })
-                        //->orderBy('id', 'ASC')
-                        ->orderByRaw("((interpret like " . $pdo->quote($needle) . ") +
-                            (songtitle like " . $pdo->quote($needle) . ") +
-                            (imgsource like " . $pdo->quote($needle) . ")) desc")
-                        ->paginate(20)->appends(['q' => trim($needle, '%')]),
-                'categories' => Category::all()
+                // TODO: add ordering
+                'videos' => Video::withAllTags($needle)
+                    ->paginate(20)->appends(['q' => $needle]),
+                'categories' => Category::all(),
+                'q' => $needle
             ]);
+
+            // $pdo = \DB::connection()->getPdo();
+            // $needle = '%' . trim($request->input('q')) .'%';
+            // return view('songindex', [
+            //     'videos' => Video::where(function($query) use($needle) {
+            //         $query->where('interpret', 'LIKE', $needle)
+            //             ->orWhere('songtitle', 'LIKE', $needle)
+            //             ->orWhere('imgsource', 'LIKE', $needle);
+            //     })
+            //             //->orderBy('id', 'ASC')
+            //             ->orderByRaw("((interpret like " . $pdo->quote($needle) . ") +
+            //                 (songtitle like " . $pdo->quote($needle) . ") +
+            //                 (imgsource like " . $pdo->quote($needle) . ")) desc")
+            //             ->paginate(20)->appends(['q' => trim($needle, '%')]),
+            //     'categories' => Category::all()
+            // ]);
 
         }
         return view('songindex', [
@@ -111,6 +119,11 @@ class VideoController extends Controller
         $video->category()->associate(Category::findOrFail($request->get('category')));
         $video->hash = $hash;
         $video->save();
+        $video->tag($video->interpret);
+        $video->tag($video->songtitle);
+        $video->tag($video->imgsource);
+        $video->tag($video->category->shortname);
+        $video->tag($video->category->name);
 
         $this->createThumbnail(basename($file->getRealPath()));
 
@@ -126,8 +139,7 @@ class VideoController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         // GZ's kläglicher versuch:
         //if(!auth()->check()) return redirect('/irc')->with('error', 'You need to be logged in to view our content');
 
@@ -155,8 +167,7 @@ class VideoController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         if(!auth()->check())
             return response('Not logged in', 403);
         $user = auth()->user();
@@ -169,15 +180,24 @@ class VideoController extends Controller
         if(!$user->can('edit_video') && $user->id != $v->user_id)
             return response('Not enough permissions', 403);
         
-        if($request->has('interpret'))
+        if($request->has('interpret')) {
             $v->interpret = $request->input('interpret');
-        if($request->has('songtitle'))
+            $v->tag($request->input('interpret'));
+        }
+        if($request->has('songtitle')) {
             $v->songtitle = $request->input('songtitle');
-        if($request->has('imgsource'))
+            $v->tag($request->input('songtitle'));
+        }
+        if($request->has('imgsource')) {
             $v->imgsource = $request->input('imgsource');
-        if($request->has('category'))
-            $v->category()
-                ->associate(Category::findOrFail($request->input('category')));
+            $v->tag($request->input('imgsource'));
+        }
+        if($request->has('category')) {
+            $cat = Category::findOrFail($request->input('category'));
+            $v->category()->associate($cat);
+            $v->tag($cat->name);
+            $v->tag($cat->shortname);
+        }
 
         $v->save();
 
@@ -201,9 +221,9 @@ class VideoController extends Controller
     {
         $user = auth()->check() ? auth()->user() : null;
 
-        if(is_null($user)) return JsonResponse::create(['error' => 'not_logged_in']);
+        if(is_null($user)) return new JsonResponse(['error' => 'not_logged_in']);
 
-        if(!$request->has('reason') || trim($request->get('reason')) == '') return JsonResponse::create(['error', 'invalid_request']);
+        if(!$request->has('reason') || trim($request->get('reason')) == '') return new JsonResponse(['error' => 'invalid_request']);
 
         $reason = trim($request->get('reason'));
 
@@ -211,7 +231,7 @@ class VideoController extends Controller
             $warnings = [];
             $vid = Video::find($id);
             if(!$vid)
-                return JsonResponse(['error' => 'video_not_found']);
+                return new JsonResponse(['error' => 'video_not_found']);
 
             foreach($vid->comments as $comment) {
                 $comment->delete(); // delete associated comments
@@ -233,9 +253,9 @@ class VideoController extends Controller
             $log->reason = $reason;
             $log->save();
 
-            return JsonResponse::create(['error' => 'null', 'warnings' => $warnings]);
+            return new JsonResponse(['error' => 'null', 'warnings' => $warnings]);
         }
-        return JsonResponse::create(['error' => 'insufficient_permissions']);
+        return new JsonResponse(['error' => 'insufficient_permissions']);
     }
 
     public function favorite($id) {
@@ -250,10 +270,37 @@ class VideoController extends Controller
             return $xhr ? "Video removed from favorites" : redirect()->back()->with('success', 'Video removed from favorites');
         } else {
             $user->favs()->attach($id);
-            return $xhr ? "Video added to favorites" : redirect()->back()->with('success', 'Video favorised');
+            return $xhr ? "Video added to favorites" : redirect()->back()->with('success', 'Video added to favorites');
         }
+    }
 
-
+    /**
+     * @param Request $request
+     * @return Video | Bool
+     */
+    public function tag(Request $request, $id) {
+        if(!$request->has('tags')) return new JsonResponse(["error" => "invalid_request"]);
+        $tags = $request->get('tags');
+        if(!count($tags)) return new JsonResponse(["error" => "no_tags_specified"]);
+        $v = Video::findOrFail($id);
+        if(is_null($v)) return new JsonResponse(["error" => "video_not_found"]);
+        $v->tag($tags);
+        $v['error'] = 'null';
+        $v['can_edit_video'] = auth()->check() ? auth()->user()->can('edit_video') : false;
+        return $v;
+    }
+    
+    public function untag(Request $request, $id) {
+        if(!$request->has('tag') || trim($request->get('tag')) == "") return new JsonResponse(["error" => "invalid_request"]);
+        $user = auth()->check() ? auth()->user() : null;
+        if(is_null($user)) return new JsonResponse(["error" => "not_logged_in"]);
+        if(!$user->can('edit_video')) return new JsonResponse(["error" => "insufficient_permissions"]);
+        $tag = trim($request->get('tag'));
+        $v = Video::findOrFail($id);
+        if(is_null($v)) return new JsonResponse(["error" => "video_not_found"]);
+        $v = $v->untag($tag);
+        $v['error'] = 'null';
+        return $v;
     }
 
     private function checkFileEncoding($dat) {
@@ -269,6 +316,11 @@ class VideoController extends Controller
         return true;
     }
 
+    /**
+     * Creates a .gif thumbnail to a given video file
+     *
+     * @param string $dat File of the video
+     */
     private function createThumbnail($dat) {
         $in = "/var/www/w0bm.com/public/b"; // webm-input
         $out = "/var/www/w0bm.com/public/thumbs"; // thumb-output
@@ -279,8 +331,8 @@ class VideoController extends Controller
         $name = join(".", $name);
         if(!file_exists("{$out}/{$name}.gif")) {
             $length = round(shell_exec("ffprobe -i {$in}/{$dat} -show_format -v quiet | sed -n 's/duration=//p'"));
-            for($i=1;$i<10;$i++) {
-                $act = ($i*10) * ($length / 100);
+            for ($i = 1; $i < 10; $i++) {
+                $act = ($i * 10) * ($length / 100);
                 $ffmpeg = shell_exec("ffmpeg -ss {$act} -i {$in}/{$dat} -vf \"scale='if(gt(a,4/3),206,-1)':'if(gt(a,4/3),-1,116)'\" -vframes 1 {$tmpdir}/{$name}_{$i}.png 2>&1");
             }
             $tmp = shell_exec("convert -delay 27 -loop 0 {$tmpdir}/{$name}_*.png {$out}/{$name}.gif 2>&1");
