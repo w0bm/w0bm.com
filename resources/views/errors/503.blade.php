@@ -40,8 +40,9 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Don't worry, we will be right back!</div>
-            </div>
+		<div class="title" style="color:#1FB2B0;">Don't worry, we are just fucking this up!</div>
+			<i>Just took us 1 year!</i>
+		</div>
         </div>
     </body>
 </html>
