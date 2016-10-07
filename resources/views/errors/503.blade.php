@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>We will be right back!</title>
-
+	<title>Please Stand By we are just fucking this up</title>
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
         <style>
@@ -17,7 +16,8 @@
                 color: #B0BEC5;
                 display: table;
                 font-weight: 100;
-                font-family: 'Lato';
+		font-family: 'Lato';
+		background-color: #161618;
             }
 
             .container {
