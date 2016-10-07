@@ -6,8 +6,6 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Cviebrock\EloquentTaggable\Taggable;
-use Cviebrock\EloquentTaggable\Services\TagService;
 
 /**
  * App\Models\Video
@@ -51,7 +49,7 @@ use Cviebrock\EloquentTaggable\Services\TagService;
 class Video extends Model
 {
     use SoftDeletes;
-    use Taggable;
+    use \Cviebrock\EloquentTaggable\Taggable;
 
     public function user() {
         return $this->belongsTo(User::class);
@@ -117,10 +115,7 @@ class Video extends Model
             if(empty($categories))
                 return $query;
 
-            $ids = Video::withAnyTags($categories)->select('id')->get()->map(function($v) {
-                return $v->id;
-            })->all();
-            return $query->whereNotIn('id', $ids);
+            return $query->withoutAnyTags($categories);
         } else {
             // TODO: filter if post has sfw & nsfw tags
             return $query->withAllTags('sfw');
