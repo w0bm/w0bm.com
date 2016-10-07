@@ -44,7 +44,7 @@ class AddTags extends Command
         // Videos
         echo 'UPDATING VIDEOS', PHP_EOL, '===============', PHP_EOL;
         $count = 0;
-        Video::withTrashed()->with('category')->chunk(200, function($videos) {
+        Video::withTrashed()->with('category')->chunk(200, function($videos) use ($count) {
             foreach($videos as $v) {
                 echo 'Updating Video with ID: ', $v->id, PHP_EOL;
                 $v->detag();
