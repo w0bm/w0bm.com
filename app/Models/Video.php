@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -34,11 +35,22 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Video whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Video whereDeletedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Video whereHash($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|User[] $faved
+ * @property-read \Illuminate\Database\Eloquent\Collection|Tag[] $tags
+ * @property-read mixed $tag_list
+ * @property-read mixed $tag_list_normalized
+ * @property-read mixed $tag_array
+ * @property-read mixed $tag_array_normalized
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Video newlyups()
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Video withAllTags($tags)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Video withAnyTags($tags = array())
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Video withoutTags()
  */
 class Video extends Model
 {
     use SoftDeletes;
     use \Cviebrock\EloquentTaggable\Taggable;
+    use Taggable;
 
     public function user() {
         return $this->belongsTo(User::class);
@@ -60,20 +72,14 @@ class Video extends Model
         if($category) {
             return static::whereCategoryId($this->category->id)->first()->id;
         }
-        if(auth()->check()) {
-            return static::whereIn('category_id', auth()->user()->categories)->first()->id;
-        }
-        return static::first()->id;
+        return static::filtered()->first()->id;
     }
 
     public function getLastId($category) {
         if($category) {
             return static::whereCategoryId($this->category->id)->max('id');
         }
-        if(auth()->check()) {
-            return static::whereIn('category_id', auth()->user()->categories)->max('id');
-        }
-        return static::max('id');
+        return static::filtered()->max('id');
     }
 
     /**
@@ -81,13 +87,11 @@ class Video extends Model
      * @return Video
      */
     public function getNext($category = false) {
-        if(auth()->check() && !$category) {
-            return Video::whereIn('category_id', auth()->user()->categories)->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
-        }
-        elseif(!$category)
-            return Video::where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
-        else
+        if(!$category) {
+            return Video::filtered()->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
+        } else {
             return Video::whereCategoryId($this->category->id)->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
+        }
     }
 
     /**
@@ -95,13 +99,11 @@ class Video extends Model
      * @return Video
      */
     public function getPrev($category = false) {
-        if(auth()->check() && !$category) {
-            return Video::whereIn('category_id', auth()->user()->categories)->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
-        }
-        elseif(!$category)
-            return Video::where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
-        else
+        if(!$category) {
+            return Video::filtered()->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
+        } else {
             return Video::whereCategoryId($this->category->id)->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
+        }
     }
 
     public function scopeNewlyups($query) {

@@ -30,6 +30,8 @@ Folder structure:
 - JS and CSS: `public/{css,js}`
 - Database: `database/migrations`
 
+To transpile and minify your modified w0bmscript.js you need to have npm (Node Package Manager) and this projects dependencies installed (dependencies installable with `npm i`). Then run `npm run build`.
+
 ### License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)

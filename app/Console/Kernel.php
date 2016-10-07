@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\AddTags::class,
         \App\Console\Commands\Inspire::class,
+        \App\Console\Commands\AddTags::class
     ];
 
     /**

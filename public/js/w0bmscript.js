@@ -1,3 +1,74 @@
+class API {
+    static request(post, base, method, params, callback) {
+        $.ajax({
+            url: '/api/' + base + '/' + method,
+            method: post ? 'POST' : 'GET',
+            data: params,
+            success: cb => {
+                if(cb.error === 'null')
+                    callback(true, null, cb.warnings, cb);
+                else
+                    callback(false, this.responsify(cb.error), cb.warnings, cb);
+            },
+            error: cb => callback(false, null, null, cb)
+        });
+    }
+    static responsify(response) {
+        var r = (type, text) => ({type: type, text: text});
+        return {
+            not_logged_in: r('error', 'Not logged in'),
+            invalid_request: r('error', 'Invalid request'),
+            video_not_found: r('error', 'Video not found. Perhaps it has already been deleted'),
+            insufficient_permissions: r('error', 'Insufficient permissions'),
+            no_tags_specified: r('info', 'No tags specified')
+        }[response];
+    }
+}
+
+class Video {
+    constructor() {
+        let match = location.href.match(/(\d+)(?!.*\/.)/);
+        if(!match) return;
+        this.id = match[1];
+        this.user = $('.fa-info-circle').next().children().text().trim();
+        this.tags = $.makeArray($('#tag-display').children().children()).map(el => el.innerText).filter(tag => !!tag);
+        this.api = 'video';
+        this.apiBase = this.api + '/' + this.id;
+    }
+    tag(tags, callback) {
+        var _this = this;
+        function preCallback(success, error, warnings, cb) {
+            if(success) {
+                _this.tags = [];
+                _this.tags = cb.tags.map(tag => tag.name);
+            }
+            callback(success, error, warnings, cb);
+        }
+        tags.length ? API.request(true, this.apiBase, 'tag', {tags: tags}, preCallback) : callback(false, API.responsify('no_tags_specified'), null, null);
+    }
+    untag(tag, callback) {
+        var _this = this;
+        function preCallback(success, error, warnings, cb) {
+            if(success) {
+                _this.tags = [];
+                _this.tags = cb.tags.map(tag => tag.name);
+            }
+            callback(success, error, warnings, cb);
+        }
+        tag = tag.trim();
+        !!tag ? API.request(true, this.apiBase, 'untag', {tag: tag}, preCallback) : callback(false, API.responsify('invalid_request'), null, null);
+    }
+    delete(reason, callback) {
+        reason = reason.trim();
+        !!reason ? API.request(true, this.apiBase, 'delete', {reason: reason}, callback) : callback(false, API.responsify('invalid_request'), null, null);
+    }
+}
+
+var video;
+$(function() {
+    video = new Video();
+});
+
 function flash(type, message) {
     var html = '<div class="alert alert-:TYPE: alert-dismissable" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>:REPLACE:</div>';
     var alerts = $('.flashcontainer > .container');
@@ -20,9 +91,9 @@ Array.prototype.average = function() {
     return sum / this.length;
 };
 
-var video = document.getElementById('video');
-if(video !== null) {
-    var player = videojs(video, {
+var videoElem = document.getElementById('video');
+if(videoElem !== null) {
+    var player = videojs(videoElem, {
         controls: true,
         playbackRates: [0.25, 0.5, 1, 1.5, 2],
         inactivityTimeout: 0,
@@ -66,13 +137,13 @@ if(video !== null) {
         $(canvas).css('display', 'none');
 
     function animationLoop() {
-        if(video.paused || video.ended || !background)
+        if(videoElem.paused || videoElem.ended || !background)
             return;
-        context.drawImage(video, 0, 0, cw, ch);
+        context.drawImage(videoElem, 0, 0, cw, ch);
         window.requestAnimFrame(animationLoop);
     }
 
-    video.addEventListener('play', animationLoop);
+    videoElem.addEventListener('play', animationLoop);
 
     $('#togglebg').on('click', function (e) {
         e.preventDefault();
@@ -130,7 +201,7 @@ if(video !== null) {
             $('#fav').get(0).click();
 
         else if(e.keyCode == 67) //toggle comments
-            $(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
+            $(".aside").fadeToggle(localStorage.comments = !(localStorage.comments == "true"));
 
         else if(e.keyCode == 87 || e.keyCode == 38)
             player.volume(player.volume() + 0.1);
@@ -142,13 +213,12 @@ if(video !== null) {
             player.paused() ? player.play() : player.pause();
     });
 
-    $('.wrapper > div').on('DOMMouseScroll mousewheel', function(e) {
+    $('.wrapper > div:not(.aside)').on('DOMMouseScroll mousewheel', function(e) {
         if(e.ctrlKey || e.altKey || e.shiftKey)
             return;
         e.preventDefault();
         e.deltaY < 0 ? getNext() : getPrev();
     });
-
 } else {
     var canvas = document.getElementById('bg');
     canvas.parentNode.removeChild(canvas);
@@ -176,6 +246,7 @@ $(function() {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         }
     });
+    // Comments
     var commentform = $('#commentForm');
     commentform.on('submit', function (e) {
         e.preventDefault();
@@ -195,6 +266,75 @@ $(function() {
         }).fail(function(data){
             flash('error', 'Error saving comment');
             flash('error', data);
+        });
+    });
+
+    //Tags
+    let tagsinput = $('#tags'),
+        submit = $('#submittags'),
+        tagdisplay = $('#tag-display');
+
+    function tagDeleteHandler(e) {
+        e.preventDefault();
+        if(!confirm('Do you really want to delete this tag?')) return;
+        video.untag($(this).siblings().text(), (success, error, warnings, cb) => {
+            if(success) {
+                flash('success', 'Tag successfully deleted');
+                let tags = [];
+                for(let tag of cb.tags)
+                    tags.push('<span class="label label-default"><a href="/songindex?q=' + tag.normalized + '" class="default-link">' + tag.name + '</a> <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a></span>');
+                tagdisplay.empty();
+                tagdisplay.append(tags.join(" "));
+                $('.delete-tag').on('click', tagDeleteHandler);
+            }
+            else
+                error ? flash(error.type, error.text) : flash('error', 'Unknown exception');
+        });
+    }
+    
+    $('.delete-tag').on('click', tagDeleteHandler);
+    
+    tagsinput.on('beforeItemAdd', e => {
+        for(let tag of video.tags) {
+            if(tag.toLowerCase() === e.item.toLowerCase()) {
+                e.cancel = true;
+                flash('info', 'Tag already exists');
+                return;
+            }
+        }
+    });
+    submit.on('click touchdown', e => {
+        e.preventDefault();
+        video.tag(tagsinput.tagsinput('items'), (success, error, warnings, cb) => {
+            if(success) {
+                flash('success', 'Tags saved successfully');
+                var tags = [];
+                for(let tag of cb.tags)
+                    tags.push('<span class="label label-default"><a href="/songindex?q=' + tag.normalized + '" class="default-link">' + tag.name + '</a>' + (cb.can_edit_video ? ' <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a>' : '') + '</span>');
+                tagdisplay.empty();
+                tagdisplay.append(tags.join(" "));
+                tagsinput.tagsinput('removeAll');
+                $('.delete-tag').on('click', tagDeleteHandler);
+            }
+            else
+                error ? flash(error.type, error.text) : flash('error', 'Unknown exception');
+        });
+    });
+
+    // Filter
+    var filter = $('#filter'),
+        submitfilter = $('#submitfilter');
+    submitfilter.on('click touchdown', function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: submitfilter.attr('href'),
+            data: filter.serialize()
+        }).done(function() {
+            flash('success', 'Filter successfully updated');
+            $('#filterselectmodal').modal('hide');
+        }).fail(function(data) {
+            flash('error', 'Error updating tags');
         });
     });
 })(jQuery);
@@ -310,7 +450,7 @@ $(function() {
 })(jQuery);
 
 (function ($) {
-    $(".comments").mCustomScrollbar({
+    $(".comments, .tags").mCustomScrollbar({
         axis: 'y',
         theme: 'minimal',
         scrollInertia: 0
@@ -415,8 +555,8 @@ $(function() {
     var comments = localStorage.comments;
     if (comments === undefined) localStorage.comments = true;
     comments = comments === undefined || comments === "true";
-    $(".comments").toggle(comments);
-    $("#toggle").click(function(){$(".comments").fadeToggle(localStorage.comments = !(localStorage.comments == "true"))});
+    $(".aside").toggle(comments);
+    $("#toggle").click(function(){$(".aside").fadeToggle(localStorage.comments = !(localStorage.comments == "true"))});
 })(jQuery);
 
 
@@ -725,9 +865,10 @@ function deleteComment(self) {
     var username = $(comment.children('.panel-footer').children('a')[0]).text();
     do {
         var reason = prompt('Reason for deleting comment ' + id + ' by ' + username);
-        if(reason == null)
+        if(reason === null)
             return;
-    } while(reason == '');
+        reason = reason.trim();
+    } while(!reason);
     $.ajax({
         url: '/api/comments/' + id + '/delete',
         method: 'POST',
@@ -758,9 +899,10 @@ function restoreComment(self) {
     var username = $(comment.children('.panel-footer').children('a')[0]).text();
     do {
         var reason = prompt('Reason for restoring comment ' + id + ' by ' + username);
-        if(reason == null)
+        if(reason === null)
             return;
-    } while(reason == '');
+        reason = reason.trim();
+    } while(!reason);
     $.ajax({
         url: '/api/comments/' + id + '/restore',
         method: 'POST',
@@ -865,7 +1007,7 @@ $(function () {
         cBar.hide();
         cBarStatus = false;
     });
-    $('[class^="vjs"').on('mouseleave', function (e) {
+    $('[class^="vjs"]').on('mouseleave', function (e) {
         if(e.relatedTarget == $('video').get(0) || $(e.relatedTarget).is('[class^="vjs"]') || !cBarStatus) return;
         cBar.hide();
         cBarStatus = false;
@@ -1113,59 +1255,21 @@ $(function() {
 $(function() {
     $('#delete_video').on('click', function(e) {
         e.preventDefault();
-        var match = location.href.match(/(\d+)(?!.*\/.)/);
-        if(!match) return;
-        var id = match[1];
-        match = $('.fa-info-circle').siblings('span').children('a[href]').attr('href').match(/user\/(.*)/);
-        if(!match) return;
-        var username = match[1];
         do {
-            var reason = prompt('Reason for deleting video ' + id + ' by ' + username);
-            if(reason == null)
+            var reason = prompt('Reason for deleting video ' + video.id + ' by ' + video.user);
+            if(reason === null)
                 return;
-        } while(reason == '');
-        $.ajax({
-            url: '/api/video/' + id + '/delete',
-            method: 'POST',
-            data: { reason: reason },
-            success: function(cb) {
-                if(!cb || !cb.error) {
-                    flash('error', 'Unknown exception');
-                    return;
-                }
-                switch(cb.error) {
-                    case 'null':
-                        flash('success', 'Video deleted. Redirect in 3 seconds...');
-                        setTimeout(function() {
-                            location.href = '/';
-                        }, 3000);
-                        break;
-                    case 'invalid_request':
-                        flash('error', 'Invalid request');
-                        break;
-                    case 'not_logged_in':
-                        flash('error', 'Not logged in');
-                        break;
-                    case 'insufficient_permissions':
-                        flash('error', 'Insufficient permissions');
-                        break;
-                    case 'video_not_found':
-                        flash('error', 'Video not found. Perhaps it has already been deleted');
-                        break;
-                    default:
-                        flash('error', 'Unknown exception');
-                }
-                if(cb.warnings.length) {
-                    cb.warnings.forEach(function(entry) {
-                        flash('warning', entry);
-                    });
-                }
-            },
-            error: function(jqxhr, status, error) {
-                flash('error', 'Unknwon exception');
-                flash('error', status);
-                flash('error', error);
+            reason = reason.trim();
+        } while(!reason);
+        video.delete(reason, (success, error, warnings) => {
+            if(success) {
+                flash('success', 'Video deleted. Redirect in 3 seconds...');
+                setTimeout(() => location.href = '/', 3000);
+                for(let warn of warnings)
+                    flash('warning', warn);
             }
+            else
+                error ? flash(error.type, error.text) : flash('error', 'Unknown exception');
         });
     });
 });

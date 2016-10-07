@@ -8,15 +8,15 @@
     <meta name="_token" content="{{csrf_token()}}">
     <link rel="icon" href="/favicon.png">
     <title>@if(isset($video)){{ $video->id }} –@endif w0bm.com</title>
+    <link rel="favicon" href="favicon.ico" type="image/ico">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
-    <link rel="favicon" type="image/ico" href="favicon.ico" />
-    <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700" rel="stylesheet">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Oswald" type="text/css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=UnifrakturCook:700">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <link href="/css/video-js.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.22">
-<!-- Piwik -->
+    <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="/css/video-js.min.css">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.21">
 <script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(['trackPageView']);
@@ -52,15 +52,15 @@
         @include('partials.flash')
     </div>
 </div>
-
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-tagsinput.min.js"></script>
 <script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="/js/isotope.pkgd.min.js"></script>
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
-<script src="/js/w0bmscript.js?v=1.1.3"></script>
+<script src="/js/w0bmscript.min.js?v=1.1.6"></script>
 </body>
 </html>

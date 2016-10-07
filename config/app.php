@@ -150,7 +150,12 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         App\Providers\BladeServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+<<<<<<< HEAD
         \Cviebrock\EloquentTaggable\ServiceProvider::class
+=======
+        Cviebrock\EloquentTaggable\ServiceProvider::class
+
+>>>>>>> parent of 5706880... Revert "Merge branch 'tagging'"
     ],
 
     /*

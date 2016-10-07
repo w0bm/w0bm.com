@@ -44,19 +44,19 @@ class AddTags extends Command
         // Videos
         echo 'UPDATING VIDEOS', PHP_EOL, '===============', PHP_EOL;
         $count = 0;
-        Video::withTrashed()->with('category')->chunk(200, function($videos) use(&$count) {
+        Video::withTrashed()->with('category')->chunk(200, function($videos) use ($count) {
             foreach($videos as $v) {
                 echo 'Updating Video with ID: ', $v->id, PHP_EOL;
-                //$v->detag();
+                $v->detag();
                 // quick and dirty. not 100% correct though.
                 if($v->category->shortname === 'pr0n')
-                    $v->tag('nsfw');
+                $v->tag('nsfw');
                 else
-                    $v->tag('sfw');
+                $v->tag('sfw');
 
                 array_map(function($t) use ($v) {
                     $v->tag($t);
-                }, array_filter([ $v->category->shortname
+                },  [ $v->category->shortname
                     , $v->category->name
                     , $v->interpret
                     , $v->songtitle
@@ -67,7 +67,6 @@ class AddTags extends Command
                 $count++;
             }
         });
-
         echo PHP_EOL, PHP_EOL, 'Updated ', $count, ' Videos.', PHP_EOL, PHP_EOL, PHP_EOL;
 
 
