@@ -888,7 +888,7 @@ img.icon {
 }
 
 .tags {
-    box-shadow: -13px 0px 10px 5px #000
+    /*box-shadow: -13px 0px 10px 5px #000*/
 }
 
 /* Deutschland */
@@ -916,4 +916,39 @@ img.icon {
 
 .default-link:focus {
     color: #fff;
+}
+
+.tag-panel-body {
+   color: #F2F5F4;
+   padding: 0px;
+}
+
+.toggo {
+    background-color: rgba(34, 34, 34, 0);
+    border: 1px solid rgba(10, 10, 11, 0);
+}
+
+.mCustomScrollBox {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    max-width: 100%;
+    outline: 0;
+    direction: ltr;
+    border-bottom: 2px solid #1fb2b0;
+}
+
+.label-info {
+    background-color: #118280;
+}
+
+.bootstrap-tagsinput {
+    color: #c8c8c8;
+    background: rgba(90, 88, 88, 0.4) none repeat scroll 0 0;
+    border: 2px solid #28282c;
+    border-radius: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    width: 79%;
 }
