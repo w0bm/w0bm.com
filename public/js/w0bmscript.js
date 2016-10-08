@@ -274,6 +274,15 @@ $(function() {
         submit = $('#submittags'),
         tagdisplay = $('#tag-display');
 
+    function tagmd() {
+        let elReplace = (el, regex, fn) => el.innerHTML = el.innerHTML.replace(regex, fn);
+        tagdisplay.children().children(':first-of-type').each((i, el) => {
+            elReplace(el, /^nsfw$/i, x => '<span style="color: red;">' + x + '</span>');
+            elReplace(el, /^sfw$/i, x => '<span style="color: green;">' + x + '</span>');
+        });
+    }
+    tagmd();
+
     function tagDeleteHandler(e) {
         e.preventDefault();
         if(!confirm('Do you really want to delete this tag?')) return;
@@ -286,6 +295,7 @@ $(function() {
                 tagdisplay.empty();
                 tagdisplay.append(tags.join(" "));
                 $('.delete-tag').on('click', tagDeleteHandler);
+                tagmd();
             }
             else
                 error ? flash(error.type, error.text) : flash('error', 'Unknown exception');
@@ -315,6 +325,7 @@ $(function() {
                 tagdisplay.append(tags.join(" "));
                 tagsinput.tagsinput('removeAll');
                 $('.delete-tag').on('click', tagDeleteHandler);
+                tagmd();
             }
             else
                 error ? flash(error.type, error.text) : flash('error', 'Unknown exception');
