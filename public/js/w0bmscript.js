@@ -970,6 +970,7 @@ function editComment(self) {
                             if(retval.error == 'null') {
                                 body.html(retval.rendered_comment);
                                 flash('success', 'Comment edited successfully');
+                                body.find('.comment_clickable_timestamp').on('click', commentClickableTimestamp);
                             }
                             else if(retval.error == 'invalid_request')
                                 flash('error', 'Invalid request was sent by your browser');
