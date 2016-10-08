@@ -304,6 +304,8 @@ $(function() {
     
     $('.delete-tag').on('click', tagDeleteHandler);
     
+    $('#tags, #filter').on('itemAdded', e => setTimeout(() => $(e.currentTarget).siblings('.bootstrap-tagsinput').children('input').val(''), 0));
+
     tagsinput.on('beforeItemAdd', e => {
         for(let tag of video.tags) {
             if(tag.toLowerCase() === e.item.toLowerCase()) {
