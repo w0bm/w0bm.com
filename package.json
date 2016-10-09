@@ -1,6 +1,13 @@
 {
+  "name": "w0bm",
   "private": true,
+  "scripts": {
+    "build": "babel public/js/w0bmscript.js -o public/js/w0bmscript.min.js"
+  },
   "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-preset-babili": "0.0.4",
+    "babel-preset-es2015": "^6.16.0",
     "gulp": "^3.8.8"
   },
   "dependencies": {
