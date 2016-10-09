@@ -274,6 +274,15 @@ $(function() {
         submit = $('#submittags'),
         tagdisplay = $('#tag-display');
 
+    function tagmd() {
+        let elReplace = (el, regex, fn) => el.innerHTML = el.innerHTML.replace(regex, fn);
+        tagdisplay.children().children(':first-of-type').each((i, el) => {
+            elReplace(el, /^nsfw$/i, x => '<span style="color: red;">' + x + '</span>');
+            elReplace(el, /^sfw$/i, x => '<span style="color: green;">' + x + '</span>');
+        });
+    }
+    tagmd();
+
     function tagDeleteHandler(e) {
         e.preventDefault();
         if(!confirm('Do you really want to delete this tag?')) return;
@@ -286,6 +295,7 @@ $(function() {
                 tagdisplay.empty();
                 tagdisplay.append(tags.join(" "));
                 $('.delete-tag').on('click', tagDeleteHandler);
+                tagmd();
             }
             else
                 error ? flash(error.type, error.text) : flash('error', 'Unknown exception');
@@ -294,6 +304,8 @@ $(function() {
     
     $('.delete-tag').on('click', tagDeleteHandler);
     
+    $('#tags, #filter').on('itemAdded', e => setTimeout(() => $(e.currentTarget).siblings('.bootstrap-tagsinput').children('input').val(''), 0));
+
     tagsinput.on('beforeItemAdd', e => {
         for(let tag of video.tags) {
             if(tag.toLowerCase() === e.item.toLowerCase()) {
@@ -315,6 +327,7 @@ $(function() {
                 tagdisplay.append(tags.join(" "));
                 tagsinput.tagsinput('removeAll');
                 $('.delete-tag').on('click', tagDeleteHandler);
+                tagmd();
             }
             else
                 error ? flash(error.type, error.text) : flash('error', 'Unknown exception');
@@ -957,6 +970,7 @@ function editComment(self) {
                             if(retval.error == 'null') {
                                 body.html(retval.rendered_comment);
                                 flash('success', 'Comment edited successfully');
+                                body.find('.comment_clickable_timestamp').on('click', commentClickableTimestamp);
                             }
                             else if(retval.error == 'invalid_request')
                                 flash('error', 'Invalid request was sent by your browser');
