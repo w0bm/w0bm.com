@@ -118,7 +118,7 @@ class Video extends Model
             return $query->withoutAnyTags($categories);
         } else {
             // TODO: filter if post has sfw & nsfw tags
-            return $query->withAllTags('sfw');
+            return $query->withAnyTags('sfw');
         }
     }
 }
