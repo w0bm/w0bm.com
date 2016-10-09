@@ -278,7 +278,7 @@ $(function() {
         let elReplace = (el, regex, fn) => el.innerHTML = el.innerHTML.replace(regex, fn);
         tagdisplay.children().children(':first-of-type').each((i, el) => {
             elReplace(el, /^nsfw$/i, x => '<span style="color: red;">' + x + '</span>');
-            elReplace(el, /^sfw$/i, x => '<span style="color: green;">' + x + '</span>');
+            elReplace(el, /^sfw$/i, x => '<span style="color: #23ff00;">' + x + '</span>');
         });
     }
     tagmd();
