@@ -18,8 +18,18 @@
 	<li>Reposting is not a crime! But in most cases it can be prevented with the use of the <a href="https://w0bm.com/songindex">search form</a>.
 	<li>Put your uploads in the correct category, if you have a video that doesn't fit in any of the categories always put it in the Misc category</li.>
 	<li>The focus is on videos you can easily watch 200 times a day over and over so upload only catchy shit! For example: <a href="/39">/39</a></li>
-	<li>The Artist and Songtitle field is only for the Artist and Song information respectively, anything else in there will be overwritten and when this happens too often your account will be banned for at least 2 months!</li>
+	<li>The Artist and Songtitle field is only for the Artist and Song information respectively, anything else in there probably doesn't belong in there, use the Tags.</li>
+	<li>The Video Source is field is not intended for YouTube Links or any other kind of link, please put only text in there. For example: YouTube and then put the YouTube link in the comments, if you fail at this too often it will probably hurt my vagina and I will scream like a 12 year old princess. Thanks! :3</li>
 </ol>
+
+<h5>Tagging</h5>
+<ol>
+	<li>Tags should always describe the video.</li>
+	<li>No links in the Tags, use the comment section for that!</li>
+	<li>Always give your video a rating like "sfw" or "nsfw" so people can filter.</li>
+	<li>Please don't tag too much shit, thanks.</li>
+</ol>
+	
 
 <h5>Suggestion for every user</h5>
 <ul style="text-align:left;">
