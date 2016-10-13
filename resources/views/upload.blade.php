@@ -33,6 +33,12 @@
                     ?>
                     {!! Form::select('category', $categories, 8, ['id' => 'category', 'class' => 'form-control']) !!}
                 </div>
+			</div>
+            <div class="form-group">
+                <label for="category" class="col-sm-2 control-label">NSFW?</label>
+                <div class="col-sm-10">
+                    {!! Form::checkbox('nsfw', 'true') !!}
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
