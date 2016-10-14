@@ -35,6 +35,12 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="category" class="col-sm-2 control-label">NSFW?</label>
+                <div class="col-sm-10">
+                    {!! Form::checkbox('nsfw', 'true') !!}
+              </div>
+           </div>
+            <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button id="btn-upload" type="button" style="width: 100%; height: 40px;" class="btn btn-default">Upload</button>
                     <p style="text-align:center; padding-top: 5px;">Before you click upload make sure you have read the <a href="/rules">Rules</a></p>
