@@ -20,7 +20,7 @@
             <div class="form-group">
                 <label for="imgsource" class="col-sm-2 control-label">Video source</label>
                 <div class="col-sm-10">
-                    {!! Form::text('imgsource', null, ['id' => 'imgsource', 'class' => 'form-control', 'placeholder' => 'Video Source']) !!}
+                    {!! Form::text('imgsource', null, ['id' => 'imgsource', 'class' => 'form-control', 'placeholder' => 'Video Source (This is not for links!)']) !!}
                 </div>
             </div>
             <div class="form-group">
