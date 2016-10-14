@@ -33,13 +33,13 @@
                     ?>
                     {!! Form::select('category', $categories, 8, ['id' => 'category', 'class' => 'form-control']) !!}
                 </div>
-			</div>
+            </div>
             <div class="form-group">
                 <label for="category" class="col-sm-2 control-label">NSFW?</label>
                 <div class="col-sm-10">
                     {!! Form::checkbox('nsfw', 'true') !!}
-                </div>
-            </div>
+              </div>
+           </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button id="btn-upload" type="button" style="width: 100%; height: 40px;" class="btn btn-default">Upload</button>
