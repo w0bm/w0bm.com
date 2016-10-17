@@ -16,6 +16,7 @@
     <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.22">
 <!-- Piwik -->
 <script type="text/javascript">
@@ -63,6 +64,6 @@
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/handlebars.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
-<script src="/js/w0bmscript.min.js?v=1.1.8"></script>
+<script src="/js/w0bmscript.min.js?v=1.1.9"></script>
 </body>
 </html>
