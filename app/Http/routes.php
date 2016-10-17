@@ -13,9 +13,10 @@
 
 Route::get('/', ['as' => 'home', function () {
     Session::reflash();
-
-    //dd(\App\Models\Video::filtered()->toSql());
-    \App\Models\Video::selectRaw('SQL_CALC_FOUND_ROWS videos.id')->filtered()->limit(0)->get();
+    // Dummy query to calculate rows
+    \App\Models\Video::selectRaw('SQL_CALC_FOUND_ROWS videos.*')
+        ->filtered()->limit(0)->first();
+    // get actual count
     $id = \DB::select('SELECT FOUND_ROWS() c')[0]->c - 1;
     $id = mt_rand(0, $id);
     $video = \App\Models\Video::filtered()->skip($id)->first();
