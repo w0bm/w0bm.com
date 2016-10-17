@@ -119,11 +119,11 @@ class VideoController extends Controller
         $video->category()->associate(Category::findOrFail($request->get('category')));
         $video->hash = $hash;
         $video->save();
-        //for some reason the input is flipped, but works
-        if ($request->get('nsfw') === 'true') {
-            $video->tag('sfw');
-        } else {
+
+        if($request->get('nsfw') === 'true') {
             $video->tag('nsfw');
+        } else {
+            $video->tag('sfw');
         }
         $video->tag($video->interpret);
         $video->tag($video->songtitle);

@@ -1086,7 +1086,7 @@ $(function() {
         }
         return true;
     }
-    function submitForm(interpret, songtitle, imgsource, category, file) {
+    function submitForm(interpret, songtitle, imgsource, category, nsfw, file) {
         var lastState = {
             'loaded': 0,
             'secondsElapsed': 0
@@ -1109,6 +1109,7 @@ $(function() {
         formData.append('songtitle', songtitle);
         formData.append('imgsource', imgsource);
         formData.append('category', category);
+        formData.append('nsfw', nsfw);
         formData.append('file', file);
         $('.progress-striped, #upload-stats').css('opacity', 0).slideDown('fast').animate({opacity: 1}, {queue: false, duration: 'fast'});
         jqXHR = $.ajax({
@@ -1262,7 +1263,7 @@ $(function() {
             flash('info', 'Already uploading');
             return;
         }
-        submitForm($('#interpret').val(), $('#songtitle').val(), $('#imgsource').val(), $('#category').val(), currentFile);
+        submitForm($('#interpret').val(), $('#songtitle').val(), $('#imgsource').val(), $('#category').val(), $('#nsfw').is(':checked'), currentFile);
     });
 });
 
