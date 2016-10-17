@@ -77,6 +77,15 @@ Route::group(['prefix' => 'api'], function() {
 
     // /api/video
     Route::group(['prefix' => 'video'], function() {
+        Route::get('{id}', function($id) {
+            $res = \App\Models\Video::with(['category', 'user' => function($query) {
+                $query->addSelect('username', 'id');
+            }])->find($id);
+            if(!$res) {
+                return response(['message' => 'Video not found'], 404);
+            }
+            return $res;
+        })->where('id', '[0-9]+'); 
         Route::post('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');
         Route::post('{id}/tag', 'VideoController@tag')->where('id', '[0-9]+');
         Route::post('{id}/untag', 'VideoController@untag')->where('id', '[0-9]+');
