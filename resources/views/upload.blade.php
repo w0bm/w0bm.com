@@ -35,9 +35,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="category" class="col-sm-2 control-label">NSFW?</label>
+                <label for="nsfw" class="col-sm-2 control-label">NSFW?</label>
                 <div class="col-sm-10">
-                    {!! Form::checkbox('nsfw', 'true') !!}
+                    {!! Form::checkbox('nsfw', 'true', false, ['id' => 'nsfw']) !!}
               </div>
            </div>
             <div class="form-group">
