@@ -472,7 +472,7 @@ $(function() {
 
 var alertrm = function ($) {
     $('.alert').each(function (index) {
-        $(this).delay(3000 + index * 1000).slideUp(300);
+        $(this).delay(3000 + index * 1000).slideUp(300, function() { $(this).remove(); });
     });
 };
 alertrm(jQuery);
