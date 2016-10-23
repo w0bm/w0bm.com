@@ -67,6 +67,7 @@ class Video {
 var video;
 $(function() {
     video = new Video();
+    if(!video.id) video = null;
 });
 
 //CSRF Token AjaxSetup
@@ -357,7 +358,6 @@ $(function() {
 })(jQuery);
 
 (function ($) {
-
     function updaterow(ctx, video) {
         if($('video').length) {
             var info = [];
@@ -1159,6 +1159,8 @@ $(function() {
                 flash('error', 'Upload failed');
                 flash('error', status);
                 flash('error', error);
+                $('.progress-bar-custom').css('background-color', 'red');
+                $('.progress-bar-custom').text('Upload failed');
             },
             complete: function() {
                 clearInterval(statsInterval);
