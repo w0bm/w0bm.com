@@ -73,8 +73,12 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        if(!$request->hasFile('file') || !$request->has('category'))
+        if(!$request->hasFile('file') || !$request->has('category') || !$request->has('tags'))
             return JsonResponse::create(array('error' => 'invalid_request'));
+
+        $tags = $request->get('tags');
+        if(mb_strpos($tags, 'sfw') === false && mb_strpos($tags, 'nsfw') === false)
+            return new JsonResponse(['error' => 'invalid_request']);
 
         $user = auth()->check() ? auth()->user() : null;
         if(is_null($user))
@@ -120,11 +124,7 @@ class VideoController extends Controller
         $video->hash = $hash;
         $video->save();
 
-        if($request->get('nsfw') === 'true') {
-            $video->tag('nsfw');
-        } else {
-            $video->tag('sfw');
-        }
+        $video->tag($tags);
         $video->tag($video->interpret);
         $video->tag($video->songtitle);
         $video->tag($video->imgsource);

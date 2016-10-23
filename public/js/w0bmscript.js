@@ -1039,6 +1039,8 @@ $(function() {
     var counter = 0;
     var currentFile;
     var jqXHR;
+    var tags = $('#tags_upload');
+    var nsfwCheckbox = $('#nsfw');
     function applyDefaultDragNDropCSS() {
         $('#dragndrop').css({
             'color': defaultDragNDropColor,
@@ -1086,7 +1088,7 @@ $(function() {
         }
         return true;
     }
-    function submitForm(interpret, songtitle, imgsource, category, nsfw, file) {
+    function submitForm(interpret, songtitle, imgsource, category, tags, file) {
         var lastState = {
             'loaded': 0,
             'secondsElapsed': 0
@@ -1109,7 +1111,7 @@ $(function() {
         formData.append('songtitle', songtitle);
         formData.append('imgsource', imgsource);
         formData.append('category', category);
-        formData.append('nsfw', nsfw);
+        formData.append('tags', tags);
         formData.append('file', file);
         $('.progress-striped, #upload-stats').css('opacity', 0).slideDown('fast').animate({opacity: 1}, {queue: false, duration: 'fast'});
         jqXHR = $.ajax({
@@ -1263,8 +1265,29 @@ $(function() {
             flash('info', 'Already uploading');
             return;
         }
-        submitForm($('#interpret').val(), $('#songtitle').val(), $('#imgsource').val(), $('#category').val(), $('#nsfw').is(':checked'), currentFile);
+        submitForm($('#interpret').val(), $('#songtitle').val(), $('#imgsource').val(), $('#category').val(), tags.tagsinput('items'), currentFile);
     });
+    tags.on('itemRemoved', function(e) {
+        if(e.item === 'nsfw') {
+            nsfwCheckbox.prop('checked', false);
+            $(this).tagsinput('add', 'sfw');
+        }
+        else if(e.item === 'sfw') {
+            nsfwCheckbox.prop('checked', true);
+            $(this).tagsinput('add', 'nsfw');
+        }
+    });
+    nsfwCheckbox.on('change', function() {
+        if(this.checked) {
+            tags.tagsinput('remove', 'sfw');
+            tags.tagsinput('add', 'nsfw');
+        }
+        else {
+            tags.tagsinput('remove', 'nsfw');
+            tags.tagsinput('add', 'sfw');
+        }
+    });
+    nsfwCheckbox.trigger('change');
 });
 
 $(function() {

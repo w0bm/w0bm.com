@@ -38,8 +38,14 @@
                 <label for="nsfw" class="col-sm-2 control-label">NSFW?</label>
                 <div class="col-sm-10">
                     {!! Form::checkbox('nsfw', 'true', false, ['id' => 'nsfw']) !!}
-              </div>
-           </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tags_upload" class="col-sm-2 control-label">Tags</label>
+                <div class="col-sm-10">
+                    {!! Form::text('tags', null, ['id' => 'tags_upload', 'class' => 'form-control', 'placeholder' => 'Input tags...', 'name' => 'tags', 'data-role' => 'tagsinput']) !!}
+                </div>
+            </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button id="btn-upload" type="button" style="width: 100%; height: 40px;" class="btn btn-default">Upload</button>
