@@ -69,6 +69,15 @@ $(function() {
     video = new Video();
 });
 
+//CSRF Token AjaxSetup
+$(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+});
+
 function flash(type, message) {
     var html = '<div class="alert alert-:TYPE: alert-dismissable" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>:REPLACE:</div>';
     var alerts = $('.flashcontainer > .container');
@@ -241,11 +250,6 @@ $(function() {
 
 
 (function ($) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
     // Comments
     var commentform = $('#commentForm');
     commentform.on('submit', function (e) {
@@ -382,11 +386,6 @@ $(function() {
         }
     }
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
     var indexform = $('.indexform, #webmedit');
     $('.indexedit').find('input, select').hide();
     if(indexform.length) {
@@ -418,11 +417,6 @@ $(function() {
 
 
 (function ($) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
     var favBtn = $('#fav');
     favBtn.on('click touchdown', function (e) {
         e.preventDefault();
@@ -732,11 +726,6 @@ if(/\/user\/.+\/comments/i.test(location.href)) {
     (function($) {
         if(typeof Handlebars == "undefined") return; // only on profilelayout
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        });
         Handlebars.registerHelper('paginate', paginate);
 
         var comlist = Handlebars.compile($('#comlist').html());
@@ -777,11 +766,6 @@ else {
     (function($) {
         if(typeof Handlebars == "undefined" || !$('#msglist').length) return; // only on profilelayout
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        });
         Handlebars.registerHelper('paginate', paginate);
 
 
