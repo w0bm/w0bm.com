@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="/css/video-js.min.css">
-    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.21">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.23">
 <script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(['trackPageView']);
@@ -61,6 +61,6 @@
 <script src="/js/jquery.timeago.js"></script>
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
-<script src="/js/w0bmscript.min.js?v=1.1.9"></script>
+<script src="/js/w0bmscript.min.js?v=1.1.10"></script>
 </body>
 </html>

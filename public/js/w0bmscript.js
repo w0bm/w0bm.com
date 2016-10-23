@@ -67,6 +67,16 @@ class Video {
 var video;
 $(function() {
     video = new Video();
+    if(!video.id) video = null;
+});
+
+//CSRF Token AjaxSetup
+$(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
 });
 
 function flash(type, message) {
@@ -241,11 +251,6 @@ $(function() {
 
 
 (function ($) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
     // Comments
     var commentform = $('#commentForm');
     commentform.on('submit', function (e) {
@@ -353,7 +358,6 @@ $(function() {
 })(jQuery);
 
 (function ($) {
-
     function updaterow(ctx, video) {
         if($('video').length) {
             var info = [];
@@ -382,11 +386,6 @@ $(function() {
         }
     }
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
     var indexform = $('.indexform, #webmedit');
     $('.indexedit').find('input, select').hide();
     if(indexform.length) {
@@ -418,11 +417,6 @@ $(function() {
 
 
 (function ($) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
     var favBtn = $('#fav');
     favBtn.on('click touchdown', function (e) {
         e.preventDefault();
@@ -472,7 +466,7 @@ $(function() {
 
 var alertrm = function ($) {
     $('.alert').each(function (index) {
-        $(this).delay(3000 + index * 1000).slideUp(300);
+        $(this).delay(3000 + index * 1000).slideUp(300, function() { $(this).remove(); });
     });
 };
 alertrm(jQuery);
@@ -732,11 +726,6 @@ if(/\/user\/.+\/comments/i.test(location.href)) {
     (function($) {
         if(typeof Handlebars == "undefined") return; // only on profilelayout
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        });
         Handlebars.registerHelper('paginate', paginate);
 
         var comlist = Handlebars.compile($('#comlist').html());
@@ -777,11 +766,6 @@ else {
     (function($) {
         if(typeof Handlebars == "undefined" || !$('#msglist').length) return; // only on profilelayout
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        });
         Handlebars.registerHelper('paginate', paginate);
 
 
@@ -1039,6 +1023,8 @@ $(function() {
     var counter = 0;
     var currentFile;
     var jqXHR;
+    var tags = $('#tags_upload');
+    var nsfwCheckbox = $('#nsfw');
     function applyDefaultDragNDropCSS() {
         $('#dragndrop').css({
             'color': defaultDragNDropColor,
@@ -1086,7 +1072,7 @@ $(function() {
         }
         return true;
     }
-    function submitForm(interpret, songtitle, imgsource, category, nsfw, file) {
+    function submitForm(interpret, songtitle, imgsource, category, tags, file) {
         var lastState = {
             'loaded': 0,
             'secondsElapsed': 0
@@ -1109,7 +1095,7 @@ $(function() {
         formData.append('songtitle', songtitle);
         formData.append('imgsource', imgsource);
         formData.append('category', category);
-        formData.append('nsfw', nsfw);
+        formData.append('tags', tags);
         formData.append('file', file);
         $('.progress-striped, #upload-stats').css('opacity', 0).slideDown('fast').animate({opacity: 1}, {queue: false, duration: 'fast'});
         jqXHR = $.ajax({
@@ -1173,6 +1159,8 @@ $(function() {
                 flash('error', 'Upload failed');
                 flash('error', status);
                 flash('error', error);
+                $('.progress-bar-custom').css('background-color', 'red');
+                $('.progress-bar-custom').text('Upload failed');
             },
             complete: function() {
                 clearInterval(statsInterval);
@@ -1263,8 +1251,29 @@ $(function() {
             flash('info', 'Already uploading');
             return;
         }
-        submitForm($('#interpret').val(), $('#songtitle').val(), $('#imgsource').val(), $('#category').val(), $('#nsfw').is(':checked'), currentFile);
+        submitForm($('#interpret').val(), $('#songtitle').val(), $('#imgsource').val(), $('#category').val(), tags.tagsinput('items'), currentFile);
     });
+    tags.on('itemRemoved', function(e) {
+        if(e.item === 'nsfw') {
+            nsfwCheckbox.prop('checked', false);
+            $(this).tagsinput('add', 'sfw');
+        }
+        else if(e.item === 'sfw') {
+            nsfwCheckbox.prop('checked', true);
+            $(this).tagsinput('add', 'nsfw');
+        }
+    });
+    nsfwCheckbox.on('change', function() {
+        if(this.checked) {
+            tags.tagsinput('remove', 'sfw');
+            tags.tagsinput('add', 'nsfw');
+        }
+        else {
+            tags.tagsinput('remove', 'nsfw');
+            tags.tagsinput('add', 'sfw');
+        }
+    });
+    nsfwCheckbox.trigger('change');
 });
 
 $(function() {

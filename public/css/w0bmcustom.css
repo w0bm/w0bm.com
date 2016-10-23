@@ -937,7 +937,12 @@ img.icon {
     width: 79%;
 }
 
-.modal-body > .bootstrap-tagsinput {
+.modal-body > .bootstrap-tagsinput, .col-sm-10 > .bootstrap-tagsinput {
     position: relative;
     width: 100%;
+}
+
+.col-sm-10 > .bootstrap-tagsinput {
+    background-color: #353434;
+    border: 1px solid #282828;
 }
