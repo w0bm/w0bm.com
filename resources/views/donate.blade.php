@@ -150,7 +150,7 @@
 
 	<tr class="success">
             <td>13.</td>
-            <td><a href="/user/Kim">Alucard</a></td>
+            <td><a href="/user/Alucard">Alucard</a></td>
             <td>1,07€</td>
 	    <td>BTC</td>
 	    <td>27.10.2016</td>
