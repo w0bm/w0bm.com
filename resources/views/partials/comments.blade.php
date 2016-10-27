@@ -1,15 +1,16 @@
-<aside class="comments hidden-xs">
 
-	<div style="border: 3px solid #1fb2b0;margin-bottom:1px;" class="panel panel-info">
-	    <div class="panel-body motd">
-		<div><span class="anim">420 blaze it <img class="icon" src="https://w0bm.com/images/icons/weed.png" /></span></div>
-	   </div>
-	</div>
+<div id="motd" class="panel panel-info hidden-xs">
+    <div class="panel-body motd">
+        <span class="anim">420 blaze it <img class="icon" src="https://w0bm.com/images/icons/weed.png" /></span>
+    </div>
+</div>
 
 
-    @if(Auth::check())
-        @include('partials.commentform')
-    @endif
+@if(Auth::check())
+    @include('partials.commentform')
+@endif
+
+<div class="comments hidden-xs">
     <div class="commentwrapper">
         <?php
             if($mod = (Auth::check() && Auth::user()->can('delete_comment'))) $comments = $video->comments()->withTrashed()->get();
@@ -22,9 +23,9 @@
         @else
             <div class="panel panel-default nocomments">
                 <div class="panel-body">
-                    No comments yet …
+                    No comments yet …<br />
                 </div>
             </div>
         @endif
     </div>
-</aside>
+</div>
