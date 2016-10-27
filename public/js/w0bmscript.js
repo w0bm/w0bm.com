@@ -252,8 +252,9 @@ $(function() {
 
 (function ($) {
     // Comments
-    var commentform = $('#commentForm');
+    var commentform = $('#commentForm > form');
     commentform.on('submit', function (e) {
+        console.log('NIGGER');
         e.preventDefault();
         $.ajax({
             type: 'POST',
@@ -457,7 +458,7 @@ $(function() {
 })(jQuery);
 
 (function ($) {
-    $(".comments, .tags").mCustomScrollbar({
+    $(".commentwrapper, .tags").mCustomScrollbar({
         axis: 'y',
         theme: 'minimal',
         scrollInertia: 0

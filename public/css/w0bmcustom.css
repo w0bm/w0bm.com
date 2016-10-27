@@ -115,27 +115,19 @@ div.tbody {
 }
 
 .tags {
-    height: 100px;
     width: 350px;
-    overflow-x: hidden;
     text-overflow: ellipsis;
     background: rgba(32, 32, 32, 0.6);
     padding: 0 2px 2px;
-    overflow-y: scroll;
-    //border-right: 0 solid #3F3F3F;
-    //box-shadow: #FFF -20px 0px 20px;
 }
 
 .comments {
-    height: calc(100% - 150px); /* -150px due to tag area nav bar */
-    height: calc(100vh - 150px);
-    width: 350px;
     background: rgba(32, 32, 32, 0.6);
     padding: 0 2px 2px;
-    overflow-y: scroll;
+    overflow-y: hidden;
     border-right: 0 solid #3F3F3F;
 }
-.comments textarea {
+#commentForm textarea {
     color: #c8c8c8;
     background: rgba(90, 88, 88, 0.4) none repeat scroll 0 0;
     height: 2.7em;
@@ -144,7 +136,7 @@ div.tbody {
     -moz-transition: height 0.8s;
     transition: height 0.8s;
 }
-.comments textarea:active, .comments textarea:focus, .comments textarea:valid {
+#commentForm textarea:active, #commentForm textarea:focus, #commentForm textarea:valid {
     height: 8em;
 }
 a[rel=extern]:after {
@@ -815,10 +807,6 @@ select.form-control, input.form-control {
     flex-direction: column;
 }
 
-.motd {
-	text-align:center;
-}
-
 .reich {
 	font-family: 'UnifrakturCook', cursive;
 	color: #F2F5F4;
@@ -919,7 +907,6 @@ img.icon {
     max-width: 100%;
     outline: 0;
     direction: ltr;
-    border-bottom: 2px solid #1fb2b0;
 }
 
 .label-info {
@@ -945,4 +932,30 @@ img.icon {
 .col-sm-10 > .bootstrap-tagsinput {
     background-color: #353434;
     border: 1px solid #282828;
+}
+
+/* SCROLL FOO */
+#sidebar {
+    width: 350px;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    height: calc(100% - 50px);
+    height: calc(100vh - 50px);
+}
+
+#sidebar > #motd {
+    border: 3px solid #1fb2b0;
+    margin-bottom: 1px;
+    text-align: center;
+}
+
+#sidebar > .comments {
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
+#sidebar > .comments, #sidebar > .tags {
+    border-bottom: 2px solid #1fb2b0;
 }

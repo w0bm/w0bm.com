@@ -1,4 +1,5 @@
-<form id="commentForm" action="{{action('CommentController@store', ['id' => $video->id])}}" method="post">
+<div id="commentForm" class="hidden-xs">
+<form action="{{action('CommentController@store', ['id' => $video->id])}}" method="post">
     {!! csrf_field() !!}
     <div class="panel panel-default">
         <div class="panel-body">
@@ -7,3 +8,4 @@
     <div class="panel-footer"><button type="submit" class="btn btn-primary btn-sm">Post</button></div>
     </div>
 </form>
+</div>
