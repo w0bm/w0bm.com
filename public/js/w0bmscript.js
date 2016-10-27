@@ -254,7 +254,6 @@ $(function() {
     // Comments
     var commentform = $('#commentForm > form');
     commentform.on('submit', function (e) {
-        console.log('NIGGER');
         e.preventDefault();
         $.ajax({
             type: 'POST',
