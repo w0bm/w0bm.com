@@ -72,10 +72,8 @@
 @endsection
 
 @section('aside')
-<!--    <div style="float: left" class="aside">-->
     <aside id="sidebar" class="panel">
-    @include('partials.comments')
-	@include('partials.tags')
+    	@include('partials.comments')
+		@include('partials.tags')
 	</aside>
-<!--    </div>-->
 @endsection
