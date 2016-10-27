@@ -25,11 +25,11 @@
 	<h5>Overview: ~</h5>
 	<p>Like us? Help to keep it alive.</p>
 	<div class="progress">
-  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 0%;">
-		0€
+  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 26%;">
+		26,07€
 		</div>
 	</div>
-	<p>We accept Bitcoin and PayPal but we highly recommend Bitcoin overall because PayPal wants everytime I make a transaction with my hoster 2,30€ and this is just bullshit, so my advice is Bitcoin.</p>
+	<p>Did you know: BTC is super cute :3</p>
 	<i class="fa fa-btc" style="color: #1FB2B0;" aria-hidden="true"></i> <span style="font-family:monospace;color:#1FB2B0;">1PXqtRtZLYwRFKKks7tipVXeauGSpy3u4z</span>
 	<br />
 	<i class="fa fa-paypal" style="color: #1FB2B0;"></i> <span style="font-family:monospace;coloR:#1FB2B0;">paypal@w0bm.com</span>
@@ -146,6 +146,22 @@
             <td>0,42€</td>
 	    <td>BTC</td>
 	    <td>28.09.2016</td>
+        </tr>
+
+	<tr class="success">
+            <td>13.</td>
+            <td><a href="/user/Alucard">Alucard</a></td>
+            <td>1,07€</td>
+	    <td>BTC</td>
+	    <td>27.10.2016</td>
+        </tr>
+	
+	<tr class="success">
+            <td>14.</td>
+            <td><a href="/user/gz">gz</a></td>
+            <td>25€</td>
+	    <td>SEPA</td>
+	    <td>28.10.2016</td>
         </tr>
 
 	</tbody>
