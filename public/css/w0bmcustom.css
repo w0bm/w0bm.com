@@ -197,7 +197,7 @@ code {
 
 .panel-default {
     margin-bottom: 5px;
-    background-color: rgba(34, 34, 34, 0.61);
+    background-color: rgb(34, 34, 34);
     border: 1px solid rgba(10, 10, 11, 0.46);
     border-radius: 2px;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -949,6 +949,7 @@ img.icon {
     border: 3px solid #1fb2b0;
     margin-bottom: 1px;
     text-align: center;
+    background-color: rgb(34, 34, 34);
 }
 
 #sidebar > .comments {
