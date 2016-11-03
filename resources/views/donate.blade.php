@@ -26,7 +26,7 @@
 	<p>Like us? Help to keep it alive.</p>
 	<div class="progress">
   		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 26%;">
-		26,07€
+		36,22€
 		</div>
 	</div>
 	<p>Did you know: BTC is super cute :3</p>
@@ -162,6 +162,14 @@
             <td>25€</td>
 	    <td>SEPA</td>
 	    <td>28.10.2016</td>
+        </tr>
+
+	<tr class="success">
+            <td>15.</td>
+            <td><a href="/user/niceCock">niceCock</a></td>
+            <td>10,15€</td>
+	    <td>PayPal</td>
+	    <td>03.11.2016</td>
         </tr>
 
 	</tbody>
