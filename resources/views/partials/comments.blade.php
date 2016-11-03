@@ -1,7 +1,7 @@
 
 <div id="motd" class="panel panel-info hidden-xs">
     <div class="panel-body motd">
-        <span class="anim">420 blaze it <img class="icon" src="https://w0bm.com/images/icons/weed.png" /></span>
+        <span class="anim">Ａｕｔｉｓｍ – ａｌｗａｙｓ– ｗｉｎｓ</span>
     </div>
 </div>
 
