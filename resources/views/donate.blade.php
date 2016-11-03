@@ -25,7 +25,7 @@
 	<h5>Overview: ~</h5>
 	<p>Like us? Help to keep it alive.</p>
 	<div class="progress">
-  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 26%;">
+  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 36%;">
 		36,22€
 		</div>
 	</div>
