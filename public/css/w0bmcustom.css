@@ -78,7 +78,7 @@ div.tbody {
 .navbar {
     margin-bottom: 0;
 }
-.navbar-form > .form-group > input.form-control {
+.navbar-form > .form-group > input{
     background: rgba(32, 32, 32, 0.3);
     color: #c8c8c8;
 }
@@ -197,7 +197,7 @@ code {
 
 .panel-default {
     margin-bottom: 5px;
-    background-color: rgba(34, 34, 34, 0.61);
+    background-color: rgb(34, 34, 34);
     border: 1px solid rgba(10, 10, 11, 0.46);
     border-radius: 2px;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -673,6 +673,7 @@ input {
 
 .form-control {
 	outline: aqua!important;
+	background-color: #3c3a3a;
 }
 
 .video-js {
@@ -857,6 +858,8 @@ img.icon {
 #submittags {
     /*line-height: 0;*/
     /*font-size: 14px;*/
+    background-color: #1fb2b0;
+    color: white;
 }
 
 .tags {
@@ -949,6 +952,7 @@ img.icon {
     border: 3px solid #1fb2b0;
     margin-bottom: 1px;
     text-align: center;
+    background-color: rgb(34, 34, 34);
 }
 
 #sidebar > .comments {
