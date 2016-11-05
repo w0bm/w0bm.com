@@ -25,8 +25,8 @@
 	<h5>Overview: ~</h5>
 	<p>Like us? Help to keep it alive.</p>
 	<div class="progress">
-  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 36%;">
-		36,22€
+  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 49%;">
+		49,17€
 		</div>
 	</div>
 	<p>Did you know: BTC is super cute :3</p>
@@ -170,6 +170,14 @@
             <td>10,15€</td>
 	    <td>PayPal</td>
 	    <td>03.11.2016</td>
+        </tr>
+
+	<tr class="success">
+            <td>16.</td>
+            <td><a href="/user/Klemme">Klemme</a></td>
+            <td>12,59</td>
+	    <td>PayPal</td>
+	    <td>05.11.2016</td>
         </tr>
 
 	</tbody>
