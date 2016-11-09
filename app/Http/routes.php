@@ -91,6 +91,7 @@ Route::group(['prefix' => 'api'], function() {
         Route::post('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');
         Route::post('{id}/tag', 'VideoController@tag')->where('id', '[0-9]+');
         Route::post('{id}/untag', 'VideoController@untag')->where('id', '[0-9]+');
+        Route::post('upload', 'VideoController@store')->middleware('auth.basic');
     });
 
     Route::post('upload', 'VideoController@store');

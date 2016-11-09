@@ -12,16 +12,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        //
+        'api/video/upload'
     ];
     
-    protected function tokensMatch($request)
-    {
-        // If request is an ajax request, then check to see if token matches token provider in
-        // the header. This way, we can use CSRF protection in ajax requests also.
-        $token = $request->ajax() ? $request->header('X-CSRF-Token') : $request->input('_token');
-
-        return $request->session()->token() == $token;
-
-    }
 }
