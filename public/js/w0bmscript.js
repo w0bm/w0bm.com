@@ -253,12 +253,22 @@ $(function() {
 (function ($) {
     // Comments
     var commentform = $('#commentForm > form');
+    let lastComment = "";
     commentform.on('submit', function (e) {
         e.preventDefault();
+
+        // double comment prevention:
+        const data = commentform.serialize();
+        if (data == lastComment) {
+            alert("nope. just don't. seriously... don't.");
+            return false;
+        }
+        lastComment = data;
+
         $.ajax({
             type: 'POST',
             url: commentform.attr('action'),
-            data: commentform.serialize()
+            data: data
         }).done(function (data) {
             flash('success', 'Comment saved successfully');
             $('.nocomments').remove();
@@ -306,9 +316,9 @@ $(function() {
                 error ? flash(error.type, error.text) : flash('error', 'Unknown exception');
         });
     }
-    
+
     $('.delete-tag').on('click', tagDeleteHandler);
-    
+
     $('#tags, #filter').on('itemAdded', e => setTimeout(() => $(e.currentTarget).siblings('.bootstrap-tagsinput').children('input').val(''), 0));
 
     tagsinput.on('beforeItemAdd', e => {
