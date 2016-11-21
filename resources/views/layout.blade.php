@@ -31,7 +31,6 @@
 		          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js'; s.parentNode.insertBefore(g,s);
 			    })();
 </script>
-<noscript><p><img src="//stats.w0bm.com/js?idsite=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Piwik Code -->
 </head>
 <body>
