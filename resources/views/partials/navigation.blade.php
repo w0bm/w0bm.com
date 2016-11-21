@@ -44,17 +44,6 @@
 				  </ul>
 		</div>
 	</form>
-
-<!--		<form action="{{action('UserController@login')}}" method="post" class="navbar-form navbar-right">
-                    {!! csrf_field() !!}
-                    <div class="form-group">
-			<input type="text" name="identifier" placeholder="Username/Email" class="form-control">
-                        <input type="password" name="password" placeholder="Password" class="form-control">
-                        <input type="checkbox" name="remember">
-                        <button type="submit" class="btnlogin btn-primary">Login</button>
-                        <!--<a href="{{url('register')}}" class="btnlogin btn-success">Register</a>
-                    </div>
-                </form>-->
             @endif
         </div>
     </div>
