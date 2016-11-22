@@ -16,7 +16,7 @@
                 <li><a href="{{url('songindex')}}"><i class="fa fa-music"></i> Songindex</a></li>
                 <li><a href="{{url('irc')}}"><i class="fa fa-comment"></i> IRC</a></li>
 		<li><a href="{{url('about')}}"><i class="fa fa-exclamation"></i> About</a></li>
-		<li><a href="{{url('donate')}}"><img src="https://f0ck.me/b/bec7e820.png" style="height: 20px"> Support</a></li>
+		<li><a href="{{url('donate')}}"><i class="fa fa-heartbeat" aria-hidden="true"></i> Support</a></li>
 	    </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">
