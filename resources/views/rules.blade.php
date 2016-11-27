@@ -1,19 +1,22 @@
 @extends('profilelayout')
 @section('content')
 <div class="page-header">
-        <h4>General Rules for w0bm.com</h4>
+        <h4>General Rules for w0bm.com – Only a troll would take anything posted here as a fact</h4>
 </div>
 <h5>General</h5>
 <ol>
 	<li>Content on this site is intended for people over the age of 18 only, if you are under 18 get the fuck out right now and don't tell your mom I didn't warn you!</li>
 	<li>Leaking of private information is strictly forbidden.</li>
+	<li>Do not talk about crimes you commited or will commit, we don't want to know.</li>
+	<li>Do not try to sell, buy, or spread credit-card, banking etc. info anywhere on this site.</li>
+	<li>Do not animate people to do crimes or anything illegal wherever the fuck you are!</li>
+	<li>We are not political in any ways, please refrain from going deep into politics. This is not the right place for that, we only archive videos we found online.<br /> This is no propaganda place in any ways. If you fuck this up… say goodbye.</li>
 </ol>
 
 <h5>Uploading</h5>
 <ol>
 	<li>Everything you upload <strong style="color:#1FB2B0;">must</strong> be acceptable with Dutch law</li>
 	<li>Absolutely no child pornography in any way! This also includes "modeling" and 3D loli videos. 2D (hentai) is okay.</li>
-	<li>Videos that qualify as Nazi videos need to be marked with the nsfw tag an put into the Mett category</li>
 	<li>Reposting is not a crime! But in most cases it can be prevented with the use of the <a href="https://w0bm.com/songindex">search form</a>.
 	<li>Put your uploads in the correct category, if you have a video that doesn't fit in any of the categories always put it in the Misc category</li.>
 	<li>The focus is on videos you can easily watch 200 times a day over and over so upload only catchy shit! For example: <a href="/39">/39</a></li>
@@ -25,8 +28,9 @@
 <ol>
 	<li>Tags should always describe the video.</li>
 	<li>No links in the Tags, use the comment section for that!</li>
-	<li>Always give your video a rating like "sfw" or "nsfw" so people can filter.</li>
+	<li>Always give your video a rating like "sfw" or "nsfw" so people can filter. (Nazi is always nsfw!)</li>
 	<li>Please don't tag too much shit, thanks.</li>
+	<li>Comments are not welcome in the Tag section, if we catch you say goodbye.</li>
 </ol>
 	
 
