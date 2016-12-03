@@ -17,7 +17,7 @@
 <ol>
 	<li>Everything you upload <strong style="color:#1FB2B0;">must</strong> be acceptable with Dutch law</li>
 	<li>Absolutely no child pornography in any way! This also includes "modeling" and 3D loli videos. 2D (hentai) is okay.</li>
-	<li>Reposting is not a crime! But in most cases it can be prevented with the use of the <a href="https://w0bm.com/songindex">search form</a>.
+	<li>Reposting is not a crime! But in most cases it can be prevented with the use of the <a href="https://w0bm.com/index">search form</a>.
 	<li>Put your uploads in the correct category, if you have a video that doesn't fit in any of the categories always put it in the Misc category</li.>
 	<li>The focus is on videos you can easily watch 200 times a day over and over so upload only catchy shit! For example: <a href="/39">/39</a></li>
 	<li>The Artist and Songtitle field is only for the Artist and Song information respectively, anything else in there probably doesn't belong in there, use the Tags.</li>

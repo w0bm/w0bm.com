@@ -1,5 +1,5 @@
 @if(isset($video))
-    <form id="webmedit" method="POST" action="/songindex/{{$video->id}}">
+    <form id="webmedit" method="POST" action="/index/{{$video->id}}">
         {!! csrf_field() !!}
         <div class="modal fade" id="webmeditmodal" tabindex="-1" role="dialog" aria-labelledby="Edit webm">
             <div class="modal-dialog" role="document">
