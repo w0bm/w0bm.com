@@ -306,7 +306,7 @@ $(function() {
                 flash('success', 'Tag successfully deleted');
                 let tags = [];
                 for(let tag of cb.tags)
-                    tags.push('<span class="label label-default"><a href="/songindex?q=' + tag.normalized + '" class="default-link">' + tag.name + '</a> <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a></span>');
+                    tags.push('<span class="label label-default"><a href="/index?q=' + tag.normalized + '" class="default-link">' + tag.name + '</a> <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a></span>');
                 tagdisplay.empty();
                 tagdisplay.append(tags.join(" "));
                 $('.delete-tag').on('click', tagDeleteHandler);
@@ -337,7 +337,7 @@ $(function() {
                 flash('success', 'Tags saved successfully');
                 var tags = [];
                 for(let tag of cb.tags)
-                    tags.push('<span class="label label-default"><a href="/songindex?q=' + tag.normalized + '" class="default-link">' + tag.name + '</a>' + (cb.can_edit_video ? ' <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a>' : '') + '</span>');
+                    tags.push('<span class="label label-default"><a href="/index?q=' + tag.normalized + '" class="default-link">' + tag.name + '</a>' + (cb.can_edit_video ? ' <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a>' : '') + '</span>');
                 tagdisplay.empty();
                 tagdisplay.append(tags.join(" "));
                 tagsinput.tagsinput('removeAll');
