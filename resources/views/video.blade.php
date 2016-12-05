@@ -72,7 +72,7 @@
 @endsection
 
 @section('aside')
-    <aside id="sidebar" class="aside panel">
+    <aside id="sidebar" class="aside panel hidden-xs">
     	@include('partials.comments')
 		@include('partials.tags')
 	</aside>
