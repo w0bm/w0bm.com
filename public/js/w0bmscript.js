@@ -511,7 +511,7 @@ $(function() {
     });
 });
 
-/* bye bye kadse D: greetz gz
+// kadse :D greetz gz
 (function() {
     new Image().src = "/images/catfart/cutf.png";
     var n = document.createElement("div");
@@ -533,7 +533,7 @@ $(function() {
 
     n.setAttribute("class", "catfart");
     document.body.appendChild(n);
-})();*/
+})();
 
 (function() {
     var v = document.getElementById("video");
