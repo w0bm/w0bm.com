@@ -6,6 +6,8 @@
           content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <meta name="_token" content="{{csrf_token()}}">
+    <meta name="keywords" content="webm, webm site, w0bm, videos, funny, internet">
+    <meta name="Description" content="@if(!empty($video->interpret)){{$video->interpret}} – {{$video->songtitle}}@else()No Data Available ;__;@endif">
     <link rel="icon" href="/favicon.png">
     <title>@if(isset($video)){{ $video->id }} –@endif w0bm.com</title>
     <link rel="favicon" href="favicon.ico" type="image/ico">
@@ -16,7 +18,7 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="/css/video-js.min.css">
-    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.26">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.27">
 <!-- Piwik -->
 <script type="text/javascript">
   var _paq = _paq || [];
@@ -62,6 +64,6 @@
 <script src="/js/jquery.timeago.js"></script>
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
-<script src="/js/w0bmscript.min.js?v=1.1.11"></script>
+<script src="/js/w0bmscript.js?v=1.1.11"></script>
 </body>
 </html>

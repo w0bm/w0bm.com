@@ -4,7 +4,7 @@
     <div class="vertical-align">
         <div class="wrapper">
             <div class="embed-responsive embed-responsive-16by9">
-                <video id="video" loop autoplay controls preload="auto" src="/b/{{ $video->file }}"></video>
+                <video id="video" loop autoplay controls preload="auto" src="https://b.w0bm.com/{{ $video->file }}"></video>
             </div>
 			<div class="text-center" style="position: unset;">
 				@if($category)
@@ -72,7 +72,7 @@
 @endsection
 
 @section('aside')
-    <aside id="sidebar" class="aside panel">
+    <aside id="sidebar" class="aside panel hidden-xs">
     	@include('partials.comments')
 		@include('partials.tags')
 	</aside>

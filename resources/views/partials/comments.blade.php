@@ -1,7 +1,7 @@
 
 <div id="motd" class="panel panel-info hidden-xs">
     <div class="panel-body motd">
-        <span class="anim">Ａｕｔｉｓｍ – ａｌｗａｙｓ– ｗｉｎｓ</span>
+        <span style="color:#ff0094;">Danke Domian!</span>
     </div>
 </div>
 

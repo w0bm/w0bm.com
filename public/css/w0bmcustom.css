@@ -42,8 +42,8 @@ div.tbody {
 
 .catfart {
     position: fixed;
-    width: 125px;
-    height: 150px;
+    width: 100px;
+    height: 120px;
     right: 0;
     bottom: 0;
     overflow: hidden;
@@ -963,3 +963,22 @@ img.icon {
 #sidebar > .comments, #sidebar > .tags {
     border-bottom: 2px solid #1fb2b0;
 }
+
+/* Damit das Logo nicht mehr auf Handys gefickt ist */
+
+@media(max-width:35em) {
+	.navbar-brand > img {margin-left: 5px; height: 49px; margin-top: 0px;}
+}
+
+@media(max-width:40em) {
+	.navbar-brand > img {margin-left: 5px; height: 49px; margin-top: 0px;}
+}
+
+@media(max-width:45em) {
+	.navbar-brand > img {margin-left: 5px; height: 49px; margin-top: 0px;}
+}
+
+@media(max-width:48em) {
+	.navbar-brand > img {margin-left: 5px; height: 49px; margin-top: 0px;}
+}
+
