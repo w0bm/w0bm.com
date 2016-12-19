@@ -12,7 +12,7 @@
         <div id="tag-display" class="tag-panel-body">
             @if(count($video->tags))
                 @foreach($video->tags as $tag)
-                    <span class="label label-default"><a href="/songindex?q={{$tag->normalized}}" class="default-link">{{$tag->name}}</a>@if(Auth::check() && Auth::user()->can('edit_video')) <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a>@endif</span>
+                    <span class="label label-default"><a href="/index?q={{$tag->normalized}}" class="default-link">{{$tag->name}}</a>@if(Auth::check() && Auth::user()->can('edit_video')) <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a>@endif</span>
                 @endforeach
             @else
                 No tags yet ...

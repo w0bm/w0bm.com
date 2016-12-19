@@ -23,7 +23,7 @@ class VideoController extends Controller
     public function index(Request $request) {
         if($request->has('q')){
             $needle = trim($request->input('q'));
-            return view('songindex', [
+            return view('index', [
                 // TODO: add ordering
                 'videos' => Video::withAllTags($needle)
                     ->paginate(20)->appends(['q' => $needle]),
@@ -33,6 +33,7 @@ class VideoController extends Controller
 
             // $pdo = \DB::connection()->getPdo();
             // $needle = '%' . trim($request->input('q')) .'%';
+            // `songindex` will need to be changed due to the view name being changed to index.
             // return view('songindex', [
             //     'videos' => Video::where(function($query) use($needle) {
             //         $query->where('interpret', 'LIKE', $needle)
@@ -48,7 +49,7 @@ class VideoController extends Controller
             // ]);
 
         }
-        return view('songindex', [
+        return view('index', [
             'videos' => Video::orderBy('id', 'ASC')->paginate(20),
             'categories' => Category::all()
         ]);

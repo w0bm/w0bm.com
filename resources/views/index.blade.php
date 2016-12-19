@@ -1,7 +1,7 @@
 @extends('profilelayout')
 @section('content')
     <div class="page-header">
-	<h3>Songindex</h3>
+	<h3>Index</h3>
         
         <form method="get">
             {!! Form::text('q', isset($q) ? $q : null, ['class' => 'suchleiste', 'placeholder' => 'Search']) !!}
@@ -26,7 +26,7 @@
             <tr data-thumb="{{$thumb}}" class="indexedit" data-vid="{{$video->id}}">
                 <td>
                     @if($edit = auth()->check() && auth()->user()->can('edit_video'))
-                        <form action="/songindex/{{$video->id}}" method="post" id="edit_{{$video->id}}" class="indexform"></form>
+                        <form action="/index/{{$video->id}}" method="post" id="edit_{{$video->id}}" class="indexform"></form>
                     @endif
                     <span class="vinfo vid"><a href="{{url($video->id)}}">{{$video->id}}</a></span>
                     @if($edit)

@@ -13,7 +13,7 @@
         <div class=" collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="{{url('categories')}}"><i class="fa fa-bars"></i> Categories</a></li>
-                <li><a href="{{url('songindex')}}"><i class="fa fa-music"></i> Songindex</a></li>
+                <li><a href="{{url('index')}}"><i class="fa fa-list"></i> Index</a></li>
                 <li><a href="{{url('irc')}}"><i class="fa fa-comment"></i> IRC</a></li>
 		<li><a href="{{url('about')}}"><i class="fa fa-exclamation"></i> About</a></li>
 		<li><a href="{{url('donate')}}"><i class="fa fa-heartbeat" aria-hidden="true"></i> Support</a></li>
