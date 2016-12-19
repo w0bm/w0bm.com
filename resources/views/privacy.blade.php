@@ -16,7 +16,8 @@
 </ul>
 </ul>
 </ul>
+<h5 style="color: red;">Note: IPs are anonymized</h5>
 <h6>We use Piwik to monitor activities on our website, if you don't want to be tracked, please untick the checkbox down below.</h6>
-<iframe style="border: 0; height: 150px; width: 800px;" src="https://stats.w0bm.com/index.php?module=CoreAdminHome&action=optOut&language=en"></iframe>
+<iframe style="border: 0; height: 150px; width: 800px;" src="https://stats.w0bm.com/index.php?module=CoreAdminHome&amp;action=optOut&amp;language=en"></iframe>
 @include('footer')
 @endsection
