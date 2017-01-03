@@ -17,6 +17,7 @@
                 <li><a href="{{url('irc')}}"><i class="fa fa-comment"></i> IRC</a></li>
 		<li><a href="{{url('about')}}"><i class="fa fa-exclamation"></i> About</a></li>
 		<li><a href="{{url('donate')}}"><i class="fa fa-heartbeat" aria-hidden="true"></i> Support</a></li>
+		<li><a href="{{url('advertise')}}"><i class="fa fa-plus" aria-hidden="true"></i> Advertise</a></li>
 	    </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">
