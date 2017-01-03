@@ -74,7 +74,7 @@
                     <li class="list-group-item"><b>4.</b> Never upload things you don't feel good about!</li>
                 </ol>
                 <div class="panel-body">If you need help creating WebMs, check <a href="/webm">this</a> out.</div>
-                <div class="panel-body"><b>Current Limits:</b> <br> <b>10</b> <i>uploads every 12 hours</i> <br><i>Maximum filesize:</i> <b>30MB</b> <br><i>Only</i> <b>.webm</b> <i>allowed</i></div>
+                <div class="panel-body"><b>Current Limits:</b> <br> <b>35</b> <i>uploads every 12 hours</i> <br><i>Maximum filesize:</i> <b>30MB</b> <br><i>Only</i> <b>.webm</b> <i>allowed</i></div>
             </div>
         </div>
     </div>
