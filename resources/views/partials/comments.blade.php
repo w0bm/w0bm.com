@@ -1,7 +1,14 @@
 
 <div id="motd" class="panel panel-info hidden-xs">
     <div class="panel-body motd">
-        <span style="color:#ff0094;">Danke Domian!</span>
+        <!-- <span>If you want to advertise something, just send me an <a href="mailto:admin@w0bm.com">email</a>. It is 100% free and just for the lulz</span> -->
+
+	<span>
+Join the new, fesche Website based around funny things.
+
+Join 9GAG.com!
+</span>	
+
     </div>
 </div>
 
