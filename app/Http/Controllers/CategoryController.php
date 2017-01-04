@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Video;
+use App\Models\Banner;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -50,9 +51,6 @@ class CategoryController extends Controller
      */
     public function showVideo($shortname, $id = null)
     {
-        // GZ's kläglicher versuch:
-        //if(!auth()->check()) return redirect('/irc')->with('error', 'You need to be logged in to view our content');
-
         $category = Category::whereShortname($shortname)->first();
         if(is_null($category)) return redirect()->back()->with('error', 'Category not found');
         if(is_null($id)) {
@@ -66,7 +64,7 @@ class CategoryController extends Controller
         }
         if(is_null($video)) return redirect()->back()->with('error', 'Category is empty.');
 
-        return view('video', ['video' => $video, 'category' => true]);
+        return view('video', ['video' => $video, 'category' => true, 'banner' => Banner::getRandom()]);
     }
 
     /**
