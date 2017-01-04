@@ -7,6 +7,7 @@ use App\Models\Comment;
 use App\Models\Message;
 use App\Models\ModeratorLog;
 use App\Models\Video;
+use App\Models\Banner;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
@@ -24,30 +25,12 @@ class VideoController extends Controller
         if($request->has('q')){
             $needle = trim($request->input('q'));
             return view('index', [
-                // TODO: add ordering
+                // TODO: add ordering and better search algorithm
                 'videos' => Video::withAllTags($needle)
                     ->paginate(20)->appends(['q' => $needle]),
                 'categories' => Category::all(),
                 'q' => $needle
             ]);
-
-            // $pdo = \DB::connection()->getPdo();
-            // $needle = '%' . trim($request->input('q')) .'%';
-            // `songindex` will need to be changed due to the view name being changed to index.
-            // return view('songindex', [
-            //     'videos' => Video::where(function($query) use($needle) {
-            //         $query->where('interpret', 'LIKE', $needle)
-            //             ->orWhere('songtitle', 'LIKE', $needle)
-            //             ->orWhere('imgsource', 'LIKE', $needle);
-            //     })
-            //             //->orderBy('id', 'ASC')
-            //             ->orderByRaw("((interpret like " . $pdo->quote($needle) . ") +
-            //                 (songtitle like " . $pdo->quote($needle) . ") +
-            //                 (imgsource like " . $pdo->quote($needle) . ")) desc")
-            //             ->paginate(20)->appends(['q' => trim($needle, '%')]),
-            //     'categories' => Category::all()
-            // ]);
-
         }
         return view('index', [
             'videos' => Video::orderBy('id', 'ASC')->paginate(20),
@@ -147,13 +130,21 @@ class VideoController extends Controller
      * @return Response
      */
     public function show($id) {
-        // GZ's kläglicher versuch:
-        //if(!auth()->check()) return redirect('/irc')->with('error', 'You need to be logged in to view our content');
 
-        $video = Video::find($id);
-        if(is_null($video)) return redirect()->back()->with('error', 'No video with that ID found');
+        $video = Video::with('tags')->find($id);
+        if(is_null($video))
+            return redirect()
+                ->back()
+                ->with('error', 'No video with that ID found');
 
-        return view('video', ['video' => $video]);
+        $sfw = $video->tags->contains(function($key, $tag) {
+            return $tag->normalized === 'sfw';
+        });
+
+        return view('video', [
+            'video' => $video,
+            'banner' => Banner::getRandom($sfw)
+        ]);
     }
 
     /**
@@ -183,10 +174,10 @@ class VideoController extends Controller
             return response('Invalid request', 400);
 
         $v = Video::findOrFail($id);
-        
+
         if(!$user->can('edit_video') && $user->id != $v->user_id)
             return response('Not enough permissions', 403);
-        
+
         if($request->has('interpret')) {
             $v->interpret = $request->input('interpret');
             $v->tag($request->input('interpret'));
@@ -296,7 +287,7 @@ class VideoController extends Controller
         $v['can_edit_video'] = auth()->check() ? auth()->user()->can('edit_video') : false;
         return $v;
     }
-    
+
     public function untag(Request $request, $id) {
         if(!$request->has('tag') || trim($request->get('tag')) == "") return new JsonResponse(["error" => "invalid_request"]);
         $user = auth()->check() ? auth()->user() : null;
