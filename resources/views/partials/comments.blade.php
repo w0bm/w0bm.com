@@ -5,7 +5,7 @@
             <span>If you want to advertise something, check <a href="/advertise">Advertise</a>. It is 100% free and just for the lulz</span>
         </div>
     @else
-        <a href="{{ $banner->url }}" target="_blank">
+        <a href="{{ $banner->url }}" target="_blank" rel="noopener">
             <div style="height: 50px; background-image:url('{{ $banner->image }}')" class="panel-body motd">
             </div>
         </a>
