@@ -577,7 +577,7 @@ $(function() {
 })(jQuery);
 
 
-if(/\..+\/(?:songindex|user)/i.test(window.location.href)) {
+if(/\..+\/(?:index|user)/i.test(window.location.href)) {
     function get_loc(e) {
         return [
             (e.clientX + $('div#thumb').width() >= $(window).width()) ? e.pageX - 5 - $('div#thumb').width() : e.pageX + 5,
