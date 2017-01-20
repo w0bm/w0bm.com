@@ -15,8 +15,9 @@ The page is build on top of the [Laravel Framework](https://laravel.com).
 4. Put at least 1 webm file in the `public/b` folder named `1.webm`
 5. Modify `database/seeds/DatabaseSeeder.php` and uncomment all the different seeders. (Initially you'll need all)
 6. Run `php artisan migrate` and then `php artisan db:seed`
-7. Start the development server with `php artisan serve`
-8. Check your website at `http://localhost:8000` (username: admin, password: password)
+7. Run `php artisan tags` to initially tag all videos
+8. Start the development server with `php artisan serve`
+9. Check your website at `http://localhost:8000` (username: admin, password: password)
 
 ## Contributing
 
