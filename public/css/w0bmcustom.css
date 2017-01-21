@@ -846,13 +846,14 @@ img.icon {
 }
 
 ::-webkit-scrollbar-track-piece {
-    background-color: rgba(85, 85, 85, 0.96)!important;
+    background-color: #222222!important;
     width: 10px;
     max-height: 10px!important;
 }
+
 ::-webkit-scrollbar-thumb {
-   width: 15px;
-   background: #9b9999!important;
+    width: 15px;
+    background: #1fb2b0!important;
 }
 
 #submittags {
@@ -953,7 +954,7 @@ a.delete-tag.default-link {
 
 .btn-primary:hover {
     color: #ffffff;
-    background-color: #363434;
+    background-color: #383737;
     border-color: #1fb2b0;
 }
 
@@ -1070,13 +1071,19 @@ label[for='tag-add-toggle']:hover {
       padding-left: 10px;
   }
 
+.btn-primary {
+    color: #ffffff;
+    background-color: #222222;
+    border-color: #1FB2B0;
+}
+
 .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
     outline: thin dotted;
     outline: 0px auto -webkit-focus-ring-color;
     outline-offset: -2px;
 }
 
-.btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     color: #ffffff;
     background-color: #383737;
     border-color: #1fb2b0;
