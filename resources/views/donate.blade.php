@@ -25,8 +25,8 @@
 	<h5>Overview: ~</h5>
 	<p>Like us? Help to keep it alive.</p>
 	<div class="progress">
-  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 84%;">
-		84,17€
+  		<div class="progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="90" style="text-align:center; color:white; width: 0%;">
+		0€
 		</div>
 	</div>
 	<p>Did you know: BTC is super cute :3</p>
@@ -202,6 +202,22 @@
             <td>20€</td>
 	    <td>BTC</td>
 	    <td>17.12.2016</td>
+        </tr>
+
+	<tr class="success">
+            <td>20.</td>
+            <td>Nicklepark</td>
+            <td>12€</td>
+	    <td>PayPal</td>
+	    <td>09.01.2017</td>
+        </tr>
+
+	<tr class="danger">
+            <td>21.</td>
+            <td>Servermiete</td>
+            <td>-87€</td>
+	    <td>–</td>
+	    <td>20.01.2017</td>
         </tr>
 
 	</tbody>

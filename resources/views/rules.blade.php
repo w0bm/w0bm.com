@@ -28,7 +28,7 @@
 <ol>
 	<li>Tags should always describe the video.</li>
 	<li>No links in the Tags, use the comment section for that!</li>
-	<li>Always give your video a rating like "sfw" or "nsfw" so people can filter. (Nazi is always nsfw!)</li>
+	<li>Always give your video a rating like "sfw" or "nsfw" so people can filter.</li>
 	<li>Please don't tag too much shit, thanks.</li>
 	<li>Comments are not welcome in the Tag section, if we catch you say goodbye.</li>
 </ol>

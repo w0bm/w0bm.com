@@ -9,7 +9,8 @@ return [
     'f0ck.me',
     'img.pr0gramm.com',
     'files.catbox.moe',
-    'i.sli.mg'
+    'i.sli.mg',
+    '68.media.tumblr.com'
   ],
   'allowedImageFileExtensions' => [
     'jpg',
