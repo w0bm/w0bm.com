@@ -335,6 +335,7 @@ $(function() {
         video.tag(tagsinput.tagsinput('items'), (success, error, warnings, cb) => {
             if(success) {
                 flash('success', 'Tags saved successfully');
+                $('#tag-add-toggle').prop('checked', false);
                 var tags = [];
                 for(let tag of cb.tags)
                     tags.push('<span class="label label-default"><a href="/index?q=' + tag.normalized + '" class="default-link">' + tag.name + '</a>' + (cb.can_edit_video ? ' <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a>' : '') + '</span>');
