@@ -39,7 +39,7 @@
   <h5>The qties</h5>
   </div>
 
-  <div class="col-xs-6" style="max-height: 200px; overflow-y: scroll">
+  <div class="col-xs-6 donationlist" style="">
   <table class="col-xs-6 table table-condensed" style="border-collapse: collapse;">
         <thead>
         <tr>
