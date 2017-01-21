@@ -917,6 +917,15 @@ img.icon {
 .label {
     border-radius: 0;
     font-size: 80%;
+    word-break: break-all;
+    display: inline-table;
+    white-space: inherit;
+    text-align: left;
+}
+
+a.delete-tag.default-link {
+    color: #fc0000;
+    padding-left: 3px;
 }
 
 .label-info {
