@@ -794,6 +794,7 @@ select.form-control, input.form-control {
 .upload-info {
     font-size: 1.5rem;
     font-weight: normal;
+    word-break: break-all;
 }
 
 .row-upload {
