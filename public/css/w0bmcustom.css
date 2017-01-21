@@ -1083,9 +1083,9 @@ label[for='tag-add-toggle']:hover {
     outline-offset: -2px;
 }
 
-:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+.btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     color: #ffffff;
-    background-color: #383737;
+    background-color: #222222;
     border-color: #1fb2b0;
 }
 
