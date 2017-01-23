@@ -36,7 +36,7 @@
 
 <h5>Suggestion for every user</h5>
 <ul style="text-align:left;">
-	<li>Before you should think about uploading videos to w0bm you should have seen every single video here, we don't want to delete videos because you are too lazy to watch em all! Everytime you repost a ID dies and we don't want that. Like we said it's not a crime but if it happens too often you can expect a ban for not reading and understanding our rules</li>
+<li>Keep your repost crying to yourself bitches</li>
 </ul>
 @include('footer')
 @endsection
