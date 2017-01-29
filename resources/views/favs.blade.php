@@ -13,7 +13,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($user->favs as $video)
+                @foreach($videos as $video)
                     <?php $thumb = str_replace(".webm","",$video->file); ?>
                     <tr data-thumb="{{$thumb}}">
                         <td><a href="{{url($video->id)}}">{{$video->id}}</a></td>
@@ -25,4 +25,5 @@
                 @endforeach
                 </tbody>
             </table>
+            {!! $videos->render() !!}
 @endsection
