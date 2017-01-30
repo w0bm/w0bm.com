@@ -22,17 +22,17 @@
     <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.43">
 <!-- Piwik -->
 <script type="text/javascript">
-  var _paq = _paq || [];
+    var _paq = _paq || [];
     _paq.push(["setDomains", ["*.w0bm.com"]]);
     _paq.push(['trackPageView']);
-      _paq.push(['enableLinkTracking']);
-      (function() {
-	          var u="//stats.w0bm.com/";
-		      _paq.push(['setTrackerUrl', u+'js']);
-		      _paq.push(['setSiteId', '1']);
-		          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-		          g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js'; s.parentNode.insertBefore(g,s);
-			    })();
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.w0bm.com/";
+        _paq.push(['setTrackerUrl', u+'js']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js'; s.parentNode.insertBefore(g,s);
+    })();
 </script>
 <!-- End Piwik Code -->
 </head>

@@ -1,7 +1,7 @@
 @extends('profilelayout')
 @section('content')
 @include('partials.profileheader')
-	    <h3>Uploads</h3>
+	    <h3>{{ $title }}</h3>
             <table class="table table-hover table-condensed">
                 <thead>
                 <tr>

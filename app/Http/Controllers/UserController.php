@@ -189,7 +189,7 @@ class UserController extends Controller
         }
         $vids = $user->videos()->paginate(50);
 
-        return view('profile', ['user' => $user, 'videos' => $vids]);
+    	return view('profile', ['title' => 'Uploads', 'user' => $user, 'videos' => $vids]);
     }
 
 	public function show_favs($username)
@@ -201,7 +201,7 @@ class UserController extends Controller
         }
         $vids = $user->favs()->paginate(50);
 
-    	return view('favs', ['user' => $user, 'videos' => $vids]);
+    	return view('profile', ['title' => 'Favorites', 'user' => $user, 'videos' => $vids]);
 	}
 
     public function show_comments($username)
