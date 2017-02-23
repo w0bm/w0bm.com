@@ -1100,3 +1100,15 @@ label[for='tag-add-toggle']:hover {
     background-color: #383737;
     border-color: #1fb2b0;
 }
+
+span.addtagsy {
+    font-family: Oswald;
+    letter-spacing: 0.4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+span.addtagsy>a:hover {
+    color: #00fbff;
+    text-decoration: none;
+}

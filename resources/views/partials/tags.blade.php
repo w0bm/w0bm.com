@@ -1,22 +1,34 @@
 <aside class="tags hidden-xs">
+    <div class="tagtest">
     @if(Auth::check())
-	<div class="tagtest">
-	<label for="tag-add-toggle">
-	<span class="addtagsy">+ Add Tag <i class="fa fa-tag" aria-hidden="true"></i></span>
-	</label>
+    <label for="tag-add-toggle">
+    <span class="addtagsy">+ Add Tag <i class="fa fa-tag" aria-hidden="true"></i> |</span>
+    </label>    
+    <span class="addtagsy"><a href="/irc">IRC </a></span>
+    <span class="addtagsy"><a href="/about">About </a></span>
+    <span class="addtagsy"><a href="/Donate">Donate </a></span>
+    <span class="addtagsy"><a href="/contact">Contact </a></span>
 
-	<input type="checkbox" id="tag-add-toggle">
-	<div id="tag-add">
-	<div class="input-group" style="margin-top: 4px; margin-bottom: 2px; padding-bottom: 2px;">
-		{{--<select multiple name="tags[]" data-role="tagsinput" class="form-control"></select>--}}
+    <input type="checkbox" id="tag-add-toggle">
+    <div id="tag-add">
+    <div class="input-group" style="margin-top: 4px; margin-bottom: 2px; padding-bottom: 2px;">
+        {{--<select multiple name="tags[]" data-role="tagsinput" class="form-control"></select>--}}
             <input id="tags" type="text" class="form-control" placeholder="Input tags…" name="tags" data-role="tagsinput">
             <span class="input-group-btn">
                 <button href="/{{$video->id}}/tag" id="submittags" type="submit" class="form-control btn-primary">Submit</button>
             </span>
-	</div>
+    </div>
         </div>
+	@else
+	<div class="tagpanelinfos">
+            <span class="addtagsy"><a href="/irc">IRC </a></span>
+            <span class="addtagsy"><a href="/about">About </a></span>
+	    <span class="addtagsy"><a href="/donate">Donate </a></span>
+	    <span class="addtagsy"><a href="/contact">Contact </a></span>
 	</div>
-    @endif
+        @endif
+
+    </div>
     <div class="toggo tag-panel-body" style="">
         <div id="tag-display" class="tag-panel-body">
             @if(count($video->tags))
