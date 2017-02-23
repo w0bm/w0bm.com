@@ -2,7 +2,7 @@
     <div class="tagtest">
     @if(Auth::check())
     <label for="tag-add-toggle">
-    <span class="addtagsy">+ Add Tag <i class="fa fa-tag" aria-hidden="true"></i> |</span>
+    <span id="tagadder" class="addtagsy">+ Add Tag <i class="fa fa-tag" aria-hidden="true"></i> </span>
     </label>    
     <span class="addtagsy"><a href="/irc">IRC </a></span>
     <span class="addtagsy"><a href="/about">About </a></span>

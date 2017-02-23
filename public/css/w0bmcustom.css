@@ -198,7 +198,7 @@ code {
     margin-bottom: 5px;
     background-color: rgb(34, 34, 34);
     border: 1px solid rgba(10, 10, 11, 0.46);
-    border-radius: 2px;
+    border-radius: 0px;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
@@ -330,7 +330,9 @@ video:before {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  padding-bottom: 60px;
 }
+
 @media (min-width: 768px) {
   .fucklaravel {
     width: 750px;
@@ -605,8 +607,23 @@ ul.navbar-right > li > a > span.badge {
 }
 
 .futter {
-	text-align: right;
-	float: right;
+	float: left;
+	text-align: left;
+	word-break: break-word;
+	word-wrap: break-word;
+	padding-left: 5px;
+        display: block;
+}
+
+.futter > p {
+    margin: 0;
+}
+
+.navbar-fixed-bottom {
+        bottom: 0;
+        margin-bottom: 0;
+        border-width: 1px 0 0;
+        background: rgba(10, 10, 10, 0.84);
 }
 
 .logreg {
@@ -904,6 +921,7 @@ img.icon {
     border: 0px solid rgba(10, 10, 11, 0);
     padding-bottom: 2px;
     padding-top: 2px;
+    border-right: 2px solid #1fb2b0;
 }
 
 .mCustomScrollBox {
@@ -993,6 +1011,7 @@ a.delete-tag.default-link {
 
 #sidebar > .comments, #sidebar > .tags {
     border-bottom: 2px solid #1fb2b0;
+    width: 350px;
 }
 
 /* Damit das Logo nicht mehr auf Handys gefickt ist */
@@ -1024,6 +1043,9 @@ div#tag-display {
 .tagtest {
    border-bottom: 2px solid #1fb2b0;
    padding: 0px 2px;
+   display: block;
+   height: auto;
+   border-right: 2px solid #1fb2b0;
 }
 
 /* Hiding Tag Scrollbar in Webkit Browsers */
@@ -1042,9 +1064,12 @@ div#tag-display::-webkit-scrollbar {
 
 label[for='tag-add-toggle'] {
       color: #1FB2B0;
-      padding-top: 5px;
+      padding-top: 6px;
       font-weight: normal;
-  }
+      padding-bottom: 5px;
+      border-right: 2px solid #1fb2b0;
+      margin-bottom: 0px;
+}
 
 label[for='tag-add-toggle']:hover {
       color: #00fbff;
@@ -1105,9 +1130,36 @@ span.addtagsy {
     font-family: Oswald;
     letter-spacing: 0.4px;
     cursor: pointer;
+    padding: 6px 6px;
 }
+
+span.addtagsy>a {
+	    color: #ADADAD;
+    }
 
 span.addtagsy>a:hover {
     color: #00fbff;
     text-decoration: none;
+    background: #575757;
+    padding: 6px 6px;
+    margin-left: -6px;
+    margin-right: -6px;
+}
+
+.tagpanelinfos {
+    padding: 5px;
+}
+
+div#tag-add {
+	    border-top: 2px solid #1fb2b0;
+    }
+
+.tagtest.tagpanelinfos {
+    border-right: 2px solid #1fb2b0;
+    width: 100%;
+    border-bottom: 2px solid #1fb2b0;
+    height: 34px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
 }
