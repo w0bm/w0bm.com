@@ -5,12 +5,13 @@ return [
     'i.imgur.com',
     'media.giphy.com',
     'files.nogf.club',
-    'a.cuntflaps.me',
     'f0ck.me',
     'img.pr0gramm.com',
     'files.catbox.moe',
     'i.sli.mg',
-    '68.media.tumblr.com'
+    '68.media.tumblr.com',
+    'a.cuntflaps.me',
+    'a.safe.moe'
   ],
   'allowedImageFileExtensions' => [
     'jpg',

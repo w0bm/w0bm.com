@@ -51,6 +51,7 @@ Route::get('donate', function() { return view('donate'); });
 Route::get('transparency', function() { return view('transparency'); });
 Route::get('login', function() { return view('login'); });
 Route::get('advertise', function() { return view('advertise'); });
+Route::get('counter-strike', function() { return view('counter-strike'); });
 
 Route::post('filter', 'UserController@filter');
 
