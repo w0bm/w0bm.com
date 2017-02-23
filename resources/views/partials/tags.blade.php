@@ -8,6 +8,7 @@
     <span class="addtagsy"><a href="/about">About </a></span>
     <span class="addtagsy"><a href="/Donate">Donate </a></span>
     <span class="addtagsy"><a href="/contact">Contact </a></span>
+    <span class="addtagsy"><a href="/advertise">Advertise </a></span>
 
     <input type="checkbox" id="tag-add-toggle">
     <div id="tag-add">
@@ -25,6 +26,7 @@
             <span class="addtagsy"><a href="/about">About </a></span>
 	    <span class="addtagsy"><a href="/donate">Donate </a></span>
 	    <span class="addtagsy"><a href="/contact">Contact </a></span>
+            <span class="addtagsy"><a href="/advertise">Advertise </a></span>
 	</div>
         @endif
 
