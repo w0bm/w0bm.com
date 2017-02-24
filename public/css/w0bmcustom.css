@@ -1049,6 +1049,7 @@ div#tag-display {
     padding: 0px 2px;
     padding-bottom: 3px;
     border-top: 1px solid #adadad;
+    width: 350px;
 }
 
 .tagtest {
