@@ -1055,7 +1055,6 @@ div#tag-display {
    padding: 0px 2px;
    display: block;
    height: auto;
-   border-right: 2px solid transparent;
 }
 
 /* Hiding Tag Scrollbar in Webkit Browsers */
