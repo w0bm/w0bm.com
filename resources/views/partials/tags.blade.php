@@ -6,13 +6,13 @@
     </label>    
     <span class="addtagsy"><a href="/irc">IRC </a></span>
     <span class="addtagsy"><a href="/about">About </a></span>
-    <span class="addtagsy"><a href="/Donate">Donate </a></span>
+    <span class="addtagsy"><a href="/donate">Donate </a></span>
     <span class="addtagsy"><a href="/contact">Contact </a></span>
     <span class="addtagsy"><a href="/advertise">Advertise </a></span>
 
     <input type="checkbox" id="tag-add-toggle">
     <div id="tag-add">
-    <div class="input-group" style="margin-top: 4px; margin-bottom: 2px; padding-bottom: 2px;">
+    <div class="input-group" style="margin-top: 4px;">
         {{--<select multiple name="tags[]" data-role="tagsinput" class="form-control"></select>--}}
             <input id="tags" type="text" class="form-control" placeholder="Input tags…" name="tags" data-role="tagsinput">
             <span class="input-group-btn">
