@@ -930,7 +930,6 @@ img.icon {
     border: 0px solid rgba(10, 10, 11, 0);
     padding-bottom: 2px;
     padding-top: 2px;
-    border-right: 2px solid transparent;
 }
 
 .mCustomScrollBox {
@@ -1020,7 +1019,7 @@ a.delete-tag.default-link {
 }
 
 #sidebar > .comments, #sidebar > .tags {
-    border-bottom: 2px solid #1fb2b0;
+    border-bottom: 1px solid #1fb2b0;
     width: 350px;
 }
 
@@ -1279,13 +1278,13 @@ div#tag-add {
 }
 @media (max-width: 360px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 360px) {
@@ -1365,145 +1364,145 @@ div#tag-add {
 
 @media (max-width: 767px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 694px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 610px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 549px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 548px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 511px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 509px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 448px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 420px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 400px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 390px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 367px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 @media (max-width: 360px) {
     #sidebar > .tags {
-        border-bottom: 2px solid #1fb2b0;
+        border-bottom: 1px solid #1fb2b0;
         width: 100%;
         bottom: 0;
         position: fixed !important;
         background: rgb(22, 22, 24);
-        border-top: 2px solid #1fb2b0;
-        border-left: 1px solid #1fb2b0;
+        border-top: 1px solid #1fb2b0;
+        border-left: 0px solid #1fb2b0;
     }
 }
 /* END OF MOBILE TAG MEDIA QUERIES */
@@ -1574,6 +1573,75 @@ div#tag-add {
         border-top: 2px solid #1fb275;
     }
 }
+
+/* Mobile Tag Box width */
+@media (max-width: 767px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+@media (max-width: 694px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+@media (max-width: 610px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+@media (max-width: 549px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+@media (max-width: 548px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+@media (max-width: 511px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+@media (max-width: 509px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+@media (max-width: 448px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+@media (max-width: 420px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+@media (max-width: 400px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+@media (max-width: 390px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+@media (max-width: 367px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+@media (max-width: 360px) {
+    div#tag-display {
+        width: 100%;
+    }
+}
+
+/* END OF MOBILE TAG WIDTH */
 
 /* Alerts */
 .alert {
