@@ -53,7 +53,6 @@
         <div class=" container">
             @yield('content')
         </div>
-        @include('partials.flash')
     </div>
 </div>
 <script src="/js/jquery.min.js"></script>

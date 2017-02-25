@@ -1574,3 +1574,16 @@ div#tag-add {
         border-top: 2px solid #1fb275;
     }
 }
+
+/* Alerts */
+.alert {
+	border-radius: 0px;
+}
+
+.flashcontainer {
+    position: absolute;
+    top: 20px;
+    opacity: 0.8;
+    z-index: 5;
+    width: 100%;
+}

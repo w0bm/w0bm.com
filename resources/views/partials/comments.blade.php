@@ -1,9 +1,8 @@
-
 <div id="motd" class="panel panel-info hidden-xs">
     @if(null === $banner)
         <div class="panel-body motd">
             <span>If you want to advertise something, check <a href="/advertise">Advertise</a>. It is 100% free and just for the lulz</span>
-        </div>
+	</div>
     @else
         <a href="{{ $banner->url }}" target="_blank" rel="noopener">
             <div style="height: 50px; background-image:url('{{ $banner->image }}')" class="panel-body motd">
@@ -12,9 +11,8 @@
     @endif
 </div>
 
-
 @if(Auth::check())
-    @include('partials.commentform')
+@include('partials.commentform')
 @endif
 
 <div class="comments hidden-xs">
@@ -28,7 +26,7 @@
                 @include('partials.comment', ['comment' => $comment, 'mod' => $mod])
             @endforeach
         @else
-            <div class="panel panel-default nocomments">
+	    <div class="panel panel-default nocomments">
                 <div class="panel-body">
                     No comments yet …<br />
                 </div>

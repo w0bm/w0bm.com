@@ -78,4 +78,5 @@
             </div>
         </div>
     </div>
+        @include('partials.flash')
 @endsection
