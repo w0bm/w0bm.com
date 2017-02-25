@@ -889,6 +889,10 @@ img.icon {
    padding-bottom: 6px;
 }
 
+button#submittags:hover {
+   background: #575757;
+}
+
 .tags {
     /*box-shadow: -13px 0px 10px 5px #000*/
 }

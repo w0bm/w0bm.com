@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="/css/video-js.min.css">
-    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.54">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.55">
 <!-- Piwik -->
 <script type="text/javascript">
     var _paq = _paq || [];
@@ -41,7 +41,7 @@
     @include('partials.filterselect')
     @if(isset($video) && (auth()->user()->can('edit_video') || auth()->user()->id == $video->user_id))
         @include('partials.frontendedit')
-    @endif
+	@endif
 @endif
 <canvas class="hidden-xs" id="bg"></canvas>
 
@@ -51,7 +51,7 @@
     @yield('aside')
     <div style="width: auto; overflow: hidden; position: relative;">
         <div class=" container">
-            @yield('content')
+	    @yield('content')
         </div>
     </div>
 </div>
