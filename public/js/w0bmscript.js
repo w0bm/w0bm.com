@@ -270,7 +270,6 @@ $(function() {
             url: commentform.attr('action'),
             data: data
         }).done(function (data) {
-            flash('success', 'Comment saved successfully');
             $('.nocomments').remove();
             var comment = $(data).appendTo('.commentwrapper').find('time.timeago');
             comment.timeago();
@@ -278,9 +277,8 @@ $(function() {
             comment.closest('.panel-footer').siblings('.panel-body').find('.comment_clickable_timestamp').on('click', commentClickableTimestamp);
             var textarea = commentform.find('textarea').val('');
             textarea.blur();
-        }).fail(function(data){
+        }).fail(function(){
             flash('error', 'Error saving comment');
-            flash('error', data);
         });
     });
 
@@ -313,7 +311,7 @@ $(function() {
                 tagmd();
             }
             else
-                error ? flash(error.type, error.text) : flash('error', 'Unknown exception');
+                flash('error', 'Error deleting tag');
         });
     }
 
@@ -334,7 +332,6 @@ $(function() {
         e.preventDefault();
         video.tag(tagsinput.tagsinput('items'), (success, error, warnings, cb) => {
             if(success) {
-                flash('success', 'Tags saved successfully');
                 $('#tag-add-toggle').prop('checked', false);
                 var tags = [];
                 for(let tag of cb.tags)
@@ -346,7 +343,7 @@ $(function() {
                 tagmd();
             }
             else
-                error ? flash(error.type, error.text) : flash('error', 'Unknown exception');
+                flash('error', 'Error saving tag(s)');
         });
     });
 
@@ -363,7 +360,7 @@ $(function() {
             flash('success', 'Filter successfully updated');
             $('#filterselectmodal').modal('hide');
         }).fail(function(data) {
-            flash('error', 'Error updating tags');
+            flash('error', 'Error updating filter');
         });
     });
 })(jQuery);
@@ -418,9 +415,8 @@ $(function() {
             flash('success', 'Video successfully updated');
             updaterow(self, data);
             self.find('#webmeditmodal').modal('hide');
-        }).fail(function(data){
+        }).fail(function(){
             flash('error', 'Error updating video');
-            flash('error', data);
             self.find('#webmeditmodal').modal('hide');
         });
     });
@@ -434,8 +430,7 @@ $(function() {
         $.ajax({
             type: 'GET',
             url: favBtn.attr('href')
-        }).done(function (data) {
-            flash('success', data);
+        }).done(function () {
             var icon = favBtn.find('i');
             if(icon.hasClass('fa-heart-o')) {
                 icon.removeClass('fa-heart-o');
@@ -852,13 +847,10 @@ function readAll() {
             }
             else {
                 flash('error', 'Failed to mark all messages as read');
-                flash('error', data);
             }
         },
         error: function(jqxhr, status, error) {
             flash('error', 'Failed to mark all messages as read');
-            flash('error', status);
-            flash('error', error);
         }
     });
 }
@@ -891,12 +883,10 @@ function deleteComment(self) {
             else if(retval == 'invalid_request') flash('error', 'Invalid request');
             else if(retval == 'not_logged_in') flash('error', 'Not logged in');
             else if(retval == 'insufficient_permissions') flash('error', 'Insufficient permissions');
-            else flash('error', 'Unknown exception');
+            else flash('error', 'Error deleting comment');
         },
         error: function(jqxhr, status, error) {
-            flash('error', 'Unknwon exception');
-            flash('error', status);
-            flash('error', error);
+            flash('error', 'Error deleting comment');
         }
     });
 }
@@ -925,12 +915,10 @@ function restoreComment(self) {
             else if(retval == 'not_logged_in') flash('error', 'Not logged in');
             else if(retval == 'insufficient_permissions') flash('error', 'Insufficient permissions');
             else if(retval == 'comment_not_deleted') flash('error', 'Comment is not deleted');
-            else flash('error', 'Unknown exception');
+            else flash('error', 'Error restoring comment');
         },
         error: function(jqxhr, status, error) {
-            flash('error', 'Failed restoring comment');
-            flash('error', status);
-            flash('error', error);
+            flash('error', 'Error restoring comment');
         }
     });
 }
@@ -976,12 +964,10 @@ function editComment(self) {
                             else if(retval.error == 'comment_not_found')
                                 flash('error', 'Comment does not exist');
                             else
-                                flash('error', 'Unknown exception');
+                                flash('error', 'Error editing comment');
                         },
                         error: function(jqxhr, status, error) {
-                            flash('error', 'Unknown exception');
-                            flash('error', status);
-                            flash('error', error);
+                            flash('error', 'Error editing comment');
                         },
                         complete: function() {
                             textarea.replaceWith(body);
@@ -994,12 +980,10 @@ function editComment(self) {
             else if(retval.error == 'comment_not_found')
                 flash('error', 'Comment does not exist');
             else
-                flash('error', 'Unknown exception');
+                flash('error', 'Error editing comment');
         },
         error: function(jqxhr, status, error) {
             flash('error', 'Failed receiving non-rendered comment from API');
-            flash('error', status);
-            flash('error', error);
         }
     });
 }
@@ -1125,7 +1109,7 @@ $(function() {
                             }, 3000);
                         }
                         else
-                            flash('error', 'Unexpected Exception');
+                            flash('error', 'Upload failed');
                         break;
                     case 'invalid_request':
                         flash('error', 'Invalid request');
@@ -1152,7 +1136,7 @@ $(function() {
                         flash('error', 'Erroneous file encoding. <a href="/webm">Try reencoding it</a>');
                         break;
                     default:
-                        flash('error', 'Unexpected exception');
+                        flash('error', 'Upload failed');
                         break;
                 }
                 if(cb.error != 'null') {
@@ -1168,8 +1152,6 @@ $(function() {
                     return;
                 }
                 flash('error', 'Upload failed');
-                flash('error', status);
-                flash('error', error);
                 $('.progress-bar-custom').css('background-color', 'red');
                 $('.progress-bar-custom').text('Upload failed');
             },
@@ -1304,7 +1286,7 @@ $(function() {
                     flash('warning', warn);
             }
             else
-                error ? flash(error.type, error.text) : flash('error', 'Unknown exception');
+                flash('error', 'Error deleting video');
         });
     });
 });
