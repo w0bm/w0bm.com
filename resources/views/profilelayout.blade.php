@@ -63,6 +63,6 @@
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/handlebars.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
-<script src="/js/w0bmscript.js?v=1.1.13"></script>
+<script src="/js/w0bmscript.js?v=1.1.14"></script>
 </body>
 </html>
