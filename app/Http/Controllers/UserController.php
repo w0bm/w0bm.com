@@ -264,6 +264,7 @@ class UserController extends Controller
         $log->type = 'ban';
         $log->target_type = 'user';
         $log->target_id = $userToBan->id;
+        $log->reason = $reason;
         $log->save();
 
         if($perm)
