@@ -8,7 +8,7 @@
                     <th>ID</th>
                     <th>Artist</th>
                     <th>Songtitle</th>
-                    <th>Video Source</th>
+                    <th class="hidden-xs">Video Source</th>
                     <th>Category</th>
                 </tr>
                 </thead>
@@ -19,7 +19,7 @@
                         <td><a href="{{url($video->id)}}">{{$video->id}}</a></td>
                         <td>{{$video->interpret or ''}}</td>
                         <td>{{$video->songtitle or ''}}</td>
-                        <td>{{$video->imgsource or ''}}</td>
+                        <td class="hidden-xs">{{$video->imgsource or ''}}</td>
                         <td><a href="{{url($video->category->shortname)}}">{{$video->category->name}}</a></td>
                     </tr>
                 @endforeach
