@@ -36,14 +36,17 @@
                     {!! Recaptcha::render() !!}
                 </div>
 	    </div>
-            <div class="form-group">
-                <div class="">
+	    <div class="form-group">
+		<div style="text-align: center;">
+		<p>By clicking on Register you accept our <a href="/rules">Rules</a></p>
+		</div>
+		<div class="">
                     <button type="submit" class="btn btn-primary">Register</button>
                 </div>
             </div>
         </form>
     </div>
-    <div class="form-group" style="
+<!--    <div class="form-group" style="
 		text-align: center;
 		background: rgba(0, 0, 0, 0.75);
 		margin-left: 5px;
@@ -52,5 +55,6 @@
 	<p>By clicking on "Register" you accept our <a href="/rules">Rules</a></p>
 	<p>Note: we do NOT reset passwords for now, make sure to save your password correctly</p>
     </div>
-    @endsection
+-->    
+@endsection
 
