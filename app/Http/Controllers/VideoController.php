@@ -26,6 +26,7 @@ class VideoController extends Controller
             $needle = trim($request->input('q'));
             return view('index', [
                 'videos' => Video::withAnyTagsFuzzy($needle)
+                    ->orderBy('id', 'asc')
                     ->paginate(20)->appends(['q' => $needle]),
                 'categories' => Category::all(),
                 'q' => $needle
