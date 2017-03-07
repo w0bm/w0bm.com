@@ -242,6 +242,7 @@
 	    <td>06.03.2017</td>
         </tr>
 	</tbody>
+    </table>
     </div>
 </div>
 @include('footer')
