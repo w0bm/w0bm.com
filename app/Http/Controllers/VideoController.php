@@ -25,8 +25,7 @@ class VideoController extends Controller
         if($request->has('q')){
             $needle = trim($request->input('q'));
             return view('index', [
-                // TODO: add ordering and better search algorithm
-                'videos' => Video::withAllTags($needle)
+                'videos' => Video::withAnyTagsFuzzy($needle)
                     ->paginate(20)->appends(['q' => $needle]),
                 'categories' => Category::all(),
                 'q' => $needle
