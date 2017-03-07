@@ -1,52 +1,56 @@
 @extends('layout')
 @section('content')
     <div class="page-header">
-        <h1>Register</h1>
+        <h5>Register your w0bm.com Account</h5>
     </div>
-    <div class="row">
+    <div class="register">
         <form class="form-horizontal" method="post" action="{{action('UserController@store')}}">
             {!! csrf_field() !!}
             <div class="form-group">
-                <label for="username" class="col-sm-2 control-label">Username</label>
-                <div class="col-sm-10">
+                <div class="">
                     {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username']) !!}
                 </div>
             </div>
             <div class="form-group">
-                <label for="email" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10">
+                <div class="">
                     {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
                 </div>
             </div>
             <div class="form-group">
-                <label for="email_confirmation" class="col-sm-2 control-label">Email Confirmation</label>
-                <div class="col-sm-10">
+                <div class="">
                     {!! Form::email('email_confirmation', null, ['class' => 'form-control', 'placeholder' => 'Email Confirmation']) !!}
                 </div>
             </div>
             <div class="form-group">
-                <label for="password" class="col-sm-2 control-label">Password</label>
-                <div class="col-sm-10">
+                <div class="">
                     {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
                 </div>
             </div>
             <div class="form-group">
-                <label for="password_confirmation" class="col-sm-2 control-label">Password Confirmation</label>
-                <div class="col-sm-10">
+                <div class="">
                     {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Password Confirmation']) !!}
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
+                <div class="">
                     {!! Recaptcha::render() !!}
                 </div>
-            </div>
+	    </div>
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
+                <div class="">
                     <button type="submit" class="btn btn-primary">Register</button>
                 </div>
             </div>
         </form>
     </div>
-@endsection
+    <div class="form-group" style="
+		text-align: center;
+		background: rgba(0, 0, 0, 0.75);
+		margin-left: 5px;
+                margin-right: 5px;
+    				  ">
+	<p>By clicking on "Register" you accept our <a href="/rules">Rules</a></p>
+	<p>Note: we do NOT reset passwords for now, make sure to save your password correctly</p>
+    </div>
+    @endsection
 
