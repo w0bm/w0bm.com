@@ -1659,3 +1659,9 @@ div#tag-add {
     z-index: 5;
     width: 100%;
 }
+
+.register {
+    width: 100%;
+    display: flex;
+    justify-content: center
+}
