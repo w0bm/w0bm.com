@@ -14,8 +14,8 @@
             <th>ID</th>
             <th>Artist</th>
             <th>Songtitle</th>
-            <th>Video Source</th>
-            <th class="hidden-xs">Category</th>
+            <th class="hidden-xs">Video Source</th>
+            <th>Category</th>
         </tr>
         </thead>
         <tbody>
