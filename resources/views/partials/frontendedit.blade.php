@@ -19,7 +19,7 @@
                         </div>
                         <div class="form-group">
                             <label for="imgsourceedit">Video Source</label>
-                            <input class="form-control" type="text" name="imgsource" id="imgsourceedit" value="{{ $video->imgsource or ''}}" placeholder="Image source">
+                            <input class="form-control" type="text" name="imgsource" id="imgsourceedit" value="{{ $video->imgsource or ''}}" placeholder="Video Source">
     
                         </div>
                         <div class="form-group">
