@@ -3,7 +3,7 @@
     <div class="page-header">
         <h3>Categories</h3>
     </div>
-    <div class="row" id="categories">
+    <div class="" id="categories">
         @foreach($categories as $category)
             <div class="col-sm-6 col-md-4 category">
                 <div class="thumbnail">
