@@ -15,7 +15,7 @@
             <th>Artist</th>
             <th>Songtitle</th>
             <th>Video Source</th>
-            <th>Category</th>
+            <th class="hidden-xs">Category</th>
         </tr>
         </thead>
         <tbody>
@@ -45,7 +45,7 @@
                         <input class="form-control" type="text" name="songtitle" value="{{$video->songtitle or ''}}" form="edit_{{$video->id}}">
                     @endif
                 </td>
-                <td>
+                <td class="hidden-xs">
                     <span class="vinfo vimgsource">{{$video->imgsource or ''}}</span>
                     @if($edit)
                         <input class="form-control" type="text" name="imgsource" value="{{$video->imgsource or ''}}" form="edit_{{$video->id}}">
