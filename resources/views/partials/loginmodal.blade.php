@@ -10,8 +10,8 @@
 	<form action="{{action('UserController@login')}}" method="post" class="navbar-form navbar-right">
 	{!! csrf_field() !!}
 		<div class="loginmodaldiv">
-                        <input type="text" name="identifier" placeholder="" class="form-control usernamelogin"><br>
-                        <input type="password" name="password" placeholder="" class="form-control passwordlogin"><br>
+                        <input type="text" name="identifier" placeholder="Username" class="form-control usernamelogin"><br>
+                        <input type="password" name="password" placeholder="Password" class="form-control passwordlogin"><br>
                         <button type="submit" class="btn btn-primary">Login</button> <input id="rememberme" type="checkbox" name="remember"> <span id="rember">Remember me?</span>
 		</div>
 	</form>
