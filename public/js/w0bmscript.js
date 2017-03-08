@@ -1042,7 +1042,7 @@ $(function() {
     }
     function createPreview(file) {
         $('#dragndrop-link').removeAttr('href').off('click');
-        $('#dragndrop-text').html('<video id="video_preview" src="' + URL.createObjectURL(file) + '" autoplay controls loop></video><br><span class="upload-info">' + file.name + ' &mdash; ' + humanFileSize(file.size) + ' &mdash; <a id="dragndrop-clear" class="fa fa-times" href="#"></a></span><br><div class="progress progress-striped" style="display: none; margin-left: 10px; margin-right: 10px;"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span class="upload-info sr-only">0%</span></div></div><span class="upload-info"><span id="upload-stats" style="display: none;"></span></span>');
+        $('#dragndrop-text').html('<video id="video_preview" src="' + URL.createObjectURL(file) + '" autoplay controls loop></video><span class="upload-info">' + file.name + ' &mdash; ' + humanFileSize(file.size) + ' &mdash; <a id="dragndrop-clear" class="fa fa-times" href="#"></a></span><div class="progress progress-striped" style="display: none; margin-left: 10px; margin-right: 10px;"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span class="upload-info sr-only">0%</span></div></div><span class="upload-info"><span id="upload-stats" style="display: none;"></span></span>');
         $('#video_preview').prop('volume', 0);
         $('#dragndrop-clear').on('click', function(e) {
             e.preventDefault();

@@ -769,15 +769,17 @@ select.form-control, input.form-control {
 }
 
 #dragndrop {
-    border: 3px dashed #353434;
-    border-radius: 5px;
+    border: 2px dashed #353434;
+    border-radius: 0px;
     justify-content: center;
     text-align: center;
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 2rem;
     padding: 0px;
     background-color: #121214;
     color: #888;
+    width: 100%;
+    min-height: 150px;
 }
 
 #dragndrop-link {
@@ -792,16 +794,19 @@ select.form-control, input.form-control {
 }
 
 #dragndrop-text {
-    display: table-cell;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    flex-direction: column;
 }
 
 #dragndrop-text > video {
-    width: 90%;
-    margin-top: 15px;
+    width: 85%;
+    margin-top: 5px;
 }
 
-.progress {background: rgb(26, 27, 26); border: 1px solid rgb(76, 73, 73); border-radius: 0px; height: 20px;}
+.progress {background: rgb(26, 27, 26); border-radius: 0px; height: 20px; width: 85%;}
 .progress-bar-custom {background: rgba(47, 196, 47, 1);} 
 .progress-striped .progress-bar-custom {background-color: rgba(47, 196, 47, 1); background-image: -webkit-gradient(linear,0 100%,100% 0,color-stop(0.25,rgba(255, 255, 255, 0.15),color-stop(0.25,transparent),color-stop(0.5,transparent),color-stop(0.5,rgba(255, 255, 255, 0.15)),color-stop(0.75,rgba(255, 255, 255, 0.15)),color-stop(0.75,transparent),to(transparent))); background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, 0.15) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, 0.15) 50%,rgba(255, 255, 255, 0.15) 75%,transparent 75%,transparent); background-image: linear-gradient(45deg,rgba(255, 255, 255, 0.15) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, 0.15) 50%,rgba(255, 255, 255, 0.15) 75%,transparent 75%,transparent); background-size: 36px 36px;}
 
@@ -820,7 +825,10 @@ select.form-control, input.form-control {
 .upload-info {
     font-size: 1.5rem;
     font-weight: normal;
-    word-break: break-all;
+    word-break: break-word;
+    white-space: normal;
+    padding-top: 8px;
+    padding-bottom: 5px;
 }
 
 .row-upload {
@@ -1664,4 +1672,109 @@ div#tag-add {
     width: 100%;
     display: flex;
     justify-content: center
+}
+
+.ulbutton {
+	position: relative;
+    min-height: 1px;
+    padding-left: 0;
+    padding-right: 15px;
+    float: left;
+}
+
+.ulcontainer {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.uploadheader {
+    padding-bottom: 0px;
+    margin: 20px 0 20px;
+    text-align: center;
+}
+
+h3#upheader {
+    font-family: monospace;
+    font-weight: bold;
+    color: #1fb2b0;
+    text-shadow: 1px 1px 20px #1fb2b0;
+}
+
+.guidelinez {
+    background: #353434;
+    padding: 5px;
+}
+
+p#hguide {
+    font-weight: bold;
+    color: #fdf8f8;
+}
+
+.guidelinez > p {
+	color: #ffffff;
+}
+
+span#big {
+    font-weight: bold;
+    color: white;
+}
+
+ul#ulguide {
+    color: #fdf8f8;
+}
+
+input#nsfw {
+    vertical-align: top;
+    margin: 4px 0 0;
+    cursor: pointer;
+}
+
+.blah {
+    background: #353434;
+    padding: 6px 12px;
+    border: 1px solid #282828;
+}
+
+label#nsfw {
+    margin-bottom: 0px;
+    cursor: pointer;
+    color: #ff0000;
+    vertical-align: bottom;
+}
+
+div#guidelines {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+@media (min-width: 1550px) {
+.ulcontainer {
+    width: 768px !important;
+}
+}
+
+@media (min-width: 1200px) {
+.ulcontainer {
+    width: 1170px !important;
+}
+}
+
+@media (min-width: 992px) {
+.ulcontainer {
+    width: 970px !important;
+}
+}
+
+@media (min-width: 768px) {
+.ulcontainer {
+    width: 750px !important;
+}
+}
+
+.ultags > .bootstrap-tagsinput {
+    position: unset;
+    width: 100%;
 }
