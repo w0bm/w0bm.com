@@ -12,7 +12,7 @@ The page is build on top of the [Laravel Framework](https://laravel.com).
 1. Clone this repository: `git clone https://github.com/w0bm/w0bm.com.git`
 2. Cd into the directory: `cd w0bm.com`, run `./composer.phar dump-autoload` and `./composer.phar install --no-scripts` to install all the dependencies (make sure you have enough RAM for the installation, otherwise use swap)
 3. Create a .env file inside of w0bm.com/ with your database information. ([Example](https://github.com/laravel/laravel/blob/master/.env.example)) and set the `APP_KEY` with `php artisan key:generate` (it will automatically be added to the .env file)
-4. Create a b/ directory such that your path looks like this: w0bm.com/public/b. Put at least 1 webm file in the `public/b` folder named `1.webm`
+4. Create a b/ directory such that your path looks like this: 'w0bm.com/public/b'. Put at least 1 webm file in the `public/b` folder named `1.webm`
 5. Modify `database/seeds/DatabaseSeeder.php` and uncomment all the different seeders. (Initially you'll need all)
 6. Run `php artisan migrate` and then `php artisan db:seed`
 7. Run `php artisan tags` to initially tag all videos
