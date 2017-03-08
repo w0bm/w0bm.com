@@ -38,6 +38,11 @@
     <li>https://{{$hoster}}/</li>
   @endforeach
 </ul>
+<h4>Friends</h4>
+<ul>
+<li><a href="https://safe.moe">safe.moe</a></li>
+</ul>
+<p>safe.moe is owned by <a href="/user/Alucard">Alucard</a> he hosts many of the images you can see while browsing through w0bm, he is a cool american guy, I can recommend to check out safe.moe, it's a fast and stable file hoster with no bullshit, upload and share, that's it.</p>
 @include('footer')
 @endsection
 
