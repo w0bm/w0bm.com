@@ -302,8 +302,8 @@ class VideoController extends Controller
     }
 
     private function checkFileEncoding($dat) {
-        $in = "/var/www/w0bm.com/public/b"; // webm-input
-        $tmpdir = "/var/www/w0bm.com/app/Http/Controllers/tmp"; // tempdir
+        $in = getcwd() . "/b";
+        $tmpdir = str_replace("public", "app/Http/Controllers/tmp", getcwd());
         for($i = 0; $i < 2; $i++) {
             $ret = shell_exec("ffmpeg -y -ss 0 -i {$in}/{$dat} -vframes 1 {$tmpdir}/test.png 2>&1");
             if(strpos($ret, "nothing was encoded") !== false) {
@@ -322,9 +322,9 @@ class VideoController extends Controller
      * @param string $dat File of the video
      */
     private function createThumbnail($dat) {
-        $in = "/var/www/w0bm.com/public/b"; // webm-input
-        $out = "/var/www/w0bm.com/public/thumbs"; // thumb-output
-        $tmpdir = "/var/www/w0bm.com/app/Http/Controllers/tmp"; // tempdir
+        $in = getcwd() . "/b"; // webm-input
+        $out = getcwd() . "/thumbs"; //thumb-output
+        $tmpdir = str_replace("public", "app/Http/Controllers/tmp", getcwd());
 
         $name = explode(".", $dat);
         array_pop($name);
