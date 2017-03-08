@@ -8,7 +8,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="filterModalTitle">Edit webm</h4>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body frontendeditmodal">
                         <div class="form-group">
                             <label for="interpretedit">Artist</label>
                             <input class="form-control" type="text" name="interpret" id="interpretedit" value="{{ $video->interpret or ''}}" placeholder="Artist">
