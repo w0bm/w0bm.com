@@ -13,6 +13,7 @@
 <li><p>We know that people love shit, thats apparently one reason why people are browsing w0bm but that's not what I mean in first place, I am talking about something little you will get for your donation beside an alive and well doing w0bm</p></li>
 </ul>
 <h6>Rewards:</h6>
+<p>We are now on Patreon! If you'd like to support us please take a look at <a href="https://www.patreon.com/w0bm">our Patreon page</a></p>
 <ul>
 <li><p>If you donate 5€ you can choose an icon from <a href="http://fontawesome.io/icons/">fontawesome.io/icons</a></p></li>
 <li><p>If you donate 10€ or more you can choose your own personalized icon.</p></li>
