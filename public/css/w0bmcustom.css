@@ -1850,3 +1850,7 @@ ul.vorteilul {
 p.vorteile {
     font-weight: bold;
 }
+
+.modal-body.frontendeditmodal {
+    display: block !important;
+}
