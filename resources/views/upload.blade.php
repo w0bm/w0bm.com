@@ -56,8 +56,8 @@
             <div class="form-group">
                 <div class="col-md-12">
                     <button id="btn-upload" type="button" style="width: 100%; height: 40px;" class="btn btn-primary btn-sm">Fire the laz0r</button>
-		    <p style="text-align:center; padding-top: 5px;">Before you click upload make sure you have read the <a href="/rules">Rules</a></p>
-		    <p style="text-align:center; padding-top: 5px;"><span id="big">35</span> uploads <span id="big">every 12 hours.</span> – Maximum filesize: <span id="big">30MB.</span> – Only <span id="big">.webm</span> allowed. Need <a href="/webm">help?</a></p>
+		    <p style="text-align:center; padding-top: 5px; white-space: normal;">Before you click upload make sure you have read the <a href="/rules">Rules</a></p>
+		    <p style="text-align:center; padding-top: 5px; white-space: normal;"><span id="big">35</span> uploads <span id="big">every 12 hours.</span> – Maximum filesize: <span id="big">30MB.</span> – Only <span id="big">.webm</span> allowed. Need <a href="/webm">help?</a></p>
 		    <div class="guidelinez">
 			<p id="hguide">Upload Guidelines for w0bm.com</p>
 			<ul id="ulguide">

@@ -1705,6 +1705,7 @@ h3#upheader {
 .guidelinez {
     background: #353434;
     padding: 5px;
+    white-space: normal;
 }
 
 p#hguide {
