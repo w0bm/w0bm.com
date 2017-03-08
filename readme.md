@@ -19,7 +19,7 @@ The page is build on top of the [Laravel Framework](https://laravel.com).
 8. Start the development server with `php artisan serve`
 9. Check your website at `http://localhost:8000/1`
 10. Log in with Username=admin and Password=password
-11. Click on 'Add tag' at bottom left and set the tag 'sfw'
+11. Click on 'Add tag' at bottom left and set the tag `sfw`
 
 ## Contributing
 
