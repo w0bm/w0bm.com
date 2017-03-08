@@ -24,23 +24,11 @@
                     <li><a href="{{url('logout')}}"><i class="fa fa-times"></i> Logout</a></li>
                 </ul>
             @else
-
-	<form action="{{action('UserController@login')}}" method="post" class="navbar-form navbar-right">
-		<div class="form-group dropdown">
-	{!! csrf_field() !!}
-		  <a class="futter logreg" href="" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-			    Login/Register
-		  </a>
-				  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-				    <li role="seperator" class="trennelement"></li>
-				    <li><input type="text" name="identifier" placeholder="Username/Email" class="eingabe"></li>
-				    <li><input type="password" name="password" placeholder="Password" class="eingabe"></li>
-				    <li><button type="submit" class="btnlogin btn-primary">Login</button> <input class="cheggbogs" type="checkbox" name="remember"><span class="erinnerung">  Remember me</span></li>
-				    <li role="separator" class="divider"></li>
-				    <li class=""><a href="/register">Registration status: <span class="label label-success">Open</span></a></li>
-				  </ul>
-		</div>
-	</form>
+		<!-- Hier war mal der Login Kot -->
+		<ul class="nav navbar-nav navbar-right">
+		<li><a href="#" data-toggle="modal" data-target="#loginmodal"><i class="fa fa-key"></i> Login</a></li>
+		@include('partials.loginmodal')
+		</ul>
             @endif
         </div>
     </div>
