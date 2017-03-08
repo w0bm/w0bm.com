@@ -46,7 +46,7 @@
                 <span style="display: table; width: 100%; height: 100%;">
                     <span id="dragndrop-text">
                         <i class="fa fa-cloud-upload"></i><br>
-                        Drop or select file!
+                        Drop or select WebM!
                     </span>
                 </span>
             </a>
