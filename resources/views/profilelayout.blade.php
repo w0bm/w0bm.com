@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
-    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.60">
+    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.61">
 <!-- Piwik -->
 <script type="text/javascript">
     var _paq = _paq || [];
