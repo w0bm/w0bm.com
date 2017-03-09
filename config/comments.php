@@ -11,7 +11,8 @@ return [
     'i.sli.mg',
     '68.media.tumblr.com',
     'a.cuntflaps.me',
-    'a.safe.moe'
+    'a.safe.moe',
+    'koyaanis.com'
   ],
   'allowedImageFileExtensions' => [
     'jpg',
