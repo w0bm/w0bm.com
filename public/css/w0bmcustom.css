@@ -1847,6 +1847,10 @@ ul.vorteilul {
     list-style: none;
 }
 
+.panel-danger {                      
+    border: 1px solid red !important;
+}                                     
+
 p.vorteile {
     font-weight: bold;
 }
