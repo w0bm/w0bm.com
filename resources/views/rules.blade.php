@@ -10,7 +10,8 @@
 	<li>Do not talk about crimes you commited or will commit, we don't want to know.</li>
 	<li>Do not try to sell, buy, or spread credit-card, banking etc. info anywhere on this site.</li>
 	<li>Do not animate people to do crimes or anything illegal wherever the fuck you are!</li>
-	<li>We are not political in any ways, please refrain from going deep into politics. This is not the right place for that, we only archive videos we found online.<br /> This is no propaganda place in any ways. If you fuck this up… say goodbye.</li>
+	<li>w0bm.com is not a political place, please refrain from going deep into the politics topic.</li>
+	<li>If you upload something always try to give the artist credits by linking to the original, filling out the Artist & Songitle Information for example.</li>
 </ol>
 
 <h5>Uploading</h5>
@@ -34,9 +35,9 @@
 </ol>
 	
 
-<h5>Suggestion for every user</h5>
+<h5>Reposts</h5>
 <ul style="text-align:left;">
-<li>Keep your repost crying to yourself bitches</li>
+<li>Tag reposts with the tag: repost also link the original and the repost in the comments, maybe some admin or moderator is going to care about it and deletes the repost.</li>
 </ul>
 @include('footer')
 @endsection
