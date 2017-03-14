@@ -30,9 +30,9 @@ use \App\Models\Donation;
 	<p>Like us? Help to keep it alive.</p>
 	<div class="progress">
         @if(Donation::getFunds() >= 0)
-  		    <div class="progress-bar-success" role="progressbar" aria-valuenow="{{ Donation::getFunds() }}" aria-valuemin="0" aria-valuemax="{{ Donation::$needed }}" style="text-align:center; color:white; width: {{ max(100, min(0, abs(Donation::getPercentage()))) }}%;">
+  		    <div class="progress-bar-success" role="progressbar" aria-valuenow="{{ Donation::getFunds() }}" aria-valuemin="0" aria-valuemax="{{ Donation::$needed }}" style="text-align:center; color:white; width: {{ max(0, min(100, abs(Donation::getPercentage()))) }}%;">
         @else
-            <div class="progress-bar-danger" role="progressbar" aria-valuenow="{{ Donation::getFunds() }}" aria-valuemin="0" aria-valuemax="{{ Donation::$needed }}" style="text-align:center; color:white; width: {{ max(100, min(0, abs(Donation::getPercentage()))) }}%;">
+            <div class="progress-bar-danger" role="progressbar" aria-valuenow="{{ Donation::getFunds() }}" aria-valuemin="0" aria-valuemax="{{ Donation::$needed }}" style="text-align:center; color:white; width: {{ max(0, min(100, abs(Donation::getPercentage()))) }}%;">
         @endif
 		{{ Donation::getFunds() ?? '0' }} €
 		</div>
