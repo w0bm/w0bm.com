@@ -51,7 +51,6 @@ use \App\Models\Donation;
   <table class="col-xs-6 table table-condensed" style="border-collapse: collapse;">
         <thead>
         <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Amount</th>
             <th>Payment method</th>
@@ -61,7 +60,6 @@ use \App\Models\Donation;
         <tbody>
             @foreach($donations as $d)
                 <tr class="@if($d->amount >= 0) success @else danger @endif">
-                    <td>{{ $d->id }}.</td>
                     <td>@if(is_null($d->name)) Anonym @elseif(is_null($d->url)){{ $d->name }} @else <a href="{{ $d->url }}">{{ $d->name }}</a> @endif </td>
                     <td>{{ $d->amount }}€</td>
                     <td>@if($d->payment_method == 'BTC') <i class="fa fa-btc"></i> @elseif($d->payment_method == 'PayPal') <i class="fa fa-paypal"></i> @elseif($d->payment_method == 'SEPA') <i class="fa fa-credit-card"></i> @else {{ $d->payment_method }} @endif </td>
