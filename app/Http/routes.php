@@ -49,7 +49,7 @@ Route::get('help', function() { return view('help'); });
 Route::get('map', function() { return view('map'); });
 Route::get('donate', function() {
     return view('donate', [
-        'donations' => \App\Models\Donation::orderBy('id', 'DESC')->get()
+        'donations' => \App\Models\Donation::orderBy('timestamp', 'DESC')->get()
     ]);
 });
 Route::get('transparency', function() { return view('transparency'); });
