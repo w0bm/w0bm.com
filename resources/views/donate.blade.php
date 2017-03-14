@@ -28,7 +28,7 @@ use \App\Models\Donation;
 <div class="col-md-6">
 	<h5>Overview: ~</h5>
 	<p>Like us? Help to keep it alive.</p>
-	<div class="progress">
+	<div class="progress" style="width: 100%">
         @if(Donation::getFunds() >= 0)
   		    <div class="progress-bar-success" role="progressbar" aria-valuenow="{{ Donation::getFunds() }}" aria-valuemin="0" aria-valuemax="{{ Donation::$needed }}" style="text-align:center; color:white; width: {{ max(0, min(100, abs(Donation::getPercentage()))) }}%;">
         @else
