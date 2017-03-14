@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Donation extends Model
 {
-    public const NEEDED = 150;
+    public static $needed = 150;
 
     public static function getPercentage() {
-        return (static::getFunds() / static::NEEDED) * 100;
+        return (static::getFunds() / static::$needed) * 100;
     }
 
     public static function getFunds() {
