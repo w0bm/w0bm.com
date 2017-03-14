@@ -13,6 +13,6 @@ class Donation extends Model
     }
 
     public static function getFunds() {
-        return static::sum('amount');
+        return static::sum('amount') ?? 0;
     }
 }

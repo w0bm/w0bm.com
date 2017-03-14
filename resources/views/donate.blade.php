@@ -34,7 +34,7 @@ use \App\Models\Donation;
         @else
             <div class="progress-bar-danger" role="progressbar" aria-valuenow="{{ Donation::getFunds() }}" aria-valuemin="0" aria-valuemax="{{ Donation::$needed }}" style="text-align:center; color:white; width: {{ max(0, min(100, abs(Donation::getPercentage()))) }}%;">
         @endif
-		{{ Donation::getFunds() ?? '0' }} €
+		{{ Donation::getFunds() }} €
 		</div>
 	</div>
 	<p>Did you know: BTC is super cute :3</p>
