@@ -1111,9 +1111,13 @@ label[for='tag-add-toggle']:hover {
   .donationlist {
       max-height: 200px;
       overflow: auto;
-      padding-bottom: 3px;
+      padding-bottom: 0px;
       padding-right: 0px;
-      padding-left: 10px;
+      padding-left: 0px;
+  }
+
+  .table {
+      margin-bottom: 0;
   }
 
 .btn-primary {
