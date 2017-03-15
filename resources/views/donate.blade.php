@@ -34,7 +34,7 @@ use \App\Models\Donation;
         @else
             <div class="progress-bar-danger" role="progressbar" aria-valuenow="{{ Donation::getFunds() }}" aria-valuemin="0" aria-valuemax="{{ Donation::$needed }}" style="text-align:center; color:white; width: {{ max(0, min(100, abs(Donation::getPercentage()))) }}%;">
         @endif
-		{{ Donation::getFunds() }}&nbsp;€
+		{{ number_format(Donation::getFunds(), 2) }}&nbsp;€
 		</div>
 	</div>
 	<p>Did you know: BTC is super cute :3</p>
@@ -61,7 +61,7 @@ use \App\Models\Donation;
             @foreach($donations as $d)
                 <tr class="@if($d->amount >= 0) success @else danger @endif">
                     <td>@if(is_null($d->name)) Anonym @elseif(is_null($d->url)){{ $d->name }} @else <a href="{{ $d->url }}">{{ $d->name }}</a> @endif </td>
-                    <td>{{ $d->amount }}€</td>
+                    <td>{{ number_format($d->amount, 2) }}€</td>
                     <td>@if($d->payment_method == 'BTC') <i class="fa fa-btc"></i> @elseif($d->payment_method == 'PayPal') <i class="fa fa-paypal"></i> @elseif($d->payment_method == 'SEPA') <i class="fa fa-credit-card"></i> @else {{ $d->payment_method }} @endif </td>
                     <td>{{ Carbon\Carbon::parse($d->timestamp)->format('d.m.Y') }}</td>
                 </tr>
