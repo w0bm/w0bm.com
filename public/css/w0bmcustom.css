@@ -1,6 +1,6 @@
 body {
     background-color: #161618;
-   /* background: #161618 url("/spurdo.gif") no-repeat fixed right bottom;*/
+    background: #161618 url("/spurdo.gif") no-repeat fixed right bottom;
 }
 
 a:focus {
