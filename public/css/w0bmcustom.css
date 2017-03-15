@@ -1109,7 +1109,7 @@ label[for='tag-add-toggle']:hover {
   }
 
   .donationlist {
-      max-height: 200px;
+      max-height: 230px;
       overflow: auto;
       padding-bottom: 0px;
       padding-right: 0px;
