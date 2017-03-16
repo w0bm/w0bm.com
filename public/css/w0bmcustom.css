@@ -1,6 +1,14 @@
 body {
     background-color: #161618;
-    background: #161618 url("/spurdo.gif") no-repeat fixed right bottom;
+}
+
+body::after {
+    bottom: -5px;
+    opacity: 1;
+    z-index: -1;
+    position: fixed !important;
+    content: url(https://w0bm.com/spurdo.gif);
+    right: 0 !important;
 }
 
 a:focus {
