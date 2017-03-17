@@ -13,8 +13,7 @@
     <link rel="favicon"
       type="image/ico"
       href="favicon.ico" />
-    <link href="//fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=UnifrakturCook:700" rel="stylesheet">
+    <link rel="stylesheet" href="/css/w0bmfonts.css">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.67">

@@ -14,8 +14,7 @@
     <link rel="favicon" href="favicon.ico" type="image/ico">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Oswald" type="text/css">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=UnifrakturCook:700">
+    <link rel="stylesheet" href="/css/w0bmfonts.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="/css/video-js.min.css">
