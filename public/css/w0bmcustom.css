@@ -1185,7 +1185,8 @@ span.addtagsy>a:hover {
 }
 
 div#tag-add {
-    }
+    margin-bottom: 5px;
+}
 
 .tagtest.tagpanelinfos {
     border-right: 2px solid #1fb2b0;
