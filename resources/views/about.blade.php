@@ -24,10 +24,34 @@
    <li>Press: <strong>SPACE</strong> to pause/unpause the video</li>
 </ul>
 
+<h4 class="filtersettings">Filter settings</h4>
+<p>NSFW is filtered out by default in normal mode. This means whenever you are NOT logged in and browsing w0bm without any category selected you wont see any as NSFW tagged videos.</p>
+<p>You can also set your own custom filters by clicking on Filter and then inserting the tags you don't want to see while browsing. Currently also only working in normal mode.</p>
+<p>Example:</p>
+<span class="tag label label-info">gachimuchi</span> <span class="tag label label-info">gay</span>
+
+<h4 class="mods">Need one of our professionals?</h4>
+<p>Our Mods work 24/7/365 for free and are basically just here to delete your reposts</p>
+<p>Contact them if you need them:</p>
+<ul class="mötter">
+<li><a href="/user/belst">belst</a></li>
+<li><a href="/user/BKA">BKA</a></li>
+<li><a href="/user/McManiaC">McManiaC</a></li>
+<li><a href="/user/OFMCK">OFMCK</a></li>
+<li><a href="/user/basilisk">basilisk</a></li>
+<li><a href="/user/gz">gz</a></li>
+<li><a href="/user/Flummi">Flummi</a></li>
+<li><a href="/user/jkhsjdhjs">jkhsjdhjs</a></li>
+<li><a href="/user/Czar">Czar</a></li>
+<li><a href="/user/flinny">flinny</a></li>
+<li><a href="/user/kim">kim</a></li>
+<li><a href="/user/mrhanky">mrhanky</a></li>
+</ul>
+
 <h4 id="format">Comment formatting</h4>
 <ul>
    <li>>mfw w0bm is nice :3 will become: <span style="color:#80FF00;">>mfw w0bm is nice :3</span></li>
-   <li>!Pantsu Pantsu Pantsu! will become: <span class="reich">Pantsu Pantsu Pantsu</span></li>
+   <li><s>!Pantsu Pantsu Pantsu! will become: <span class="reich">Pantsu Pantsu Pantsu</span></s> <b style="color:red;">[ Currently disabled ]</b></li>
    <li>%KREBS KREBS KREBS KREBS% will become: <span class="anim">KREBS KREBS KREBS KREBS</span></li>
    <li>*gg* will become: <strong>gg</strong></li>
 </ul>
@@ -38,7 +62,7 @@
     <li>https://{{$hoster}}/</li>
   @endforeach
 </ul>
-<h4>Friends</h4>
+<h4 id="friends">Friends</h4>
 <ul>
 <li><a href="https://safe.moe">safe.moe</a></li>
 </ul>
