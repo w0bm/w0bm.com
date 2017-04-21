@@ -22,7 +22,7 @@ use \App\Models\Donation;
 		</div>
 	</div>
 	<p>Currently we accept PayPal and Bitcoin</p>
-	<i class="fa fa-btc" style="color: #1FB2B0;" aria-hidden="true"></i> <span style="font-family:monospace;color:#1FB2B0;">1PXqtRtZLYwRFKKks7tipVXeauGSpy3u4z</span> <span><b>[ PREFERED ]</b></span>
+	<i class="fa fa-btc" style="color: #1FB2B0;" aria-hidden="true"></i> <span style="font-family:monospace;color:#1FB2B0;">1PXqtRtZLYwRFKKks7tipVXeauGSpy3u4z</span> <span><b>[ PREFERRED ]</b></span>
 	<br />
 	<i class="fa fa-paypal" style="color: #1FB2B0;"></i> <span style="font-family:monospace;coloR:#1FB2B0;">paypal@w0bm.com</span>
 	<br />
