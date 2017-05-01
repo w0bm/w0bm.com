@@ -12,6 +12,7 @@
 	<li>Do not animate people to do crimes or anything illegal wherever the fuck you are!</li>
 	<li>w0bm.com is not a political place, please refrain from going deep into the politics topic.</li>
 	<li>If you upload something always try to give the artist credits by linking to the original, filling out the Artist & Songitle Information for example.</li>
+	<li>Some videos may be offensive to some people, if you get easily offended please refrain from visiting w0bm.com! We always have a open ear for your problems and we can talk about everything, there is nothing that is too edgy for us, we have seen it all and that's why we know how important it is to have a place for all kinds of videos and thoughts even if it triggers someone, please don't come back if you don't like what you see.</li>
 </ol>
 
 <h5>Uploading</h5>
@@ -23,6 +24,7 @@
 	<li>The focus is on videos you can easily watch 200 times a day over and over so upload only catchy shit! For example: <a href="/39">/39</a></li>
 	<li>The Artist and Songtitle field is only for the Artist and Song information respectively, anything else in there probably doesn't belong in there, use the Tags.</li>
 	<li>The Video Source field is not intended for YouTube Links or any other kind of link, please put only text in there. For example: YouTube and then put the YouTube link in the comments, if you fail at this too often it will probably hurt my vagina and I will scream like a 12 year old princess. Thanks! :3</li>
+
 </ol>
 
 <h5>Tagging</h5>
