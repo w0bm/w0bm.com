@@ -1906,3 +1906,7 @@ p.vorteile {
 .thumbnail {
     border-radius: 0;
 }
+
+.popover {
+    border-radius: 0;
+}
