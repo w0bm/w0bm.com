@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="/css/video-js.min.css">
-    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.75">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.76">
 <!-- Piwik -->
 <script type="text/javascript">
     var _paq = _paq || [];

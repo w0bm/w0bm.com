@@ -66,7 +66,7 @@
         </tbody>
     </table>
 
-    <div class="pull-right">
+    <div class="">
         {!! $videos->render() !!}
     </div>
 @endsection
