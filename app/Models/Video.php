@@ -123,4 +123,47 @@ class Video extends Model
 	    //return $query;
         }
     }
+
+    public function checkFileEncoding() {
+        $dat = $this->file;
+        $in = public_path() . "/b";
+        $tmpdir = str_replace("public", "app/Http/Controllers/tmp", public_path());
+        for($i = 0; $i < 2; $i++) {
+            $ret = shell_exec("ffmpeg -y -ss 0 -i {$in}/{$dat} -vframes 1 {$tmpdir}/test.png 2>&1");
+            if(strpos($ret, "nothing was encoded") !== false) {
+                shell_exec("ffmpeg -i {$in}/{$dat} -map 0:0 -map 0:1 -c:v copy {$tmpdir}/{$dat}");
+                unlink($in . "/" . $dat);
+                rename($tmpdir . "/" . $dat, $in . "/" . $dat);
+            }
+            else return true;
+        }
+        return false;
+    }
+
+    /**
+     * Creates a .gif thumbnail to a given video file
+     *
+     * @param string $dat File of the video
+     */
+    public function createThumbnail() {
+        $dat = $this->file;
+        $in = public_path() . "/b"; // webm-input
+        $out = public_path() . "/thumbs"; //thumb-output
+        $tmpdir = str_replace("public", "app/Http/Controllers/tmp", public_path());
+
+        $name = explode(".", $dat);
+        array_pop($name);
+        $name = join(".", $name);
+        if(!file_exists("{$out}/{$name}.gif")) {
+            $length = round(shell_exec("ffprobe -i {$in}/{$dat} -show_format -v quiet | sed -n 's/duration=//p'"));
+            for ($i = 1; $i < 10; $i++) {
+                $act = ($i * 10) * ($length / 100);
+                $ffmpeg = shell_exec("ffmpeg -ss {$act} -i {$in}/{$dat} -vf \"scale='if(gt(a,4/3),206,-1)':'if(gt(a,4/3),-1,116)'\" -vframes 1 {$tmpdir}/{$name}_{$i}.png 2>&1");
+            }
+            $tmp = shell_exec("convert -delay 27 -loop 0 {$tmpdir}/{$name}_*.png {$out}/{$name}.gif 2>&1");
+            if(@filesize("{$out}/{$name}.gif") < 2000)
+                @unlink("{$out}/{$name}.gif");
+            array_map('unlink', glob("{$tmpdir}/{$name}*.png"));
+        }
+    }
 }

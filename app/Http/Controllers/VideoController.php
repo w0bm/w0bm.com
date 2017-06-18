@@ -89,17 +89,18 @@ class VideoController extends Controller
                 'video_id' => $v->id
             ]);
         }
-
+        // meh time()
         $file = $file->move(public_path() . '/b/', time() . '.webm');
-        if(!$this->checkFileEncoding(basename($file->getRealPath()))) {
-            unlink($file->getRealPath());
-            return new JsonResponse(['error' => 'erroneous_file_encoding']);
-        }
 
         $hash = sha1_file($file->getRealPath());
 
         $video = new Video();
         $video->file = basename($file->getRealPath());
+        if(!$video->checkFileEncoding()) {
+            unlink($file->getRealPath());
+            // return before $video->save() so no need to clean up db
+            return new JsonResponse(['error' => 'erroneous_file_encoding']);
+        }
         $video->interpret = $request->get('interpret', null);
         $video->songtitle = $request->get('songtitle', null);
         $video->imgsource = $request->get('imgsource', null);
@@ -115,7 +116,8 @@ class VideoController extends Controller
         $video->tag($video->category->shortname);
         $video->tag($video->category->name);
 
-        $this->createThumbnail(basename($file->getRealPath()));
+        $video->createThumbnail();
+
 
         return new JsonResponse([
             'error' => 'null',
@@ -301,44 +303,4 @@ class VideoController extends Controller
         return $v;
     }
 
-    private function checkFileEncoding($dat) {
-        $in = getcwd() . "/b";
-        $tmpdir = str_replace("public", "app/Http/Controllers/tmp", getcwd());
-        for($i = 0; $i < 2; $i++) {
-            $ret = shell_exec("ffmpeg -y -ss 0 -i {$in}/{$dat} -vframes 1 {$tmpdir}/test.png 2>&1");
-            if(strpos($ret, "nothing was encoded") !== false) {
-                shell_exec("ffmpeg -i {$in}/{$dat} -map 0:0 -map 0:1 -c:v copy {$tmpdir}/{$dat}");
-                unlink($in . "/" . $dat);
-                rename($tmpdir . "/" . $dat, $in . "/" . $dat);
-            }
-            else return true;
-        }
-        return false;
-    }
-
-    /**
-     * Creates a .gif thumbnail to a given video file
-     *
-     * @param string $dat File of the video
-     */
-    private function createThumbnail($dat) {
-        $in = getcwd() . "/b"; // webm-input
-        $out = getcwd() . "/thumbs"; //thumb-output
-        $tmpdir = str_replace("public", "app/Http/Controllers/tmp", getcwd());
-
-        $name = explode(".", $dat);
-        array_pop($name);
-        $name = join(".", $name);
-        if(!file_exists("{$out}/{$name}.gif")) {
-            $length = round(shell_exec("ffprobe -i {$in}/{$dat} -show_format -v quiet | sed -n 's/duration=//p'"));
-            for ($i = 1; $i < 10; $i++) {
-                $act = ($i * 10) * ($length / 100);
-                $ffmpeg = shell_exec("ffmpeg -ss {$act} -i {$in}/{$dat} -vf \"scale='if(gt(a,4/3),206,-1)':'if(gt(a,4/3),-1,116)'\" -vframes 1 {$tmpdir}/{$name}_{$i}.png 2>&1");
-            }
-            $tmp = shell_exec("convert -delay 27 -loop 0 {$tmpdir}/{$name}_*.png {$out}/{$name}.gif 2>&1");
-            if(@filesize("{$out}/{$name}.gif") < 2000)
-                @unlink("{$out}/{$name}.gif");
-            array_map('unlink', glob("{$tmpdir}/{$name}*.png"));
-        }
-    }
 }
