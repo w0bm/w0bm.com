@@ -150,7 +150,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         App\Providers\BladeServiceProvider::class,
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
-        Cviebrock\EloquentTaggable\ServiceProvider::class
+        Cviebrock\EloquentTaggable\ServiceProvider::class,
+        Clockwork\Support\Laravel\ClockworkServiceProvider::class,
 
     ],
 
