@@ -573,7 +573,7 @@ $(function() {
 })(jQuery);
 
 
-if(/\..+\/(?:index|user)/i.test(window.location.href)) {
+$(function() {
     function get_loc(e) {
         return [
             (e.clientX + $('div#thumb').width() >= $(window).width()) ? e.pageX - 5 - $('div#thumb').width() : e.pageX + 5,
@@ -581,45 +581,43 @@ if(/\..+\/(?:index|user)/i.test(window.location.href)) {
         ];
     }
 
-    $(document).ready(function() {
-        $('table tbody tr').on('mouseenter', function(e) {
-            var id = $(this).data('thumb');
-            var lnk = '/thumbs/' + id + '.gif';
-            var loc = get_loc(e);
-            $(document.body).prepend('<div id="thumb"></div>');
-            $('div#thumb').prepend('<img id="thumb"/>');
-            $('img#thumb').text('Loading...');
-            $('div#thumb').css({
-                'position': 'absolute',
-                'left': loc[0],
-                'top': loc[1],
-                'z-index': '5',
-                'border': '1px white solid',
-                'box-shadow': '5px 5px 7px 0px rgba(0,0,0,0.75)',
-                'color': 'white',
-                'background-color': '#181818'
-            });
-            var img = $('img#thumb');
-            var thumb = $('<img/>');
-            thumb.load(function() {
-                img.attr("src", $(this).attr("src"));
-                loc = get_loc(e);
-                $('div#thumb').css({
-                    'left': loc[0],
-                    'top': loc[1]
-                });
-            });
-            thumb.attr("src", lnk);
-        }).on('mousemove', function(e) {
-            $('div#thumb').css({
-                'left': get_loc(e)[0],
-                'top': get_loc(e)[1]
-            });
-        }).on('mouseleave', function() {
-            $('#thumb').remove();
+    $('[data-thumb]').on('mouseenter', function(e) {
+        var id = $(this).data('thumb');
+        var lnk = '/thumbs/' + id + '.gif';
+        var loc = get_loc(e);
+        $(document.body).prepend('<div id="thumb"></div>');
+        $('div#thumb').prepend('<img id="thumb"/>');
+        $('img#thumb').text('Loading...');
+        $('div#thumb').css({
+            'position': 'absolute',
+            'left': loc[0],
+            'top': loc[1],
+            'z-index': '5',
+            'border': '1px white solid',
+            'box-shadow': '5px 5px 7px 0px rgba(0,0,0,0.75)',
+            'color': 'white',
+            'background-color': '#181818'
         });
+        var img = $('img#thumb');
+        var thumb = $('<img/>');
+        thumb.load(function() {
+            img.attr("src", $(this).attr("src"));
+            loc = get_loc(e);
+            $('div#thumb').css({
+                'left': loc[0],
+                'top': loc[1]
+            });
+        });
+        thumb.attr("src", lnk);
+    }).on('mousemove', function(e) {
+        $('div#thumb').css({
+            'left': get_loc(e)[0],
+            'top': get_loc(e)[1]
+        });
+    }).on('mouseleave', function() {
+        $('#thumb').remove();
     });
-}
+});
 
 //Pagination
 var paginate = function(pagination, options) {
