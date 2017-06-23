@@ -582,8 +582,8 @@ $(function() {
 $(function() {
     function get_loc(e) {
         return [
-            (e.clientX + $('div#thumb').width() >= $(window).width()) ? e.pageX - 5 - $('div#thumb').width() : e.pageX + 5,
-            (e.clientY + $('div#thumb').height() >= $(window).height()) ? e.pageY - 5 - $('div#thumb').height() : e.pageY + 5
+            (e.clientX + $('div#thumb').width() >= $(window).width() - 10) ? e.pageX - 5 - $('div#thumb').width() : e.pageX + 5,
+            (e.clientY + $('div#thumb').height() >= $(window).height() - 10) ? e.pageY - 5 - $('div#thumb').height() : e.pageY + 5
         ];
     }
 
