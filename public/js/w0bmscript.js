@@ -130,6 +130,12 @@ if(videoElem !== null) {
         }
     });
 
+    //videojs fix for firefox
+    if(navigator.userAgent.toLowerCase().indexOf('firefox') != -1 && player.autoplay() && !player.paused() && player.hasClass('vjs-paused')) {
+        player.pause();
+        player.play();
+    }
+
     if(localStorage.getItem('background') == undefined) {
         if($.browser.mobile)
             localStorage.setItem('background', 'false');
