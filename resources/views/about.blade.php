@@ -44,7 +44,6 @@
 <li><a href="/user/jkhsjdhjs">jkhsjdhjs</a></li>
 <li><a href="/user/Czar">Czar</a></li>
 <li><a href="/user/flinny">flinny</a></li>
-<li><a href="/user/kim">kim</a></li>
 <li><a href="/user/mrhanky">mrhanky</a></li>
 </ul>
 
