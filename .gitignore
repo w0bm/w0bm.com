@@ -6,6 +6,7 @@ Homestead.json
 public/b/*
 public/thumbs/*
 public/z0r*
+public/images/*
 /.gitignore
 
 storage/deleted/*
