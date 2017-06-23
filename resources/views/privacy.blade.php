@@ -1,23 +1,14 @@
 @extends('profilelayout')
 @section('content')
-<div class="page-header">
-        <h3>Privacy</h3>
-    </div>
 <h5>What do we log?</h5>
 <ul>
-<li>Anything our webserver (Nginx) and Piwik logs within it's logfiles.</li>
-<li>Information you provide while using our service this includes:</li>
-<ul>
-<li>Your Username</li>
-<li>Your email</li>
-<li>Your password</li>
-<li>Your written comments</li>
-<li>Your uploads</li>
-</ul>
-</ul>
-</ul>
-<h5 style="color: red;">Note: IPs are anonymized</h5>
-<h6>We use Piwik to monitor activities on our website, if you don't want to be tracked, please untick the checkbox down below.</h6>
-<iframe style="border: 0; height: 150px; width: 800px;" src="https://stats.w0bm.com/index.php?module=CoreAdminHome&amp;action=optOut&amp;language=en"></iframe>
+<li>Anything NGINX logs</li>
+<code>
+    log_format main  '$remote_addr - $remote_user [$time_local] "$request" '<br />
+                      '$status $body_bytes_sent "$http_referer" '<br />
+		      '"$http_user_agent" "$http_x_forwarded_for"';<br/>
+</code>
+<i>We keep the logs as long as we don't run out of space, if we run out of space the logs are the first thing that goes to the trash</i>
+<p><b>We do not use any tracking cookies or analytics services!</b></p>
 @include('footer')
 @endsection

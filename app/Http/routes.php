@@ -45,17 +45,18 @@ Route::get('irc', function() { return view('irc'); });
 Route::get('rules', function() { return view('rules'); });
 Route::get('contact', function() { return view('contact'); });
 Route::get('privacy', function() { return view('privacy'); });
-Route::get('help', function() { return view('help'); });
-Route::get('map', function() { return view('map'); });
-Route::get('donate', function() {
-    return view('donate', [
-        'donations' => \App\Models\Donation::orderBy('timestamp', 'DESC')->get()
-    ]);
-});
+#Route::get('help', function() { return view('help'); });
+#Route::get('announcement', function() { return view('announcement'); });
+#Route::get('map', function() { return view('map'); });
+#Route::get('donate', function() {
+#    return view('donate', [
+#        'donations' => \App\Models\Donation::orderBy('timestamp', 'DESC')->get()
+#    ]);
+#});
 Route::get('transparency', function() { return view('transparency'); });
 Route::get('login', function() { return view('login'); });
 Route::get('advertise', function() { return view('advertise'); });
-Route::get('counter-strike', function() { return view('counter-strike'); });
+#Route::get('counter-strike', function() { return view('counter-strike'); });
 
 Route::post('filter', 'UserController@filter');
 

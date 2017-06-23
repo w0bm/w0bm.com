@@ -6,9 +6,8 @@
     </label>    
     <span class="addtagsy"><a href="/irc">IRC </a></span>
     <span class="addtagsy"><a href="/about">About </a></span>
-    <span class="addtagsy"><a href="/donate">Donate </a></span>
     <span class="addtagsy"><a href="/contact">Contact </a></span>
-    <span class="addtagsy"><a href="/advertise">Advertise </a></span>
+    <span class="addtagsy"><a href="/rules">Rules </a></span>
 
     <input type="checkbox" id="tag-add-toggle">
     <div id="tag-add">
@@ -24,9 +23,8 @@
 	<div class="tagpanelinfos">
             <span class="addtagsy"><a href="/irc">IRC </a></span>
             <span class="addtagsy"><a href="/about">About </a></span>
-	    <span class="addtagsy"><a href="/donate">Donate </a></span>
 	    <span class="addtagsy"><a href="/contact">Contact </a></span>
-            <span class="addtagsy"><a href="/advertise">Advertise </a></span>
+	    <span class="addtagsy"><a href="/rules">Rules </a></span>
 	</div>
         @endif
 

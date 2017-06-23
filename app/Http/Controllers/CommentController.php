@@ -51,7 +51,7 @@ class CommentController extends Controller
 
         if(is_null($user)) return $xhr ? "Not logged in" : redirect()->back()->with('error', 'Not logged in');
         if(!$request->has('comment')) return $xhr ? "You need to enter a comment" : redirect()->back()->with('error', 'You need to enter a comment');
-        if(mb_strlen(trim($request->get('comment'))) > 1000 ) return $xhr ? "Comment to long" : redirect()->back()->with('error', 'Comment to long');
+        if(mb_strlen(trim($request->get('comment'))) > 2000 ) return $xhr ? "Comment to long" : redirect()->back()->with('error', 'Comment to long');
 
         $video = Video::findOrFail($id);
 

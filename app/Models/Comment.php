@@ -57,7 +57,7 @@ class Comment extends Model
 
         $text = preg_replace($boldMatcher, '<strong>$1</strong>', $text);
         $text = preg_replace($krebsCSSmatcher, '<span class="anim">$1</span>', $text);
-        $text = preg_replace($deutschlandMatcher, '<span class="reich">$1</span>', $text);
+        #$text = preg_replace($deutschlandMatcher, '<span class="reich">$1</span>', $text);
         $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
         $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
         $text = preg_replace($imageMatcher, '<img src="$1" alt="Image" class="comment_image" />', $text);
