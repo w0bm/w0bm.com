@@ -1953,3 +1953,7 @@ ul.pagination {
     -webkit-filter: hue-rotate(360deg);
   }
 }
+
+body {
+  animation: colorRotate 3s linear infinite;
+}
