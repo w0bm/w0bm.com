@@ -1944,7 +1944,8 @@ ul.pagination {
 /* Ende der neuen Pagination */
 
 /* Psychedelic w0bm Logo */
-.navbar-brand {
+
+/*.navbar-brand {
   animation: colorRotate 3s linear infinite;
 }
 
@@ -1956,4 +1957,4 @@ ul.pagination {
 
 body {
   animation: colorRotate 3s linear infinite;
-}
+}*/
