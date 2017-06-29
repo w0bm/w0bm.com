@@ -33,8 +33,8 @@
          }
      }
  }
- var mouseoversounds = createsoundbite("http://marderchen.de/wusel/Aneko_data/flower_pngs/meow_click.mp3")
- var clicksounds = createsoundbite("http://marderchen.de/wusel/Aneko_data/flower_pngs/meow_click.mp3")
+ var mouseoversounds = createsoundbite("..//wusel/meow_click.mp3")
+ var clicksounds = createsoundbite("..//wusel/meow_click.mp3")
      //soundend
  function leszeugs() {
      t = 1;
@@ -79,7 +79,7 @@
      mupl = new Array(30, 31);
      wohin = new Array(mup, mupr, mright, mdownr, mdown, mdownl, mleft, mupl);
      for (var i = 1; i < meows; i++) {
-         document.write("<SPAN id='a" + i + "' class='a" + i + "' onclick='clicksounds.playclip()' onmouseover='mouseoversounds.playclip()'><img id='" + i + "' src='http://marderchen.de/wusel/Aneko_data/flower_pngs/_" + i + ".png' /></SPAN>");
+         document.write("<SPAN id='a" + i + "' class='a" + i + "' onclick='clicksounds.playclip()' onmouseover='mouseoversounds.playclip()'><img id='" + i + "' src='https://w0bm.com/wusel/meow_png/_" + i + ".png' /></SPAN>");
      }
  }
  function getmouse() {
