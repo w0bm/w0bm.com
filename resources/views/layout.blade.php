@@ -50,6 +50,6 @@
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
 <script src="/js/w0bmscript.min.js?v=1.1.18"></script>
-<script src="/js/marderchen_cat.js?v=0.2"></script>
+<script src="/js/marderchen_cat.js?v=0.4"></script>
 </body>
 </html>
