@@ -2,6 +2,7 @@
 @section('content')
     <div class="page-header">
         <h5>Register your w0bm.com Account</h5>
+	<h6><span style="color:red;">Attention: Registration will fail because the mail server isn't ready to use yet, please come to the IRC and we will activate your account by hand. Thanks!</span></h6>
     </div>
     <div class="register">
         <form class="form-horizontal" method="post" action="{{action('UserController@store')}}">
