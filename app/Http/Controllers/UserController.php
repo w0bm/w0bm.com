@@ -123,7 +123,7 @@ class UserController extends Controller
         if(auth()->check()) return redirect()->back()->with('info', 'Cannot register when logged in');
         $validator = \Validator::make($request->all(), [
             'username' => 'required|unique:users|min:3|max:25|alpha_num',
-            'email' => 'required|email|unique:users|confirmed',
+            //'email' => 'required|email|unique:users|confirmed',
             'password' => 'required|min:6|confirmed',
             'g-recaptcha-response' => 'required|recaptcha'
         ]);
@@ -133,29 +133,29 @@ class UserController extends Controller
                 ->withInput($request->except(['password', 'password_confirmation']));
         }
 
-        $activation_token = str_random(8) . md5($request->get('email')) . str_random(10);
+        //$activation_token = str_random(8) . md5($request->get('email')) . str_random(10);
 
         $user = new User();
         $user->username = $request->get('username');
-        $user->email = $request->get('email');
+        $user->email = ""; //$request->get('email');
         $user->password = $request->get('password');
-        $user->activation_token = $activation_token;
+        $user->activation_token = ""; //$activation_token;
         $user->disabled = 0;
-        $user->verified = 0;
+        $user->verified = 1;
         $user->categories = [];
         if($user->save()) {
-            $data = [
+            /*$data = [
                 'username' => $user->username,
                 'activation_token' => $activation_token
-            ];
+            ];*/
 
             // Send Mail
 
-            \Mail::queue('emails.activation', $data, function($message) use ($user) {
+            /*\Mail::queue('emails.activation', $data, function($message) use ($user) {
                 $message->to($user->email, $user->username)->subject('Welcome to w0bm. Activate your account');
-            });
+            });*/
 
-            return redirect('/')->with('info', 'Please activate your account to finish registration');
+            return redirect('/')->with('info', 'Congratulations! You can now login!');
         } else {
             return redirect()->back()->with('error', 'Account could not be created')->withInput($request->except(['password', 'password_confirmation']));
         }
