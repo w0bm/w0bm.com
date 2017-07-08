@@ -1958,3 +1958,11 @@ ul.pagination {
 body {
   animation: colorRotate 3s linear infinite;
 }*/
+
+/* Alucard's persnal friendbox */
+.alusexy {
+    border: 1px solid #888888;
+    padding: 10px;
+    background: #0c0c0c;
+    font-weight: bold;
+}
