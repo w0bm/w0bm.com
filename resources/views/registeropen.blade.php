@@ -1,7 +1,8 @@
 @extends('layout')
 @section('content')
     <div class="page-header">
-        <h5>Register your w0bm.com Account</h5>
+	<h5>Register your w0bm.com Account</h5>
+<p style="color:red;">Note: We do not reset passwords, make sure to write down your password on paper, otherwise you need create a new account or start to circlejerk in the IRC!</p>
     </div>
     <div class="register">
         <form class="form-horizontal" method="post" action="{{action('UserController@store')}}">
@@ -11,7 +12,7 @@
                     {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username']) !!}
                 </div>
             </div>
-            <div class="form-group">
+            <!--<div class="form-group">
                 <div class="">
                     {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
                 </div>
@@ -20,7 +21,7 @@
                 <div class="">
                     {!! Form::email('email_confirmation', null, ['class' => 'form-control', 'placeholder' => 'Email Confirmation']) !!}
                 </div>
-            </div>
+            </div>-->
             <div class="form-group">
                 <div class="">
                     {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}

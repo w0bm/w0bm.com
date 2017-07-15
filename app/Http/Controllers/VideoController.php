@@ -78,7 +78,7 @@ class VideoController extends Controller
         || mb_strtolower($file->getMimeType()) !== 'video/webm')
             return new JsonResponse(['error' => 'invalid_file']);
 
-        if(!$user->can('break_max_filesize') && $file->getSize() > 31457280)
+        if(!$user->can('break_max_filesize') && $file->getSize() > 1e+8)
             return new JsonResponse(['error' => 'file_too_big']);
 
         if(($v = Video::withTrashed()->where('hash', '=', sha1_file($file->getRealPath()))->first()) !== null) {

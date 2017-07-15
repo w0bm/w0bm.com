@@ -36,6 +36,13 @@
 	<li>Comments are not welcome in the Tag section, if we catch you say goodbye.</li>
 </ol>
 	
+<h5>Commenting</h5>
+<ol>
+	<li>You don't have to be polite, but you also don't have to be an asshole.</li>
+	<li>NSFW images should only be posted on NSFW videos.</li>
+	<li>Live with different opinions, and deal with it.</li>
+	<li>Fucking a mother is 2009-tier</li>
+</ol>
 
 <h5>Reposts</h5>
 <ul style="text-align:left;">

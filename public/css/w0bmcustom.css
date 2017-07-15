@@ -1942,3 +1942,27 @@ ul.pagination {
     justify-content: center;
 }
 /* Ende der neuen Pagination */
+
+/* Psychedelic w0bm Logo */
+
+/*.navbar-brand {
+  animation: colorRotate 3s linear infinite;
+}
+
+@keyframes colorRotate {
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+  }
+}
+
+body {
+  animation: colorRotate 3s linear infinite;
+}*/
+
+/* Alucard's persnal friendbox */
+.alusexy {
+    border: 1px solid #888888;
+    padding: 10px;
+    background: #0c0c0c;
+    font-weight: bold;
+}
