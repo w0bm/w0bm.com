@@ -94,11 +94,21 @@ Route::group(['prefix' => 'api'], function() {
                 return response(['message' => 'Video not found'], 404);
             }
             return $res;
-        })->where('id', '[0-9]+'); 
+        })->where('id', '[0-9]+');
         Route::post('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');
         Route::post('{id}/tag', 'VideoController@tag')->where('id', '[0-9]+');
         Route::post('{id}/untag', 'VideoController@untag')->where('id', '[0-9]+');
         Route::post('upload', 'VideoController@store')->middleware('auth.basic');
+    });
+
+    // /api/mod
+    Route::group(['prefix' => 'mod', 'middleware' => 'auth.mod'], function() {
+        Route::group(['prefix' => 'logs'], function() {
+            Route::get('get', 'ModerationController@getModeratorLogs');
+        });
+        Route::group(['prefix' => 'users'], function() {
+            Route::get('get', 'ModerationController@getUsers');
+        });
     });
 
     Route::post('upload', 'VideoController@store');

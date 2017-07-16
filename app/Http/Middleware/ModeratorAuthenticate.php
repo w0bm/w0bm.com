@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\JsonResponse;
 
-class Authenticate
+class ModeratorAuthenticate
 {
     /**
      * The Guard implementation.
@@ -33,14 +34,13 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        if ($this->auth->guest()) {
+        if (!$this->auth->check() || !$this->auth->user()->is('Moderator') && !$this->auth->user()->is('Super Admin')) {
             if ($request->ajax()) {
-                return response('Unauthorized.', 401);
+                return new JsonResponse(['message' => 'Forbidden', 'code' => 403]);
             } else {
-                return redirect()->guest('auth/login');
+                return response('Forbidden', 403);
             }
         }
-
         return $next($request);
     }
 }
