@@ -60,6 +60,8 @@ Route::get('advertise', function() { return view('advertise'); });
 
 Route::post('filter', 'UserController@filter');
 
+Route::get('moderator', 'ModerationController@index');
+
 // /api
 Route::group(['prefix' => 'api'], function() {
 

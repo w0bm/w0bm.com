@@ -33,9 +33,9 @@ class ModeratorLog extends Model
         $target_type = $this->target_type;
 
         switch ($target_type) {
-            case 'user': return User::find($this->target_id);
-            case 'comment': return Comment::find($this->target_id);
-            case 'video': return Video::find($this->target_id);
+            case 'user': return User::withTrashed()->find($this->target_id);
+            case 'comment': return Comment::withTrashed()->find($this->target_id);
+            case 'video': return Video::withTrashed()->find($this->target_id);
             default: return null;
         }
     }
