@@ -13,7 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Illuminate\Database\Eloquent\Relations\Relation::morphMap([
+            'video' => \App\Models\Video::class,
+            'user' => \App\Models\User::class,
+            'comment' => \App\Models\Comment::class,
+        ]);
+
     }
 
     /**

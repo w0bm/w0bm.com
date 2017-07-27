@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * App\Models\ModeratorLog
  *
- * TODO: Add Reason column to database
- *
  * @property integer $id
  * @property integer $user_id
  * @property string $type
@@ -31,13 +29,18 @@ class ModeratorLog extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function target() {
+        return $this->morphTo()->withTrashed();
+    }
+
     // TODO: Refactor to use morph db type from laravel
     public function getTarget() {
-        switch ($this->target_type) {
-            case 'user':    return User::withTrashed()->find($this->target_id);
-            case 'comment': return Comment::withTrashed()->find($this->target_id);
-            case 'video':   return Video::withTrashed()->find($this->target_id);
-            default: return null;
-        }
+        return $this->target;
+        // switch ($this->target_type) {
+        //     case 'user':    return User::withTrashed()->find($this->target_id);
+        //     case 'comment': return Comment::withTrashed()->find($this->target_id);
+        //     case 'video':   return Video::withTrashed()->find($this->target_id);
+        //     default: return null;
+        // }
     }
 }
