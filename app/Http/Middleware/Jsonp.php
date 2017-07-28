@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\JsonResponse;
 
 class Jsonp {
     /**
@@ -19,8 +20,11 @@ class Jsonp {
         if ($response->headers->get('content-type') == 'application/json'
             && $request->has('callback'))
         {
+            if (get_class($response) == JsonResponse::class) {
+                return $response->setCallback($request->input('callback'));
+            }
             // TODO fix stripping headers
-            $response = response()->json($response->original)->setCallback($request->input('callback'));
+            return response()->json($response->original)->setCallback($request->input('callback'));
         }
 
         return $response;
