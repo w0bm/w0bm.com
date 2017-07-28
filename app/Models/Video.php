@@ -174,6 +174,6 @@ class Video extends Model
         // get actual count
         $id = \DB::select('SELECT FOUND_ROWS() c')[0]->c - 1;
         $id = mt_rand(0, $id);
-        return \App\Models\Video::filtered()->skip($id)->first();
+        return \App\Models\Video::filtered()->skip($id);
     }
 }

@@ -14,7 +14,7 @@
 Route::get('/', ['as' => 'home', function () {
     Session::reflash();
     // Dummy query to calculate rows
-    $video = \App\Models\Video::getRandom();
+    $video = \App\Models\Video::getRandom()->first();
 
     return redirect($video->id);
 
@@ -81,6 +81,11 @@ Route::group(['prefix' => 'api'], function() {
 
     // /api/video
     Route::group(['prefix' => 'video'], function() {
+        Route::get('random', function() {
+            return \App\Models\Video::getRandom()->with(['category', 'user' => function($query) {
+                $query->addSelect('username', 'id');
+            }])->first();
+        });
         Route::get('{id}', function($id) {
             $res = \App\Models\Video::with(['category', 'user' => function($query) {
                 $query->addSelect('username', 'id');
