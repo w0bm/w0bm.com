@@ -166,4 +166,14 @@ class Video extends Model
             array_map('unlink', glob("{$tmpdir}/{$name}*.png"));
         }
     }
+
+    public static function getRandom() {
+        // TODO: refactor to be DBMS agnostic
+        static::selectRaw('SQL_CALC_FOUND_ROWS videos.*')
+            ->filtered()->limit(0)->first();
+        // get actual count
+        $id = \DB::select('SELECT FOUND_ROWS() c')[0]->c - 1;
+        $id = mt_rand(0, $id);
+        return \App\Models\Video::filtered()->skip($id)->first();
+    }
 }
