@@ -109,10 +109,6 @@ class User extends VerifyUser
         return $icon;
     }
 
-//    public function categories() {
-//        return $this->belongsToMany(Category::class);
-//    }
-
     public function isBanned() {
         if($this->disabled == 1) {
             return $this->banend->eq(Carbon::create(0,0,0,0,0,0)) || $this->banend->gt(Carbon::now());
