@@ -187,7 +187,7 @@ class UserController extends Controller
         if(!$user) {
             return redirect()->back()->with('error', 'Unknown username');
         }
-        $vids = $user->videos()->paginate(50);
+        $vids = $user->videos()->filtered()->paginate(50);
 
     	return view('profile', ['title' => 'Uploads', 'user' => $user, 'videos' => $vids]);
     }
@@ -199,7 +199,7 @@ class UserController extends Controller
     	if(!$user) {
             return redirect()->back()->with('error', 'Unknown username');
         }
-        $vids = $user->favs()->paginate(50);
+        $vids = $user->favs()->filtered()->paginate(50);
 
     	return view('profile', ['title' => 'Favorites', 'user' => $user, 'videos' => $vids]);
 	}
