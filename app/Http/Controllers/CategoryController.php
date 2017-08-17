@@ -54,12 +54,14 @@ class CategoryController extends Controller
         $category = Category::whereShortname($shortname)->first();
         if(is_null($category)) return redirect()->back()->with('error', 'Category not found');
         if(is_null($id)) {
-            $id = Video::whereCategoryId($category->id)->count() - 1;
+            $id = Video::whereCategoryId($category->id)->filtered()->countScoped() - 1;
             if($id < 0) return redirect()->back()->with('error', 'Category is empty.');
             $id = rand(0, $id);
-            $video = Video::whereCategoryId($category->id)->skip($id)->first();
+            $video = Video::whereCategoryId($category->id)->filtered()->skip($id)->first();
             return redirect($shortname . '/' . $video->id);
         } else {
+            // Don't filter on specific video.
+            // TODO: Add warning page
             $video = Video::whereCategoryId($category->id)->find($id);
         }
         if(is_null($video)) return redirect()->back()->with('error', 'Category is empty.');

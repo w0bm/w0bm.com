@@ -69,17 +69,17 @@ class Video extends Model
 
     public function getFirstId($category) {
         if($category) {
-            return static::whereCategoryId($this->category->id)->first()->id;
+            return static::whereCategoryId($this->category->id)->filtered()->first()->id;
         }
         return static::filtered()->first()->id;
     }
 
     public function getLastId($category) {
         if($category) {
-            return static::whereCategoryId($this->category->id)->max('id');
-	}
-	// TODO: optimize
-	return static::select('id')->filtered()->orderBy('id', 'DESC')->pluck('id');
+            return static::whereCategoryId($this->category->id)->filtered()->max('id');
+        }
+        // TODO: optimize
+        return static::select('id')->filtered()->orderBy('id', 'DESC')->pluck('id');
     }
 
     /**
@@ -90,7 +90,7 @@ class Video extends Model
         if(!$category) {
             return Video::filtered()->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
         } else {
-            return Video::whereCategoryId($this->category->id)->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
+            return Video::whereCategoryId($this->category->id)->filtered()->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
         }
     }
 
@@ -102,7 +102,7 @@ class Video extends Model
         if(!$category) {
             return Video::filtered()->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
         } else {
-            return Video::whereCategoryId($this->category->id)->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
+            return Video::whereCategoryId($this->category->id)->filtered()->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
         }
     }
 
@@ -112,6 +112,7 @@ class Video extends Model
 
     public function scopeFiltered($query) {
         if(auth()->check()) {
+            // TODO rename to filtered
             $categories = auth()->user()->categories;
             if(empty($categories))
                 return $query;
@@ -119,8 +120,8 @@ class Video extends Model
             return $query->withoutAnyTags($categories);
         } else {
             // TODO: filter if post has sfw & nsfw tags
-	    return $query->withAllTags('sfw');
-	    //return $query;
+        return $query->withAllTags('sfw');
+        //return $query;
         }
     }
 
@@ -168,11 +169,7 @@ class Video extends Model
     }
 
     public static function getRandom() {
-        // TODO: refactor to be DBMS agnostic
-        static::selectRaw('SQL_CALC_FOUND_ROWS videos.*')
-            ->filtered()->limit(0)->first();
-        // get actual count
-        $id = \DB::select('SELECT FOUND_ROWS() c')[0]->c - 1;
+        $id = static::filtered()->countScoped() - 1;
         $id = mt_rand(0, $id);
         return \App\Models\Video::filtered()->skip($id);
     }

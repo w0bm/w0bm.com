@@ -16,8 +16,8 @@ class Kernel extends ConsoleKernel
         Commands\AddTags::class,
         \App\Console\Commands\Inspire::class,
         \App\Console\Commands\AddTags::class,
-        Commands\AddThumbs::class,
-        Commands\FixVideos::class,
+//        Commands\AddThumbs::class,
+//        Commands\FixVideos::class,
     ];
 
     /**
