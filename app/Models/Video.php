@@ -75,11 +75,11 @@ class Video extends Model
     }
 
     public function getLastId($category) {
+        $q = static::select('id')->filtered()->orderBy('id', 'DESC');
         if($category) {
-            return static::whereCategoryId($this->category->id)->filtered()->max('id');
+            return $q->whereCategoryId($this->category->id)->pluck('id');
         }
-        // TODO: optimize
-        return static::select('id')->filtered()->orderBy('id', 'DESC')->pluck('id');
+        return $q->pluck('id');
     }
 
     /**
