@@ -106,7 +106,7 @@ if(videoElem !== null) {
     var player = videojs(videoElem, {
         controls: true,
         playbackRates: [0.25, 0.5, 1, 1.5, 2],
-        //inactivityTimeout: 120,
+        inactivityTimeout: 850,
         controlBar: {
             children: {
 		'progressControl': {},
@@ -131,6 +131,8 @@ if(videoElem !== null) {
             });
         }
     });
+
+//player.on('mouseout', function(){ this.userActive(false) });
 
     //videojs fix for firefox
     if(navigator.userAgent.toLowerCase().indexOf('firefox') != -1 && player.autoplay() && !player.paused() && player.hasClass('vjs-paused')) {
