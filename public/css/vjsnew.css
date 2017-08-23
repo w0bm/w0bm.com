@@ -279,7 +279,7 @@
 }
 
 .video-js .vjs-control-bar {
-    background-color: #161618!important;
+    background-color: rgba(22, 22, 24, 0.89)!important;
     color: #fff;
     font-size: 13px;
     font-family: "Oswald",sans-serif;
