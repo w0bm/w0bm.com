@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="/css/video-js.min.css">
-    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.84">
-    <link rel="stylesheet" href="/css/vjsnew.css">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.85">
+    <link rel="stylesheet" href="/css/vjsnew.css?v=1.0">
 </head>
 <body>
 @if(auth()->check())
@@ -50,6 +50,6 @@
 <script src="/js/jquery.timeago.js"></script>
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
-<script src="/js/w0bmscript.js?v=1.1.22"></script>
+<script src="/js/w0bmscript.js?v=1.1.25"></script>
 </body>
 </html>
