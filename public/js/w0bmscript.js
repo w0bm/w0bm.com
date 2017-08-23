@@ -111,6 +111,7 @@ if(videoElem !== null) {
             children: {
 		'progressControl': {},
                 'playToggle': {},
+		'MuteToggle': {},
 		'volumeControl': {},
                 'currentTimeDisplay': {},
                 'timeDivider': {},
