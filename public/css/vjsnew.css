@@ -284,3 +284,23 @@
     font-size: 13px;
     font-family: "Oswald",sans-serif;
 }
+
+.video-js .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+    background-color: #161618;
+    width: 5em;
+    left: 1.5em;
+    padding-bottom: 0rem;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.video-js .vjs-menu-button-popup .vjs-menu .vjs-menu-item, .video-js .vjs-menu-button-popup .vjs-menu .vjs-menu-title {
+    background-color: #3b3938;
+    margin: .3em 0;
+    padding: 0;
+    border-radius: 0;
+}
+
+.video-js .vjs-menu-button-popup .vjs-menu .vjs-menu-item:hover, .video-js .vjs-menu-button-popup .vjs-menu .vjs-menu-title {
+    background-color: #707070;
+}

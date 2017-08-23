@@ -106,7 +106,7 @@ if(videoElem !== null) {
     var player = videojs(videoElem, {
         controls: true,
         playbackRates: [0.25, 0.5, 1, 1.5, 2],
-        inactivityTimeout: 0,
+        //inactivityTimeout: 120,
         controlBar: {
             children: {
 		'progressControl': {},
@@ -994,7 +994,7 @@ function editComment(self) {
     });
 }
 
-$(function () {
+/*$(function () {
     var cBar = $('.vjs-control-bar');
     var cBarStatus = false;
     $('video').on('mousemove', function () {
@@ -1011,7 +1011,7 @@ $(function () {
         cBar.hide();
         cBarStatus = false;
     });
-});
+});*/
 
 //upload
 $(function() {
