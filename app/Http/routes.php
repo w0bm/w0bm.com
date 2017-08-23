@@ -40,6 +40,7 @@ Route::get('irc', function() { return view('irc'); });
 Route::get('rules', function() { return view('rules'); });
 Route::get('contact', function() { return view('contact'); });
 Route::get('privacy', function() { return view('privacy'); });
+Route::get('impressum', function() { return view('impressum'); });
 #Route::get('help', function() { return view('help'); });
 #Route::get('announcement', function() { return view('announcement'); });
 #Route::get('map', function() { return view('map'); });

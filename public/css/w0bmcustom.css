@@ -729,7 +729,7 @@ input {
 	background-color: transparent;
 	color: #1fb2b0;
 }
-
+/*
 .video-js .vjs-play-progress {
 	background-color: #1fb2b0;
 }
@@ -753,12 +753,12 @@ input {
 	line-height: 1.7em;
 	top: 1px;
 }
-
+*/
 .strong-colored strong {
     color: #1FB2B0;
 }
 
-.video-js .vjs-current-time, .video-js .vjs-time-divider, .video-js .vjs-duration {
+/*.video-js .vjs-current-time, .video-js .vjs-time-divider, .video-js .vjs-duration {
     display: block;
 }
 
@@ -773,7 +773,7 @@ input {
 .video-js .vjs-control-bar {
     display: none;
 }
-
+*/
 .americagay {
 	height: 32px;
 	width:  32px;

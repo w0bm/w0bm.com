@@ -6,6 +6,7 @@ return [
     'media.giphy.com',
     'files.nogf.club',
     'f0ck.me',
+    'f0ck.cf',
     'f0ck.space',
     'files.catbox.moe',
     'i.sli.mg',

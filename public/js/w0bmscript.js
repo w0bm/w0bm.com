@@ -109,12 +109,13 @@ if(videoElem !== null) {
         inactivityTimeout: 0,
         controlBar: {
             children: {
+		'progressControl': {},
                 'playToggle': {},
-                'progressControl': {},
+		'volumeControl': {},
                 'currentTimeDisplay': {},
                 'timeDivider': {},
                 'durationDisplay': {},
-                'volumeControl': {},
+		'CustomControlSpacer': {},
                 'playbackRateMenuButton': {},
                 'fullscreenToggle': {}
             }
