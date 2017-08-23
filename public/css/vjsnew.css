@@ -304,3 +304,20 @@
 .video-js .vjs-menu-button-popup .vjs-menu .vjs-menu-item:hover, .video-js .vjs-menu-button-popup .vjs-menu .vjs-menu-title {
     background-color: #707070;
 }
+
+.video-js .vjs-mouse-display:after, .video-js .vjs-play-progress:after {
+    display: none;
+    position: absolute;
+    top: -2em;
+    right: -1.5em;
+    font-size: .9em;
+    color: #fff;
+    content: attr(data-current-time);
+    padding: 6px 8px 8px;
+    background-color: #fff;
+    background-color: rgb(58, 57, 56);
+    -webkit-border-radius: .3em;
+    -moz-border-radius: .3em;
+    border-radius: .3em;
+    font-family: "Oswald",sans-serif;
+}
