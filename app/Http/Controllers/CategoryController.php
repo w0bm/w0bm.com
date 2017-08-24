@@ -72,7 +72,7 @@ class CategoryController extends Controller
 
         return view('video', [
             'video' => $video,
-            'category' => $category,
+            'related' => $category,
             'banner' => Banner::getRandom($video->isSfw())]);
     }
 
