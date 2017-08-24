@@ -69,9 +69,9 @@ class Video extends Model
 
     public static function getFirstId($related = null) {
         if ($related) {
-            return $related->videos()->filtered()->first()->id;
+            return $related->videos()->filtered()->orderBy('id', 'ASC')->first()->id;
         }
-        return static::filtered()->first()->id;
+        return static::filtered()->orderBy('id', 'ASC')->first()->id;
     }
 
     public static function getLastId($related = null) {
