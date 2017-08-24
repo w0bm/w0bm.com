@@ -1,34 +1,34 @@
 @extends('layout')
 @section('content')
-    <?php $category = isset($category) ? $category : false ?>
+	<?php $related = $related ?? null ?>
     <div class="vertical-align">
         <div class="wrapper">
             <div class="embed-responsive embed-responsive-16by9">
                 <video id="video" loop autoplay controls preload="auto" src="@if(env('APP_DEBUG')){{"/b"}}@else{{"//b.w0bm.com"}}@endif{{ "/" . $video->file }}"></video>
             </div>
 			<div class="text-center" style="position: unset;">
-				@if($category)
-					@if(($prev = $video->getPrev(true)) === null)
+				@if($related)
+					@if(($prev = $video->getPrev($related)) === null)
 						<a class="first" href="#" style="visibility: hidden;">← first</a>
 						<a id="prev" href="#" style="visibility: hidden;">← prev</a> |
 					@else
-						<a class="first" href="{{url($video->category->shortname, $video->getFirstId(true))}}">← first</a>
-						<a id="prev" href="{{url($video->category->shortname, [$prev->id])}}">← prev</a> |
+						<a class="first" href="{{url($related->baseurl(), $video->getFirstId($related))}}">← first</a>
+						<a id="prev" href="{{url($related->baseurl(), [$prev->id])}}">← prev</a> |
 					@endif
-					<a href="{{url($video->category->shortname)}}">{{$video->category->name}}</a>
-					@if(($next = $video->getNext(true)) === null)
+					<a href="{{url($related->baseurl())}}">{{$related->displayName()}}</a>
+					@if(($next = $video->getNext($related)) === null)
 						| <a id="next" href="#" style="visibility: hidden;">next →</a>
 						<a class="last" href="#" style="visibility: hidden;">last →</a>
 					@else
-						| <a id="next" href="{{url($video->category->shortname, [$next->id])}}">next →</a>
-						<a class="last" href="{{url($video->category->shortname, $video->getLastId(true))}}">last →</a>
+						| <a id="next" href="{{url($related->baseurl(), [$next->id])}}">next →</a>
+						<a class="last" href="{{url($related->baseurl(), $video->getLastId($related))}}">last →</a>
 					@endif
 				@else
 					@if(($prev = $video->getPrev()) === null)
 						<a class="first" href="#" style="visibility: hidden;">← first</a>
 						<a id="prev" href="#" style="visibility: hidden;">← prev</a> |
 					@else
-						<a class="first" href="{{url($video->getFirstId(false))}}">← first</a>
+						<a class="first" href="{{url($video->getFirstId())}}">← first</a>
 						<a id="prev" href="{{url($prev->id)}}">← prev</a> |
 					@endif
 					<a href="{{url('/')}}">random</a>
@@ -37,7 +37,7 @@
 						<a class="last" href="#" style="visibility: hidden;">last →</a>
 					@else
 						| <a id="next" href="{{url($next->id)}}">next →</a>
-						<a class="last" href="{{url($video->getLastId(false))}}">last →</a>
+						<a class="last" href="{{url($video->getLastId())}}">last →</a>
 					@endif
 				@endif
 				<br>

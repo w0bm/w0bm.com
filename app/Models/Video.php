@@ -64,45 +64,36 @@ class Video extends Model
     }
 
     public function faved() {
-        return $this->belongsToMany(User::class, 'favorites');
+        return $this->belongsToMany(User::class, 'favorites', 'video_id', 'user_id');
     }
 
-    public function getFirstId($category) {
-        if($category) {
-            return static::whereCategoryId($this->category->id)->filtered()->first()->id;
+    public static function getFirstId($related = null) {
+        if ($related) {
+            return $related->videos()->filtered()->first()->id;
         }
         return static::filtered()->first()->id;
     }
 
-    public function getLastId($category) {
-        $q = static::select('id')->filtered()->orderBy('id', 'DESC');
-        if($category) {
-            return $q->whereCategoryId($this->category->id)->pluck('id');
+    public static function getLastId($related = null) {
+        if ($related) {
+            return $related->videos()->filtered()->orderBy('id', 'DESC')->first()->id;
         }
-        return $q->pluck('id');
+        return static::select('id')->filtered()->orderBy('id', 'DESC')->first()->id;
     }
 
-    /**
-     * @param bool $category
-     * @return Video
-     */
-    public function getNext($category = false) {
-        if(!$category) {
-            return Video::filtered()->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
+    public function getNext($related = null) {
+        if ($related) {
+            return $related->videos()->filtered()->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
         } else {
-            return Video::whereCategoryId($this->category->id)->filtered()->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
+            return static::filtered()->where('id', '>', $this->id)->orderBy('id', 'ASC')->first();
         }
     }
 
-    /**
-     * @param bool $category
-     * @return Video
-     */
-    public function getPrev($category = false) {
-        if(!$category) {
-            return Video::filtered()->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
+    public function getPrev($related = null) {
+        if ($related) {
+            return $related->videos()->filtered()->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
         } else {
-            return Video::whereCategoryId($this->category->id)->filtered()->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
+            return static::filtered()->where('id', '<', $this->id)->orderBy('id', 'DESC')->first();
         }
     }
 
@@ -113,11 +104,11 @@ class Video extends Model
     public function scopeFiltered($query) {
         if(auth()->check()) {
             // TODO rename to filtered
-            $categories = auth()->user()->categories;
-            if(empty($categories))
+            $filter = auth()->user()->categories;
+            if(empty($filter))
                 return $query;
 
-            return $query->withoutAnyTags($categories);
+            return $query->withoutAnyTags($filter);
         } else {
             // TODO: filter if post has sfw & nsfw tags
             //return $query->withAllTags('sfw');
@@ -169,9 +160,26 @@ class Video extends Model
         }
     }
 
-    public static function getRandom() {
-        $id = static::filtered()->countScoped() - 1;
+    public static function getRandom($related = null) {
+        if ($related) {
+            $id = $related->videos()->filtered()->countScoped()->count() - 1;
+            if ($id < 0) {
+                return redirect()->back()->with('error', 'no videos found');
+            }
+            $id = mt_rand(0, $id);
+            return $related->videos()->filtered()->skip($id);
+        }
+        $id = static::filtered()->countScoped()->count() - 1;
+        if ($id < 0) {
+            return redirect()->back()->with('error', 'no videos found');
+        }
         $id = mt_rand(0, $id);
-        return \App\Models\Video::filtered()->skip($id);
+        return static::filtered()->skip($id);
+    }
+
+    public function isSfw() {
+        return $this->tags->contains(function ($key, $tag) {
+            $tag->normalized === 'sfw';
+        });
     }
 }

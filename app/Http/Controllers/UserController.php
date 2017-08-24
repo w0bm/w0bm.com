@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\User;
+use App\Models\UserFavorite;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\ModeratorLog;
+use App\Models\Banner;
 
 use Symfony\Component\HttpFoundation\Response;
 use Toddish\Verify\Helpers\Verify;
@@ -194,9 +196,9 @@ class UserController extends Controller
 
 	public function show_favs($username)
 	{
-    	$user = User::where('username', '=', $username)->first();
+    	$user = UserFavorite::where('username', '=', $username)->first();
 
-    	if(!$user) {
+    	if (!$user) {
             return redirect()->back()->with('error', 'Unknown username');
         }
         $vids = $user->favs()->filtered()->paginate(50);
@@ -305,6 +307,76 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function random($username) {
+        $user = User::where('username', '=', $username)->first();
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Unknown username');
+        }
+
+        $id = $user->videos()->filtered()->countScoped()->count() - 1;
+        if ($id < 0) {
+            return redirect()->back()->with('error', 'User has no uploads (Check your filter settings)');
+        }
+        $id = mt_rand(0, $id);
+        return redirect('/user/' . $username . '/uploads/' . $id);
+    }
+
+    public function play($username, $id) {
+        $user = User::where('username', '=', $username)->first();
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Unknown username');
+        }
+
+        $vid = $user->videos()->filtered()->find($id);
+        if (!$vid) {
+            return redirect()->back()->with('error', 'Video not found on user');
+        }
+
+        return view('video', [
+            'video' => $vid,
+            'related' => $user,
+            'banner' => Banner::getRandom($vid->isSfw())
+        ]);
+    }
+
+    // TODO: Cleanup. less Repetion between random and random_vav/play and play_fav
+    // Only difference are the redirect urls and the Base Model
+    public function random_fav($username) {
+        $user = UserFavorite::where('username', '=', $username)->first();
+        
+        if (!$user) {
+            return redirect()->back()->with('error', 'Unknown username');
+        }
+        $id = $user->videos()->filtered()->countScoped()->count() - 1;
+        if ($id < 0) {
+            return redirect()->back()->with('error', 'No favorites (Check your filter settings)');
+        }
+        $id = mt_rand(0, $id);
+        $vid = $user->videos()->filtered()->skip($id)->first()->id;
+        return redirect('/user/' . $username . '/favs/' . $vid);
+    }
+
+    public function play_fav($username, $id) {
+        $user = UserFavorite::where('username', '=', $username)->first();
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Unknown username');
+        }
+
+        $vid = $user->videos()->filtered()->find($id);
+        if (!$vid) {
+            return redirect()->back()->with('error', 'Video not found on user');
+        }
+
+        return view('video', [
+            'video' => $vid,
+            'related' => $user,
+            'banner' => Banner::getRandom($vid->isSfw())
+        ]);
     }
 
 }

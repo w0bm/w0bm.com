@@ -38,4 +38,12 @@ class Category extends Model
     public function users() {
         return $this->belongsToMany(User::class);
     }
+
+    public function baseurl() {
+        return $this->shortname;
+    }
+
+    public function displayName() {
+        return $this->name;
+    }
 }

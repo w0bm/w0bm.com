@@ -116,4 +116,16 @@ class User extends VerifyUser
         return false;
     }
 
+    public function getForeignKey() {
+        return 'user_id';
+    }
+
+    public function baseurl() {
+        return 'user/' . $this->username . '/uploads';
+    }
+
+    public function displayName() {
+        return $this->username . $this->activeIcon();
+    }
+
 }

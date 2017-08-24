@@ -14,9 +14,11 @@
                 </thead>
                 <tbody>
                 @foreach($videos as $video)
-                    <?php $thumb = str_replace(".webm","",$video->file); ?>
+                    <?php
+                        $thumb = str_replace(".webm","",$video->file);
+                    ?>
                     <tr data-thumb="{{$thumb}}">
-                        <td><a href="{{url($video->id)}}">{{$video->id}}</a></td>
+                        <td><a href="/{{$user->baseurl()}}/{{$video->id}}">{{$video->id}}</a></td>
                         <td>{{$video->interpret or ''}}</td>
                         <td>{{$video->songtitle or ''}}</td>
                         <td class="hidden-xs">{{$video->imgsource or ''}}</td>

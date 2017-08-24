@@ -132,7 +132,7 @@ class VideoController extends Controller
      * @return Response
      */
     public function show($id) {
-
+        // TODO: filter on direct id link??
         $video = Video::with('tags')->find($id);
         if(is_null($video))
             return redirect()

@@ -23,7 +23,11 @@ Route::get('/', ['as' => 'home', function () {
 
 Route::get('messages', 'MessageController@page');
 Route::get('user/{username}', 'UserController@show');
-Route::get('user/{username}/favs', 'UserController@show_favs');
+Route::get('user/{username}/uploads', 'UserController@random');
+Route::get('user/{username}/uploads/{id}', 'UserController@play')->where('id', '[0-9]+');
+Route::get('user/{username}/favs', 'UserController@random_fav');
+Route::get('user/{username}/favs/{id}', 'UserController@play_fav')->where('id', '[0-9]+');
+Route::get('user/{username}/favs/index', 'UserController@show_favs');
 Route::get('user/{username}/comments', 'UserController@show_comments');
 Route::get('logout', 'UserController@logout');
 Route::post('login', 'UserController@login');

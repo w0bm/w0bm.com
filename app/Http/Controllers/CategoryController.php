@@ -52,21 +52,28 @@ class CategoryController extends Controller
     public function showVideo($shortname, $id = null)
     {
         $category = Category::whereShortname($shortname)->first();
-        if(is_null($category)) return redirect()->back()->with('error', 'Category not found');
-        if(is_null($id)) {
-            $id = Video::whereCategoryId($category->id)->filtered()->countScoped() - 1;
-            if($id < 0) return redirect()->back()->with('error', 'Category is empty.');
-            $id = rand(0, $id);
-            $video = Video::whereCategoryId($category->id)->filtered()->skip($id)->first();
+        if (is_null($category)) {
+            return redirect()->back()->with('error', 'Category not found');
+        }
+        if (is_null($id)) {
+            $video = Video::getRandom($category)->first();
+            if (!$video) {
+                return redirect()->back()->with('error', 'Category is empty.');
+            }
             return redirect($shortname . '/' . $video->id);
         } else {
             // Don't filter on specific video.
             // TODO: Add warning page
-            $video = Video::whereCategoryId($category->id)->find($id);
+            $video = $category->videos()->find($id);
         }
-        if(is_null($video)) return redirect()->back()->with('error', 'Category is empty.');
+        if (is_null($video)) {
+            return redirect()->back()->with('error', 'Category is empty.');
+        }
 
-        return view('video', ['video' => $video, 'category' => true, 'banner' => Banner::getRandom()]);
+        return view('video', [
+            'video' => $video,
+            'category' => $category,
+            'banner' => Banner::getRandom($video->isSfw())]);
     }
 
     /**
