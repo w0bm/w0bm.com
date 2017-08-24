@@ -15,7 +15,7 @@
 						<a class="first" href="{{url($related->baseurl(), $video->getFirstId($related))}}">← first</a>
 						<a id="prev" href="{{url($related->baseurl(), [$prev->id])}}">← prev</a> |
 					@endif
-					<a href="{{url($related->baseurl())}}">{{$related->displayName()}}</a>
+					<a href="{{url($related->baseurl())}}">{!!$related->displayName()!!}</a>
 					@if(($next = $video->getNext($related)) === null)
 						| <a id="next" href="#" style="visibility: hidden;">next →</a>
 						<a class="last" href="#" style="visibility: hidden;">last →</a>

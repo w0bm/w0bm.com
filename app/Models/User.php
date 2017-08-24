@@ -125,7 +125,7 @@ class User extends VerifyUser
     }
 
     public function displayName() {
-        return $this->username . $this->activeIcon();
+        return e($this->username) . $this->activeIcon();
     }
 
 }

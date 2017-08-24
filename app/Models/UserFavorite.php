@@ -16,6 +16,6 @@ class UserFavorite extends User {
     }
 
     public function displayName() {
-        return 'Favorites (' . $this->username . $this->activeIcon() . ')';
+        return 'Favorites (' . e($this->username) . $this->activeIcon() . ')';
     }
 }

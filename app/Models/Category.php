@@ -44,6 +44,6 @@ class Category extends Model
     }
 
     public function displayName() {
-        return $this->name;
+        return e($this->name);
     }
 }
