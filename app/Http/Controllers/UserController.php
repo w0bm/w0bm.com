@@ -321,7 +321,8 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'User has no uploads (Check your filter settings)');
         }
         $id = mt_rand(0, $id);
-        return redirect('/user/' . $username . '/uploads/' . $id);
+        $vid = $user->videos()->filtered()->skip($id)->first()->id;
+        return redirect('/user/' . $username . '/uploads/' . $vid);
     }
 
     public function play($username, $id) {
