@@ -25,8 +25,8 @@
 </ul>
 
 <h4 class="filtersettings">Filter settings</h4>
-<p>NSFW is filtered out by default in normal mode. This means whenever you are NOT logged in and browsing w0bm without any category selected you wont see any as NSFW tagged videos.</p>
-<p>You can also set your own custom filters by clicking on Filter and then inserting the tags you don't want to see while browsing. Currently also only working in normal mode.</p>
+<p style="color:red; font-weight:bold;">Filter is now global and not logged in users will only see sfw videos</p>
+<p>You can also set your own custom filters by clicking on Filter and then inserting the tags you don't want to see while browsing.</p>
 <p>Example:</p>
 <span class="tag label label-info">gachimuchi</span> <span class="tag label label-info">gay</span>
 
