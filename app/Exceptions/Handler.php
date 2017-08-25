@@ -46,6 +46,16 @@ class Handler extends ExceptionHandler
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
 
-        return parent::render($request, $e);
+        if ($this->isUnauthorizedException($e)) {
+            $e = new HttpException(403, $e->getMessage());
+        }
+        if ($this->isHttpException($e)) {
+            return $this->toIlluminateResponse($this->renderHttpException($e), $e);
+        } else {
+            return $this->toIlluminateResponse($this->convertExceptionToResponse($e), $e);
+        }
+
+
+        //return parent::render($request, $e);
     }
 }
