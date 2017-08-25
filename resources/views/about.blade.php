@@ -36,15 +36,10 @@
 <ul class="mötter">
 <li><a href="/user/belst">belst</a></li>
 <li><a href="/user/BKA">BKA</a></li>
-<li><a href="/user/McManiaC">McManiaC</a></li>
-<li><a href="/user/OFMCK">OFMCK</a></li>
-<li><a href="/user/basilisk">basilisk</a></li>
 <li><a href="/user/gz">gz</a></li>
 <li><a href="/user/Flummi">Flummi</a></li>
 <li><a href="/user/jkhsjdhjs">jkhsjdhjs</a></li>
 <li><a href="/user/Czar">Czar</a></li>
-<li><a href="/user/flinny">flinny</a></li>
-<li><a href="/user/mrhanky">mrhanky</a></li>
 </ul>
 
 <h4 id="format">Comment formatting</h4>
@@ -71,6 +66,7 @@
 </ul>
 <p>safe.moe is owned by <a href="/user/Alucard">Alucard</a> he hosts many of the images you can see while browsing through w0bm, he is a cool american guy, I can recommend to check out safe.moe, it's a fast and stable file hoster with no bullshit, upload and share, that's it.</p>
 </div>
+<b>We are 100% non profit, we don't get money for displaying the "ads" on the page, nor do we acceppt any kind of donations, we don't make money!</b>
 @include('footer')
 @endsection
 

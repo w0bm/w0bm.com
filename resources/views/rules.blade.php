@@ -5,19 +5,18 @@
 </div>
 <h5>General</h5>
 <ol>
-	<li>Content on this site is intended for people over the age of 18 only, if you are under 18 get the fuck out right now and don't tell your mom I didn't warn you!</li>
-	<li>Leaking of private information is strictly forbidden.</li>
+	<li>Content on this site is intended for people over the age of 18 only! If you are under 18 you have to leave, if I will find out you are under 18 your account will be banned permanently.</li>
+	<li>Leaking of private information is strictly forbidden. This environment is friendly!</li>
 	<li>Do not talk about crimes you commited or will commit, we don't want to know.</li>
 	<li>Do not try to sell, buy, or spread credit-card, banking etc. info anywhere on this site.</li>
-	<li>Do not animate people to do crimes or anything illegal wherever the fuck you are!</li>
-	<li>w0bm.com is not a political and/or religious place, please refrain from going deep into the politics or religion topic. We have zero interest in these topics, they are always a problem and we don't want any problems internally we only want good videos. (And yes, good videos can contain politics and/or religion, it's all about the discussion culture here)</li>
+	<li>Do not animate people to do crimes or anything illegal!</li>
 	<li>If you upload something always try to give the artist credits by linking to the original, filling out the Artist & Songitle Information for example.</li>
-	<li>Some videos may be offensive to some people, if you get easily offended please refrain from visiting w0bm.com! We always have a open ear for your problems and we can talk about everything, there is nothing that is too edgy for us, we have seen it all and that's why we know how important it is to have a place for all kinds of videos and thoughts even if it triggers someone, please don't come back if you don't like what you see.</li>
+	<li>No more Nazi videos unless they have some kind of quality, I'm talking about funny things like <a href="https://w0bm.com/560">/560</a> for example, things like that are NO problem, but we used to allow all the dirty stuff aswell, but this is coming to an end by now, permanent bans will be granted for violating this golden rule! Quick help for identifying such videos: If you feel Hitler did nothing wrong by watching a video please report it to <a href="/user/BKA">BKA</a> and I will take care of it!</li>
 </ol>
 
 <h5>Uploading</h5>
 <ol>
-	<li>Everything you upload <strong style="color:#1FB2B0;">must</strong> be acceptable with Dutch law!</li>
+	<li>Everything you upload <strong style="color:#1FB2B0;">must</strong> be acceptable with <b><span style="color:black;">Ge</span><span style="color:red;">rm</span><span style="color:yellow;">an</span></b> law!</li>
 	<li>Absolutely no child pornography in any way! This also includes "modeling" and 3D loli videos. 2D (hentai) is okay.</li>
 	<li>Reposting is not a crime! But in most cases it can be prevented with the use of the <a href="https://w0bm.com/index">search form</a>.
 	<li>Put your uploads in the correct category, if you have a video that doesn't fit in any of the categories always put it in the Misc category</li.>
