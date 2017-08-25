@@ -52,7 +52,11 @@ class Handler extends ExceptionHandler
         if ($this->isHttpException($e)) {
             return $this->toIlluminateResponse($this->renderHttpException($e), $e);
         } else {
-            return $this->toIlluminateResponse($this->convertExceptionToResponse($e), $e);
+            $res = \Response::make(
+                view('errors.500', ['exception' => $e]),
+                500);
+            $res->exception = $e;
+            return $res;
         }
 
 
