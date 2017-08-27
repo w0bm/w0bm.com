@@ -148,8 +148,7 @@ class Markdown extends \Parsedown {
 
     private static function isInternal($url) {
         $host = parse_url($url, PHP_URL_HOST);
-        $currhost = 'w0bm.com';
-        //$currhost = parse_url($_SERVER['HTTP_HOST'], PHP_URL_HOST);
+        $currhost = parse_url($_SERVER['HTTP_HOST'], PHP_URL_HOST);
         if (0 === strpos($host, 'www')) {
             $host = substr($host, 4);
         }
