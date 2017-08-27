@@ -20,7 +20,8 @@
         "laravelcollective/html": "^5.0",
         "greggilbert/recaptcha": "^2.0",
         "cviebrock/eloquent-taggable": "dev-master",
-        "itsgoingd/clockwork": "^1.14"
+        "itsgoingd/clockwork": "^1.14",
+        "erusev/parsedown": "^1.6"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

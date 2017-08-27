@@ -74,10 +74,17 @@
             <?php
                 $iv = openssl_random_pseudo_bytes(16);
             ?>
+            @if(!env('APP_DEBUG'))
             <div class="block">
                 {{bin2hex($iv)}}<br>
                 {{openssl_encrypt($exception, 'aes128', env('APP_KEY'), 0, $iv)}}
             </div>
+            @else
+            <div class="block">
+                <pre>{{$exception}}</pre>
+            </div>
+            @endif
+
         </div>
     </body>
 </html>

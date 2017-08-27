@@ -52,7 +52,10 @@
    <li>>mfw w0bm is nice :3 will become: <span style="color:#80FF00;">>mfw w0bm is nice :3</span></li>
    <li><s>!Pantsu Pantsu Pantsu! will become: <span class="reich">Pantsu Pantsu Pantsu</span></s> <b style="color:red;">[ Currently disabled ]</b></li>
    <li>%KREBS KREBS KREBS KREBS% will become: <span class="anim">KREBS KREBS KREBS KREBS</span></li>
-   <li>*gg* will become: <strong>gg</strong></li>
+   <li>*gg* or _gg_ will become: <em>gg</em></li>
+   <li>**gg** or __gg__ will become: <strong>gg</strong></li>
+   <li>~~nope~~ will become: <del>nope</del></li>
+   <li>`code` will become: <code>code</code></li>
 </ul>
 <h4>Allowed sources for image parsing in the comment section</h4>
 <p><code>Filetypes: [{{ join(',', $comment['allowedImageFileExtensions']) }}] - Only secure connections allowed</code></p>

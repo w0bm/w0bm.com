@@ -144,6 +144,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\MarkdownServiceProvider::class,
 
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Toddish\Verify\Providers\VerifyServiceProvider::class,

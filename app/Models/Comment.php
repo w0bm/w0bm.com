@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Services\Markdown;
 
 /**
  * App\Models\Comment
@@ -40,43 +41,14 @@ class Comment extends Model
     }
 
     public static function simplemd($text) {
-        $commentcfg = config('comments');
-
-        $nameMatcher = '/@(\w+)/i';
-        $internUrlMatcher = '/https?:\/\/(?:www\.)?w0bm\.com(\S+)/i';
-        $externUrlMatcher = '/(https?:\/\/(?!(?:www\.)?w0bm\.com)\S+\.\S+)/i';
-        $boldMatcher = '/\*(.+)\*/';
-        $italicMatcher = '/_(.+)_/';
-        $delMatcher = '/-(.+)-/';
-        $newlineMatcher = '/(^.*$)/m';
-        $greentextMatcher = '/(^&gt;.*$)/m';
-        $krebsCSSmatcher = '/%(.+)%/';
-        $deutschlandMatcher = '/!(.+)!/';
-        $clickableTimestampMatcher = '/(?<=\s|^)([0-5]?\d:[0-5]\d)(?=\s|$)/m';
-        $imageMatcher = '/(?:\<a href=\"(https:\/\/(?:'.join('|',$commentcfg["allowedHosters"]).').*(?:'.join('|',$commentcfg["allowedImageFileExtensions"]).'))\" target=\"_blank\" rel=\"extern\">.*<\/a>)/i';
-
-        $text = preg_replace($boldMatcher, '<strong>$1</strong>', $text);
-        $text = preg_replace($krebsCSSmatcher, '<span class="anim">$1</span>', $text);
-        #$text = preg_replace($deutschlandMatcher, '<span class="reich">$1</span>', $text);
-        $text = preg_replace($externUrlMatcher, '<a href="$1" target="_blank" rel="extern">$1</a>', $text);
-        $text = preg_replace($internUrlMatcher, '<a href="$1">$1</a>', $text);
-        $text = preg_replace($imageMatcher, '<img src="$1" alt="Image" class="comment_image" />', $text);
-        $text = preg_replace($greentextMatcher, '<span style="color:#80FF00">$1</span>', $text);
-        $text = preg_replace($clickableTimestampMatcher, '<a class="comment_clickable_timestamp" href="#">$1</a>', $text);
-        $text = preg_replace($newlineMatcher, '$1<br>', $text);
-        if(preg_match_all($nameMatcher, $text, $users) > 0) {
-            foreach ($users[1] as $user) {
-                if(User::whereUsername($user)->count() > 0) {
-                    $text = preg_replace('/@' . $user . '/i', '<a href="/user/' . strtolower($user) . '">@' . $user . '</a>', $text);
-                }
-            }
-        }
+        $m = app()->make(Markdown::class);
+        $text = $m->text($text);
 
         return $text;
     }
 
     public function getRenderedViewAttribute() {
-        return static::simplemd(e($this->content));
+        return static::simplemd($this->content);
     }
 
     public function getMentioned() {
