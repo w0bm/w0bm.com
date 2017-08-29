@@ -1978,3 +1978,20 @@ body {
     background: #0c0c0c;
     font-weight: bold;
 }
+
+/* "ADS" */
+.panel-body.motd::after {
+    content: "Non-Profit Advertisement";
+    bottom: 0;
+    position: relative;
+    top: -12px;
+    left: 116px;
+    right: 0;
+    font-size: 9px;
+    color: black;
+    font-weight: bold;
+    background: white;
+    padding-right: 5px;
+    padding-left: 5px;
+    display: inline-block;
+}
