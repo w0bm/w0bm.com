@@ -11,11 +11,11 @@ class Markdown extends \Parsedown {
         $this->setUrlsLinked(true);
         $this->InlineTypes['@'][] = 'UserMention';
         $this->InlineTypes['%'][] = 'ColoredText';
+        $this->InlineTypes[':'][] = 'ClickableTimestamp';
         $this->inlineMarkerList .= '@%';
     }
 
     protected function inlineUserMention($Excerpt) {
-        
         if (preg_match('/\B@([a-zA-Z][\w-]+)/i', $Excerpt['context'], $matches)) {
             if(User::whereUsername($matches[1])->count() > 0) {
                 return [
@@ -144,6 +144,23 @@ class Markdown extends \Parsedown {
             $e['element']['text'] = $text;
         }
         return $e;
+    }
+
+    protected function inlineClickableTimestamp($Excerpt) {
+        if (preg_match('/(?<=\s|^)([0-5]?\d:[0-5]\d)(?=\s|$)/', $Excerpt['context'], $matches, PREG_OFFSET_CAPTURE)) {
+            return [
+                'extent' => strlen($matches[0][0]),
+                'position' => $matches[0][1],
+                'element' => [
+                    'name' => 'a',
+                    'text' => $matches[0][0],
+                    'attributes' => [
+                        'href' => '#',
+                        'class' => 'comment_clickable_timestamp'
+                    ]
+                ]
+            ];
+        }
     }
 
     private static function isInternal($url) {
