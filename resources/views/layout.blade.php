@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="/css/video-js.min.css">
-    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.10">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v=1.0.11">
     <link rel="stylesheet" href="/css/vjsnew.css?v=1.1.1">
 </head>
 <body>
