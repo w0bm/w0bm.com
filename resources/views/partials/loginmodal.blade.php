@@ -17,9 +17,8 @@
 	</form>
 	   </div>
 	    <div class="modal-footer">
-		<s><p id="logincenter">Don't have an account? <a href="/register">Register</a> now!</p></s>
-		<p id="logincenter">Registration is currently disabled! If you are interested in joining w0bm.com please come to the IRC and tell us why! Then we maybe give you access!</p>
-		<ul style="visibility: hidden;" class="vorteilul">
+		<p id="logincenter">Don't have an account? <a href="/register">Register</a> now!</p>
+		<ul class="vorteilul">
 		<p class="vorteile">Why should I register?</p>
 		<li>Favor your favorite WebMs</li>
 		<li>Upload videos</li>

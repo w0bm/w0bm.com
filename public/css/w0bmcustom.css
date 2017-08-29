@@ -1883,8 +1883,9 @@ ul.vorteilul {
     text-align: left;
     background: #353535;
     color: white;
-    padding: 5px;
+    padding: 10px;
     list-style: none;
+    border-radius: 5px;
 }
 
 .panel-danger {                      

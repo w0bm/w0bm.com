@@ -1,8 +1,0 @@
-@extends('profilelayout')
-@section('content')
-<h4>Impressum</h4>
-<p>Das Problem mit dem Impressum, wer kennt es nicht? Man ist eine Privatperson, ohne jegliche kostenpflichtige Inhalte und ohne jegliche Werbung von Werbepartnern die einem dafür auch noch ordentlich Geld zahlen und dennoch möchte Deutschland von einem einfach ALLES haben, ohne jeglichen ersichtlichen Grund, wir sind prinzipiell dazu bereit unsere Daten den Behörden auf Anfrage zu geben, da wir denken, dass es durchaus eine sinnvolle Sache ist bei Aufklärung zu helfen, jedoch halten wir nichts davon unsere Daten frei im Internet zu veröffentlichen, gerade bei einer privaten Spaßseite nicht, wissen Sie überhaupt welchen Schaden wir durch die veröffentlichung unserer Daten erleiden könnten? Es könnten uns unzählige nicht bezahlte Pizzen geliefert werden, Kühlschränke, Staubsauger und was es noch alles so gibt! Hauptsache per Nachnahme und darauf haben wir keine Lust! Sie sollten das Gesetz lieber vernünftig anpassen und auch alternative Möglichkeiten in Betracht ziehen um an die Daten zu kommen! Wir sind nämlich bereit Ihnen über unsere @horsefucker.org E-Mail jeden Wunsch von den Lippen abzulesen und alles für Sie zu tun, sollten Sie ein valides Anliegen haben bei welchem wir helfen können!</p>
-<p>E-Mail: w0bm@horsefucker.org</p>
-<p>Zu lang, nicht gelesen: Daten gibts nur auf Anfrage bei einem validen Grund, da wir kein Interesse daran haben einmal wie der Drachenlord zu verenden oder unzählige nicht von uns bestellten Waren geliefert zu bekommen, bitte respektieren Sie den Datenschutz und haben Sie nicht so einen riesengroßen Stock im Arsch, danke!</p>
-@include('footer')
-@endsection
