@@ -1069,7 +1069,7 @@ $(function() {
         var maxFileSize = 1e8;
         var tooBig = file.size > maxFileSize;
         var invalid = file.type !== "video/webm";
-        if((tooBig && !$('#dragndrop').data('uploadlimit')) || invalid) {
+        if((tooBig && $('#dragndrop').data('uploadlimit')) || invalid) {
             flash('error', invalid ? 'Invalid file' : `File too big. Max ${humanFileSize(maxFileSize)}`);
             applyDefaultDragNDropCSS();
             return false;
@@ -1299,3 +1299,4 @@ $(function() {
         });
     });
 });
+
