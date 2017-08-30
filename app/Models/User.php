@@ -120,8 +120,8 @@ class User extends VerifyUser
         return 'user_id';
     }
 
-    public function baseurl() {
-        return 'user/' . $this->username . '/uploads';
+    public function baseurl($title) {
+        return 'user/' . $this->username . '/' . $title;
     }
 
     public function displayName() {

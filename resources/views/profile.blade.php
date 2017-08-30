@@ -18,7 +18,7 @@
                         $thumb = str_replace(".webm","",$video->file);
                     ?>
                     <tr data-thumb="{{$thumb}}">
-                        <td><a href="/{{$user->baseurl()}}/{{$video->id}}">{{$video->id}}</a></td>
+                        <td><a href="/{{$user->baseurl($title)}}/{{$video->id}}">{{$video->id}}</a></td>
                         <td>{{$video->interpret or ''}}</td>
                         <td>{{$video->songtitle or ''}}</td>
                         <td class="hidden-xs">{{$video->imgsource or ''}}</td>
