@@ -1,1 +1,0 @@
-Could not open input file: /var/www/w0bm.com/app/Http/Controllers/thumbnails/thumbs.php
