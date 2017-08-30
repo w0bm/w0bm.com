@@ -12,6 +12,7 @@
 	<li>Do not animate people to do crimes or anything illegal!</li>
 	<li>If you upload something always try to give the artist credits by linking to the original, filling out the Artist & Songitle Information for example.</li>
 	<li>No more Nazi videos unless they have some kind of quality, I'm talking about funny things like <a href="https://w0bm.com/560">/560</a> for example, things like that are NO problem, but we used to allow all the dirty stuff aswell, but this is coming to an end by now, permanent bans will be granted for violating this golden rule! Quick help for identifying such videos: If you feel Hitler did nothing wrong by watching a video please report it to <a href="/user/BKA">BKA</a> and I will take care of it!</li>
+	<li>You are not allowed to leech all of our videos unless you asked us for permission, traffic is very expensive and when we see unusual traffic spikes we will enable logging and ban the complete subnet of your provider, it happened before. Just come to the IRC and ask us for permission, it's that simple!</li>
 </ol>
 
 <h5>Uploading</h5>
