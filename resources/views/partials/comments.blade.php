@@ -8,9 +8,6 @@
             <div style="height: 50px; background-image:url('{{ $banner->image }}')" class="panel-body motd">
             </div>
         </a>
-	<div class="note">
-	<p>Please check the latest <a href="http://blog.w0bm.com/post/164568374347/need-your-help">blog post</a> and help me! I will appreciate every help and I will give away some custom-icons to my helpers!</p>
-	</div>
     @endif
 </div>
 
