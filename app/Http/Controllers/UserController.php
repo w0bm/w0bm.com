@@ -203,8 +203,6 @@ class UserController extends Controller
         }
         $vids = $user->favs()->filtered()->paginate(50);
 
-        $user = User::where('id', '=', $user->id)->first();
-
     	return view('profile', ['title' => 'Favorites', 'user' => $user, 'videos' => $vids]);
 	}
 
