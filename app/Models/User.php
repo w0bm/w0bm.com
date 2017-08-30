@@ -62,8 +62,12 @@ class User extends VerifyUser
     ];
 
 
-    public function videos() {
+    public function uploads() {
         return $this->hasMany(Video::class);
+    }
+
+    public function videos() {
+        return $this->uploads();
     }
 
     public function comments() {

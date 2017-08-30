@@ -8,7 +8,7 @@ class UserFavorite extends User {
 
     // Instead of uploaded Videos get favs
     public function videos() {
-        return $this->belongsToMany(Video::class, 'favorites');
+        return $this->favs();
     }
 
     public function baseurl() {
