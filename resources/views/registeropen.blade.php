@@ -37,9 +37,9 @@
                     {!! Recaptcha::render() !!}
                 </div>
 	    </div>
-	    <div class="form-group">
+	    <div class="form-group terms">
 		<div style="text-align: center;">
-		<p>By clicking on Register you accept our <a href="/rules">Rules</a></p>
+		<p><input type="checkbox" required name="terms"> I am at least 18 years or older and I have read and understand the <a href="/rules">Rules</a></p>
 		</div>
 		<div class="">
                     <button type="submit" class="btn btn-primary">Register</button>
