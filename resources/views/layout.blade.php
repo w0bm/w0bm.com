@@ -6,7 +6,7 @@
           content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <meta name="_token" content="{{csrf_token()}}">
-    <meta name="keywords" content="webm, webm site, w0bm, videos, funny, internet">
+    <meta name="keywords" content="Random WebMs, WebMs, Internet Videos">
     <meta name="Description" content="@if(!empty($video->interpret)){{$video->interpret}} – {{$video->songtitle}}@else()No Data Available ;__;@endif">
     <meta property="og:image" content="@if(isset($video))https://w0bm.com/thumbs/{{str_replace(".webm","",$video->file)}}.gif"@endif/>
     <link rel="icon" href="/favicon.png">

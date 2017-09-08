@@ -6,6 +6,7 @@
           content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
     <meta name="_token" content="{{csrf_token()}}">
+    <meta name="keywords" content="Random WebMs, WebMs, Internet Videos">
     <link rel="icon" href="/favicon.png">
     <title>w0bm.com - WebMs with sound!</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
