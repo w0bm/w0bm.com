@@ -2000,3 +2000,10 @@ body {
 input[type="checkbox"] {
     vertical-align: top;
 }
+
+.profilheader {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+    color: white;
+}

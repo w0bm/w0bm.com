@@ -1,7 +1,10 @@
 @extends('profilelayout')
 @section('content')
 @include('partials.profileheader')
-	    <h3>{{ $title }}</h3>
+	<div class="profilheader">
+	    <p>{{ $title }}</p>
+	    <a href="/{{$user->baseurl()}}/">View</a>
+	</div>
             <table class="table table-hover table-condensed">
                 <thead>
                 <tr>
