@@ -2,8 +2,7 @@
 @section('content')
 @include('partials.profileheader')
 	<div class="profilheader">
-	    <p>{{ $title }}</p>
-	    <a href="/{{$user->baseurl()}}/">View</a>
+	    <a href="/{{$user->baseurl()}}/">View {{ $title }}</a>
 	</div>
             <table class="table table-hover table-condensed">
                 <thead>

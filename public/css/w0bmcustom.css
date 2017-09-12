@@ -2006,4 +2006,10 @@ input[type="checkbox"] {
     justify-content: space-between;
     font-size: 2rem;
     color: white;
+    padding-bottom: 10px;
+    background: #2c2c2c;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
