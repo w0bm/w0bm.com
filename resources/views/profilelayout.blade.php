@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/w0bmfonts.css">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
-    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.16">
+    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.17">
 </head>
 <body>
 @include('partials.handlebars')

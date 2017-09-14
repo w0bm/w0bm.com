@@ -2022,3 +2022,10 @@ hr {
     border: 0;
     border-top: 2px solid #1fb2b0;
 }
+
+blockquote {
+    padding: 10px 10px;
+    margin: 0 0 10px;
+    border-left: 5px solid #282828;
+    color: #80FF00;
+}
