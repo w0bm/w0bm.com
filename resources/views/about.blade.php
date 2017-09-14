@@ -51,6 +51,7 @@
    <li>**gg** or __gg__ will become: <strong>gg</strong></li>
    <li>~~nope~~ will become: <del>nope</del></li>
    <li>`code` will become: <code>code</code></li>
+   <li>--- will insert a line<hr>to seperate</li>
 </ul>
 <h4>Allowed sources for image parsing in the comment section</h4>
 <p><code>Filetypes: [{{ join(',', $comment['allowedImageFileExtensions']) }}] - Only secure connections allowed</code></p>

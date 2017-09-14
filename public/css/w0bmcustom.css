@@ -2015,3 +2015,10 @@ input[type="checkbox"] {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 2px solid #1fb2b0;
+}
