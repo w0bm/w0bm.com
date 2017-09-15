@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/w0bmfonts.css">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
-    <link rel="stylesheet" href="{{ asset('css/w0bmcustom.css') }}?v=1.0.17">
+    <link rel="stylesheet" href="/css/w0bmcustom.css?v={{ filemtime("css/w0bmcustom.css") }}">
 </head>
 <body>
 @include('partials.handlebars')
@@ -49,6 +49,6 @@
 <script src="/js/imagesloaded.pkgd.min.js"></script>
 <script src="/js/handlebars.min.js"></script>
 <script src="/js/jquery.timeago.js"></script>
-<script src="/js/w0bmscript.min.js?v=1.1.26"></script>
+<script src="/js/w0bmscript.min.js?v={{ filemtime("js/w0bmscript.min.js") }}"></script>
 </body>
 </html>
