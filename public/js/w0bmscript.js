@@ -124,10 +124,13 @@ if(videoElem !== null) {
     }, function() {
         this.addClass('video-js');
         this.volume(0.3);
+        this.muted(false);
         if (typeof localStorage != "undefined") {
-            this.volume(localStorage.getItem("volume") || 0.3);
+            this.volume(Math.abs(localStorage.getItem("volume") || 0.3));
+            // 1/x to detect the special case of -0 for saving volume level 0 and the mute button being activated
+            this.muted(0 > 1/(localStorage.getItem("volume") || 0.3));
             this.on("volumechange", function () {
-                localStorage.setItem("volume", this.volume());
+                localStorage.setItem("volume", (this.volume() * (this.muted() ? -1 : 1)));
             });
         }
     });
