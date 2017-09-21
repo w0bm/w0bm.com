@@ -67,7 +67,6 @@
 </ul>
 <p>safe.moe is owned by <a href="/user/Alucard">Alucard</a> he hosts many of the images you can see while browsing through w0bm, he is a cool american guy, I can recommend to check out safe.moe, it's a fast and stable file hoster with no bullshit, upload and share, that's it.</p>
 </div>
-<b>We are 100% non profit, we don't get money for displaying the "ads" on the page, nor do we acceppt any kind of donations, we don't make money!</b>
 @include('footer')
 @endsection
 
