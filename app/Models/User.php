@@ -115,7 +115,7 @@ class User extends VerifyUser
 
     public function isBanned() {
         if($this->disabled == 1) {
-            return $this->banend->eq(Carbon::create(0,0,0,0,0,0)) || $this->banend->gt(Carbon::now());
+            return $this->banend->eq(Carbon::createFromTimeStampUTC(1)) || $this->banend->gt(Carbon::now());
         }
         return false;
     }

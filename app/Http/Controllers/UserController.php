@@ -36,7 +36,7 @@ class UserController extends Controller
                    $user = User::whereUsername($request->get('identifier'))
                            ->orWhere('email', $request->get('identifier'))
                            ->first();
-                   if($user->banend->eq(Carbon::create(0,0,0,0,0,0))) {
+                   if($user->banend->eq(Carbon::createFromTimestampUTC(1))) {
                        return redirect()->back()->with('error', 'You are permanently banned for \'' . $user->banreason . '\'.');
                    }
                    // if ban expired unban and relogin.
@@ -234,7 +234,7 @@ class UserController extends Controller
         
         $perm = false;
         if(($duration = $request->get('duration')) == '-1') {
-            $duration = Carbon::create(0,0,0,0,0,0);
+            $duration = Carbon::createFromTimestampUTC(1);
             $perm = true;
         } else {
             preg_match('/^(\d+[yYaA])?\s*(\d+M)?\s*(\d+[wW])?\s*(\d+[dD])?\s*(\d+[Hh])?\s*(\d+[m])?\s*(\d+[sS])?$/m', $duration, $duration);
