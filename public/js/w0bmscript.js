@@ -236,11 +236,11 @@ if(videoElem !== null) {
             player.paused() ? player.play() : player.pause();
     });
 
-    $('.wrapper > div:not(.aside)').on('DOMMouseScroll mousewheel', function(e) {
+    $('.wrapper > div:not(.aside)').on('wheel', function(e) {
         if(e.ctrlKey || e.altKey || e.shiftKey)
             return;
         e.preventDefault();
-        e.deltaY < 0 ? getNext() : getPrev();
+        e.originalEvent.deltaY > 0 ? getNext() : getPrev();
     });
 } else {
     var canvas = document.getElementById('bg');
