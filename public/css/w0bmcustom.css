@@ -22,8 +22,8 @@ body {
     opacity: 1;
     z-index: -1;
     position: fixed !important;
-    content: url(https://w0bm.com/papagei.gif);
-    right: -20px !important;
+    content: url(https://w0bm.com/rip_w.png);
+    right: 5px !important;
 }*/
 
 a:focus {
@@ -222,9 +222,13 @@ td, th {
 code {
     padding: 0 0;
     font-size: 90%;
-    color: #8b2ada;
-    background-color: #161618;
+    color: #ff00b4;
+    background-color: #ffffff;
     border-radius: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
 }
 
 .panel-primary {

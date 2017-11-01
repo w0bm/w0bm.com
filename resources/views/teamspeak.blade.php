@@ -4,6 +4,7 @@
 <h3>w0bm Teamspeak 3 Server</h3>
 <p>Join the motherfucking Teamspeak Server!</p>
 <p>IP: <i><a href="ts3server://ts.w0bm.com">ts.w0bm.com</a></i></p>
+<p>There are 32 premium slots available for 32 retarded faggots!</p>
 <h6>What can you expect?</h6>
 <ol>
 <li>Full autism</li>
