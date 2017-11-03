@@ -9,9 +9,8 @@ return [
     'f0ck.cf',
     'f0ck.space',
     'files.catbox.moe',
-    'i.sli.mg',
     '68.media.tumblr.com',
-    'a.safe.moe',
+    'krautshare.net',
   ],
   'allowedImageFileExtensions' => [
     'jpg',
