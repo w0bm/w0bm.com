@@ -11,6 +11,7 @@ return [
     'files.catbox.moe',
     '68.media.tumblr.com',
     'krautshare.net',
+    'a.safe.moe',
   ],
   'allowedImageFileExtensions' => [
     'jpg',
