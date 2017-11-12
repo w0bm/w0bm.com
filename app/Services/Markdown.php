@@ -16,7 +16,7 @@ class Markdown extends \Parsedown {
     }
 
     protected function inlineUserMention($Excerpt) {
-        if (preg_match('/\B@([a-zA-Z][\w-]+)/i', $Excerpt['context'], $matches)) {
+        if (preg_match('/\B@([\w-ÄÖÜäöü]+)/i', $Excerpt['context'], $matches)) {
             if(User::whereUsername($matches[1])->count() > 0) {
                 return [
                     'extent' => strlen($matches[0]),

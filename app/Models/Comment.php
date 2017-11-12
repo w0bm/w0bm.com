@@ -53,7 +53,7 @@ class Comment extends Model
 
     public function getMentioned() {
         $text = $this->content;
-        $nameMatcher = '/@(\w+)/i';
+        $nameMatcher = '/\B@([\w-ÄÖÜäöü]+)/i';
         $ret = [];
         if(preg_match_all($nameMatcher, $text, $users) > 0) {
             foreach ($users[1] as $user) {
