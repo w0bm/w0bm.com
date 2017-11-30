@@ -2033,3 +2033,34 @@ blockquote {
     border-left: 5px solid #282828;
     color: #80FF00;
 }
+
+div.notfound {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+
+img#notfound-img {
+    max-width: 100%;
+}
+
+div.notfound {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+@media (max-width: 768px) {
+img#notfound-img {
+    max-width: 100%;
+    height: 220px;
+}
+}

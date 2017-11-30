@@ -1,8 +1,7 @@
 @extends('layout')
 @section('content')
-<center>
-<h1>404</h1>
-<img src="/404.gif">
-<br><a href="/1422">:3</a></br>
-</center>
+<div class="notfound">
+<h1>404 - NOT FOUND</h1>
+<img id="notfound-img" src="/404.gif">
+</div>
 @endsection
