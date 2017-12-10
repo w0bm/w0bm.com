@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
 /* APRILSCHERZ XDDDD */
 /*
 .panel-body:hover {
@@ -273,6 +275,7 @@ code {
     color: #888888;
     border: 0;
     background-color: rgba(34, 34, 34, 0.8);
+    border-radius: 0;
 }
 
 .rulez {
@@ -981,7 +984,7 @@ button#submittags:hover {
 .toggo {
     background-color: rgba(34, 34, 34, 0);
     border: 0px solid rgba(10, 10, 11, 0);
-    padding-bottom: 2px;
+    padding-bottom: 3px;
     padding-top: 0px;
 }
 
@@ -1098,9 +1101,9 @@ a.delete-tag.default-link {
 div#tag-display {
     overflow: auto;
     max-height: 4em;
-    padding: 0px 2px;
-    padding-bottom: 3px;
-    border-top: 1px solid #adadad;
+    padding: 2px 2px;
+    padding-bottom: 2px;
+    border-top: 1px solid #1fb2b0;
     width: 350px;
 }
 
@@ -1300,7 +1303,8 @@ div#tag-add {
         min-height: calc(50vh - 50px);
         display: flex;
         align-items: baseline;
-        padding-top: 5px;
+        padding-top: 10px;
+	padding-bottom: 10px;
     }
 }
 @media (max-width: 657px) {
@@ -1346,11 +1350,7 @@ div#tag-add {
         border-left: 0px solid #1fb2b0;
     }
 }
-@media (max-width: 360px) {
-    div#commentForm {
-        border-top: 2px dashed #1fb2b0;
-    }
-}
+
 /* Sidebar Mobile */
 
 @media (max-width: 767px) {
@@ -1566,8 +1566,8 @@ div#tag-add {
 }
 /* END OF MOBILE TAG MEDIA QUERIES */
 /* border-top for commentForm (only for mobile devices */
-
-@media (max-width: 767px) {
+/* Für extreme Bullenscheiße und obsolet empfunden */
+/* @media (max-width: 767px) {
     div#commentForm {
         border-top: 2px solid #1fb275;
     }
@@ -1632,6 +1632,8 @@ div#tag-add {
         border-top: 2px solid #1fb275;
     }
 }
+
+*/
 
 /* Mobile Tag Box width */
 @media (max-width: 767px) {
@@ -1886,12 +1888,21 @@ span#rember {
 }
 
 ul.vorteilul {
+    background: #000000;
+    color: #ff00fc;
+    border: 1px solid;
+    text-shadow: 0px 0px 10px #fa008b;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0px 0px 15px 0px #7900ff;
+    list-style: korean-hangul-formal;
     text-align: left;
-    background: #353535;
-    color: white;
-    padding: 10px;
-    list-style: none;
-    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+ul.nav.navbar-nav {
+    display: flex;
+    justify-content: center;
 }
 
 .panel-danger {                      
@@ -2063,4 +2074,114 @@ img#notfound-img {
     max-width: 100%;
     height: 220px;
 }
+}
+
+/* Modal Erneuerung [TEST] */
+@media (min-width: 768px) {
+	.modal-dialog {
+    	width: 500px;
+    	margin: 30px auto;
+	}
+}
+
+.modal-content {
+    border-radius: 0;
+}
+
+form.navbar-form.navbar-right {
+    margin-right: 0;
+}
+
+input.form-control {
+    margin-bottom: 5px;
+}
+
+/* Handy fix */
+@media (max-width: 690px) {
+	.text-center {
+    	font-size: 19px;
+	}
+}
+
+@media (max-width: 767px) {
+	#sidebar > .comments {
+    	padding-bottom: 80px;
+	}
+}
+
+@media (max-width: 767px) {
+	aside#sidebar::before {
+    	content: "Comments";
+    	width: 100%;
+    	display: flex;
+    	justify-content: center;
+    	background: #212121;
+    	border-top: 1px solid #1fb2b0;
+      	border-bottom: 1px solid #1fb2b0;
+    	margin-bottom: 5px;
+    	color: #eaedec;
+	}
+}
+
+
+@media (max-width: 690px) {
+	ul.pagination {
+  		flex-flow: row wrap;
+  }
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    background-color: #1fb2b0;
+    border-color: #3c3c3c;
+}
+
+.list-group-item-info {
+    background-color: #ff009a;
+}
+
+.badge {
+	background-color: #1fb2b0;
+}
+
+.panel-heading {
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+span#jointime {
+    float: right;
+  	font-size: 1.7em;
+  	color: white;
+}
+
+.profile-info {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 1.7em;
+}
+
+span#count-upload, span#comments-user, span#favs-user {
+	margin-right: 5px;
+}
+
+span#comments-user > a {
+    color: white;
+}
+
+span#favs-user > a {
+    color: #ff0094;
+}
+
+@media (max-width: 690px) {
+  span#jointime, .profile-info {
+  	font-size: unset;
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 992px) {
+	.first, .last {
+    	display: none;
+  }
 }
