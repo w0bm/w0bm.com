@@ -17,5 +17,6 @@ return [
     'jpg',
     'png',
     'gif',
+    'webp',
   ]
 ];
