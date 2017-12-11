@@ -2212,3 +2212,15 @@ span#favs-user > a {
     padding-right: 0;
   }
 }
+
+@media (max-width: 690px) {
+  table {	
+  	border-spacing: 5px;
+  }
+}
+
+@media (max-width: 767px) {
+	#sidebar > .comments {
+		padding-bottom: calc(4em + 45px);
+	}
+}
