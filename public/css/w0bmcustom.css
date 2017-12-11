@@ -2205,3 +2205,10 @@ span#favs-user > a {
     	border-right: 1px solid #1fb2b0;
 	}
 }
+
+@media (max-width: 690px) {
+  .fucklaravel {
+  	padding-left: 0;
+    padding-right: 0;
+  }
+}
