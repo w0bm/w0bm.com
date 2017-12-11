@@ -2150,14 +2150,14 @@ input.form-control {
 
 span#jointime {
     float: right;
-  	font-size: 1.7em;
+  	font-size: 1.4em;
   	color: white;
 }
 
 .profile-info {
     display: flex;
     justify-content: flex-start;
-    font-size: 1.7em;
+    font-size: 1.4em;
 }
 
 span#count-upload, span#comments-user, span#favs-user {
@@ -2208,9 +2208,17 @@ span#favs-user > a {
 
 @media (max-width: 690px) {
   .fucklaravel {
-  	padding-left: 0;
+    padding-left: 0;
     padding-right: 0;
+    margin: 5px;
   }
+}
+
+@media (max-width: 690px) {
+	iframe[src="https://observation.stasi.club/index.php?module=CoreAdminHome&action=optOut&language=en"] {
+    		width: 100% !important;
+    		height: 250px !important;
+	}
 }
 
 @media (max-width: 690px) {
