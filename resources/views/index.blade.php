@@ -1,11 +1,11 @@
 @extends('profilelayout')
 @section('content')
     <div class="page-header">
-	<h3>Index</h3>
+	<h3 id="index">Index</h3>
         
         <form method="get">
-            {!! Form::text('q', isset($q) ? $q : null, ['class' => 'suchleiste', 'placeholder' => 'Search']) !!}
-            <button type="submit" class="suchbutton"><i style="color:white;" class="fa fa-search"></i></button>
+	<button type="submit" class="suchbutton"><i style="color:white;" class="fa fa-search"></i></button>
+            {!! Form::text('q', isset($q) ? $q : null, ['class' => 'suchleiste', 'placeholder' => 'Search w0bm.com']) !!}
         </form>
     </div>
     <table class="table table-hover table-condensed">

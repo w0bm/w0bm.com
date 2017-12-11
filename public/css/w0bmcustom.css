@@ -432,7 +432,7 @@ video:before {
     line-height: 1.42857143;
     color: #888888;
     background: #1C1C1D none;
-    border: 1px solid #282828;
+    border: 1px solid #1fb2b0;
     border-radius: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -2231,4 +2231,15 @@ span#favs-user > a {
 	#sidebar > .comments {
 		padding-bottom: calc(4em + 45px);
 	}
+}
+
+@media (max-width: 690px) {
+div#pagination {
+    padding: 0;
+}
+}
+
+h3#index {
+    font-size: 2em;
+    margin-bottom: 0;
 }
