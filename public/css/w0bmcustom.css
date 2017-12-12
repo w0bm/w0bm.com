@@ -2243,3 +2243,9 @@ h3#index {
     font-size: 2em;
     margin-bottom: 0;
 }
+
+@media (max-width: 690px) {
+	.navbar-toggle {
+		margin-right: 5px;
+	}
+}

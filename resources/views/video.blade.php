@@ -4,7 +4,7 @@
     <div class="vertical-align">
         <div class="wrapper">
             <div class="embed-responsive embed-responsive-16by9">
-                <video id="video" loop autoplay controls preload="auto" src="@if(env('APP_DEBUG')){{"/b"}}@else{{"//b.w0bm.com"}}@endif{{ "/" . $video->file }}"></video>
+                <video id="video" loop autoplay controls preload="auto" poster="https://w0bm.com/thumbs/{{str_replace(".webm","",$video->file)}}.gif" src="@if(env('APP_DEBUG')){{"/b"}}@else{{"//b.w0bm.com"}}@endif{{ "/" . $video->file }}"></video>
             </div>
 			<div class="text-center" style="position: unset;">
 				@if($related)

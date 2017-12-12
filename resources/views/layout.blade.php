@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#161618">
     <meta name="viewport"
           content="width=device-width,initial-scale=1">
     <meta charset="UTF-8">
@@ -69,6 +70,7 @@
 <script src="/js/jquery.timeago.js"></script>
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
-<script src="/js/w0bmscript.min.js?v={{ filemtime("js/w0bmscript.min.js") }}"></script>
+<!--<script src="/js/w0bmscript.min.js?v={{ filemtime("js/w0bmscript.min.js") }}"></script>-->
+<script src="/js/w0bmscript.js?v={{ filemtime("js/w0bmscript.js") }}"></script>
 </body>
 </html>

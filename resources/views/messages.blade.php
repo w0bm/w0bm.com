@@ -4,7 +4,7 @@
 	<div class="page-header">
         <h3>Messages</h3>
     </div>
-    <div class="row">
+    <div class="">
         <div class="col-md-6" id="list">
             <div class="spinner">
                 <div class="cube1"></div>
