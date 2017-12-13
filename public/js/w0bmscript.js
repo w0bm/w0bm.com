@@ -103,24 +103,24 @@ Array.prototype.average = function() {
 
 var videoElem = document.getElementById('video');
 if(videoElem !== null) {
-if($.browser.mobile) {
-    let src_split = videoElem.getAttribute("src").split("/");
-    document.getElementById("video").setAttribute("poster", "//w0bm.com/thumbs/" + src_split[src_split.length - 1].replace(".webm", ".gif"));
-}
+    if($.browser.mobile) {
+        let src_split = videoElem.getAttribute("src").split("/");
+        videoElem.setAttribute("poster", "//w0bm.com/thumbs/" + src_split[src_split.length - 1].replace(".webm", ".gif"));
+    }
     var player = videojs(videoElem, {
         controls: true,
         playbackRates: [0.25, 0.5, 1, 1.5, 2],
         inactivityTimeout: 850,
         controlBar: {
             children: {
-		'progressControl': {},
+                'progressControl': {},
                 'playToggle': {},
-		'MuteToggle': {},
-		'volumeControl': {},
+                'MuteToggle': {},
+                'volumeControl': {},
                 'currentTimeDisplay': {},
                 'timeDivider': {},
                 'durationDisplay': {},
-		'CustomControlSpacer': {},
+                'CustomControlSpacer': {},
                 'playbackRateMenuButton': {},
                 'fullscreenToggle': {}
             }
@@ -142,7 +142,7 @@ if($.browser.mobile) {
 //player.on('mouseout', function(){ this.userActive(false) });
 
     //videojs fix for firefox
-    if( player.autoplay() && !player.paused() && player.hasClass('vjs-paused')) {
+    if(player.autoplay() && !player.paused() && player.hasClass('vjs-paused')) {
         player.pause();
         player.play();
     }
