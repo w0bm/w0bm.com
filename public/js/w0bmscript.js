@@ -142,7 +142,7 @@ if($.browser.mobile) {
 //player.on('mouseout', function(){ this.userActive(false) });
 
     //videojs fix for firefox
-    if(navigator.userAgent.toLowerCase().indexOf('firefox') != -1 && player.autoplay() && !player.paused() && player.hasClass('vjs-paused')) {
+    if( player.autoplay() && !player.paused() && player.hasClass('vjs-paused')) {
         player.pause();
         player.play();
     }
