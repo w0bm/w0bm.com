@@ -2249,3 +2249,47 @@ h3#index {
 		margin-right: 5px;
 	}
 }
+
+/* FIRE THE FUCKING LAZ0R MOTHERFUCKER! */
+#btn-upload:hover {
+    background-image: url(/shoop.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+}
+
+#btn-upload:hover > span#laz0r-fire {
+    background: aqua;
+    position: absolute;
+    height: 15px;
+    z-index: 0;
+    left: 24px;
+    box-shadow: -1px 0px 3px 1px white;
+    top: 15.44px;
+    -webkit-animation-name: shoop;
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-iteration-count: infinite;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: calc(100% - 40px);
+}
+
+#btn-upload:hover > span.laz0r {
+    z-index: 1;
+    font-size: 39px;
+    position: relative;
+    font-weight: bold;
+    text-transform: uppercase;
+    -webkit-text-stroke: #ff0000;
+    -webkit-text-stroke-width: 2px;
+    text-shadow: 0px 0px 8px black;
+    top: 0px;
+}
+
+@-webkit-keyframes shoop {
+    0% { top: 16px }
+    2% { top: 17px }
+    3% { top: 20px }
+    10% { top: 17px }
+    100% { top: 16px }
+}
