@@ -11,6 +11,7 @@ class Markdown extends \Parsedown {
         $this->setUrlsLinked(true);
         $this->InlineTypes['@'][] = 'UserMention';
         $this->InlineTypes['%'][] = 'ColoredText';
+	$this->InlineTypes['!'][] = 'ReichText';
         $this->InlineTypes[':'][] = 'ClickableTimestamp';
         $this->inlineMarkerList .= '@%';
     }
@@ -53,6 +54,23 @@ class Markdown extends \Parsedown {
             ];
         }
     }
+
+    // Matches !text!
+    protected function inlineReichText($Excerpt) {
+        if (preg_match('/!(.+)!/', $Excerpt['text'], $matches)) {
+            return [
+                'extent' => strlen($matches[0]),
+                'element' => [
+                    'name' => 'span',
+                    'text' => $matches[1],
+                    'attributes' => [
+                        'class' => 'reich'
+                    ],
+                ]
+            ];
+        }
+    }
+
 
     //Greentext
     protected function blockQuote($Excerpt) {
