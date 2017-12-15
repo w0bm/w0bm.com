@@ -5,11 +5,22 @@
 	display: none;
 }
 
+/* Abu den Hut aufsetzen */
 img[alt="christmas"] {
     position: absolute;
     top: -5px;
     width: 90px;
     left: -21px;
+}
+
+@media (max-width: 48em) {
+.navbar-brand > img[alt="christmas"] {
+    margin-left: 5px;
+    height: 49px;
+    margin-top: 0px;
+    top: -12px;
+    left: -26px;
+}
 }
 
 /* APRILSCHERZ XDDDD */
