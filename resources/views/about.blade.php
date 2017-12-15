@@ -60,7 +60,6 @@
     <li>https://{{$hoster}}/</li>
   @endforeach
 </ul>
-<p>w0bm.com version 1.0 stable</p>
 @include('footer')
 @endsection
 
