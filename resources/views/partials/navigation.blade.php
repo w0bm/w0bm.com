@@ -7,7 +7,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><img src="{{ asset('logo.svg') }}" alt="w0bm.com"></a>
+            <a class="navbar-brand" href="/">
+		<img src="{{ asset('logo.svg') }}" alt="w0bm.com">
+		<img src="/muetze.png" alt="christmas">
+	    </a>
         </div>
 
         <div class=" collapse navbar-collapse" id="bs-example-navbar-collapse-1">

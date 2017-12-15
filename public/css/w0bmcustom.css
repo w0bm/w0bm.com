@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
 
+/* Furzkadse */
+.catfart {
+	display: none;
+}
+
+img[alt="christmas"] {
+    position: absolute;
+    top: -5px;
+    width: 90px;
+    left: -21px;
+}
+
 /* APRILSCHERZ XDDDD */
 /*
 .panel-body:hover {
