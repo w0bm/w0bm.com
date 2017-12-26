@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
 
-/* Furzkadse */
 .catfart {
-	display: none;
+    display: none;
+}
+
+img[alt="christmas"] {
+    display: none !important;
 }
 
 /* Abu den Hut aufsetzen */
-img[alt="christmas"] {
+/*img[alt="christmas"] {
     position: absolute;
     top: -5px;
     width: 90px;
@@ -21,7 +24,7 @@ img[alt="christmas"] {
     top: -12px;
     left: -26px;
 }
-}
+}*/
 
 /* APRILSCHERZ XDDDD */
 /*
@@ -244,11 +247,15 @@ td, th {
     background-color: #0AA400;
 }
 
+.version-info {
+
+}
+
 code {
     padding: 0 0;
     font-size: 90%;
-    color: #ff00b4;
-    background-color: #ffffff;
+    color: #00fff5;
+    background-color: #393939;
     border-radius: 0;
     padding-left: 5px;
     padding-right: 5px;
