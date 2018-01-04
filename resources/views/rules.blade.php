@@ -11,7 +11,6 @@
 	<li>Do not try to sell, buy, or spread credit-card, banking etc. info anywhere on this site.</li>
 	<li>Do not animate people to do crimes or anything illegal!</li>
 	<li>If you upload something always try to give the artist credits by linking to the original, filling out the Artist & Songitle Information for example.</li>
-	<li>You are not allowed to leech all of our videos unless you asked us for permission, traffic is very expensive and when we see unusual traffic spikes we will enable logging and ban the complete subnet of your provider, it happened before. Just come to the IRC and ask us for permission, it's that simple!</li>
 </ol>
 
 <h5>Uploading</h5>
