@@ -2280,6 +2280,13 @@ h3#index {
 	}
 }
 
+@media (max-width: 690px) {
+	td {
+		max-width: 40px;
+		word-break: break-word;
+	}
+}
+
 /* FIRE THE FUCKING LAZ0R MOTHERFUCKER! */
 #btn-upload:hover {
     background-image: url(/shoop.png);
