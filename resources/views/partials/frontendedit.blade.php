@@ -20,7 +20,7 @@
                         <div class="form-group">
                             <label for="imgsourceedit">Video Source</label>
                             <input class="form-control" type="text" name="imgsource" id="imgsourceedit" value="{{ $video->imgsource or ''}}" placeholder="Video Source">
-    
+
                         </div>
                         <div class="form-group">
                             <label for="categoryselect">Category</label>
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                         <input type="submit" class="btn btn-primary" value="Save">
                     </div>
                 </div>

@@ -10,7 +10,7 @@
                 {{--<input type="text" id="filter" data-role="tagsinput" value="{{ implode(',', auth()->user()->categories) }}">--}}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                 <button href="/filter" type="submit" id="submitfilter" class="btn btn-primary" value="Save">Save</button>
             </div>
         </div>
