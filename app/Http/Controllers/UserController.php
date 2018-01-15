@@ -37,7 +37,7 @@ class UserController extends Controller
                            ->orWhere('email', $request->get('identifier'))
                            ->first();
                    if($user->banend->eq(Carbon::createFromTimestampUTC(1))) {
-                       return redirect()->back()->with('error', 'You are permanently banned for \'' . $user->banreason . '\'.');
+                       return view('banned', ['user' => $user, 'perm' => true]);
                    }
                    // if ban expired unban and relogin.
                    if($user->banend->lt(Carbon::now())) {
@@ -47,7 +47,7 @@ class UserController extends Controller
                        $user->save();
                        return $this->login($request);
                    }
-                   return redirect()->back()->with('error', 'You are banned for another ' .  $user->banend->diffForHumans(null, true) . '. Reason: \''. $user->banreason .'\'');
+                   return view('banned', ['user' => $user, 'perm' => false]);
                case Verify::UNVERIFIED:
                    return redirect()->back()->with('error', 'Please verify your account');
            }
@@ -231,7 +231,7 @@ class UserController extends Controller
 
         if(!$user->can('edit_user'))
             return redirect()->back()->with('error', 'Insufficient permissions');
-        
+
         $perm = false;
         if(($duration = $request->get('duration')) == '-1') {
             $duration = Carbon::createFromTimestampUTC(1);
@@ -348,7 +348,7 @@ class UserController extends Controller
     // Only difference are the redirect urls and the Base Model
     public function random_fav($username) {
         $user = UserFavorite::where('username', '=', $username)->first();
-        
+
         if (!$user) {
             return redirect()->back()->with('error', 'Unknown username');
         }

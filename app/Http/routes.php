@@ -44,6 +44,7 @@ Route::get('rules', function() { return view('rules'); });
 Route::get('contact', function() { return view('contact'); });
 Route::get('privacy', function() { return view('privacy'); });
 Route::get('teamspeak', function() { return view('teamspeak'); });
+
 #Route::get('help', function() { return view('help'); });
 #Route::get('announcement', function() { return view('announcement'); });
 #Route::get('map', function() { return view('map'); });
@@ -98,7 +99,7 @@ Route::group(['prefix' => 'api'], function() {
                 return response(['message' => 'Video not found'], 404);
             }
             return $res;
-        })->where('id', '[0-9]+'); 
+        })->where('id', '[0-9]+');
         Route::post('{id}/delete', 'VideoController@destroy')->where('id', '[0-9]+');
         Route::post('{id}/tag', 'VideoController@tag')->where('id', '[0-9]+');
         Route::post('{id}/untag', 'VideoController@untag')->where('id', '[0-9]+');
