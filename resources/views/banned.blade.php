@@ -9,11 +9,12 @@
     <div style="border:0;" class="panel panel-default">
       <div class="panel-body">
         @if($perm)
-        <p>You ban is permanent and will <b>NOT</b> expire!</p>
+        <p>Your ban is permanent fool and will <b>NOT</b> expire!</p>
+        <video class="banwidth" autoplay loop src="https://b.w0bm.com/1515965864.webm">You are banned</video>
         @else
-        <p>Reason: {{ $user->banreason }}</p>
-        <p>Your ban will expire in {{ $user->banend->diffForHumans(null, true) }}</p>
-        <img class="" src="/otter-ban.png">
+        <p class="banned">Reason: {{ $user->banreason }}</p>
+        <p class="banned">Your ban will expire in {{ $user->banend->diffForHumans(null, true) }}</p>
+        <img class="banwidth" src="otter-ban.png">
         @endif
       </div>
     </div>

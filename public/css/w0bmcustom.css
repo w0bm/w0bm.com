@@ -2356,7 +2356,11 @@ h1#b4nned {
 }
 
 @media (max-width: 690px) {
-    video.banvideo {
+    .banwidth {
     	width: 100%;
     }
+}
+
+.banned {
+    font-weight: bold;
 }
