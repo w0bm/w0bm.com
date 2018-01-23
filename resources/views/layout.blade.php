@@ -24,22 +24,6 @@
     <link rel="stylesheet" href="/css/video-js.min.css">
     <link rel="stylesheet" href="/css/w0bmcustom.css?v={{ filemtime("css/w0bmcustom.css") }}">
     <link rel="stylesheet" href="/css/vjsnew.css?v=1.1.1">
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//observation.stasi.club/";
-    _paq.push(['setTrackerUrl', u+'js']);
-    _paq.push(['setSiteId', '2']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="//observation.stasi.club/js?idsite=2&rec=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
 </head>
 <body>
 @if(auth()->check())
