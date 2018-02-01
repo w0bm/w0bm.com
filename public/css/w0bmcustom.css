@@ -2073,7 +2073,7 @@ blockquote {
     margin: 0 0 10px;
     border-left: 5px solid #282828;
     color: #80FF00;
-    word-break: break-word;
+    word-wrap: break-word;
 }
 
 div.notfound {
