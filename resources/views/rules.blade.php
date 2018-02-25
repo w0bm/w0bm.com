@@ -6,11 +6,19 @@
 <h5>General</h5>
 <ol>
 	<li>Content on this site is intended for people over the age of 18 only! If you are under 18 you have to leave, if I will find out you are under 18 your account will be banned permanently.</li>
-	<li>Leaking of private information is strictly forbidden. This environment is friendly!</li>
+	<li>Leaking of private information is strictly forbidden!</li>
 	<li>Do not talk about crimes you commited or will commit, we don't want to know.</li>
 	<li>Do not try to sell, buy, or spread credit-card, banking etc. info anywhere on this site.</li>
 	<li>Do not animate people to do crimes or anything illegal!</li>
 	<li>If you upload something always try to give the artist credits by linking to the original, filling out the Artist & Songitle Information for example.</li>
+</ol>
+
+<h5>Code of Conduct</h5>
+<ol>
+	<li>No stupid racism, we think it's stupid to judge a person by the skin color or ancestry.</li>
+	<li>You are welcome to critize any religion or any political regime as much as you like, judge the people directly based on their actions instead of their skin color or ancestry, otherwise your point is pointless and stupid.</li>
+	<li>Anyone is welcome here, it doesn't matter if you are a Muslim, a Christian, a Jew or even a Nazi as long as you follow our guidelines we can all live and work together in peace.</li>
+	<li>Political Correctness doesn't exist here, we don't fucking care, we allow any opinions to be shared if they are formulated in a way everyone can understand the authors point, there is no illegal opinion and we are not the thought police, if you find something disturbing discuss it and try to understand their points and try to make them aware of your thoughts, the most important thing is that every side knows what the other side initially wants!</li>
 </ol>
 
 <h5>Uploading</h5>

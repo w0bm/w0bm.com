@@ -39,7 +39,7 @@ Route::get('upload', 'VideoController@create');
 Route::get('categories', 'CategoryController@index');
 Route::get('webm', function() { return view('webm'); });
 Route::get('about', function() { return view('about'); });
-Route::get('irc', function() { return view('irc'); });
+Route::get('community', function() { return view('community'); });
 Route::get('rules', function() { return view('rules'); });
 Route::get('contact', function() { return view('contact'); });
 Route::get('privacy', function() { return view('privacy'); });

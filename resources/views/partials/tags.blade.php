@@ -4,7 +4,7 @@
     <label for="tag-add-toggle">
     <span id="tagadder" class="addtagsy">+ Add Tag <i class="fa fa-tag" aria-hidden="true"></i> </span>
     </label>    
-    <span class="addtagsy"><a href="/irc">IRC </a></span>
+    <span class="addtagsy"><a href="/community">Community </a></span>
     <span class="addtagsy"><a href="/about">About </a></span>
     <span class="addtagsy"><a href="/contact">Contact </a></span>
     <span class="addtagsy"><a href="/rules">Rules </a></span>
@@ -22,7 +22,7 @@
         </div>
 	@else
 	<div class="tagpanelinfos">
-            <span class="addtagsy"><a href="/irc">IRC </a></span>
+            <span class="addtagsy"><a href="/community">Community </a></span>
             <span class="addtagsy"><a href="/about">About </a></span>
 	    <span class="addtagsy"><a href="/contact">Contact </a></span>
 	    <span class="addtagsy"><a href="/rules">Rules </a></span>
