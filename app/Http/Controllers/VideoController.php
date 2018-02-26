@@ -116,8 +116,26 @@ class VideoController extends Controller
         $video->tag($video->category->shortname);
         $video->tag($video->category->name);
 
+        // TODO: outsource to different process (async)
         $video->createThumbnail();
 
+        // Discord
+        if (config('discord.enabled') && config('discord.webhookurl')) {
+            $nsfw = in_array('nsfw', $video->getTagArrayNormalizedAttribute());
+            $nsfw = $nsfw ? ' :exclamation: **NSFW** :exclamation:' : '';
+            $message = config('discord.message');
+            $message = str_replace(
+                ['<USER>', '<ID>', '<NSFW>'],
+                [$user->username, $video->id, $nsfw],
+                $message
+            );
+            $url = config('discord.webhookurl');
+            $payload = json_encode([
+                'content' => $message,
+            ]);
+            // exec with & so it is async
+            exec("curl -H \"Content-Type: application/json; charset=UTF-8\" -X POST -d '$payload' '$url' > /dev/null &");
+        }
 
         return new JsonResponse([
             'error' => 'null',
