@@ -8,11 +8,15 @@
     <meta charset="UTF-8">
     <meta name="_token" content="{{csrf_token()}}">
     <meta name="keywords" content="Random WebMs, WebMs, Internet Videos">
-    <meta name="Description" content="@if(!empty($video->interpret)){{$video->interpret}} – {{$video->songtitle}}@else()No Data Available ;__;@endif">
-    <meta property="og:title" content="@if(!empty($video->interpret)){{$video->interpret}} – {{$video->songtitle}}@else()No Data Available ;__;@endif">
+    <meta name="Description" content="Tags:@if(isset($video)) {{ $video->getTagListAttribute() }} @endif">
+    <meta property="og:site_name" content="w0bm.com" />
+    <meta property="og:title" content="@if(!empty($video->interpret)){{$video->interpret}} – {{$video->songtitle}}@else() Title not found! ;_; @endif">
+    <meta property="og:description" content="Tags:@if(isset($video)) {{ $video->getTagListAttribute() }} @endif">
     <meta property="og:image" content="@if(isset($video))https://w0bm.com/thumbs/{{str_replace(".webm","",$video->file)}}.gif"@endif/>
-    <meta property="og:url" content="@if(isset($video))https://w0bm.com/{{ $video->id }}@endif" />
-    <meta property="og:description" content="Hosted on w0bm.com" />
+    <meta property="og:video" content="@if(isset($video))https://b.w0bm.com/{{ $video->file }} @endif">
+    <meta property="og:url" content="@if(isset($video))https://w0bm.com/{{ $video->id }}@endif">
+    <meta property="og:video:secure_url" content="@if(isset($video))https://b.w0bm.com/{{ $video->file }} @endif">
+    <meta property="og:video:type" content="video/webm">
     <link rel="icon" href="/favicon.png">
     <title>@if(isset($video)){{ $video->id }} -@endif w0bm.com</title>
     <link rel="favicon" href="favicon.ico" type="image/ico">
