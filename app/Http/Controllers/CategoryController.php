@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Video;
 use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 use App\Http\Requests;
 
@@ -56,8 +57,11 @@ class CategoryController extends Controller
             return redirect()->back()->with('error', 'Category not found');
         }
         if (is_null($id)) {
-            $video = Video::getRandom($category)->first();
-            if (!$video) {
+            $video = Video::getRandom($category);
+            if ($video instanceof HasMany) {
+                $video = $video->first();
+            }
+            else {
                 return redirect()->back()->with('error', 'Category is empty.');
             }
             return redirect($shortname . '/' . $video->id);
