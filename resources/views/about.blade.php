@@ -56,9 +56,12 @@
 <h4>Allowed sources for image parsing in the comment section</h4>
 <p><code>Filetypes: [{{ join(',', $comment['allowedImageFileExtensions']) }}] - Only secure connections allowed</code></p>
 <ul>
-  @foreach($comment['allowedHosters'] as $hoster)
-    <li>https://{{$hoster}}/</li>
-  @endforeach
+<li><a href="https://imgur.com">imgur.com</a></li>
+<li><a href="https://giphy.com">giphy.com</a></li>
+<li><a href="https://f0ck.me">f0ck.me</a></li>
+<li><a href="https://catbox.moe">catbox.moe</a></li>
+<li><a href="https://tumblr.com">tumblr.com</a></li>
+<li><a href="https://pr0gramm.com">pr0gramm.com</a></li>
 </ul>
 @include('footer')
 @endsection

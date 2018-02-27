@@ -10,7 +10,7 @@
     <meta name="keywords" content="Random WebMs, WebMs, Internet Videos">
     <meta name="Description" content="Tags:@if(isset($video)) {{ $video->getTagListAttribute() }} @endif">
     <meta property="og:site_name" content="w0bm.com" />
-    <meta property="og:title" content="@if(!empty($video->interpret)){{$video->interpret}} – {{$video->songtitle}}@else() Title not found! ;_; @endif">
+    <meta property="og:title" content="@if(!empty($video->interpret)){{$video->interpret}} – {{$video->songtitle}}@else() NO DATA AVAILABLE ;__; @endif">
     <meta property="og:description" content="Tags:@if(isset($video)) {{ $video->getTagListAttribute() }} @endif">
     <meta property="og:image" content="@if(isset($video))https://w0bm.com/thumbs/{{str_replace(".webm","",$video->file)}}.gif"@endif/>
     <meta property="og:video" content="@if(isset($video))https://b.w0bm.com/{{ $video->file }} @endif">
