@@ -4,7 +4,7 @@
          <h3>Professional Support</h3>
  </div>
 <div class="box">
-<img src="/traurig.gif" style="width:25%; height:25%; float:right;">
+<img src="https://img.w0bm.com/u/upxsfi.png" style="width: 15%; height: 15%; float:right;">
 <h4>Contact</h4>
 <ul>
 <li>Contact via IRC: <a href="https://webirc.n0xy.net/?join=%23w0bm">#w0bm on n0xy.net</a> just ping some random Admin in there. Indicated by <code>~ , & , @</code> </li>
