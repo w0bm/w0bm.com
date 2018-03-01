@@ -2,6 +2,9 @@
 
 return [
   'allowedHosters' => [
+    'img.w0bm.com' => [
+     '/^img\.w0bm\.com$/'
+    ],
     'imgur.com' => [
       '/^i\.imgur\.com$/'
     ],
