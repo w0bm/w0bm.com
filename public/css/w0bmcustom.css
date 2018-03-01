@@ -2372,6 +2372,7 @@ h1#b4nned {
     border: 1px solid black;
     margin-bottom: 5px;
     padding-left: 10px;
+    overflow: auto;
 }
 
 .about-tags {
