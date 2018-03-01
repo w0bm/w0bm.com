@@ -3,6 +3,8 @@
 <div class="page-header">
         <h4>Rules for w0bm.com</h4>
 </div>
+
+<div class="box">
 <h5>General</h5>
 <ol>
 	<li>Content on this site is intended for people over the age of 18 only! If you are under 18 you have to leave, if I will find out you are under 18 your account will be banned permanently.</li>
@@ -12,7 +14,9 @@
 	<li>Do not animate people to do crimes or anything illegal!</li>
 	<li>If you upload something always try to give the artist credits by linking to the original, filling out the Artist & Songitle Information for example.</li>
 </ol>
+</div>
 
+<div class="box">
 <h5>Code of Conduct</h5>
 <ol>
 	<li>No stupid racism, we think it's stupid to judge a person by the skin color or ancestry.</li>
@@ -20,7 +24,9 @@
 	<li>Anyone is welcome here, it doesn't matter if you are a Muslim, a Christian, a Jew or even a Nazi as long as you follow our guidelines we can all live and work together in peace.</li>
 	<li>Political Correctness doesn't exist here, we don't fucking care, we allow any opinions to be shared if they are formulated in a way everyone can understand the authors point, there is no illegal opinion and we are not the thought police, if you find something disturbing discuss it and try to understand their points and try to make them aware of your thoughts, the most important thing is that every side knows what the other side initially wants!</li>
 </ol>
+</div>
 
+<div class="box">
 <h5>Uploading</h5>
 <ol>
 	<li>Everything you upload <strong style="color:#1FB2B0;">must</strong> be acceptable with Dutch law!</li>
@@ -32,7 +38,9 @@
 	<li>The Video Source field is not intended for YouTube Links or any other kind of link, please put only text in there. For example: YouTube and then put the YouTube link in the comments, if you fail at this too often it will probably hurt my vagina and I will scream like a 12 year old princess. Thanks! :3</li>
 	<li>No Politics Videos without any entertainment value, and I define the value and talks from Trump and the other shitheads is no entertainment, please delete yourself.</li>
 </ol>
+</div>
 
+<div class="box">
 <h5>Tagging</h5>
 <ol>
 	<li>Tags should always describe the video.</li>
@@ -41,7 +49,9 @@
 	<li>Please don't tag too much shit, thanks.</li>
 	<li>Comments are not welcome in the Tag section, if we catch you say goodbye.</li>
 </ol>
-	
+</div>
+
+<div class="box">
 <h5>Commenting</h5>
 <ol>
 	<li>You don't have to be polite, but you also don't have to be an asshole.</li>
@@ -49,10 +59,13 @@
 	<li>Live with different opinions, and deal with it.</li>
 	<li>Fucking a mother is 2009-tier</li>
 </ol>
+</div>
 
+<div class="box">
 <h5>Reposts</h5>
 <ul style="text-align:left;">
 <li>Tag reposts with the tag: repost also link the original and the repost in the comments, maybe some admin or moderator is going to care about it and deletes the repost.</li>
 </ul>
+</div>
 @include('footer')
 @endsection
