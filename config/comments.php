@@ -3,29 +3,29 @@
 return [
   'allowedHosters' => [
     'imgur.com' => [
-      '/^i.imgur.com$/'
+      '/^i\.imgur\.com$/'
     ],
     'giphy.com' => [
       '/^media[0-6]?\.giphy\.com$/'
     ],
     'f0ck.me' => [
-      '/^f0ck.me$/'
+      '/^f0ck\.me$/'
     ],
     'tumblr.com' => [
       '/^(?:68|78)\.media\.tumblr\.com$/'
     ],
     'iksdeh.com' => [
-      '/^iksdeh.com$/'
+      '/^iksdeh\.com$/'
     ],
     'catbox.moe' => [
-      '/^files.catbox.moe$/'
+      '/^files\.catbox\.moe$/'
     ],
     'pr0gramm.com' => [
-      '/^img.pr0gramm.com$/'
+      '/^img\.pr0gramm\.com$/'
     ],
     '' => [
-      '/^files.nogf.club$/',
-      '/^f0ck.space$/'
+      '/^files\.nogf\.club$/',
+      '/^f0ck\.space$/'
     ]
   ],
   'allowedImageFileExtensions' => [
