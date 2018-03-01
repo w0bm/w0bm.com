@@ -202,7 +202,14 @@ class Markdown extends \Parsedown {
             $ext = pathinfo($url['path'], PATHINFO_EXTENSION);
             if (in_array($ext, $allowedExtensions)) {
                 if (isset($url['scheme']) && $url['scheme'] === 'https') {
-                    return in_array($url['host'], $allowedHosters);
+                    foreach($allowedHosters as $hoster) {
+                        foreach($hoster as $regex) {
+                            if(preg_match($regex, $url['host'])) {
+                                return true;
+                            }
+                        }
+                    }
+                    return false;
                 }
             }
         }

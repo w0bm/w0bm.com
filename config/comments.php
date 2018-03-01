@@ -2,22 +2,31 @@
 
 return [
   'allowedHosters' => [
-    'i.imgur.com',
-    'media.giphy.com',
-    'media0.giphy.com',
-    'media1.giphy.com',
-    'media2.giphy.com',
-    'media3.giphy.com',
-    'media4.giphy.com',
-    'media5.giphy.com',
-    'media6.giphy.com',
-    'files.nogf.club',
-    'f0ck.me',
-    'files.catbox.moe',
-    '68.media.tumblr.com',
-    '78.media.tumblr.com',
-    'iksdeh.com',
-    'img.pr0gramm.com',
+    'imgur.com' => [
+      '/^i.imgur.com$/'
+    ],
+    'giphy.com' => [
+      '/^media[0-6]?\.giphy\.com$/'
+    ],
+    'f0ck.me' => [
+      '/^f0ck.me$/'
+    ],
+    'tumblr.com' => [
+      '/^(?:68|78)\.media\.tumblr\.com$/'
+    ],
+    'iksdeh.com' => [
+      '/^iksdeh.com$/'
+    ],
+    'catbox.moe' => [
+      '/^files.catbox.moe$/'
+    ],
+    'pr0gramm.com' => [
+      '/^img.pr0gramm.com$/'
+    ],
+    '' => [
+      '/^files.nogf.club$/',
+      '/^f0ck.space$/'
+    ]
   ],
   'allowedImageFileExtensions' => [
     'jpg',
