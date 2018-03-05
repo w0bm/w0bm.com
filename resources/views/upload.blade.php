@@ -60,7 +60,7 @@
 			<span class="hidden-xs" id="shoop-laz0r"></span>
 		    </button>
 		    <p style="text-align:center; padding-top: 5px; white-space: normal;">Before you click upload make sure you have read the <a href="/rules">Rules</a></p>
-		    <p style="text-align:center; padding-top: 5px; white-space: normal;"><span id="big">35</span> uploads <span id="big">every 12 hours.</span> – Maximum filesize: <span id="big">100MB.</span> – Only <span id="big">.webm</span> allowed. Need <a href="/webm">help?</a></p>
+		    <p style="text-align:center; padding-top: 5px; white-space: normal;"><span id="big">35</span> uploads <span id="big">every 12 hours.</span> – Maximum filesize: <span id="big">100MB.</span> – Only <span id="big">.webm (vp8/vp9) with sound</span> allowed. Need <a href="/webm">help?</a></p>
                 </div>
             </div>
         <input name="file" type="file" class="hidden" accept=".webm"></input>

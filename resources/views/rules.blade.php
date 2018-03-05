@@ -20,7 +20,7 @@
 <h5>Code of Conduct</h5>
 <ol>
 	<li>No stupid racism, we think it's stupid to judge a person by the skin color or ancestry.</li>
-	<li>You are welcome to critize any religion or any political regime as much as you like, judge the people directly based on their actions instead of their skin color or ancestry, otherwise your point is pointless and stupid.</li>
+	<li>You are welcome to criticise any religion or any political regime as much as you like, judge the people directly based on their actions instead of their skin color or ancestry, otherwise your point is pointless and stupid.</li>
 	<li>Anyone is welcome here, it doesn't matter if you are a Muslim, a Christian, a Jew or even a Nazi as long as you follow our guidelines we can all live and work together in peace.</li>
 	<li>Political Correctness doesn't exist here, we don't fucking care, we allow any opinions to be shared if they are formulated in a way everyone can understand the authors point, there is no illegal opinion and we are not the thought police, if you find something disturbing discuss it and try to understand their points and try to make them aware of your thoughts, the most important thing is that every side knows what the other side initially wants!</li>
 </ol>

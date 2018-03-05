@@ -51,7 +51,7 @@
 <li><a href="/user/Czar">Czar</a></li>
 <li><a href="/user/flinny">flinny</a></li>
 </ul>
-<p>Mods can be contacted either via @{{ $modname }} in the comments or via <a href="/community">IRC/Discord</a></p>
+<p>Mods can be contacted either via <code>@$modname</code> in the comments or via <a href="/community">IRC/Discord</a></p>
 </div>
 
 <div class="box">
@@ -67,6 +67,7 @@
    <li>--- will insert a line<hr>to seperate</li>
 </ul>
 <p>If you want to answer someone, simply use <code>^</code> as often as you need to point to the comment you want to answer to.</p>
+<p>If you want to ping someone directly in a comment use <code>@$user</code></p>
 </div>
 
 <div class="box">
