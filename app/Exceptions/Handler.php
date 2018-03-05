@@ -30,6 +30,9 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
+        if ($this->shouldReport($e)) {
+            app('sentry')->captureException($e);
+        }    
         return parent::report($e);
     }
 
@@ -39,6 +42,7 @@ class Handler extends ExceptionHandler
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $e
      * @return \Illuminate\Http\Response
+     * @todo Perhaps replace odd encrypted error with Sentry notification
      */
     public function render($request, Exception $e)
     {

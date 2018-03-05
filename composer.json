@@ -21,7 +21,8 @@
         "greggilbert/recaptcha": "^2.0",
         "cviebrock/eloquent-taggable": "dev-master",
         "itsgoingd/clockwork": "^1.14",
-        "erusev/parsedown": "^1.6"
+        "erusev/parsedown": "^1.6",
+        "sentry/sentry-laravel": "^0.8.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

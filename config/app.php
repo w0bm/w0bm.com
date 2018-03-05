@@ -153,6 +153,7 @@ return [
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         Cviebrock\EloquentTaggable\ServiceProvider::class,
         Clockwork\Support\Laravel\ClockworkServiceProvider::class,
+        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
 
     ],
 
@@ -204,7 +205,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
-        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class
+        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
+        'Sentry'    => Sentry\SentryLaravel\SentryFacade::class,
     ],
 
 ];

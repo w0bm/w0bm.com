@@ -58,6 +58,12 @@
 <script src="/js/jquery.timeago.js"></script>
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
+<script src="/js/raven.min.js"></script>
+@if(env('SENTRY_DSN'))
+<script>
+    Raven.config('{{ env("SENTRY_DSN") }}').install()
+</script>
+@endif
 <script src="/js/w0bmscript.min.js?v={{ filemtime("js/w0bmscript.min.js") }}"></script>
 </body>
 </html>
