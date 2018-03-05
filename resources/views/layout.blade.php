@@ -59,9 +59,9 @@
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
 <script src="/js/raven.min.js"></script>
-@if(env('SENTRY_DSN'))
+@if(env('SENTRY_PUBLIC'))
 <script>
-    Raven.config('{{ env("SENTRY_DSN") }}').install()
+    Raven.config('{{ env("SENTRY_PUBLIC") }}').install()
 </script>
 @endif
 <script src="/js/w0bmscript.min.js?v={{ filemtime("js/w0bmscript.min.js") }}"></script>
