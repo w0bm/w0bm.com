@@ -1,3 +1,11 @@
 {
-  "presets": ["es2015", "babili"]
+  "presets": [
+    "minify",
+    ["env", {
+      "targets": {
+        "browsers": ["IE 11"]
+      }
+    }]
+  ],
+  "sourceMaps": true
 }
