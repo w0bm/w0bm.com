@@ -2,7 +2,7 @@
   "name": "w0bm",
   "private": true,
   "scripts": {
-    "build": "babel public/js/w0bmscript.js -o public/js/w0bmscript.min.js"
+    "build": "babel public/js/w0bmscript.js -o public/js/w0bmscript.min.js --source-maps"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

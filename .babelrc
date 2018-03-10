@@ -7,5 +7,5 @@
       }
     }]
   ],
-  "sourceMaps": true
+  "sourceMaps": "inline"
 }
