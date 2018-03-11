@@ -10,7 +10,6 @@
         </a>
     @endif
 </div>
-
 @if(Auth::check())
 @include('partials.commentform')
 @endif
