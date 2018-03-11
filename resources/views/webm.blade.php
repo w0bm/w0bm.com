@@ -21,9 +21,10 @@
 </div>
 
 <div class="box">
-<h4>coub.com Download</h4>
-<p>Requirements: youtube-dl, BASH, ffmpeg</p>
-<p>Get this <a href="https://p.sicp.me/fVtn6.sh">script</a> and save it as whatever.sh and type into your shell <code>bash whatever.sh</code> and enjoy your downloaded coub video, after downloading you will see a file with a name like this in the folder you ran the script in 347224d4-169e-484f-b27e-d2781a0381d3.mp4. You can now cut, crop and/or convert it to webm and enjoy the great loop you just downloaded! Credits for this script go to <a href="https://github.com/rg3/youtube-dl/issues/13754#issuecomment-336673153">Kagami</a></p>
+<h4>coub.com Downloader</h4>
+<p>Requirements: youtube-dl, BASH, ffmpeg and awk</p>
+<p>Get this <a href="https://p.sicp.me/nUTjd">script</a> and save it as coub.sh and type into your shell <code>bash coub.sh</code> and enjoy your downloaded coub video, after downloading you will see a file with a name like this in the folder you ran the script in 46974.mp4. You can now cut, crop and/or convert it to webm and enjoy the great loop you just downloaded! Credits for this script go to <a href="https://github.com/rg3/youtube-dl/issues/13754#issuecomment-336673153">Kagami</a></p>
+<p>This script is cross platform compatible and was tested on Linux and Windows. For Windows you need for example the cmder terminal that comes with a bash shell.</p>
 </div>
 
 <div class="box">
