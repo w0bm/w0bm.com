@@ -21,6 +21,14 @@
 </div>
 
 <div class="box">
+<h4>Get a WebM directly from YouTube</h4>
+<p>There are many ways on how to download videos from YouTube but most people don't know that you can grab a WebM directly from YouTube.</p>
+<p>The easiest and probably best way is jdownloader 2, all you need to do is copy a youtube link and jdownloader will add it to the link collector, from there you can select how jdownloader should download the video.</p>
+<img src="https://files.nogf.club/winfick/ad224c7e257a.png" />
+<p>Please note that HD WebM is not always available, there should always be a 360p version available.</p>
+</div>
+
+<div class="box">
 <h4>coub.com Downloader</h4>
 <p>Requirements: youtube-dl, BASH, ffmpeg and awk</p>
 <p>Get this <a href="https://p.sicp.me/nUTjd">script</a> and save it as coub.sh and type into your shell <code>bash coub.sh</code> and enjoy your downloaded coub video, after downloading you will see a file with a name like this in the folder you ran the script in 46974.mp4. You can now cut, crop and/or convert it to webm and enjoy the great loop you just downloaded! Credits for this script go to <a href="https://github.com/rg3/youtube-dl/issues/13754#issuecomment-336673153">Kagami</a></p>

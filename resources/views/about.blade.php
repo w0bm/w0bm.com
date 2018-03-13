@@ -81,6 +81,18 @@
   @endforeach
 </ul>
 </div>
+
+<div class="box">
+<h4>FAQ</h4>
+<p>Q: w0bm is laggy for me and I don't know why.</p>
+<p>A: It's mostly because of the background. It's very resource heavy and can cause lag on some computers, if you experience this, you should click the yellow lightbulb on the video page to turn it off <i style="color:#fff200;" class="fa fa-lightbulb-o"></i></p>
+<p>Q: I don't know how to create WebMs</p>
+<p>A: Check out our <a href="/webm">WebM support</a> page and pick the solution you like the most!</p>
+<p>Q: Can you allow mp4s to be uploaded?</p>
+<p>A: Why do you think this website is called w0bm?</p>
+<p>Q: I want to give you guys some feedback and maybe some suggestions, where should I go?</p>
+<p>A: You can open a issue on our <a href="https://github.com/w0bm/">Github repository</a> and write down what you want to have as a feature and maybe it will happen some day, there is no guarantee since we are all lazy as fuck, or you can come directly to the <a href="/community">IRC/Discord</a> and tell us instantly!</p>
+</div>
 @include('footer')
 @endsection
 
