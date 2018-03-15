@@ -36,6 +36,8 @@
 <div class="about-tags">
 <span class="tag label label-info">anime</span> <span class="tag label label-info">asians</span> <span class="tag label label-info">Crayon Pop</span> <span class="tag label label-info">gay</span>
 </div>
+<p>You will see that our videos are tagged with either <span class="label label-default" style="color:#23ff00">sfw</span> or <span class="label label-default" style="color:red">nsfw</span> these labels mean in nearly 99% of the case at least for uploads tagged with nsfw that they are nsfw, but the sfw tag isn't always sfw and you shouldn't think that we really care about this, there is probably a lot of content which is not tagged as nsfw but still is nsfw.</p>
+<p>Always take care and when you are not sure if you can browse w0bm at work, don't do it, we don't guarantee that everything is properly tagged and you will encounter something that can get you in trouble.</p>
 </div>
 
 <div class="box">
