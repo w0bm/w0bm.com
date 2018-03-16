@@ -147,6 +147,20 @@ if(videoElem !== null) {
         player.play();
     }
 
+    if($.browser.mobile) {
+        document.addEventListener("fullscreenerror", function(e) {
+            console.error("Fullscreen denied", JSON.stringify(e));
+        });
+        window.screen.orientation.onchange = function() {
+            if(this.type.startsWith("landscape"))
+                player.requestFullscreen();
+            else
+                player.exitFullscreen();
+            if(!document.fullscreenElement)
+                console.error("No fullscreen after request");
+        };
+    }
+
     if(localStorage.getItem('background') == undefined) {
         if($.browser.mobile)
             localStorage.setItem('background', 'false');
@@ -1306,4 +1320,3 @@ $(function() {
         });
     });
 });
-
