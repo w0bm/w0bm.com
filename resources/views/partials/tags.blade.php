@@ -42,4 +42,7 @@
             @endif
         </div>
     </div>
+<div class="sponsored">
+<span class="sponsor">Sponsored by <a href="https://rapidvideo.com">Rapidvideo</a></span>
+</div>
 </aside>

@@ -2382,3 +2382,10 @@ border: none;
 border-radius: 0px;
 padding: 6px 3px;
 }
+
+.sponsored {
+    border-top: 1px solid #1fb2b0;
+    padding-left: 2px;
+}
+
+
