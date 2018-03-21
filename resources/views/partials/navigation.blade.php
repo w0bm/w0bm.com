@@ -17,6 +17,7 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="{{url('categories')}}"><i class="fa fa-bars"></i> Categories</a></li>
                 <li><a href="{{url('index')}}"><i class="fa fa-list"></i> Index</a></li>
+		<li><a href="{{url('donate')}}"><i class="fa fa-bitcoin"></i> Donate</a></li>
 	    </ul>
             @if(Auth::check())
                 <ul class="nav navbar-nav navbar-right">
