@@ -134,7 +134,7 @@ class CommentController extends Controller
         if(is_null($comment = Comment::whereId($id)->first()))
             return JsonResponse::create(array('error' => 'comment_not_found'));
 
-        $comment->content = e(trim($request->get('comment')));
+        $comment->content = trim($request->get('comment'));
         $comment->save();
 
         $log = new ModeratorLog();
