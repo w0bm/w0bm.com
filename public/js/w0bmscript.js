@@ -104,10 +104,10 @@ Array.prototype.average = function() {
 var videoElem = document.getElementById('video');
 if(videoElem !== null) {
     if($.browser.mobile) {
-	let src_split = document.querySelector("video > source:first-child").src.split("/");
-	src_split = src_split[src_split.length - 1];
-	videoElem.setAttribute("poster", "//w0bm.com/thumbs/" + src_split.replace(".webm", ".gif"));
-	}
+        let src_split = document.querySelector("video > source:first-child").src.split("/");
+        src_split = src_split[src_split.length - 1];
+        videoElem.setAttribute("poster", "//w0bm.com/thumbs/" + src_split.replace(".webm", ".gif"));
+    }
     var player = videojs(videoElem, {
         controls: true,
         playbackRates: [0.25, 0.5, 1, 1.5, 2],
