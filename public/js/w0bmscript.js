@@ -1,3 +1,18 @@
+function escapeHTML(str) {
+    return str.replace(/[&<>"'`=\/]/g, function(s) {
+        return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;',
+            '/': '&#x2F;',
+            '`': '&#x60;',
+            '=': '&#x3D;'
+        }[s];
+    });
+}
+
 class API {
     static request(post, base, method, params, callback) {
         $.ajax({
@@ -336,7 +351,7 @@ $(function() {
                 flash('success', 'Tag successfully deleted');
                 let tags = [];
                 for(let tag of cb.tags)
-                    tags.push('<span class="label label-default"><a href="/index?q=' + tag.normalized + '" class="default-link">' + tag.name + '</a> <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a></span>');
+                    tags.push('<span class="label label-default"><a href="/index?q=' + tag.normalized + '" class="default-link">' + escapeHTML(tag.name) + '</a> <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a></span>');
                 tagdisplay.empty();
                 tagdisplay.append(tags.join(" "));
                 $('.delete-tag').on('click', tagDeleteHandler);
@@ -367,7 +382,7 @@ $(function() {
                 $('#tag-add-toggle').prop('checked', false);
                 var tags = [];
                 for(let tag of cb.tags)
-                    tags.push('<span class="label label-default"><a href="/index?q=' + tag.normalized + '" class="default-link">' + tag.name + '</a>' + (cb.can_edit_video ? ' <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a>' : '') + '</span>');
+                    tags.push('<span class="label label-default"><a href="/index?q=' + tag.normalized + '" class="default-link">' + escapeHTML(tag.name) + '</a>' + (cb.can_edit_video ? ' <a class="delete-tag default-link" href="#"><i class="fa fa-times"></i></a>' : '') + '</span>');
                 tagdisplay.empty();
                 tagdisplay.append(tags.join(" "));
                 tagsinput.tagsinput('removeAll');
