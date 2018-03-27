@@ -92,6 +92,11 @@ Route::group(['prefix' => 'api'], function() {
                 $query->addSelect('username', 'id');
             }])->first();
         });
+
+	Route::get('latest', function() {
+	    return \App\Models\Video::getLastId(); 
+	});
+
         Route::get('{id}', function($id) {
             $res = \App\Models\Video::with(['category', 'user' => function($query) {
                 $query->addSelect('username', 'id');
