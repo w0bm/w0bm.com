@@ -4,7 +4,7 @@
     <div class="vertical-align">
         <div class="wrapper">
             <div class="embed-responsive embed-responsive-16by9">
-                <video id="video" loop autoplay controls preload="auto">
+                <video id="video" loop controls preload="auto">
 			<source src="@if(env('APP_DEBUG')){{"/b"}}@else{{"//b.w0bm.com"}}@endif{{ "/" . $video->file }}">
 			<source src="//fapple.w0bm.com/{{str_replace(".webm","",$video->file)}}.mp4">
 		</video>
