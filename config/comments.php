@@ -29,7 +29,8 @@ return [
     '' => [
       '/^files\.nogf\.club$/',
       '/^f0ck\.space$/',
-      '/^a\.safe\.moe$/'
+      '/^a\.safe\.moe$/',
+      '/^koyaanis\.com$/'
     ]
   ],
   'allowedImageFileExtensions' => [
