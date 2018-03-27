@@ -30,9 +30,10 @@
 
 <div class="box">
 <h4>coub.com Downloader</h4>
-<p>Requirements: youtube-dl, BASH, ffmpeg and awk</p>
-<p>Get this <a href="https://raw.githubusercontent.com/sirx/coubdl/master/coubdl.sh">script</a> and save it as coubdl.sh and type into your shell <code>bash coubdl.sh</code> and enjoy your downloaded coub video! You need to have jq, youtube-dl and ffmpeg installed for this to work! Credits for this script go to <a href="https://github.com/rg3/youtube-dl/issues/13754#issuecomment-336673153">Kagami</a></p>
-<p>This script is cross platform compatible and was tested on Linux and Windows. For Windows you need for example the cmder terminal that comes with a bash shell.</p>
+<p><a href="https://coub.com"target="_blank">coub.com</a> is a great place to explore some nice videos, I made this little script that helps you to grab the videos from their site and instantly convert it to <code>.webm</code></p>
+<p>Download <a href="https://github.com/sirx/coubdl" target="_blank">the script</a> from my github repo and just run it like this: <code>bash coubdl.sh URL</code> it will then ask you how long your video should be, it will show you the duration of just the loop and the duration of the audio file used for it.</p>
+<p>After that you can specify the output max size by just typing in a single number like <code>4</code> and the script will convert your video to 4MB</p>
+<p>Requirements: <code>yotube-dl, jq, ffmpeg, ffprobe, python & webm.py</code>
 </div>
 
 <div class="box">
