@@ -2388,4 +2388,114 @@ padding: 6px 3px;
     padding-left: 2px;
 }
 
-
+.rainbow {
+    animation: rainbold 1s linear infinite;
+    color: red;
+    font-size: 1.5em;
+    /*  letter-spacing: 0.33em; */
+    
+    margin-left: 6px;
+    text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet;
+}
+@keyframes rainbold {
+    0% {
+        color: red;
+        text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet;
+    }
+    14% {
+        color: orange;
+        text-shadow: -1px 0px yellow, -2px 0px green, -3px 0px blue, -4px 0px indigo, -5px 0px violet, -6px 0px red;
+    }
+    28% {
+        color: yellow;
+        text-shadow: -1px 0px green, -2px 0px blue, -3px 0px indigo, -4px 0px violet, -5px 0px red, -6px 0px orange;
+    }
+    43% {
+        color: green;
+        text-shadow: -1px 0px blue, -2px 0px indigo, -3px 0px violet, -4px 0px red, -5px 0px orange, -6px 0px yellow;
+    }
+    57% {
+        color: blue;
+        text-shadow: -1px 0px indigo, -2px 0px violet, -3px 0px red, -4px 0px orange, -5px 0px yellow, -6px 0px green;
+    }
+    71% {
+        color: indigo;
+        text-shadow: -1px 0px violet, -2px 0px red, -3px 0px orange, -4px 0px yellow, -5px 0px green, -6px 0px blue;
+    }
+    85% {
+        color: violet;
+        text-shadow: -1px 0px red, -2px 0px orange, -3px 0px yellow, -4px 0px green, -5px 0px blue, -6px 0px indigo;
+    }
+    100% {
+        color: red;
+        text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet;
+    }
+}
+@-moz-keyframes rainbold {
+    0% {
+        color: red;
+        text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet;
+    }
+    14% {
+        color: orange;
+        text-shadow: -1px 0px yellow, -2px 0px green, -3px 0px blue, -4px 0px indigo, -5px 0px violet, -6px 0px red;
+    }
+    28% {
+        color: yellow;
+        text-shadow: -1px 0px green, -2px 0px blue, -3px 0px indigo, -4px 0px violet, -5px 0px red, -6px 0px orange;
+    }
+    43% {
+        color: green;
+        text-shadow: -1px 0px blue, -2px 0px indigo, -3px 0px violet, -4px 0px red, -5px 0px orange, -6px 0px yellow;
+    }
+    57% {
+        color: blue;
+        text-shadow: -1px 0px indigo, -2px 0px violet, -3px 0px red, -4px 0px orange, -5px 0px yellow, -6px 0px green;
+    }
+    71% {
+        color: indigo;
+        text-shadow: -1px 0px violet, -2px 0px red, -3px 0px orange, -4px 0px yellow, -5px 0px green, -6px 0px blue;
+    }
+    85% {
+        color: violet;
+        text-shadow: -1px 0px red, -2px 0px orange, -3px 0px yellow, -4px 0px green, -5px 0px blue, -6px 0px indigo;
+    }
+    100% {
+        color: red;
+        text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet;
+    }
+}
+@-webkit-keyframes rainbold {
+    0% {
+        color: red;
+        text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet;
+    }
+    14% {
+        color: orange;
+        text-shadow: -1px 0px yellow, -2px 0px green, -3px 0px blue, -4px 0px indigo, -5px 0px violet, -6px 0px red;
+    }
+    28% {
+        color: yellow;
+        text-shadow: -1px 0px green, -2px 0px blue, -3px 0px indigo, -4px 0px violet, -5px 0px red, -6px 0px orange;
+    }
+    43% {
+        color: green;
+        text-shadow: -1px 0px blue, -2px 0px indigo, -3px 0px violet, -4px 0px red, -5px 0px orange, -6px 0px yellow;
+    }
+    57% {
+        color: blue;
+        text-shadow: -1px 0px indigo, -2px 0px violet, -3px 0px red, -4px 0px orange, -5px 0px yellow, -6px 0px green;
+    }
+    71% {
+        color: indigo;
+        text-shadow: -1px 0px violet, -2px 0px red, -3px 0px orange, -4px 0px yellow, -5px 0px green, -6px 0px blue;
+    }
+    85% {
+        color: violet;
+        text-shadow: -1px 0px red, -2px 0px orange, -3px 0px yellow, -4px 0px green, -5px 0px blue, -6px 0px indigo;
+    }
+    100% {
+        color: red;
+        text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet;
+    }
+}

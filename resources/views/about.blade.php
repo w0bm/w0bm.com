@@ -62,6 +62,7 @@
    <li>>mfw w0bm is nice :3 will become: <span style="color:#80FF00;">>mfw w0bm is nice :3</span></li>
    <li>~Pantsu Pantsu Pantsu~ will become: <span class="reich">Pantsu Pantsu Pantsu</span></li>
    <li>%KREBS KREBS KREBS KREBS% will become: <span class="anim">KREBS KREBS KREBS KREBS</span></li>
+   <li>[rb]JA GEIL SCHNITZEL MHM JA!!!![/rb] will become: <span class="rainbow">JA GEIL SCHNITZEL MHM JA!!!!</span></li>
    <li>*gg* or _gg_ will become: <em>gg</em></li>
    <li>**gg** or __gg__ will become: <strong>gg</strong></li>
    <li>~~nope~~ will become: <del>nope</del></li>

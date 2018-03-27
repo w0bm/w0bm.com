@@ -12,6 +12,7 @@ class Markdown extends \Parsedown {
         $this->InlineTypes['@'][] = 'UserMention';
         $this->InlineTypes['%'][] = 'ColoredText';
 	$this->InlineTypes['~'][] = 'ReichText';
+	$this->InlineTypes['['][] = 'RainbowText';
         $this->InlineTypes[':'][] = 'ClickableTimestamp';
         $this->inlineMarkerList .= '@%';
     }
@@ -36,6 +37,22 @@ class Markdown extends \Parsedown {
                     'extent' => strlen($matches[0]),
                 ];
             }
+        }
+    }
+
+    // Matches %text%
+    protected function inlineRainbowText($Excerpt) {
+        if (preg_match('/\[rb\](.+)\[\/rb]/', $Excerpt['text'], $matches)) {
+            return [
+                'extent' => strlen($matches[0]),
+                'element' => [
+                    'name' => 'span',
+                    'text' => $matches[1],
+                    'attributes' => [
+                        'class' => 'rainbow'
+                    ],
+                ]
+            ];
         }
     }
 
