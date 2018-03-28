@@ -93,7 +93,7 @@ Route::group(['prefix' => 'api'], function() {
             }])->first();
         });
 
-	Route::get('latest', function(Request $req) {
+	Route::get('latest', function(\Illuminate\Http\Request $req) {
             if ($req->has('filtered') && $req->get('filtered')) {
                 return \App\Models\Video::filtered()->orderBy('id', 'DESC')->first();
             }
