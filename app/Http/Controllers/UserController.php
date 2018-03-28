@@ -60,7 +60,7 @@ class UserController extends Controller
         if(!auth()->check()) return redirect()->back()->with('warning', 'You are not logged in');
 
         auth()->logout();
-        return redirect('/')->with('success', 'Logout successfull');
+        return redirect('/')->with('success', 'Logout successful');
     }
 
     /**
