@@ -1337,3 +1337,16 @@ $(function() {
         });
     });
 });
+
+  function formatText(tag) {
+  var Field = document.getElementById('cinput');
+  var val = Field.value;
+  var selected_txt = val.substring(Field.selectionStart, Field.selectionEnd);
+  var before_txt = val.substring(0, Field.selectionStart);
+  var after_txt = val.substr(Field.selectionEnd);
+  var str1 = before_txt + '[' + tag + ']' + selected_txt;
+  var len = str1.length;
+  Field.value = str1 + '[/' + tag + ']' + after_txt;
+  Field.focus();
+  Field.setSelectionRange(len, len);
+}

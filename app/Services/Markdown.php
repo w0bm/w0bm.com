@@ -10,8 +10,8 @@ class Markdown extends \Parsedown {
         $this->setBreaksEnabled(true);
         $this->setUrlsLinked(true);
         $this->InlineTypes['@'][] = 'UserMention';
-        $this->InlineTypes['%'][] = 'ColoredText';
-	$this->InlineTypes['~'][] = 'ReichText';
+        $this->InlineTypes['['][] = 'ColoredText';
+	$this->InlineTypes['['][] = 'ReichText';
 	$this->InlineTypes['['][] = 'RainbowText';
         $this->InlineTypes[':'][] = 'ClickableTimestamp';
         $this->inlineMarkerList .= '@%';
@@ -58,7 +58,7 @@ class Markdown extends \Parsedown {
 
     // Matches %text%
     protected function inlineColoredText($Excerpt) {
-        if (preg_match('/%(.+)%/', $Excerpt['text'], $matches)) {
+        if (preg_match('/\[krebs\](.+)\[\/krebs]/', $Excerpt['text'], $matches)) {
             return [
                 'extent' => strlen($matches[0]),
                 'element' => [
@@ -74,7 +74,7 @@ class Markdown extends \Parsedown {
 
     // Matches !text!
     protected function inlineReichText($Excerpt) {
-        if (preg_match('/~(.+)~/', $Excerpt['text'], $matches)) {
+        if (preg_match('/\[reich\](.+)\[\/reich]/', $Excerpt['text'], $matches)) {
             return [
                 'extent' => strlen($matches[0]),
                 'element' => [

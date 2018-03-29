@@ -3,9 +3,13 @@
     {!! csrf_field() !!}
     <div class="panel panel-default">
         <div class="panel-body">
-            {!! Form::textarea('comment', null, ['placeholder' => 'Write something', 'class' => 'form-control', 'required' => 'required']) !!}
+            {!! Form::textarea('comment', null, ['placeholder' => 'Write something', 'id' => 'cinput', 'class' => 'form-control', 'required' => 'required']) !!}
         </div>
-    <div class="panel-footer"><button type="submit" class="btn btn-primary btn-sm">Post</button></div>
+    <div class="panel-footer"><button type="submit" class="btn btn-primary btn-sm">Post</button>
+	<a style="font-size: 14px;" class="rainbow" href="javascript:;" onclick="formatText ('rb');">[rb]</a>
+	<a style="font-size: 14px;" class="reich" href="javascript:;" onclick="formatText ('reich');">[reich]</a>
+	<a style="font-size: 14px;" class="anim" href="javascript:;" onclick="formatText ('krebs');">[krebs]</a>
+    </div>
     </div>
 </form>
 </div>
