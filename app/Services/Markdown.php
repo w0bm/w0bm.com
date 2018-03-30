@@ -10,7 +10,8 @@ class Markdown extends \Parsedown {
         $this->setBreaksEnabled(true);
         $this->setUrlsLinked(true);
         $this->InlineTypes['@'][] = 'UserMention';
-        $this->InlineTypes['['][] = 'ColoredText';
+        $this->InlineTypes['%'][] = 'ColoredText';
+	$this->InlineTypes['['][] = 'KrebsText';
 	$this->InlineTypes['['][] = 'ReichText';
 	$this->InlineTypes['['][] = 'RainbowText';
         $this->InlineTypes[':'][] = 'ClickableTimestamp';
@@ -40,7 +41,7 @@ class Markdown extends \Parsedown {
         }
     }
 
-    // Matches %text%
+    // Matches [rb][/rb]
     protected function inlineRainbowText($Excerpt) {
         if (preg_match('/\[rb\](.+)\[\/rb]/', $Excerpt['text'], $matches)) {
             return [
@@ -56,8 +57,8 @@ class Markdown extends \Parsedown {
         }
     }
 
-    // Matches %text%
-    protected function inlineColoredText($Excerpt) {
+    // Matches [krebs][/krebs]
+    protected function inlineKrebsText($Excerpt) {
         if (preg_match('/\[krebs\](.+)\[\/krebs]/', $Excerpt['text'], $matches)) {
             return [
                 'extent' => strlen($matches[0]),
@@ -66,6 +67,22 @@ class Markdown extends \Parsedown {
                     'text' => $matches[1],
                     'attributes' => [
                         'class' => 'anim'
+                    ],
+                ]
+            ];
+        }
+    }
+
+    // Matches %text% <- literally wtf error
+    protected function inlineColoredText($Excerpt) {
+        if (preg_match('/%(.+)%/', $Excerpt['text'], $matches)) {
+            return [
+                'extent' => strlen($matches[0]),
+                'element' => [
+                    'name' => 'span',
+                    'text' => $matches[1],
+                    'attributes' => [
+                        'class' => ''
                     ],
                 ]
             ];
