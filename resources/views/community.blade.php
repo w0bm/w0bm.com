@@ -19,7 +19,7 @@
 <h5>Discord</h5>
 <iframe src="https://discordapp.com/widget?id=417311017912238090&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
 
-<p>Or as normal join link: <a href="https://discord.gg/wWcGVdp">https://discord.gg/wWcGVdp</a></p>
+<p>Or as normal join link: <a href="https://discord.gg/SuF66vb">https://discord.gg/SuF66vb</a></p>
 </div>
 @include('footer')
 @endsection
