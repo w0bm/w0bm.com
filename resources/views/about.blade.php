@@ -96,6 +96,11 @@
 <p>Q: I want to give you guys some feedback and maybe some suggestions, where should I go?</p>
 <p>A: You can open a issue on our <a href="https://github.com/w0bm/">Github repository</a> and write down what you want to have as a feature and maybe it will happen some day, there is no guarantee since we are all lazy as fuck, or you can come directly to the <a href="/community">IRC/Discord</a> and tell us instantly!</p>
 </div>
+<div class="box">
+<h4>Compability</h4>
+<p>If you are experiencing issues with the connection you may want to try out our ipv4 only domain.</p>
+<a href="https://v4.w0bm.com">v4.w0bm.com</a>
+</div>
 @include('footer')
 @endsection
 
