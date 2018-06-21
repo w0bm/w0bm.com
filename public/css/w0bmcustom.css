@@ -2501,3 +2501,68 @@ padding: 6px 3px;
         text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet;
     }
 }
+
+.dropbtn {
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+
+    display: none;
+    position: absolute;
+    min-width: 140px;
+    box-shadow: none;
+    z-index: 1;
+
+}
+
+.dropdown-content a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    background: #383737;
+    text-align: left;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background-color: #3f3f3f;
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+#dlbutton {
+    cursor: pointer;
+    text-decoration: none;
+    color: #1fb2b0;
+}
+
+.popover-content {
+    padding-bottom: 0px;
+}
+
+div.downloadvid {
+    width: max-content;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+}
+
+ul.downloadlist {
+    list-style: none;
+    padding: 0;
+}
+
+.filesize {
+    float: right;
+    padding-left: 5px;
+}
