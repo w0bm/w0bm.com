@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Orbitron');
+/*@import url('https://fonts.googleapis.com/css?family=Orbitron');*/
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
 .catfart {
     display: none;
@@ -2310,6 +2311,7 @@ h3#index {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     width: calc(100% - 40px);
+    font-family: 'Oswald', sans-serif;
 }
 
 #btn-upload:hover > span.laz0r {

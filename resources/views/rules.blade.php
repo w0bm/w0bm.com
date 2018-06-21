@@ -20,16 +20,14 @@
 <h5>Code of Conduct</h5>
 <ol>
 	<li>No stupid racism, we think it's stupid to judge a person by the skin color or ancestry.</li>
-	<li>You are welcome to criticise any religion or any political regime as much as you like, judge the people directly based on their actions instead of their skin color or ancestry, otherwise your point is pointless and stupid.</li>
-	<li>Anyone is welcome here, it doesn't matter if you are a Muslim, a Christian, a Jew or even a Nazi as long as you follow our guidelines we can all live and work together in peace.</li>
-	<li>Political Correctness doesn't exist here, we don't fucking care, we allow any opinions to be shared if they are formulated in a way everyone can understand the authors point, there is no illegal opinion and we are not the thought police, if you find something disturbing discuss it and try to understand their points and try to make them aware of your thoughts, the most important thing is that every side knows what the other side initially wants!</li>
+	<li>Political Correctness doesn't exist here, we allow any opinions to be shared if they are formulated in a way everyone can understand the authors point, there is no illegal opinion and we are not the thought police, if you find something disturbing discuss it and try to understand their points and try to make them aware of your thoughts, the most important thing is that every side knows what the other side initially wants!</li>
 </ol>
 </div>
 
 <div class="box">
 <h5>Uploading</h5>
 <ol>
-	<li>Everything you upload <strong style="color:#1FB2B0;">must</strong> be acceptable with Dutch law!</li>
+	<li>Everything you upload <strong style="color:#1FB2B0;">must</strong> be acceptable with canadian law!</li>
 	<li>Absolutely no child pornography in any way! This also includes "modeling" and 3D loli videos. 2D (hentai) is okay.</li>
 	<li>Reposting is not a crime! But in most cases it can be prevented with the use of the <a href="https://w0bm.com/index">search form</a>.
 	<li>Put your uploads in the correct category, if you have a video that doesn't fit in any of the categories always put it in the Misc category</li.>
@@ -37,6 +35,7 @@
 	<li>The Artist and Songtitle field is only for the Artist and Song information respectively, anything else in there probably doesn't belong in there, use the Tags.</li>
 	<li>The Video Source field is not intended for YouTube Links or any other kind of link, please put only text in there. For example: YouTube and then put the YouTube link in the comments, if you fail at this too often it will probably hurt my vagina and I will scream like a 12 year old princess. Thanks! :3</li>
 	<li>No Politics Videos without any entertainment value, and I define the value and talks from Trump and the other shitheads is no entertainment, please delete yourself.</li>
+	<li>No nazi content.</li>
 </ol>
 </div>
 

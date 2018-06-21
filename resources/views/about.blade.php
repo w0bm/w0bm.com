@@ -9,7 +9,7 @@
 <ul>
 <li>w0bm.com is a modern open source WebM sharing platform.</li>
 <li>We collect random videos from the internet.</li>
-<li>We have a public GitHub repository, you are free to fork, clone and whatever you want, it's your choice. <a href="https://github.com/w0bm/">Fork Me!</a>
+<li>w0bm loves PRs! You can find the <a href="https://github.com/w0bm/">source code</a> on GitHub!</li>
 </ul>
 </div>
 

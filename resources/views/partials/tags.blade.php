@@ -16,7 +16,7 @@
         {{--<select multiple name="tags[]" data-role="tagsinput" class="form-control"></select>--}}
             <input id="tags" type="text" class="form-control" placeholder="Input tags…" name="tags" data-role="tagsinput">
             <span class="input-group-btn">
-                <button href="/{{$video->id}}/tag" id="submittags" type="submit" class="form-control btn-primary">Submit</button>
+		<button href="/{{$video->id}}/tag" id="submittags" type="submit" class="form-control btn-primary">Submit</button>
             </span>
     </div>
         </div>

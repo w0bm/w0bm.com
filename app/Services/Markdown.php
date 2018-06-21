@@ -5,6 +5,7 @@ use App\Models\User;
 
 class Markdown extends \Parsedown {
 
+
     function __construct() {
         $this->setMarkupEscaped(true);
         $this->setBreaksEnabled(true);
@@ -48,6 +49,7 @@ class Markdown extends \Parsedown {
                 'extent' => strlen($matches[0]),
                 'element' => [
                     'name' => 'span',
+		    'handler' => 'line',
                     'text' => $matches[1],
                     'attributes' => [
                         'class' => 'rainbow'

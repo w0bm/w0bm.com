@@ -17,9 +17,6 @@ return [
     'tumblr.com' => [
       '/^(?:68|78)\.media\.tumblr\.com$/'
     ],
-    'iksdeh.com' => [
-      '/^iksdeh\.com$/'
-    ],
     'catbox.moe' => [
       '/^files\.catbox\.moe$/'
     ],
