@@ -182,4 +182,21 @@ class Video extends Model
             $tag->normalized === 'sfw';
         });
     }
+
+    public function filesize() {
+        return filesize(getcwd() . "/b/" . $this->file);
+    }
+
+    public function fapplesize() {
+        $context = stream_context_create([
+            "http" => ["method" => "HEAD"]
+        ]);
+        if(!@file_get_contents("https://fapple.w0bm.com/" . str_replace(".webm", ".mp4", $this->file), false, $context))
+            return false;
+        $cl_keys = array_filter($http_response_header, function($str) {
+            return strpos(strtolower($str), "content-length:") === 0;
+        });
+        $cl_split = explode(" ", array_pop($cl_keys));
+        return intval(array_pop($cl_split));
+    }
 }

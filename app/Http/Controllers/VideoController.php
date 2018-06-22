@@ -159,12 +159,11 @@ class VideoController extends Controller
 
         $sfw = $video->tags->contains(function($key, $tag) {
             return $tag->normalized === 'sfw';
-	});
+        });
 
         return view('video', [
-	    'video' => $video,
-	    'filesize' => filesize(getcwd() . "/b/" . $video->file),
-	    'banner' => Banner::getRandom($sfw)
+            'video' => $video,
+            'banner' => Banner::getRandom($sfw)
         ]);
     }
 
