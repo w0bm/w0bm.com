@@ -10,7 +10,6 @@
         </a>
     @endif
 </div>
-<a style="color: #ffbf00; text-align: center; background: #12233f; border: 1px solid white; padding: 10px; font-weight: bold; font-size: 15px;" href="https://savetheinternet.info">The internet is in danger, and you can save it!</a>
 @if(Auth::check())
 @include('partials.commentform')
 @endif
