@@ -191,7 +191,7 @@ class Video extends Model
         $context = stream_context_create([
             "http" => ["method" => "HEAD"]
         ]);
-        if(!@file_get_contents("https://fapple.w0bm.com/" . str_replace(".webm", ".mp4", $this->file), false, $context))
+        if(@file_get_contents("https://fapple.w0bm.com/" . str_replace(".webm", ".mp4", $this->file), false, $context) === false)
             return false;
         $cl_keys = array_filter($http_response_header, function($str) {
             return strpos(strtolower($str), "content-length:") === 0;
