@@ -1,7 +1,7 @@
 @extends('profilelayout')
 @section('content')
 <style>
-.sf-reset .block {
+.sf-reset .block > pre {
     background-color: #000000;
     padding: 10px 28px;
     margin-bottom: 20px;
