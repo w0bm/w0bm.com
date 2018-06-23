@@ -65,7 +65,7 @@
 							<div class='downloadvid'>
 							<ul class='downloadlist'>
 							<li><a href='@if(env('APP_DEBUG')){{'/b'}}@else{{'//' . (substr($_SERVER['HTTP_HOST'], 0, 3) === 'v4.' ? 'v4.' : '') . 'b.w0bm.com'}}@endif{{ '/' . $video->file }}' download>WebM</a> <span class='filesize'>({{ HumanReadable::bytesToHuman($video->filesize()) }})</span></li>
-							<li><a href='//fapple.w0bm.com/{{str_replace('.webm','',$video->file)}}.mp4' download>MP4</a> <span class='filesize'>(N/A)</span></a>
+							<li><a href='//fapple.w0bm.com/{{str_replace('.webm','',$video->file)}}.mp4' download>MP4</a> <span class='filesize'></span></a>
 							</ul>
 							</div>
 							"
