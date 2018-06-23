@@ -1,6 +1,11 @@
 /*@import url('https://fonts.googleapis.com/css?family=Orbitron');*/
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
+@font-face {
+	font-family: "VCR";
+	src: url("/fonts/vcr.ttf");
+}
+
 .catfart {
     display: none;
 }
@@ -2311,7 +2316,7 @@ h3#index {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     width: calc(100% - 40px);
-    font-family: 'Oswald', sans-serif;
+    font-family: vcr;
 }
 
 #btn-upload:hover > span.laz0r {
@@ -2320,10 +2325,10 @@ h3#index {
     position: relative;
     font-weight: bold;
     text-transform: uppercase;
-    -webkit-text-stroke: #ff0000;
-    -webkit-text-stroke-width: 2px;
-    text-shadow: 0px 0px 8px black;
+    text-shadow: 0px 0px 5px #00ffff;
     top: 0px;
+    font-family: vcr;
+    color: #151013;
 }
 
 @-webkit-keyframes shoop {
