@@ -190,6 +190,7 @@ server {
 
 `nvim .env`
 <pre>
+APP_KEY=
 APP_ENV=production
 APP_DEBUG=false
 
