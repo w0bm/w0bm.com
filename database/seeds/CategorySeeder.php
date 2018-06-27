@@ -13,51 +13,52 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::create([
-            'name' => 'Music Videos',
-            'shortname' => 'musicvideo',
-            'description' => 'Stuff which resembles a music video'
+            'name' => 'Musicvideos',
+            'shortname' => 'mv',
+            'description' => 'WebMs containing music'
         ]);
 
         Category::create([
             'name' => 'Anime',
             'shortname' => 'anime',
-            'description' => 'Animestuff'
+            'description' => 'Everything from AMV to Hentai'
         ]);
 
         Category::create([
             'name' => 'Russia',
             'shortname' => 'russia',
-            'description' => 'Crazy russians dude'
+            'description' => 'Сука Блять'
         ]);
 
         Category::create([
-            'name' => 'Japan',
-            'shortname' => 'japan',
-            'description' => 'Stuff from japan (not anime)'
+            'name' => 'Asians',
+            'shortname' => 'asians',
+            'description' => 'Mostly Korean and Japanese girls'
         ]);
 
         Category::create([
             'name' => 'Funny',
             'shortname' => 'funny',
-            'description' => 'Funny webms for your consideration'
+            'description' => 'Supposed to be funny'
         ]);
 
         Category::create([
             'name' => 'Pr0n',
             'shortname' => 'pr0n',
-            'description' => 'Pretty grills and pr0n'
+            'description' => 'Crazy Japanese porn you will find my son'
         ]);
 
         Category::create([
-            'name' => 'News',
-            'shortname' => 'news',
-            'description' => 'News from around the world'
+            'name' => 'Politics',
+            'shortname' => 'pol',
+            'description' => 'Videos about faggots in suits'
         ]);
 
         Category::create([
-            'name' => 'Miscellaneous',
+            'name' => 'Misc',
             'shortname' => 'misc',
             'description' => 'Stuff that doesnt fit anywhere else'
         ]);
+        
     }
 }
