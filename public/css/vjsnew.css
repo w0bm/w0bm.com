@@ -65,7 +65,7 @@
 }
 .video-js .vjs-control:focus:before,
 .video-js .vjs-control:hover:before {
-    text-shadow: 0 0 1em #fff, 0 0 1em #fff, 0 0 1em #fff
+    text-shadow: 0 0 0.1em #1fb2b0, 0 0 0.1em #1fb2b0, 0 0 0.5em #1fb2b0;
 }
 .video-js .vjs-spacer,
 .video-js .vjs-time-control {
