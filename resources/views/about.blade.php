@@ -69,6 +69,7 @@
    <li>`code` will become: <code>code</code></li>
    <li>--- will insert a line<hr>to seperate</li>
 </ul>
+<p>This cannot be stacked, don't do it.</p>
 <p>If you want to answer someone, simply use <code>^</code> as often as you need to point to the comment you want to answer to.</p>
 <p>If you want to ping someone directly in a comment use <code>@$user</code></p>
 </div>

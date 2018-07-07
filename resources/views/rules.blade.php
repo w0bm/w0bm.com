@@ -34,8 +34,6 @@
 	<li>The focus is on videos you can easily watch 200 times a day over and over so upload only catchy shit! For example: <a href="/39">/39</a></li>
 	<li>The Artist and Songtitle field is only for the Artist and Song information respectively, anything else in there probably doesn't belong in there, use the Tags.</li>
 	<li>The Video Source field is not intended for YouTube Links or any other kind of link, please put only text in there. For example: YouTube and then put the YouTube link in the comments, if you fail at this too often it will probably hurt my vagina and I will scream like a 12 year old princess. Thanks! :3</li>
-	<li>No Politics Videos without any entertainment value, and I define the value and talks from Trump and the other shitheads is no entertainment, please delete yourself.</li>
-	<li>No nazi content.</li>
 </ol>
 </div>
 
