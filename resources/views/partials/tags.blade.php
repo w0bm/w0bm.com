@@ -43,6 +43,6 @@
         </div>
     </div>
 <div class="sponsored">
-<span class="sponsor">Sponsored by <a href="https://rapidvideo.com">Rapidvideo</a></span>
+<span class="sponsor">Like this website? Show your <a href="/donate">L0V3 ❤</a ></span>
 </div>
 </aside>

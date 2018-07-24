@@ -2391,9 +2391,21 @@ padding: 6px 3px;
 }
 
 .sponsored {
+    text-align: center;
+    font-weight: bold;
+    color: aliceblue;
+    font-family: vcr;
+    text-transform: uppercase;
+    font-size: 16px;
+    background: black;
     border-top: 1px solid #1fb2b0;
-    padding-left: 2px;
 }
+
+.sponsor > a {
+    color: #ff00fc;
+}
+
+
 
 .rainbow {
     animation: rainbold 1s linear infinite;
