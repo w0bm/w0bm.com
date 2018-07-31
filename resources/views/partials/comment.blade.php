@@ -7,8 +7,8 @@
             @if($del)
                 <a href="#" onclick="restoreComment($(this))"><i style="color:green"; class="fa fa-refresh" aria-hidden="true"></i></a>
             @else
-                <a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a>
-                <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                <a href="#" onclick="deleteComment($(this))"><i title="Wanna delete this fucking comment?" style="color:red"; class="fa fa-trash" aria-hidden="true"></i></a>
+                <a href="#" onclick="editComment($(this))"><i title="Edit the comment?" style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>
             @endif
         @endif
     </div>

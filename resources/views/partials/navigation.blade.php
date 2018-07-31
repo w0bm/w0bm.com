@@ -15,7 +15,7 @@
 
         <div class=" collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="{{url('categories')}}"><i class="fa fa-bars"></i> Categories</a></li>
+                <li><a href="{{url('categories')}}"><i class="fa fa-clone"></i> Categories</a></li>
                 <li><a href="{{url('index')}}"><i class="fa fa-list"></i> Index</a></li>
 		<li><a href="{{url('donate')}}"><i class="fa fa-bitcoin"></i> Donate</a></li>
 	    </ul>
@@ -25,7 +25,7 @@
                     <li><a href="#" data-toggle="modal" data-target="#filterselectmodal"><i class="fa fa-filter"></i> Filter</a></li>
                     <li><a href="{{url('upload')}}"><i class="fa fa-cloud-upload"></i> Upload</a></li>
                     <li><a href="{{url('user', Auth::user()->username)}}"><i class="fa fa-user"></i> {{Auth::user()->username}}</a></li>
-                    <li><a href="{{url('logout')}}"><i class="fa fa-times"></i> Logout</a></li>
+                    <li><a href="{{url('logout')}}"><i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
             @else
 		<!-- Hier war mal der Login Kot -->

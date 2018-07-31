@@ -92,7 +92,7 @@
 											@if($video->imgsource) <strong>Video Source:</strong> {{$video->imgsource}}<br>
 											@endif
 											<strong>Category:</strong> {{$video->category->name}}</div>"></span>
-						uploaded by <span style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{!! $video->user->displayName() !!}</a></span> <time class="timeago" data-toggle="tooltip" data-placement="top" datetime="{{$video->created_at->toIso8601String()}}" title="{{$video->created_at->toIso8601String()}}"></time>@if(auth()->check() && auth()->user()->can('delete_video')) <a id="delete_video" href="#"><i style="color:red;" class="fa fa-times" aria-hidden="true"></i></a>@endif @if(auth()->check() && (auth()->user()->can('edit_video') || auth()->user()->id == $video->user_id))<a href="#" data-toggle="modal" data-target="#webmeditmodal"><i style="color:#2ada19;" class="fa fa-pencil-square"></i></a>@endif
+						uploaded by <span style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{!! $video->user->displayName() !!}</a></span> <time class="timeago" data-toggle="tooltip" data-placement="top" datetime="{{$video->created_at->toIso8601String()}}" title="{{$video->created_at->toIso8601String()}}"></time>@if(auth()->check() && auth()->user()->can('delete_video')) <a id="delete_video" href="#"><i title="Delete this fucking video?" style="color:red;" class="fa fa-trash" aria-hidden="true"></i></a>@endif @if(auth()->check() && (auth()->user()->can('edit_video') || auth()->user()->id == $video->user_id))<a href="#" data-toggle="modal" data-target="#webmeditmodal"><i style="color:#2ada19;" class="fa fa-pencil-square"></i></a>@endif
 				</span>
 			</div>
 		</div>
