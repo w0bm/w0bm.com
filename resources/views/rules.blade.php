@@ -27,7 +27,6 @@
 <div class="box">
 <h5>Uploading</h5>
 <ol>
-	<li>Everything you upload <strong style="color:#1FB2B0;">must</strong> be acceptable with canadian law!</li>
 	<li>Absolutely no child pornography in any way! This also includes "modeling" and 3D loli videos. 2D (hentai) is okay.</li>
 	<li>Reposting is not a crime! But in most cases it can be prevented with the use of the <a href="https://w0bm.com/index">search form</a>.
 	<li>Put your uploads in the correct category, if you have a video that doesn't fit in any of the categories always put it in the Misc category</li.>
