@@ -1,5 +1,6 @@
 /*@import url('https://fonts.googleapis.com/css?family=Orbitron');*/
 @import url('https://fonts.googleapis.com/css?family=Oswald');
+/*Fuck you if you don't like Oswald ;)))*/
 
 @font-face {
 	font-family: "VCR";
@@ -2582,4 +2583,19 @@ ul.downloadlist {
 .filesize {
     float: right;
     padding-left: 5px;
+}
+
+#careful {
+    text-shadow: 1px 0px 5px red;
+}
+
+nsfw {
+    color: #d83b3bcc;
+    background: #0a090c;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+nsfw::after {
+    content: "NSFW";
 }

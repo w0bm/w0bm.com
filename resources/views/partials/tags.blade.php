@@ -43,6 +43,6 @@
         </div>
     </div>
 <div class="sponsored">
-<span class="sponsor">Like this website? Show your <a href="/donate">L0V3 ❤</a ></span>
+<span class="sponsor"><a href="/list">Check out the w0bm List</a></span>
 </div>
 </aside>

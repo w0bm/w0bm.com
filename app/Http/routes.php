@@ -46,6 +46,7 @@ Route::get('privacy', function() { return view('privacy'); });
 Route::get('teamspeak', function() { return view('teamspeak'); });
 Route::get('donate', function() { return view('tip'); });
 Route::get('news', function() { return view('news'); });
+Route::get('list', function() { return view('list'); });
 
 #Route::get('help', function() { return view('help'); });
 #Route::get('announcement', function() { return view('announcement'); });
