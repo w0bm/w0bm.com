@@ -48,7 +48,7 @@
 				<span class="videoinfo">
 						<a href="#" class="hidden-xs" id="toggle"><i class="fa fa-comments"></i></a>	
 						<a href="#" class="hidden-xs" id="togglebg"><i style="color:#fff200;" class="fa fa-lightbulb-o"></i></a>
-
+						<button class="copylink" data-clipboard-text="{{url($video->id)}}" title="Copy URL!"><i class="fa fa-link"></i></button>
 						<div class="dropdown">
 							<!--<a id="dlbutton" class="fa fa-download"></a>
 							<div class="dropdown-content">

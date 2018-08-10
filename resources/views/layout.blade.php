@@ -59,6 +59,23 @@
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
 <script src="/js/raven.min.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script>
+var clipboard = new ClipboardJS('.copylink');
+
+clipboard.on('success', function(e) {
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+
+    e.clearSelection();
+});
+
+clipboard.on('error', function(e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+});
+</script>
 @if(env('SENTRY_PUBLIC'))
 <script>
     Raven.config('{{ env("SENTRY_PUBLIC") }}').install()
