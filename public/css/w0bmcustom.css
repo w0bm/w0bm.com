@@ -2677,3 +2677,8 @@ button.copylink:not(:focus) {
     color: white;
     transition: all .2s ease-in-out;
 }
+
+a:hover, a:focus {
+    color: #1fb2b0;
+    text-decoration: underline;
+}
