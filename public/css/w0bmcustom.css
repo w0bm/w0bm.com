@@ -2910,7 +2910,7 @@ Eye candy
     cursor: pointer;
 }
 .onclick-menu-content {
-    background-color: #364656;
+    background-color: #21292f;
     width: auto;
 
     margin-top: 10px;
@@ -2924,7 +2924,7 @@ Eye candy
     width: 0;
     height: 0;
 
-    border-bottom: 10px solid #364656;
+    border-bottom: 10px solid #b1b1b1;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
 

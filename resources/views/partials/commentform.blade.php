@@ -10,7 +10,7 @@
 	<a style="font-size: 14px;" class="reich" href="javascript:;" onclick="formatText ('reich');">[reich]</a>
 	<a style="font-size: 14px;" class="anim" href="javascript:;" onclick="formatText ('krebs');">[krebs]</a>
 	<a style="font-size: 14px; color: white;" class="spoiler" href="javascript:;" onclick="formatText ('spoiler');">[spoiler]</a>
-        <div tabindex="0" class="onclick-menu" title="Help">
+        <div tabindex="0" class="onclick-menu">
             <ul class="onclick-menu-content">
                 <li>Protips:</li>
                 <li>Do not stack them like this <code>[rb][reich]I am funny ;)))[/reich][/rb]</code></li>

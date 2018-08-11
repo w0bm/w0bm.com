@@ -47,8 +47,8 @@
 			</div>
 			<div class="vidinfo">
 				<span class="videoinfo">
-						<button class="hidden-xs toggle-comments" id="toggle"><i class="fa fa-comments"></i></button>	
-						<button class="hidden-xs bg-toggle" id="togglebg"><i style="color:#fff200;" class="fa fa-adjust"></i></button>
+						<button title="Toggle comments" class="hidden-xs toggle-comments" id="toggle"><i class="fa fa-comments"></i></button>	
+						<button title="Toggle Background" class="hidden-xs bg-toggle" id="togglebg"><i style="color:#fff200;" class="fa fa-adjust"></i></button>
 						<button class="copylink" data-clipboard-text="{{url($video->id)}}" title="Copy URL!"><i class="fa fa-link"></i></button>
 						<div class="dropdown">
 							<button class="fa fa-download"
