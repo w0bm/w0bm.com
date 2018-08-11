@@ -3012,3 +3012,7 @@ a.saveCommentEdit, a.abortCommentEdit {
     float: right;
     padding-right: 5px;
 }
+
+amount {
+    color: #1fb2b0;
+}
