@@ -985,7 +985,7 @@ function editComment(self) {
                 comment.find('.abortCommentEdit').on('click', function(e) {
                     e.preventDefault();
                     $(this).prev().remove();
-                    $(this).replaceWith('<a id="delete_comment" href="#" onclick="deleteComment($(this))">[del]</a> <a id="edit_comment" href="#" onclick="editComment($(this))">[edit]</a>');
+                    $(this).replaceWith('<a class="delete_comment" href="#" onclick="deleteComment($(this))">[del]</a> <a class="edit_comment" href="#" onclick="editComment($(this))">[edit]</a>');
                     textarea.replaceWith(body);
                 });
                 comment.find('.saveCommentEdit').on('click', function(e) {
@@ -1018,7 +1018,7 @@ function editComment(self) {
                         complete: function() {
                             textarea.replaceWith(body);
                             _this.next().remove();
-                            _this.replaceWith('<a id="delete_comment" href="#" onclick="deleteComment($(this))">[del]</a> <a id="edit_comment" href="#" onclick="editComment($(this))">[edit]</a>');
+                            _this.replaceWith('<a class="delete_comment" href="#" onclick="deleteComment($(this))">[del]</a> <a class="edit_comment" href="#" onclick="editComment($(this))">[edit]</a>');
                         }
                     });
                 });

@@ -2994,12 +2994,12 @@ Eye candy
     }
 }
 
-a#delete_video, a#edit_video {
+a.delete_video, a.edit_video {
     font-size: 13px;
     color: #ffff;
 }
 
-a#delete_comment, a#edit_comment {
+a.delete_comment, a.edit_comment {
     font-size: 12px;
     color: white;
     float: right;
