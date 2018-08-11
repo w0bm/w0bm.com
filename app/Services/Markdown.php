@@ -15,6 +15,7 @@ class Markdown extends \Parsedown {
 	$this->InlineTypes['['][] = 'KrebsText';
 	$this->InlineTypes['['][] = 'ReichText';
 	$this->InlineTypes['['][] = 'RainbowText';
+	$this->InlineTypes['['][] = 'SpoilerText';
         $this->InlineTypes[':'][] = 'ClickableTimestamp';
         $this->inlineMarkerList .= '@%';
     }
@@ -58,6 +59,24 @@ class Markdown extends \Parsedown {
             ];
         }
     }
+
+    // Matches [spoiler][/spoiler]
+    protected function inlineSpoilerText($Excerpt) {
+        if (preg_match('/\[spoiler\](.+)\[\/spoiler]/', $Excerpt['text'], $matches)) {
+            return [
+                'extent' => strlen($matches[0]),
+                'element' => [
+                    'name' => 'span',
+                    'handler' => 'line',
+                    'text' => $matches[1],
+                    'attributes' => [
+                        'class' => 'spoiler'
+                    ],
+                ]
+            ];
+        }
+    }
+
 
     // Matches [krebs][/krebs]
     protected function inlineKrebsText($Excerpt) {

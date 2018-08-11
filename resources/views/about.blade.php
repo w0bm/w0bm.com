@@ -63,6 +63,7 @@
    <li>[reich]Pantsu Pantsu Pantsu[/reich] will become: <span class="reich">Pantsu Pantsu Pantsu</span></li>
    <li>[krebs]KREBS KREBS KREBS KREBS[/krebs] will become: <span class="anim">KREBS KREBS KREBS KREBS</span></li>
    <li>[rb]JA GEIL SCHNITZEL MHM JA!!!![/rb] will become: <span class="rainbow">JA GEIL SCHNITZEL MHM JA!!!!</span></li>
+   <li>[spoiler]f0ck you![/spoiler] will become: <span class="spoiler">f0ck you!</span></li>
    <li>*gg* or _gg_ will become: <em>gg</em></li>
    <li>**gg** or __gg__ will become: <strong>gg</strong></li>
    <li>~~nope~~ will become: <del>nope</del></li>

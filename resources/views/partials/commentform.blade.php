@@ -9,6 +9,7 @@
 	<a style="font-size: 14px;" class="rainbow" href="javascript:;" onclick="formatText ('rb');">[rb]</a>
 	<a style="font-size: 14px;" class="reich" href="javascript:;" onclick="formatText ('reich');">[reich]</a>
 	<a style="font-size: 14px;" class="anim" href="javascript:;" onclick="formatText ('krebs');">[krebs]</a>
+	<a style="font-size: 14px; color: white;" class="spoiler" href="javascript:;" onclick="formatText ('spoiler');">[spoiler]</a>
     </div>
     </div>
 </form>

@@ -2664,3 +2664,16 @@ button.copylink:not(:focus) {
         animation-duration: .5s;
     }
 }
+
+.spoiler {
+    background: black;
+    color: black;
+    font-family: monospace;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.spoiler:hover {
+    color: white;
+    transition: all .2s ease-in-out;
+}
