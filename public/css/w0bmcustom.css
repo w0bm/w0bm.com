@@ -2993,3 +2993,22 @@ Eye candy
         display: inline-block;
     }
 }
+
+a#delete_video, a#edit_video {
+    font-size: 13px;
+    color: #ffff;
+}
+
+a#delete_comment, a#edit_comment {
+    font-size: 12px;
+    color: white;
+    float: right;
+    padding-right: 5px;
+}
+
+a.saveCommentEdit, a.abortCommentEdit {
+    font-size: 12px;
+    color: white;
+    float: right;
+    padding-right: 5px;
+}

@@ -981,11 +981,11 @@ function editComment(self) {
                 body.replaceWith(textarea);
                 textarea.val($('<div>').html(retval.comment).text());
                 self.prev().remove();
-                self.replaceWith('<a href="#" class="saveCommentEdit"><i class="fa fa-floppy-o" aria-hidden="true"></i></a> <a href="#" class="abortCommentEdit"><i style="color:red;" class="fa fa-ban" aria-hidden="true"></i></a>');
+                self.replaceWith('<a href="#" class="saveCommentEdit">[save]</a> <a href="#" class="abortCommentEdit">[abort]</a>');
                 comment.find('.abortCommentEdit').on('click', function(e) {
                     e.preventDefault();
                     $(this).prev().remove();
-                    $(this).replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
+                    $(this).replaceWith('<a id="delete_comment" href="#" onclick="deleteComment($(this))">[del]</a> <a id="edit_comment" href="#" onclick="editComment($(this))">[edit]</a>');
                     textarea.replaceWith(body);
                 });
                 comment.find('.saveCommentEdit').on('click', function(e) {
@@ -1018,7 +1018,7 @@ function editComment(self) {
                         complete: function() {
                             textarea.replaceWith(body);
                             _this.next().remove();
-                            _this.replaceWith('<a href="#" onclick="deleteComment($(this))"><i style="color:red"; class="fa fa-times" aria-hidden="true"></i></a> <a href="#" onclick="editComment($(this))"><i style="color:cyan;" class="fa fa-pencil-square" aria-hidden="true"></i></a>');
+                            _this.replaceWith('<a id="delete_comment" href="#" onclick="deleteComment($(this))">[del]</a> <a id="edit_comment" href="#" onclick="editComment($(this))">[edit]</a>');
                         }
                     });
                 });
