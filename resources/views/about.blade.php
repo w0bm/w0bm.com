@@ -90,7 +90,7 @@
 <div class="box">
 <h4>FAQ</h4>
 <p>Q: w0bm is laggy for me and I don't know why.</p>
-<p>A: It's mostly because of the background. It's very resource heavy and can cause lag on some computers, if you experience this, you should click the yellow lightbulb on the video page to turn it off <i style="color:#fff200;" class="fa fa-lightbulb-o"></i></p>
+<p>A: It's mostly because of the background. It's very resource heavy and can cause lag on some computers, if you experience this, you should click the yellow circle on the video page to turn it off <i style="color:#fff200;" class="fa fa-adjust"></i></p>
 <p>Q: I don't know how to create WebMs</p>
 <p>A: Check out our <a href="/webm">WebM support</a> page and pick the solution you like the most!</p>
 <p>Q: Can you allow mp4s to be uploaded?</p>
