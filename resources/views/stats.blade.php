@@ -9,8 +9,7 @@
 	<p class="comment_count">Total amount of comments: <amount>{{$comment_count}}</amount></p>
 	<p class="latest-video">Latest video <a href="/{{$latest_video}}">/{{$latest_video}}</a></p>
 	<p class="newest_user">Newest user <a href="/user/{{$newest_user}}">/user/{{$newest_user}}</a></p>
-
-
+	<p class="dirsize">Total size of w0bm: <amount>{{$dirsize}}</amount></p>
 </div>
 @include('footer')
 @endsection

@@ -54,7 +54,8 @@ Route::get('stats', function() {
         'comment_count' => \App\Models\Comment::count(),
         //'fav_count' => \App\Models\UserFavorite::count(),
         'latest_video' => \App\Models\Video::getLastId(),
-        'newest_user' => \App\Models\User::orderBy('id', 'DESC')->first()->username
+	'newest_user' => \App\Models\User::orderBy('id', 'DESC')->first()->username,
+	'dirsize' => shell_exec("(du -sh " . public_path() . "/b | cut -f1)")
     ]);
 });
 
