@@ -44,34 +44,32 @@
 						<a class="last" href="{{url($video->getLastId())}}">last →</a>
 					@endif
 				@endif
-				<br>
+			</div>
+			<div class="vidinfo">
 				<span class="videoinfo">
-						<a href="#" class="hidden-xs" id="toggle"><i class="fa fa-comments"></i></a>	
-						<a href="#" class="hidden-xs" id="togglebg"><i style="color:#fff200;" class="fa fa-lightbulb-o"></i></a>
+						<button class="hidden-xs toggle-comments" id="toggle"><i class="fa fa-comments"></i></button>	
+						<button class="hidden-xs bg-toggle" id="togglebg"><i style="color:#fff200;" class="fa fa-adjust"></i></button>
 						<button class="copylink" data-clipboard-text="{{url($video->id)}}" title="Copy URL!"><i class="fa fa-link"></i></button>
 						<div class="dropdown">
-							<!--<a id="dlbutton" class="fa fa-download"></a>
-							<div class="dropdown-content">
-							<a href="@if(env('APP_DEBUG')){{"/b"}}@else{{"//" . (substr($_SERVER["HTTP_HOST"], 0, 3) === "v4." ? "v4." : "") . "b.w0bm.com"}}@endif{{ "/" . $video->file }}" download>Download WebM</a>
-							</div>-->
-						<span   class="fa fa-download"
-                                                        style="cursor: pointer"
-                                                        data-toggle="popover"
-                                                        data-placement="top"
-							data-trigger="hover"
-							data-html="true"
-                                                        title="Download Video"
-							data-content="
-							<div class='downloadvid'>
-							<ul class='downloadlist'>
-							<li><a href='@if(env('APP_DEBUG')){{'/b'}}@else{{'//' . (substr($_SERVER['HTTP_HOST'], 0, 3) === 'v4.' ? 'v4.' : '') . 'b.w0bm.com'}}@endif{{ '/' . $video->file }}' download>WebM</a> <span class='filesize'>({{ HumanReadable::bytesToHuman($video->filesize()) }})</span></li>
-							<li><a href='//fapple.w0bm.com/{{str_replace('.webm','',$video->file)}}.mp4' download>MP4</a> <span class='filesize'></span></a>
-							</ul>
-							</div>
-							"
-						</span>
+							<button class="fa fa-download"
+								id="dlbutton"
+                                style="cursor: pointer"
+                                data-toggle="popover"
+                                data-placement="top"
+								data-trigger="hover"
+								data-html="true"
+                                title="Download Video"
+								data-content="
+									<div class='downloadvid'>
+									<ul class='downloadlist'>
+									<li><a href='@if(env('APP_DEBUG')){{'/b'}}@else{{'//' . (substr($_SERVER['HTTP_HOST'], 0, 3) === 'v4.' ? 'v4.' : '') . 'b.w0bm.com'}}@endif{{ '/' . $video->file }}' download>WebM</a> <span class='filesize'>({{ 		HumanReadable::bytesToHuman($video->filesize()) }})</span></li>
+									<li><a href='//fapple.w0bm.com/{{str_replace('.webm','',$video->file)}}.mp4' download>MP4</a> <span class='filesize'></span></a>
+									</ul>
+									</div>"
+							</button>
 						</div>
 
+						<div class="favbutton">
 						@if(auth()->check())
 							@if(auth()->user()->hasFaved($video->id))
 								<a id="fav" href="{{url($video->id . '/fav')}}"><i style="color:#ff0094;" class="fa fa-heart"></i></a>
@@ -81,7 +79,9 @@
 						@else
 							<a href="{{url($video->id . '/fav')}}"><i class="fa fa-heart-o"></i></a>
 						@endif
-						<span 	class="fa fa-info-circle"
+						</div>
+						<button class="fa fa-info-circle"
+							id="infobox"
 							style="cursor: pointer"
 							data-toggle="popover"
 							data-placement="top"
@@ -91,8 +91,8 @@
 											@if($video->songtitle) <strong>Songtitle:</strong> {{$video->songtitle}}<br>@endif
 											@if($video->imgsource) <strong>Video Source:</strong> {{$video->imgsource}}<br>
 											@endif
-											<strong>Category:</strong> {{$video->category->name}}</div>"></span>
-						uploaded by <span style="color: rgb(233, 233, 233);"><a href="{{ url('user/' . $video->user->username) }}">{!! $video->user->displayName() !!}</a></span> <time class="timeago" data-toggle="tooltip" data-placement="top" datetime="{{$video->created_at->toIso8601String()}}" title="{{$video->created_at->toIso8601String()}}"></time>@if(auth()->check() && auth()->user()->can('delete_video')) <a id="delete_video" href="#"><i title="Delete this fucking video?" style="color:red;" class="fa fa-trash" aria-hidden="true"></i></a>@endif @if(auth()->check() && (auth()->user()->can('edit_video') || auth()->user()->id == $video->user_id))<a href="#" data-toggle="modal" data-target="#webmeditmodal"><i style="color:#2ada19;" class="fa fa-pencil-square"></i></a>@endif
+											<strong>Category:</strong> {{$video->category->name}}</div>"></button>
+						uploaded by <span><a style="color: white" href="{{ url('user/' . $video->user->username) }}">{!! $video->user->displayName() !!}</a></span> <time class="timeago" data-toggle="tooltip" data-placement="top" datetime="{{$video->created_at->toIso8601String()}}" title="{{$video->created_at->toIso8601String()}}"></time>@if(auth()->check() && auth()->user()->can('delete_video')) <a id="delete_video" href="#"><i title="Delete this fucking video?" style="color:red;" class="fa fa-trash" aria-hidden="true"></i></a>@endif @if(auth()->check() && (auth()->user()->can('edit_video') || auth()->user()->id == $video->user_id))<a href="#" data-toggle="modal" data-target="#webmeditmodal"><i style="color:#2ada19;" class="fa fa-pencil-square"></i></a>@endif
 				</span>
 			</div>
 		</div>

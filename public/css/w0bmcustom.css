@@ -2682,3 +2682,271 @@ a:hover, a:focus {
     color: #1fb2b0;
     text-decoration: underline;
 }
+
+button#togglebg {
+    background: transparent;
+    border: 0;
+    border-radius: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+button#togglebg:active {
+    background: #353512;
+    outline: 0;
+    transition: all 2s ease-in-out;
+}
+
+button#togglebg:focus {
+    outline: 0;
+    background: #142121;
+    transition: all .4s ease;
+}
+
+button#togglebg:hover {
+    background: #142121;
+    transition: all 2s ease;
+}
+
+button#togglebg:not(:focus) {
+    transition: all .5s ease-out;
+}
+
+button#toggle {
+    background: transparent;
+    border: 0;
+    border-radius: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+button#toggle:active {
+    background: #353512;
+    outline: 0;
+    transition: all 2s ease-in-out;
+}
+
+button#toggle:focus {
+    outline: 0;
+    background: #142121;
+    transition: all .4s ease;
+}
+
+button#toggle:hover {
+    background: #142121;
+    transition: all 2s ease;
+}
+
+button#toggle:not(:focus) {
+    transition: all .5s ease-out;
+}
+
+span.videoinfo {
+    background: #21292f;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+button#dlbutton {
+    background: transparent;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+button#dlbutton:active {
+    background: #142121;
+    outline: 0;
+    transition: all 2s ease-in-out;
+}
+
+button#dlbutton:focus {
+    outline: 0;
+    background: #142121;
+    transition: all .4s ease;
+}
+
+button#dlbutton:hover {
+    background: #142121;
+    transition: all 2s ease;
+}
+
+button#dlbutton:not(:focus) {
+    transition: all .5s ease-out;
+}
+
+/* FAV */
+
+button#favbutton {
+    background: transparent;
+    border: 0;
+    border-radius: 5px;
+}
+
+button#favbutton:active {
+    background: #142121;
+    outline: 0;
+    transition: all 2s ease-in-out;
+}
+
+button#favbutton:focus {
+    outline: 0;
+    background: #142121;
+    transition: all .4s ease;
+}
+
+button#favbutton:hover {
+    background: #142121;
+    transition: all 2s ease;
+}
+
+button#favbutton:not(:focus) {
+    transition: all .5s ease-out;
+}
+
+/* Infobutton */
+button#infobox {
+    background: transparent;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+button#infobox:active {
+    background: #142121;
+    outline: 0;
+    transition: all 2s ease-in-out;
+}
+
+button#infobox:focus {
+    outline: 0;
+    background: #142121;
+    transition: all .4s ease;
+}
+
+button#infobox:hover {
+    background: #142121;
+    transition: all 2s ease;
+}
+
+button#infobox:not(:focus) {
+    transition: all .5s ease-out;
+}
+
+.favbutton {
+    position: relative;
+    display: inline-block;
+}
+
+.vidinfo {
+    text-align: center;
+    color: rgb(31, 178, 176);
+    position: relative;
+    top: 10px;
+    font-family: "Oswald",sans-serif;
+    font-size: 16px;
+}
+
+/* onclick css menu */
+.onclick-menu {
+    position: relative;
+    display: inline-block;
+}
+.onclick-menu:before {
+    content: "?";
+}
+.onclick-menu:focus {
+    pointer-events: none;
+}
+
+.onclick-menu:focus .onclick-menu-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+.onclick-menu-content {
+    pointer-events: auto;
+    position: absolute;
+    z-index: 1;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.5s;
+    -moz-transition: visibility 0.5s;
+    -webkit-transition: visibility 0.5s;
+    -o-transition: visibility 0.5s;
+}
+
+.onclick-menu.no-pointer-events {
+    pointer-events: auto !important;
+}
+
+.onclick-menu.no-visibility .onclick-menu-content {
+    visibility: visible !important;
+    display: none;
+}
+
+.onclick-menu.no-visibility:focus .onclick-menu-content {
+    display: block;
+}
+
+.onclick-menu.no-opacity .onclick-menu-content {
+    opacity: 1 !important;
+}
+
+/*
+Eye candy 
+( colors courtesy of https://kuler.adobe.com/try-color-theme-3350110 )
+*/
+.onclick-menu {
+    padding: 0;
+    margin: 0 0 0 0;
+    outline: 0;
+}
+.onclick-menu:before {
+    padding: 5px 10px;
+    color: #1fb2b0;
+    font-weight: bold;
+    cursor: pointer;
+}
+.onclick-menu-content {
+    background-color: #364656;
+    width: auto;
+
+    margin-top: 10px;
+    margin-left: -6px;
+    padding: 10px;
+}
+
+/* arrow for the expanding part */
+.onclick-menu-content:before {
+    content: "";
+    width: 0;
+    height: 0;
+
+    border-bottom: 10px solid #364656;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+
+    position: absolute;
+    top: -10px;
+}
+
+.onclick-menu-content li {
+    color: #f2f5e9;
+    list-style-type: none;
+    white-space: nowrap;
+}
+
+/* style the buttons */
+.onclick-menu-content button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: inherit;
+    outline: 0;
+    cursor: pointer;
+}
+.onclick-menu-content button:hover {
+    color: #ff8c31;
+}
