@@ -1,7 +1,7 @@
 <div id="motd" class="panel panel-info hidden-xs">
     @if(null === $banner)
-        <div class="panel-body motd">
-            <span>If you want to advertise something, check <a href="/advertise">Advertise</a>. It is 100% free and just for the lulz</span>
+	<div class="panel-body motd">
+		<span style="color:red;">f0ck you!</span>
 	</div>
     @else
         <a href="{{ $banner->url }}" target="_blank" rel="noopener">

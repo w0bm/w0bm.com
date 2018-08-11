@@ -31,11 +31,11 @@ class API {
     static responsify(response) {
         var r = (type, text) => ({type: type, text: text});
         return {
-            not_logged_in: r('error', 'Not logged in'),
-            invalid_request: r('error', 'Invalid request'),
+            not_logged_in: r('error', 'Not logged in (✖╭╮✖)'),
+            invalid_request: r('error', 'Invalid request 【ツ】'),
             video_not_found: r('error', 'Video not found. Perhaps it has already been deleted'),
-            insufficient_permissions: r('error', 'Insufficient permissions'),
-            no_tags_specified: r('info', 'No tags specified')
+            insufficient_permissions: r('error', 'Insufficient permissions ┌∩┐(◣_◢)┌∩┐'),
+            no_tags_specified: r('error', 'No tags specified')
         }[response];
     }
 }
@@ -96,7 +96,7 @@ $(function() {
 
 function flash(type, message) {
     var html = '<div class="alert alert-:TYPE: alert-dismissable" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>:REPLACE:</div>';
-    var alerts = $('.flashcontainer > .container');
+    var alerts = $('.flashcontainer > .flash-inner');
     if(type === 'error') type = 'danger';
     alerts.append(html.replace(/:TYPE:/, type).replace(/:REPLACE:/, message));
     alertrm(jQuery);

@@ -38,7 +38,6 @@
         <div class="fucklaravel">
             @yield('content')
         </div>
-@include('partials.flash')
     </div>
 
 </div>

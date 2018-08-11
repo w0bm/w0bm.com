@@ -1743,11 +1743,33 @@ div#tag-add {
 
 /* Alerts */
 .alert {
-	border-radius: 0px;
+	border-radius: 5px;
+	margin-bottom: 0px;
+}
+
+.alert-danger {
+    background-color: #cc000099;
+    border-color: #ff002ac7;
+    color: #ffffff;
+    box-shadow: 0px 0px 9px #d41212;
+    text-align: center;
+    font-weight: bold;
+    font-family: vcr;
+    text-transform: uppercase;
+}
+
+.alert-success {
+    background-color: #008804;
+    border-color: #13ff25;
+    box-shadow: 0px 0px 5px #18e000;
+    text-align: center;
+    font-weight: bold;
+    font-family: vcr;
+    text-transform: uppercase;
 }
 
 .flashcontainer {
-    position: absolute;
+    position: unset;
     top: 20px;
     opacity: 0.8;
     z-index: 5;

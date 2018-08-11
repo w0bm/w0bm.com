@@ -101,6 +101,7 @@
 
 @section('aside')
     <aside id="sidebar" class="aside panel hidden-xs">
+    	@include('partials.flash')
     	@include('partials.comments')
 		@include('partials.tags')
 	</aside>

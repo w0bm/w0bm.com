@@ -41,6 +41,8 @@
                 </div>
 	    </div>
 <div class="form-group">
+    @include('partials.flash')
+    <br>
         <div id="dragndrop" class="form-group col-md-3" data-uploadlimit="{{ isset($user) ? ($user->can('break_max_filesize') ? 'false' : 'true') : 'true' }}">
             <a id="dragndrop-link" href="#">
                 <span style="display: table; width: 100%; height: 100%;">
