@@ -52,7 +52,7 @@ Route::get('stats', function() {
         'user_count' => \App\Models\User::count(),
         'upload_count' => \App\Models\Video::count(),
         'comment_count' => \App\Models\Comment::count(),
-        'fav_count' => \App\Models\UserFavorite::count(),
+        //'fav_count' => \App\Models\UserFavorite::count(),
         'latest_video' => \App\Models\Video::getLastId(),
         'newest_user' => \App\Models\User::orderBy('id', 'DESC')->first()->username
     ]);
