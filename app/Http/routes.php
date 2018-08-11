@@ -47,6 +47,16 @@ Route::get('teamspeak', function() { return view('teamspeak'); });
 Route::get('donate', function() { return view('tip'); });
 Route::get('news', function() { return view('news'); });
 Route::get('list', function() { return view('list'); });
+Route::get('stats', function() { 
+    return view('stats', [
+        'user_count' => \App\Models\User::count(),
+        'upload_count' => \App\Models\Video::count(),
+        'comment_count' => \App\Models\Comment::count(),
+        'fav_count' => \App\Models\UserFavorite::count(),
+        'latest_video' => \App\Models\Video::getLastId(),
+        'newest_user' => \App\Models\User::orderBy('id', 'DESC')->first()->username
+    ]);
+});
 
 #Route::get('help', function() { return view('help'); });
 #Route::get('announcement', function() { return view('announcement'); });
