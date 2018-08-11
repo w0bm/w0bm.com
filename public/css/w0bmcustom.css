@@ -1452,7 +1452,7 @@ div#tag-add {
 }
 @media (max-width: 360px) {
     #sidebar {
-        top: 23em;
+        top: 24.5em;
     }
 }
 /* Sidebar Mobile Queries END */
@@ -2949,4 +2949,25 @@ Eye candy
 }
 .onclick-menu-content button:hover {
     color: #ff8c31;
+}
+
+@media (max-width: 767px) {
+    .onclick-menu {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .vidinfo {
+        background: #21292f;
+        border-radius: 5px;
+    }
+
+    span.videoinfo {
+        background: transparent;
+    }
+
+    time.timeago {
+        display: inline-block;
+    }
 }
