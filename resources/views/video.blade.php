@@ -9,7 +9,11 @@
 			<source src="//fapple.w0bm.com/{{str_replace(".webm","",$video->file)}}.mp4">
 		</video>
 
-            </div>
+	    </div>
+            	<?php
+			$shortfile = str_replace(".webm", "" ,$video->file);
+			$mp4 = shell_exec("curl https://fapple.w0bm.com/api/v1/{{$shortfile}} | jq -r .size");
+		?>
 			<div class="text-center" style="position: unset;">
 				@if($related)
 					@if(($prev = $video->getPrev($related)) === null)
@@ -63,7 +67,7 @@
 									<div class='downloadvid'>
 									<ul class='downloadlist'>
 									<li><a href='@if(env('APP_DEBUG')){{'/b'}}@else{{'//' . (substr($_SERVER['HTTP_HOST'], 0, 3) === 'v4.' ? 'v4.' : '') . 'b.w0bm.com'}}@endif{{ '/' . $video->file }}' download>WebM</a> <span class='filesize'>({{ 		HumanReadable::bytesToHuman($video->filesize()) }})</span></li>
-									<li><a href='//fapple.w0bm.com/{{str_replace('.webm','',$video->file)}}.mp4' download>MP4</a> <span class='filesize'></span></a>
+									<li><a href='//fapple.w0bm.com/{{str_replace('.webm','',$video->file)}}.mp4' download>MP4</a> <span class='filesize'>({{$mp4}})</span></a>
 									</ul>
 									</div>"
 							</button>
