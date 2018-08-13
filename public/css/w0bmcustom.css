@@ -2434,9 +2434,8 @@ padding: 6px 3px;
     animation: rainbold 1s linear infinite;
     color: red;
     font-size: 1.5em;
-    /*  letter-spacing: 0.33em; */
-    
-    margin-left: 6px;
+    letter-spacing: 0.33em;
+    margin-left: 7px;
     text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet;
 }
 @keyframes rainbold {
@@ -3048,3 +3047,15 @@ p {
     display: flex;
     justify-content: center;
 }
+
+@media (max-width: 767px) {
+    #btn-upload:hover > span.laz0r {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 991px) {
+    .aside + div > .container {
+        width: 100%;
+    }
+}  
