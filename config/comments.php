@@ -25,8 +25,7 @@ return [
     ],
     '' => [
       '/^files\.nogf\.club$/',
-      '/^f0ck\.space$/',
-      '/^koyaanis\.com$/'
+      '/^f0ck\.space$/'
     ]
   ],
   'allowedImageFileExtensions' => [
