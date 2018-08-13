@@ -16,15 +16,9 @@
 		</div>
 	</form>
 	   </div>
-	    <div class="modal-footer">
-		<p id="logincenter">Don't have an account? <a href="/register">Register</a> now!</p>
-		<ul class="vorteilul">
-		<p class="vorteile">Why should I register?</p>
-		<li>Favor your favorite WebMs</li>
-		<li>Upload videos</li>
-		<li>Write comments</li>
-		</ul>
-            </div>
+	    	<div class="modal-footer">
+	    		<p>No w0bm account yet? <a href="#" data-toggle="modal" data-target="#registermodal" data-dismiss="modal">Register now!</a></p>
+        	</div>
         </div>
     </div>
 </div>

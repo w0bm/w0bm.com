@@ -3016,3 +3016,7 @@ a.saveCommentEdit, a.abortCommentEdit {
 amount {
     color: #1fb2b0;
 }
+
+p {
+	word-wrap: break-word;
+}

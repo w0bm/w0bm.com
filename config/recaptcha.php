@@ -48,6 +48,7 @@ return array(
     'options'       => array(
         
         'curl_timeout' => 1,
+        'theme' => 'dark'
         
     ),
 

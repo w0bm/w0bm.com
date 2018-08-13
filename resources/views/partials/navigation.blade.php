@@ -32,6 +32,7 @@
 		<ul class="nav navbar-nav navbar-right">
 		<li><a href="#" data-toggle="modal" data-target="#loginmodal"><i class="fa fa-cube"></i> Login</a></li>
 		@include('partials.loginmodal')
+        @include('partials.registermodal')
 		</ul>
             @endif
         </div>
