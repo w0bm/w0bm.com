@@ -3020,3 +3020,31 @@ amount {
 p {
 	word-wrap: break-word;
 }
+
+.reg_wrapper {
+    padding: 10px;
+    background: #1a1a1b;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.advantages {
+    padding: 10px;
+    background: #21292f;
+    margin: 5px;
+    border-radius: 5px;
+    color: aliceblue;
+}
+
+#registermodal, #loginmodal {
+    padding-left: 0px !important;
+}
+
+.login_wrapper {
+    padding: 10px;
+    background: #1a1a1b;
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
