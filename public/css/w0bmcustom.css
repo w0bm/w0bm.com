@@ -3058,4 +3058,8 @@ p {
     .aside + div > .container {
         width: 100%;
     }
-}  
+}
+
+a.file_size {
+	color: white;
+}
