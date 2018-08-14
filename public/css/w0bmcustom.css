@@ -1447,12 +1447,13 @@ div#tag-add {
 }
 @media (max-width: 367px) {
     #sidebar {
-        top: 24.6em;
+        /*top: 24.6em;*/
+	top: 27em;
     }
 }
 @media (max-width: 360px) {
     #sidebar {
-        top: 24.6em;
+        top: 26.6em;
     }
 }
 /* Sidebar Mobile Queries END */
@@ -2160,6 +2161,8 @@ input.form-control {
 @media (max-width: 690px) {
 	.text-center {
     	font-size: 19px;
+	display: flex;
+    	justify-content: space-between;
 	}
 }
 
