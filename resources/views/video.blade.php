@@ -91,7 +91,7 @@
 							data-placement="top"
 							data-trigger="hover"
 							title="Information"
-							data-content="	<div style='word-break: break-all;'>@if($video->interpret) <strong>Artist:</strong> {{$video->interpret}}<br>@endif
+							data-content="	<div style='word-break: break-word;'>@if($video->interpret) <strong>Artist:</strong> {{$video->interpret}}<br>@endif
 											@if($video->songtitle) <strong>Songtitle:</strong> {{$video->songtitle}}<br>@endif
 											@if($video->imgsource) <strong>Video Source:</strong> {{$video->imgsource}}<br>
 											@endif
