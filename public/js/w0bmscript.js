@@ -1317,7 +1317,7 @@ $(function() {
 });
 
 $(function() {
-    $('#delete_video').on('click', function(e) {
+    $('.delete_video').on('click', function(e) {
         e.preventDefault();
         do {
             var reason = prompt('Reason for deleting video ' + video.id + ' by ' + video.user);
