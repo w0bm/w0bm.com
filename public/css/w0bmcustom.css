@@ -2892,7 +2892,7 @@ button#infobox:not(:focus) {
     pointer-events: auto;
     position: absolute;
     z-index: 1;
-
+    width: 40em;
     opacity: 0;
     visibility: hidden;
     transition: visibility 0.5s;
@@ -2935,8 +2935,6 @@ Eye candy
 }
 .onclick-menu-content {
     background-color: #21292f;
-    width: auto;
-
     margin-top: 10px;
     margin-left: -6px;
     padding: 10px;
@@ -2959,7 +2957,7 @@ Eye candy
 .onclick-menu-content li {
     color: #f2f5e9;
     list-style-type: none;
-    white-space: nowrap;
+    white-space: pre-line;
 }
 
 /* style the buttons */
@@ -3065,4 +3063,10 @@ p {
 
 a.file_size {
 	color: white;
+}
+
+.comment_emoji {
+    max-width: 50px;
+    max-height: 50px;
+    vertical-align: text-bottom;
 }

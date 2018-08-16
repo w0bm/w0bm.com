@@ -12,13 +12,75 @@ class Markdown extends \Parsedown {
         $this->setUrlsLinked(true);
         $this->InlineTypes['@'][] = 'UserMention';
         $this->InlineTypes['%'][] = 'ColoredText';
-	$this->InlineTypes['['][] = 'KrebsText';
-	$this->InlineTypes['['][] = 'ReichText';
-	$this->InlineTypes['['][] = 'RainbowText';
-	$this->InlineTypes['['][] = 'SpoilerText';
+		$this->InlineTypes['['][] = 'KrebsText';
+		$this->InlineTypes['['][] = 'ReichText';
+		$this->InlineTypes['['][] = 'RainbowText';
+		$this->InlineTypes['['][] = 'SpoilerText';
+		$this->InlineTypes[':'][] = 'emojimatcherpng';
+		//$this->InlineTypes[':'][] = 'emojimatchermp4';
         $this->InlineTypes[':'][] = 'ClickableTimestamp';
         $this->inlineMarkerList .= '@%';
     }
+
+	protected function paragraph($Line) {
+        $Block = array(
+            'element' => array(
+                'name' => 'p',
+                'text' => $Line['text'],
+                'handler' => 'line',
+                'attributes' => [
+                	'class' => 'comment'
+                ]
+            ),
+        );
+
+        return $Block;
+    }
+
+    // Matches the emojis in png format
+    protected function inlineemojimatcherpng($Excerpt) {
+        if (preg_match('/\:(\w+)\:/mUs', $Excerpt['text'], $matches)) {
+        	$path = "images/comments/" . $matches[1];
+			$file_ext = "";
+			if(file_exists($path . ".png"))
+			$file_ext = ".png";
+			else if(file_exists($path . ".gif"))
+			$file_ext = ".gif";
+			if($file_ext === "")
+			return;
+            return [
+                'extent' => strlen($matches[0]),
+                'element' => [
+                    'name' => 'img',
+		    		'handler' => 'line',
+                    'attributes' => [
+                        'class' => 'comment_emoji',
+                        'src' => '/images/comments/' . $matches[1] . $file_ext
+                    ],
+                ]
+            ];
+    	}
+    }
+
+    // Matches MP4 Emojis (Currently not possible due to Chromes shitty and malfunctioning autplay policy. Thanks idiots :*)
+    //protected function inlineemojimatchermp4($Excerpt) {
+    //    if (preg_match('/\:(uwe)\:/mUs', $Excerpt['text'], $matches)) {
+    //        return [
+    //            'extent' => strlen($matches[0]),
+    //            'element' => [
+    //                'name' => 'video',
+	//	    		'handler' => 'line',
+    //                'attributes' => [
+    //                	'loop' => 'true',
+    //                	'autoplay' => 'true',
+    //                	'muted' => '',
+    //                    'class' => 'comment_video',
+    //                    'src' => '/images/comments/' . $matches[1] . '.mp4'
+    //                ],
+    //            ]
+    //        ];
+    //    }
+    //}
 
     protected function inlineUserMention($Excerpt) {
         if (preg_match('/\B@([\w-ÄÖÜäöü]+)/i', $Excerpt['context'], $matches)) {
@@ -45,12 +107,12 @@ class Markdown extends \Parsedown {
 
     // Matches [rb][/rb]
     protected function inlineRainbowText($Excerpt) {
-        if (preg_match('/\[rb\](.+)\[\/rb]/', $Excerpt['text'], $matches)) {
+        if (preg_match('/\[rb\](.+)\[\/rb]/mUs', $Excerpt['text'], $matches)) {
             return [
                 'extent' => strlen($matches[0]),
                 'element' => [
                     'name' => 'span',
-		    'handler' => 'line',
+		    		'handler' => 'line',
                     'text' => $matches[1],
                     'attributes' => [
                         'class' => 'rainbow'
@@ -62,7 +124,7 @@ class Markdown extends \Parsedown {
 
     // Matches [spoiler][/spoiler]
     protected function inlineSpoilerText($Excerpt) {
-        if (preg_match('/\[spoiler\](.+)\[\/spoiler]/', $Excerpt['text'], $matches)) {
+        if (preg_match('/\[spoiler\](.+)\[\/spoiler]/mUs', $Excerpt['text'], $matches)) {
             return [
                 'extent' => strlen($matches[0]),
                 'element' => [
@@ -80,11 +142,12 @@ class Markdown extends \Parsedown {
 
     // Matches [krebs][/krebs]
     protected function inlineKrebsText($Excerpt) {
-        if (preg_match('/\[krebs\](.+)\[\/krebs]/', $Excerpt['text'], $matches)) {
+        if (preg_match('/\[krebs\](.+)\[\/krebs]/mUs', $Excerpt['text'], $matches)) {
             return [
                 'extent' => strlen($matches[0]),
                 'element' => [
                     'name' => 'span',
+                    'handler' => 'line',
                     'text' => $matches[1],
                     'attributes' => [
                         'class' => 'anim'
@@ -94,29 +157,14 @@ class Markdown extends \Parsedown {
         }
     }
 
-    // Matches %text% <- literally wtf error
-    protected function inlineColoredText($Excerpt) {
-        if (preg_match('/%(.+)%/', $Excerpt['text'], $matches)) {
-            return [
-                'extent' => strlen($matches[0]),
-                'element' => [
-                    'name' => 'span',
-                    'text' => $matches[1],
-                    'attributes' => [
-                        'class' => ''
-                    ],
-                ]
-            ];
-        }
-    }
-
-    // Matches !text!
+    // Matches Reichtext
     protected function inlineReichText($Excerpt) {
-        if (preg_match('/\[reich\](.+)\[\/reich]/', $Excerpt['text'], $matches)) {
+        if (preg_match('/\[reich\](.+)\[\/reich]/mUs', $Excerpt['text'], $matches)) {
             return [
                 'extent' => strlen($matches[0]),
                 'element' => [
                     'name' => 'span',
+                    'handler' => 'line',
                     'text' => $matches[1],
                     'attributes' => [
                         'class' => 'reich'
