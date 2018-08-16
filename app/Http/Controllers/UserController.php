@@ -201,7 +201,7 @@ class UserController extends Controller
     	if (!$user) {
             return redirect()->back()->with('error', 'Unknown username');
         }
-        $vids = $user->favs()->filtered()->paginate(50);
+        $vids = $user->favs()->filtered()->orderBy('favorites.created_at')->paginate(50);
 
     	return view('profile', ['title' => 'Favorites', 'user' => $user, 'videos' => $vids]);
 	}
