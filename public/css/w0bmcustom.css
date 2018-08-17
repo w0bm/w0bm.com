@@ -3066,19 +3066,19 @@ a.file_size {
 }
 
 .comment_emoji {
-    max-width: 60px;
-    max-height: 130px;
+    max-width: 50px;
+    max-height: 50px;
     vertical-align: text-bottom;
 }
 
 .comment_emoji_small {
     height: 32px;
     width: auto;
+    padding-right: 5px;
     background: #6c6c7b;
     border-radius: 5px;
     vertical-align: super;
     margin-bottom: 5px;
-    margin-right: 5px;
 }
 
 .emojis {
@@ -3130,4 +3130,11 @@ a.file_size {
     min-height: 0;
     min-width: 10px;
     width: auto;
+}
+
+.whatanime {
+    background: rgb(33, 41, 47);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
 }
