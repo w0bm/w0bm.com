@@ -38,9 +38,10 @@
             <a title=":gimp:" href="javascript:;" onclick="formatTextEmoji ('gimp');"><img class="comment_emoji_small" src="/images/comments/gimp.png"></a>
             <a title=":geil:" href="javascript:;" onclick="formatTextEmoji ('geil');"><img class="comment_emoji_small" src="/images/comments/geil.png"></a>
             <a title=":coolpepe:" href="javascript:;" onclick="formatTextEmoji ('coolpepe');"><img class="comment_emoji_small" src="/images/comments/coolpepe.png"></a>
-	    <a title=":wednesday:" href="javascript:;"onclick="formatTextEmoji ('wednesday');"><img class="comment_emoji_small" src="/images/comments/wednesday.png"></a>
-	    <a title=":dancedanceführer:" href="javascript:;" onclick="formatTextEmoji ('dancedanceführer');"><img class="comment_emoji_small" src="/images/comments/dancedanceführer.gif"></a>
-	    <a title=":zebiets:" href="javascript:;" onclick="formatTextEmoji ('zebiets');"><img class="comment_emoji_small" src="/images/comments/zebiets.gif"></a>
+	       <a title=":wednesday:" href="javascript:;"onclick="formatTextEmoji ('wednesday');"><img class="comment_emoji_small" src="/images/comments/wednesday.png"></a>
+	       <a title=":dancedancefuehrer:" href="javascript:;" onclick="formatTextEmoji ('dancedancefuehrer');"><img class="comment_emoji_small" src="/images/comments/dancedancefuehrer.gif"></a>
+	       <a title=":zebiets:" href="javascript:;" onclick="formatTextEmoji ('zebiets');"><img class="comment_emoji_small" src="/images/comments/zebiets.gif"></a>
+           <a title=":pizda:" href="javascript:;" onclick="formatTextEmoji ('pizda');"><img class="comment_emoji_small" src="/images/comments/pizda.gif"></a>
         </div>
     </div>
     </div>
