@@ -96,7 +96,7 @@
 											@if($video->imgsource) <strong>Video Source:</strong> {{$video->imgsource}}<br>
 											@endif
 											<strong>Category:</strong> {{$video->category->name}}</div>
-											@if($video->category->name == 'Anime') <div class='whatanime'><a href='https://whatanime.ga/?url=https://w0bm.com/thumbs/{{str_replace('.webm','',$video->file)}}.gif'>whatanime?</a></div> @endif
+											@if($video->category->name == 'Anime') <div class='whatanime'><a target='_blank' href='https://whatanime.ga/?url=https://w0bm.com/thumbs/{{str_replace('.webm','',$video->file)}}.gif'>whatanime?</a></div> @endif
 											">
 						</button>
 						<span id="uploader">uploaded by <a style="color: white" href="{{ url('user/' . $video->user->username) }}">{!! $video->user->displayName() !!}</a></span> <time class="timeago" data-toggle="tooltip" data-placement="top" datetime="{{$video->created_at->toIso8601String()}}" title="{{$video->created_at->toIso8601String()}}"></time>@if(auth()->check() && (auth()->user()->can('edit_video') || auth()->user()->id == $video->user_id)) <a class="edit_video" href="#" data-toggle="modal" data-target="#webmeditmodal">[edit]</a>@endif @if(auth()->check() && auth()->user()->can('delete_video'))<a class="delete_video" href="#">[del]</a>@endif 
