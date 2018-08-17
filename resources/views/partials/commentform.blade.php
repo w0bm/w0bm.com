@@ -38,10 +38,17 @@
             <a title=":gimp:" href="javascript:;" onclick="formatTextEmoji ('gimp');"><img class="comment_emoji_small" src="/images/comments/gimp.png"></a>
             <a title=":geil:" href="javascript:;" onclick="formatTextEmoji ('geil');"><img class="comment_emoji_small" src="/images/comments/geil.png"></a>
             <a title=":coolpepe:" href="javascript:;" onclick="formatTextEmoji ('coolpepe');"><img class="comment_emoji_small" src="/images/comments/coolpepe.png"></a>
-	       <a title=":wednesday:" href="javascript:;"onclick="formatTextEmoji ('wednesday');"><img class="comment_emoji_small" src="/images/comments/wednesday.png"></a>
-	       <a title=":dancedancefuehrer:" href="javascript:;" onclick="formatTextEmoji ('dancedancefuehrer');"><img class="comment_emoji_small" src="/images/comments/dancedancefuehrer.gif"></a>
-	       <a title=":zebiets:" href="javascript:;" onclick="formatTextEmoji ('zebiets');"><img class="comment_emoji_small" src="/images/comments/zebiets.gif"></a>
-           <a title=":pizda:" href="javascript:;" onclick="formatTextEmoji ('pizda');"><img class="comment_emoji_small" src="/images/comments/pizda.gif"></a>
+	        <a title=":wednesday:" href="javascript:;"onclick="formatTextEmoji ('wednesday');"><img class="comment_emoji_small" src="/images/comments/wednesday.png"></a>
+	        <a title=":dancedancefuehrer:" href="javascript:;" onclick="formatTextEmoji ('dancedancefuehrer');"><img class="comment_emoji_small" src="/images/comments/dancedancefuehrer.gif"></a>
+	        <a title=":zebiets:" href="javascript:;" onclick="formatTextEmoji ('zebiets');"><img class="comment_emoji_small" src="/images/comments/zebiets.gif"></a>
+            <a title=":pizda:" href="javascript:;" onclick="formatTextEmoji ('pizda');"><img class="comment_emoji_small" src="/images/comments/pizda.gif"></a>
+            <a title=":apu_like:" href="javascript:;" onclick="formatTextEmoji ('apu_like');"><img class="comment_emoji_small" src="/images/comments/apu_like.png"></a>
+            <a title=":green_frog_meme:" href="javascript:;" onclick="formatTextEmoji ('green_frog_meme');"><img class="comment_emoji_small" src="/images/comments/green_frog_meme.png"></a>
+            <a title=":soyfrog:" href="javascript:;" onclick="formatTextEmoji ('soyfrog');"><img class="comment_emoji_small" src="/images/comments/soyfrog.png"></a>
+            <a title=":rolling_spurdo:" href="javascript:;" onclick="formatTextEmoji ('rolling_spurdo');"><img class="comment_emoji_small" src="/images/comments/rolling_spurdo.gif"></a>
+            <a title=":dancing_spurdo:" href="javascript:;" onclick="formatTextEmoji ('dancing_spurdo');"><img class="comment_emoji_small" src="/images/comments/dancing_spurdo.gif"></a>
+            <a title=":xdeh_spurdo:" href="javascript:;" onclick="formatTextEmoji ('xdeh_spurdo');"><img class="comment_emoji_small" src="/images/comments/xdeh_spurdo.png"></a>
+            <a title=":xdeh:" href="javascript:;" onclick="formatTextEmoji ('xdeh');"><img class="comment_emoji_small" src="/images/comments/xdeh.png"></a>
         </div>
     </div>
     </div>
