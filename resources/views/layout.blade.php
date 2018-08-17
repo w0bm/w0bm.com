@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
     <link rel="stylesheet" href="/css/video-js.min.css">
+    <link rel="stylesheet" href="/css/simplebar.css" />
     <link rel="stylesheet" href="/css/w0bmcustom.css?v={{ filemtime("css/w0bmcustom.css") }}">
     <link rel="stylesheet" href="/css/vjsnew.css?v=1.1.1">
 </head>
@@ -59,6 +60,7 @@
 <script src="/js/jquery.detectmobilebrowser.js"></script>
 <script src="/js/video.min.js"></script>
 <script src="/js/raven.min.js"></script>
+<script src="/js/simplebar.js"></script>
 <script src="/js/clipboard.min.js"></script>
 <script>
 var clipboard = new ClipboardJS('.copylink');

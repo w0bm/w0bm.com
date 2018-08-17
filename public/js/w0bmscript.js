@@ -1351,6 +1351,20 @@ $(function() {
   Field.setSelectionRange(len, len);
 }
 
+//Insert the emojis into the text area
+  function formatTextEmoji(tag) {
+  var Field = document.getElementById('cinput');
+  var val = Field.value;
+  var selected_txt = val.substring(Field.selectionStart, Field.selectionEnd);
+  var before_txt = val.substring(0, Field.selectionStart);
+  var after_txt = val.substr(Field.selectionEnd);
+  var str1 = before_txt + ':' + tag + ':' + selected_txt;
+  var len = str1.length;
+  Field.value = str1 + '' + '' + after_txt;
+  Field.focus();
+  Field.setSelectionRange(len, len);
+}
+
 // Copy Link
 function Copy() {
   var Url = document.getElementById("url");
@@ -1359,3 +1373,11 @@ function Copy() {
   Url.select();
   document.execCommand("copy");
 }
+
+//Toggle the Emojibar
+$(".header").click(function () {
+    $header = $(this);
+    $content = $(".emojis-box");
+    $content.slideToggle(350, function () {
+    });
+});

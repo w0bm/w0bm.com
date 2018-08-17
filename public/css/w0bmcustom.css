@@ -2438,7 +2438,7 @@ padding: 6px 3px;
     color: red;
     font-size: 1.5em;
     letter-spacing: 0.33em;
-    margin-left: 7px;
+    /*margin-left: 7px;*/
     text-shadow: -1px 0px orange, -2px 0px yellow, -3px 0px green, -4px 0px blue, -5px 0px indigo, -6px 0px violet;
 }
 @keyframes rainbold {
@@ -3069,4 +3069,65 @@ a.file_size {
     max-width: 50px;
     max-height: 50px;
     vertical-align: text-bottom;
+}
+
+.comment_emoji_small {
+    height: 32px;
+    width: auto;
+    padding-right: 5px;
+    background: #6c6c7b;
+    border-radius: 5px;
+    vertical-align: super;
+    margin-bottom: 5px;
+}
+
+.emojis {
+    margin-left: 5px;
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+#parent {
+    background: #21292f;
+    border-radius: 5px;
+    border: 1px solid #1fb2b0;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.emoji-shit, .header {
+    display: inline;
+    cursor: pointer;
+}
+
+.simplebar-scrollbar:before {
+    position: absolute;
+    content: "";
+    background: #73859f;
+    border-radius: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+.simplebar-track .simplebar-scrollbar.visible:before {
+    opacity: 0.8;
+    transition: opacity 0 linear;
+}
+
+.simplebar-track.horizontal .simplebar-scrollbar:before {
+    height: 100%;
+    left: 0;
+    right: 0;
+}
+
+.horizontal.simplebar-track .simplebar-scrollbar {
+    right: auto;
+    left: auto;
+    top: auto;
+    height: 14px;
+    min-height: 0;
+    min-width: 10px;
+    width: auto;
 }
