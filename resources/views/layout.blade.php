@@ -83,6 +83,6 @@ clipboard.on('error', function(e) {
     Raven.config('{{ env("SENTRY_PUBLIC") }}').install()
 </script>
 @endif
-<script src="/js/w0bmscript.min.js?v={{ filemtime("js/w0bmscript.min.js") }}"></script>
+<script src="/js/w0bmscript.js?v={{ filemtime("js/w0bmscript.js") }}"></script>
 </body>
 </html>
