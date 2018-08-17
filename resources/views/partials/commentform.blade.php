@@ -6,10 +6,10 @@
             {!! Form::textarea('comment', null, ['placeholder' => 'Write something', 'id' => 'cinput', 'class' => 'form-control', 'required' => 'required']) !!}
         </div>
     <div class="panel-footer"><button type="submit" class="btn btn-primary btn-sm">Post</button>
-	   <a style="font-size: 14px; margin-left: 7px;" class="rainbow" href="javascript:;" onclick="formatText ('rb');">[rb]</a>
-	   <a style="font-size: 14px;" class="reich" href="javascript:;" onclick="formatText ('reich');">[reich]</a>
-	   <a style="font-size: 14px;" class="anim" href="javascript:;" onclick="formatText ('krebs');">[krebs]</a>
-	   <a style="font-size: 14px; color: white;" class="spoiler" href="javascript:;" onclick="formatText ('spoiler');">[spoiler]</a>
+       <a style="font-size: 14px; margin-left: 7px;" class="rainbow" href="javascript:;" onclick="formatText ('rb');">[rb]</a>
+       <a style="font-size: 14px;" class="reich" href="javascript:;" onclick="formatText ('reich');">[reich]</a>
+       <a style="font-size: 14px;" class="anim" href="javascript:;" onclick="formatText ('krebs');">[krebs]</a>
+       <a style="font-size: 14px; color: white;" class="spoiler" href="javascript:;" onclick="formatText ('spoiler');">[spoiler]</a>
         <div tabindex="0" class="onclick-menu">
             <ul class="onclick-menu-content">
                 <li>Protips:</li>
@@ -26,29 +26,14 @@
     </div>
     <div style="display: none;" id="parent" class="emojis-box">
         <div data-simplebar data-simplebar-auto-hide="false" id="child" class="emojis">
-            <a title=":weini:" href="javascript:;" onclick="formatTextEmoji ('weini');"><img class="comment_emoji_small" src="/images/comments/weini.png"></a>
-            <a title=":uwe:" href="javascript:;" onclick="formatTextEmoji ('uwe');"><img class="comment_emoji_small" src="/images/comments/uwe.gif"></a>
-            <a title=":tux:" href="javascript:;" onclick="formatTextEmoji ('tux');"><img class="comment_emoji_small" src="/images/comments/tux.png"></a>
-            <a title=":tfwfat:" href="javascript:;" onclick="formatTextEmoji ('tfwfat');"><img class="comment_emoji_small" src="/images/comments/tfwfat.png"></a>
-            <a title=":sadpepe:" href="javascript:;" onclick="formatTextEmoji ('sadpepe');"><img class="comment_emoji_small" src="/images/comments/sadpepe.png"></a>
-            <a title=":retard:" href="javascript:;" onclick="formatTextEmoji ('retard');"><img class="comment_emoji_small" src="/images/comments/retard.png"></a>
-            <a title=":knebel:" href="javascript:;" onclick="formatTextEmoji ('knebel');"><img class="comment_emoji_small" src="/images/comments/knebel.png"></a>
-            <a title=":hans:" href="javascript:;" onclick="formatTextEmoji ('hans');"><img class="comment_emoji_small" src="/images/comments/hans.png"></a>
-            <a title=":gnu:" href="javascript:;" onclick="formatTextEmoji ('gnu');"><img class="comment_emoji_small" src="/images/comments/gnu.gif"></a>
-            <a title=":gimp:" href="javascript:;" onclick="formatTextEmoji ('gimp');"><img class="comment_emoji_small" src="/images/comments/gimp.png"></a>
-            <a title=":geil:" href="javascript:;" onclick="formatTextEmoji ('geil');"><img class="comment_emoji_small" src="/images/comments/geil.png"></a>
-            <a title=":coolpepe:" href="javascript:;" onclick="formatTextEmoji ('coolpepe');"><img class="comment_emoji_small" src="/images/comments/coolpepe.png"></a>
-	        <a title=":wednesday:" href="javascript:;"onclick="formatTextEmoji ('wednesday');"><img class="comment_emoji_small" src="/images/comments/wednesday.png"></a>
-	        <a title=":dancedancefuehrer:" href="javascript:;" onclick="formatTextEmoji ('dancedancefuehrer');"><img class="comment_emoji_small" src="/images/comments/dancedancefuehrer.gif"></a>
-	        <a title=":zebiets:" href="javascript:;" onclick="formatTextEmoji ('zebiets');"><img class="comment_emoji_small" src="/images/comments/zebiets.gif"></a>
-            <a title=":pizda:" href="javascript:;" onclick="formatTextEmoji ('pizda');"><img class="comment_emoji_small" src="/images/comments/pizda.gif"></a>
-            <a title=":apu_like:" href="javascript:;" onclick="formatTextEmoji ('apu_like');"><img class="comment_emoji_small" src="/images/comments/apu_like.png"></a>
-            <a title=":green_frog_meme:" href="javascript:;" onclick="formatTextEmoji ('green_frog_meme');"><img class="comment_emoji_small" src="/images/comments/green_frog_meme.png"></a>
-            <a title=":soyfrog:" href="javascript:;" onclick="formatTextEmoji ('soyfrog');"><img class="comment_emoji_small" src="/images/comments/soyfrog.png"></a>
-            <a title=":rolling_spurdo:" href="javascript:;" onclick="formatTextEmoji ('rolling_spurdo');"><img class="comment_emoji_small" src="/images/comments/rolling_spurdo.gif"></a>
-            <a title=":dancing_spurdo:" href="javascript:;" onclick="formatTextEmoji ('dancing_spurdo');"><img class="comment_emoji_small" src="/images/comments/dancing_spurdo.gif"></a>
-            <a title=":xdeh_spurdo:" href="javascript:;" onclick="formatTextEmoji ('xdeh_spurdo');"><img class="comment_emoji_small" src="/images/comments/xdeh_spurdo.png"></a>
-            <a title=":xdeh:" href="javascript:;" onclick="formatTextEmoji ('xdeh');"><img class="comment_emoji_small" src="/images/comments/xdeh.png"></a>
+            <?php
+                $files = glob(public_path() . DIRECTORY_SEPARATOR . 'images/comments/*.{gif,png}', GLOB_BRACE);
+                $files = array_map(function ($f) { return pathinfo($f); }, $files);
+            ?>
+
+            @foreach ($files as $file)
+                <a title=":{{$file['filename']}}:" href="javascript:;" onclick="formatTextEmoji ('{{$file['filename']}}');"><img class="comment_emoji_small" src="/images/comments/{{$file['basename']}}"></a>
+            @endforeach
         </div>
     </div>
     </div>
