@@ -12,12 +12,12 @@ class Markdown extends \Parsedown {
         $this->setUrlsLinked(true);
         $this->InlineTypes['@'][] = 'UserMention';
         $this->InlineTypes['%'][] = 'ColoredText';
-		$this->InlineTypes['['][] = 'KrebsText';
-		$this->InlineTypes['['][] = 'ReichText';
-		$this->InlineTypes['['][] = 'RainbowText';
-		$this->InlineTypes['['][] = 'SpoilerText';
-		$this->InlineTypes[':'][] = 'emojimatcherpng';
-		//$this->InlineTypes[':'][] = 'emojimatchermp4';
+	$this->InlineTypes['['][] = 'KrebsText';
+	$this->InlineTypes['['][] = 'ReichText';
+	$this->InlineTypes['['][] = 'RainbowText';
+	$this->InlineTypes['['][] = 'SpoilerText';
+	$this->InlineTypes[':'][] = 'emojimatcherpng';
+	//$this->InlineTypes[':'][] = 'emojimatchermp4';
         $this->InlineTypes[':'][] = 'ClickableTimestamp';
         $this->inlineMarkerList .= '@%';
     }
@@ -174,6 +174,21 @@ class Markdown extends \Parsedown {
         }
     }
 
+    // Matches %text% <- literally wtf error
+    protected function inlineColoredText($Excerpt) {
+        if (preg_match('/%(.+)%/', $Excerpt['text'], $matches)) {
+            return [
+                'extent' => strlen($matches[0]),
+                'element' => [
+                    'name' => 'span',
+                    'text' => $matches[1],
+                    'attributes' => [
+                        'class' => ''
+                    ],
+                ]
+            ];
+        }
+    }
 
     //Greentext
     protected function blockQuote($Excerpt) {
