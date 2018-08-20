@@ -8,8 +8,8 @@
 			<source src="@if(env('APP_DEBUG')){{"/b"}}@else{{"//" . (substr($_SERVER["HTTP_HOST"], 0, 3) === "v4." ? "v4." : "") . "b.w0bm.com"}}@endif{{ "/" . $video->file }}">
 			<source src="//fapple.w0bm.com/{{str_replace(".webm","",$video->file)}}.mp4">
 		</video>
-		    	@if($video->category->name == 'Anime')
-		    	<div class="anime-thumb-opener"><i title="Generate Anime Thumbnail!" class="fa fa-file-image-o"></i></div>
+		    	@if($video->category->name === 'Anime' || $video->category->name === 'Otomad')
+		    	<div class="anime-thumb-opener hidden-xs"><i title="Generate Anime Thumbnail!" class="fa fa-file-image-o"></i></div>
 				<div style="display: none;" class="anime-thumb">
 				<span>Anime Thumbnail Generator v1.0 Alpha</span><br>
 				<img id="thumbnail_img" alt="Pause video to create thumb!"/><br>
