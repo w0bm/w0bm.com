@@ -3141,8 +3141,8 @@ a.file_size {
 
 .anime-thumb-opener {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 5px;
+    right: 5px;
     cursor: pointer;
     z-index: 1;
     background: #21292f;
