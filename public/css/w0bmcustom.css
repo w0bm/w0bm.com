@@ -3138,3 +3138,38 @@ a.file_size {
     text-align: center;
     border-radius: 5px;
 }
+
+.anime-thumb-opener {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 1;
+    background: #21292f;
+    border-radius: 98px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border: 2px solid #1fb2b0;
+    color: white;
+}
+
+.anime-thumb {
+    position: absolute;
+    border: 2px solid black;
+    background: #21292f;
+    text-align: left;
+    font-family: monospace;
+    font-size: 13px;
+    width: 324px;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+}
+
+img#thumbnail_img {
+    max-width: 300px;
+    border: 1px solid white;
+    margin-bottom: 5px;
+}

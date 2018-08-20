@@ -4,11 +4,19 @@
     <div class="vertical-align">
         <div class="wrapper">
             <div class="embed-responsive embed-responsive-16by9">
-                <video id="video" loop controls preload="auto">
+                <video id="video" loop controls preload="auto" crossorigin="anonymous">
 			<source src="@if(env('APP_DEBUG')){{"/b"}}@else{{"//" . (substr($_SERVER["HTTP_HOST"], 0, 3) === "v4." ? "v4." : "") . "b.w0bm.com"}}@endif{{ "/" . $video->file }}">
 			<source src="//fapple.w0bm.com/{{str_replace(".webm","",$video->file)}}.mp4">
 		</video>
-
+		    	@if($video->category->name == 'Anime')
+		    	<div class="anime-thumb-opener"><i class="fa fa-file-image-o"></i></div>
+				<div style="display: none;" class="anime-thumb">
+				<span>Anime Thumbnail Generator v1.0 Alpha</span><br>
+				<img id="thumbnail_img" alt="Pause video to create thumb!"/><br>
+				<span>Right click <code>Copy Image</code> and paste it on <a href="https://whatanime.ga">whatanime.ga</a></span>
+				<canvas height="540" width="960" style="display: none;" id="thecanvas"></canvas>
+			</div>
+		@endif
 	    </div>
             	<?php
 			$shortfile = str_replace(".webm", "" ,$video->file);
