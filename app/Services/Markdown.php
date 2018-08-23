@@ -55,7 +55,9 @@ class Markdown extends \Parsedown {
 		    		'handler' => 'line',
                     'attributes' => [
                         'class' => 'comment_emoji',
-                        'src' => '/images/comments/' . $matches[1] . $file_ext
+			'src' => '/images/comments/' . $matches[1] . $file_ext,
+			'alt' => ':' . $matches[1] . ':',
+			'title' => ':' . $matches[1] . ':'
                     ],
                 ]
             ];
