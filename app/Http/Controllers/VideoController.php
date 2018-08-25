@@ -68,7 +68,7 @@ class VideoController extends Controller
         if(is_null($user))
             return new JsonResponse(['error' => 'not_logged_in']);
 
-        if(!$user->can('break_upload_limit') && $user->videos()->newlyups()->count() >= 35)
+        if(!$user->can('break_upload_limit') && $user->videos()->newlyups()->count() >= 10)
             return new JsonResponse(['error' => 'uploadlimit_reached']);
 
         $file = $request->file('file');

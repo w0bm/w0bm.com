@@ -1389,11 +1389,13 @@ $(".anime-thumb-opener").click(function () {
     $content.slideToggle(350, function () {
     });
 });
-
+/*
 window.onload = function (){
     var video = document.getElementById('video_html5_api');
     var thecanvas = document.getElementById('thecanvas');
     var img = document.getElementById('thumbnail_img');
+
+video.setAttribute('crossOrigin', 'anonymous');
 
     video.addEventListener('pause', function(){
         draw( video, thecanvas, img);
@@ -1406,4 +1408,4 @@ function draw( video, thecanvas, img ){
     context.drawImage( video, 0, 0, thecanvas.width, thecanvas.height);
     var dataURL = thecanvas.toDataURL();
     img.setAttribute('src', dataURL);
-}
+} */

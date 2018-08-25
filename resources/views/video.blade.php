@@ -15,12 +15,13 @@
 				<img id="thumbnail_img" alt="Pause video to create thumb!"/><br>
 				<span>Right click <code>Copy Image</code> and paste it on <a href="https://whatanime.ga">whatanime.ga</a></span>
 				<canvas height="540" width="960" style="display: none;" id="thecanvas"></canvas>
+				<script src="/js/animethumbnailer.js"></script>
 			</div>
 		@endif
 	    </div>
             	<?php
-			$shortfile = str_replace(".webm", "" ,$video->file);
-			$mp4 = shell_exec("curl https://fapple.w0bm.com/api/v1/{{$shortfile}} | jq -r .size");
+			//$shortfile = str_replace(".webm", "" ,$video->file);
+			//$mp4 = shell_exec("curl https://fapple.w0bm.com/api/v1/{{$shortfile}} | jq -r .size");
 		?>
 			<div class="text-center" style="position: unset;">
 				@if($related)
@@ -75,7 +76,7 @@
 									<div class='downloadvid'>
 									<ul class='downloadlist'>
 									<li><a class='file_size' href='@if(env('APP_DEBUG')){{'/b'}}@else{{'//' . (substr($_SERVER['HTTP_HOST'], 0, 3) === 'v4.' ? 'v4.' : '') . 'b.w0bm.com'}}@endif{{ '/' . $video->file }}' download>WebM</a> <span class='filesize'>({{ 		HumanReadable::bytesToHuman($video->filesize()) }})</span></li>
-									<li><a class='file_size' href='//fapple.w0bm.com/{{str_replace('.webm','',$video->file)}}.mp4' download>MP4</a> <span class='filesize'>{{$mp4}}</span></a>
+									<li><a class='file_size' href='//fapple.w0bm.com/{{str_replace('.webm','',$video->file)}}.mp4' download>MP4</a></a>
 									</ul>
 									</div>"
 							</button>
