@@ -15,7 +15,9 @@
 		<li><a href="http://issoutv.com/">issoutv.com</a> is a french WebM site.</li>
 		<li><a href="http://webm.land/">webm.land</a> is a place where one can upload and share WebMs, has a public gallery.</li>
 		<li><a href="http://webmshare.com/">webmshare.com</a> is the better looking and working brother of webm.land, has 6 pubic gallerys with all kinds of different videos.</li>
+		<li><a href="https://kongoucheats.com">kongoucheats.com</a> is a nice and simple webm page where you can upload and watch webms <nsfw></nsfw></a></li>
 	</ol>
-	<code style="float:right;">Last modified: 09.08.2018</code>
+	<code style="float:right;">Last modified: 09.09.2018</code>
 </div>
+@include('footer')
 @endsection
