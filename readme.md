@@ -1,3 +1,5 @@
+## This project is discontinued on GitHub
+
 # w0bm.com
 ![w0bm](https://i.imgur.com/hPvnspu.png "w0bm logo")
 
